@@ -112,5 +112,8 @@ jobs:
             git push
           fi
 
+      - name: Wait for GitHub Pages to update
+        run: sleep 30
+
       - name: 10. Send to Instapaper
         run: python scripts/send_to_instapaper.py
