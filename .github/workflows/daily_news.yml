@@ -1,5 +1,9 @@
 name: daily_news
 
+concurrency:
+  group: daily-news
+  cancel-in-progress: false
+
 on:
   schedule:
     - cron: "0 5 * * *"
@@ -11,6 +15,10 @@ permissions:
 jobs:
   daily-news:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: kobo-newspaper
 
     env:
       INSTAPAPER_USERNAME: ${{ secrets.INSTAPAPER_USERNAME }}
@@ -27,6 +35,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Prepare daily metadata
+        run: |
+          set -euo pipefail
+          DAILY_DATE="$(date -u +%F)"
+          echo "DAILY_DATE=$DAILY_DATE" >> "$GITHUB_ENV"
+
       - name: 3. Install requirements
         run: |
           python -m pip install --upgrade pip
@@ -41,11 +55,53 @@ jobs:
       - name: 6. Build HTML
         run: python scripts/build_html.py
 
-      - name: 7. Commit updated pages/index.html
+      - name: 7. Create dated edition and update latest index
         run: |
+          set -euo pipefail
+
+          DAILY_FILE="pages/${DAILY_DATE}.html"
+          cp pages/index.html "$DAILY_FILE"
+
+          cat > pages/index.html <<EOF
+          <!doctype html>
+          <html lang="sv">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="refresh" content="0; url=./${DAILY_DATE}.html" />
+            <title>Kobo Morgonnyheter – senaste utgåvan</title>
+          </head>
+          <body>
+            <p>Omdirigerar till senaste utgåvan: <a href="./${DAILY_DATE}.html">${DAILY_DATE}.html</a></p>
+          </body>
+          </html>
+          EOF
+
+      - name: 8. Set daily Instapaper URL
+        run: |
+          set -euo pipefail
+
+          BASE_URL="${ARTICLE_URL:-}"
+          if [[ -z "$BASE_URL" ]]; then
+            echo "ARTICLE_URL is empty. Set secret ARTICLE_URL to your GitHub Pages base URL or index URL."
+            exit 1
+          fi
+
+          BASE_URL="${BASE_URL%/}"
+          if [[ "$BASE_URL" == *.html ]]; then
+            BASE_URL="${BASE_URL%/*}"
+          fi
+
+          DAILY_URL="${BASE_URL}/${DAILY_DATE}.html"
+          echo "ARTICLE_URL=${DAILY_URL}" >> "$GITHUB_ENV"
+          echo "Daily ARTICLE_URL set to: ${DAILY_URL}"
+
+      - name: 9. Commit updated pages
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pages/index.html pages/newspaper.json pages/raw_articles.json
+          git add pages/index.html "pages/${DAILY_DATE}.html" pages/newspaper.json pages/raw_articles.json
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
@@ -53,5 +109,5 @@ jobs:
             git push
           fi
 
-      - name: 8. Send to Instapaper
+      - name: 10. Send to Instapaper
         run: python scripts/send_to_instapaper.py
