@@ -1,6 +1,12 @@
 {
   "general": [
     {
+      "title": "Millions of Cubans plunged into darkness as fuel crisis deepens",
+      "link": "https://www.bbc.com/news/articles/cx2ggpq1742o?at_medium=RSS&at_campaign=rss",
+      "published": "2026-03-04T22:46:53+00:00",
+      "summary": "Fuel shortages have been exacerbated by a US oil blockade since the seizure of Venezuelan President Nicolás Maduro."
+    },
+    {
       "title": "White House pushes back against mounting questions over any US involvement in Iran school strike – live",
       "link": "https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates",
       "published": "2026-03-04T22:36:32+00:00",
@@ -113,12 +119,6 @@
       "link": "https://www.theguardian.com/world/2026/mar/04/blackout-cuba-us-oil",
       "published": "2026-03-04T19:42:57+00:00",
       "summary": "<p>Latest outage darkens island facing dwindling oil reserves and increasing pressure from Washington</p><p>A blackout hit the western half of Cuba on Wednesday, leaving millions of people in Havana and beyond without power in the latest outage to affect an island struggling with dwindling oil reserves and a crumbling electricity grid.</p><p>The government’s Electric Union confirmed the outage on social platform X, saying it affected people from the eastern town of Pinar del Rio to the central town of Camaguey.</p> <a href=\"https://www.theguardian.com/world/2026/mar/04/blackout-cuba-us-oil\">Continue reading...</a>"
-    },
-    {
-      "title": "'Every day feels like a month': Iranians describe life under 'constant' US-Israeli strikes",
-      "link": "https://www.bbc.com/news/articles/cj4zze5lzjpo?at_medium=RSS&at_campaign=rss",
-      "published": "2026-03-04T19:31:24+00:00",
-      "summary": "Iranians are coping with daily strikes, internet blackouts, and security crackdowns - all while trying to stay in touch with loved ones."
     }
   ],
   "tech": [
