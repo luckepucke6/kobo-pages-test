@@ -1,0 +1,57 @@
+name: daily_news
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-news:
+    runs-on: ubuntu-latest
+
+    env:
+      INSTAPAPER_USERNAME: ${{ secrets.INSTAPAPER_USERNAME }}
+      INSTAPAPER_PASSWORD: ${{ secrets.INSTAPAPER_PASSWORD }}
+      ARTICLE_URL: ${{ secrets.ARTICLE_URL }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+    steps:
+      - name: 1. Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 3. Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 4. Fetch RSS
+        run: python scripts/fetch_rss.py
+
+      - name: 5. Generate newspaper
+        run: python scripts/generate_newspaper.py
+
+      - name: 6. Build HTML
+        run: python scripts/build_html.py
+
+      - name: 7. Commit updated pages/index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pages/index.html pages/newspaper.json pages/raw_articles.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update daily newspaper"
+            git push
+          fi
+
+      - name: 8. Send to Instapaper
+        run: python scripts/send_to_instapaper.py
