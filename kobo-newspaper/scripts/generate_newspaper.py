@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+from openai import OpenAI
 
 from build_html import write_html_file
 from fetch_rss import fetch_all_news
@@ -13,6 +16,8 @@ OUTPUT_JSON = PROJECT_ROOT / "pages" / "newspaper.json"
 
 GENERAL_SECTIONS = ["SVERIGE", "VÄRLDEN", "EKONOMI", "VETENSKAP & MILJÖ"]
 TECH_SECTIONS = ["AI & MACHINE LEARNING", "TECH INDUSTRY", "VERKTYG & OPEN SOURCE", "FORSKNING"]
+
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 
 def _clean_text(raw: str) -> str:
@@ -50,21 +55,53 @@ def _target_count(total_available: int, min_count: int, max_count: int, preferre
     return min(total_available, desired)
 
 
+def summarize_article(title: str, content: str) -> dict:
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        response_format={"type": "json_object"},
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Write a concise Swedish news summary for an e-reader newspaper. "
+                    "No emojis. Use short paragraphs. Optimize readability for e-ink screens."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    "Input:\n"
+                    f"Title: {title}\n"
+                    f"Content: {content}\n\n"
+                    "Return JSON only with keys:\n"
+                    '{"title":"...","summary":"...","importance":"..."}\n\n'
+                    "Rules:\n"
+                    "- title: Rubrik\n"
+                    "- summary: Kort sammanfattning (3–5 meningar)\n"
+                    "- importance: Varför det är viktigt (1 mening)"
+                ),
+            },
+        ],
+    )
+
+    payload = json.loads(response.choices[0].message.content or "{}")
+    return {
+        "title": _clean_text(payload.get("title", title)) or title,
+        "summary": _clean_text(payload.get("summary", content[:280] if content else "")),
+        "importance": _clean_text(payload.get("importance", "Det här är viktigt för att förstå dagens nyhetsläge.")),
+    }
+
+
 def _build_general_article(article: dict[str, str]) -> dict[str, str]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
     source_summary = _clean_text(article.get("summary", ""))
     published = article.get("published", "okänd tid")
-
-    sentence_1 = f"Artikeln '{title}' beskriver en aktuell händelse under det senaste dygnet."
-    sentence_2 = f"Den rapporterade kärnan är: {source_summary[:220] if source_summary else 'RSS-källan gav begränsad bakgrund.'}"
-    sentence_3 = f"Publiceringstid enligt källan är {published}."
-    short_summary = " ".join([sentence_1, sentence_2, sentence_3])
-    importance = "Det är viktigt eftersom nyheten påverkar samhällsläget och hjälper läsaren att fatta informerade beslut."
+    summarized = summarize_article(title=title, content=source_summary)
 
     return {
-        "rubrik": title,
-        "kort_sammanfattning": short_summary,
-        "varfor_det_ar_viktigt": importance,
+        "rubrik": summarized["title"],
+        "kort_sammanfattning": summarized["summary"],
+        "varfor_det_ar_viktigt": summarized["importance"],
         "link": article.get("link", "#"),
         "published": published,
     }
@@ -74,17 +111,12 @@ def _build_tech_article(article: dict[str, str]) -> dict[str, str]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
     source_summary = _clean_text(article.get("summary", ""))
     published = article.get("published", "okänd tid")
-
-    sentence_1 = f"Nyheten '{title}' rör teknikområdet och har tydlig koppling till dagens utveckling."
-    sentence_2 = f"Kärninnehåll: {source_summary[:220] if source_summary else 'begränsad beskrivning från RSS-källan.'}"
-    sentence_3 = f"Uppgiften publicerades {published} och ger en aktuell bild av marknaden."
-    short_explanation = " ".join([sentence_1, sentence_2, sentence_3])
-    relevance = "Det är relevant för AI/tech eftersom förändringen kan påverka verktyg, modeller eller hur team bygger produkter."
+    summarized = summarize_article(title=title, content=source_summary)
 
     return {
-        "rubrik": title,
-        "kort_forklaring": short_explanation,
-        "varfor_relevant_ai_tech": relevance,
+        "rubrik": summarized["title"],
+        "kort_forklaring": summarized["summary"],
+        "varfor_relevant_ai_tech": summarized["importance"],
         "link": article.get("link", "#"),
         "published": published,
     }

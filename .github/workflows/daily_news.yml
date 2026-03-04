@@ -49,8 +49,10 @@ jobs:
       - name: 4. Fetch RSS
         run: python scripts/fetch_rss.py
 
-      - name: 5. Generate newspaper
-        run: python scripts/generate_newspaper.py
+      - name: Generate newspaper
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python kobo-newspaper/scripts/generate_newspaper.py
 
       - name: 6. Build HTML
         run: python scripts/build_html.py
