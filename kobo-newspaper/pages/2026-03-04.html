@@ -3,66 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kobo Morgonnyheter</title>
+  <title>Morgontidningen</title>
   <style>
+    :root {
+      color-scheme: light;
+    }
+
     body {
       margin: 0;
       padding: 0;
       background: #ffffff;
       color: #111111;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.6;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      line-height: 1.7;
       font-size: 18px;
     }
 
     .page {
-      max-width: 42em;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 2em 1.5em 3em;
+      padding: 2.2rem 1.5rem 3.5rem;
     }
 
     h1, h2, h3 {
+      margin: 0;
       line-height: 1.25;
-      margin: 0;
-    }
-
-    .title-page {
-      margin-bottom: 2.6em;
-    }
-
-    .newspaper-title {
-      font-size: 2.4rem;
-      margin-bottom: 0.35em;
-    }
-
-    .newspaper-date {
-      font-size: 1.05rem;
-      margin: 0;
-    }
-
-    .section-block {
-      margin-bottom: 2.4em;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      margin-bottom: 0.7em;
-      letter-spacing: 0.02em;
-      border-top: 1px solid #cfcfcf;
-      padding-top: 0.7em;
-    }
-
-    .article {
-      margin-bottom: 2em;
-    }
-
-    .article-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.45em;
+      font-weight: 700;
+      color: #111111;
     }
 
     p {
-      margin: 0 0 0.8em;
+      margin: 0 0 0.85rem;
     }
 
     a {
@@ -70,198 +41,1214 @@
       text-decoration: underline;
     }
 
-    .meta {
-      font-size: 0.95rem;
-      margin-top: 0.4em;
+    .title-page {
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid #d5d5d5;
     }
 
-    .newspaper-divider {
-      margin: 2.4em 0;
-      border: 0;
-      border-top: 1px solid #bfbfbf;
+    .paper-title {
+      font-size: 2.35rem;
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.02em;
+    }
+
+    .date-line {
+      font-size: 1.04rem;
+      color: #2b2b2b;
+      margin: 0;
+    }
+
+    .intro-block {
+      margin-top: 1.4rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid #dedede;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .overview-list {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .overview-list li {
+      margin: 0 0 0.45rem;
+    }
+
+    .facts-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #222222;
+      font-size: 0.98rem;
+    }
+
+    .facts-list li {
+      margin: 0 0 0.35rem;
+    }
+
+    .news-section {
+      margin-top: 2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      margin-bottom: 1rem;
+      border-top: 1px solid #c9c9c9;
+      padding-top: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .story {
+      margin-bottom: 2.2rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .story-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .ingress {
+      font-style: italic;
+      color: #202020;
+      margin-bottom: 0.75rem;
+    }
+
+    .summary-paragraph {
+      margin-bottom: 0.7rem;
+    }
+
+    .importance {
+      margin-top: 0.75rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .eli5-box {
+      border: 1px solid #cfcfcf;
+      padding: 0.7rem 0.8rem;
+      background: #f7f7f7;
+      margin-bottom: 0.8rem;
+    }
+
+    .source {
+      margin-top: 0.25rem;
+      font-size: 0.97rem;
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="title-page">
-      <h1 class="newspaper-title">Morgontidningen</h1>
-      <p class="newspaper-date">Datum: 2026-03-04</p>
+    <header class="title-page">
+      <h1 class="paper-title">Morgontidningen</h1>
+      <p class="date-line">Datum: 2026-03-04</p>
+    </header>
+
+    <section class="intro-block">
+      <h2 class="intro-title">Det viktigaste idag</h2>
+      
+      <ul class="overview-list">
+        
+        <li>Kanada stöder insatser mot Iran, vilket påverkar civilbefolkningens liv.</li>
+        
+        <li>USAs militära strategi i Iran kan förändra den internationella stabiliteten.</li>
+        
+        <li>Ny medicin försvårad epilepsi kan förbättra livskvaliteten för barn.</li>
+        
+        <li>Pam Bondi kallad att vittna i Epstein-utredningen, vilket belyser rättssystemets hantering av brott.</li>
+        
+        <li>Techföretag bötfälls för missbruk av gymnasieelevers data, vilket väcker frågor om dataskydd.</li>
+        
+        <li>60 procent av walesiska väljare är ovetande om nytt valsystem inför majvalen.</li>
+        
+      </ul>
+      
+    </section>
+
+    <section class="intro-block">
+      <h2 class="intro-title">Dagens fakta</h2>
+      <ul class="facts-list">
+        <li>Totalt antal sektioner: 8</li>
+        <li>Totalt antal artiklar: 35</li>
+        <li>Senast uppdaterad: 2026-03-04</li>
+        <li>Format: Optimerat för e-bläckläsning</li>
+      </ul>
     </section>
 
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">SVERIGE</h2>
+
       
-      <article class="article">
-        <h3 class="article-title">Vita huset svarar på frågor om USAs delaktighet i attack i Iran</h3>
-        <p>Karoline Leavitt avfärdar frågor kring en bombning som påstås ha dödat 175 personer. General Caine meddelar att USA nu kommer att utvidga sina operationer djupare in i iransk territorium. Han betonade att intensiteten av dessa insatser kommer att öka snarare än minska.</p>
-        <p><strong>Varför det är viktigt:</strong> Situationens utveckling kan påverka det geopolitiska läget i Mellanöstern och relationerna mellan USA och Iran.</p>
-        <p class="meta"><a href="https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Kanada stödjer insatser mot Iran med förbehåll</h3>
+
+        
+        <p class="ingress">Kanadas premiärminister Mark Carney talade vid Lowy Institute i Sydney där han kommenterade den aktuella konflikten i Iran. Diskussionen omfattade även evakuering av australiska medborgare från konfliktområden.</p>
+        
+
+        
+        <p class="summary-paragraph">James Paterson, skuggsäkerhetsminister i Australien, hävdade att militära resurser bör användas för att återföra australiska medborgare vid behov.</p>
+        
+        <p class="summary-paragraph">Han påpekade att den nuvarande konflikten visar på ett misslyckande av det internationella systemet och en brist på samarbete bland länder.</p>
+        
+        <p class="summary-paragraph">Paterson noterade att flygningar i Mellanöstern är riskfyllda och att tidigare militära insatser har genomförts för evakueringar.</p>
+        
+        <p class="summary-paragraph">Canada uttryckte oro över att åtgärder vidtagits utan konsultation med dem eller en tydlig process för beslutsfattande.</p>
+        
+        <p class="summary-paragraph">Det betonas att internationell rätt är bindande för alla parter i konflikten.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna situation återspeglar spänningar i internationella relationer och utmaningar för civila liv i regionen. Beslut om evakueringar i konflikter kan påverka många liv.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Ett land som Kanada stödjer vapeninsatser mot Iran men gör det med oro över att besluten inte har diskuterats med dem. Dessutom vill Australien vara beredda att hjälpa sina medborgare hem från farliga områden.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Kanada stöder attacker mot Iran ‘med sorg’</h3>
-        <p>På morgonen torsdag landade människor som har fastnat i konflikt i Sydney. Liberalen James Paterson säger att det är en utmanande miljö för kommersiella flyg i Mellanöstern. Han menar att militärens hjälp kan behövas för att återföra australiensare om det krävs. Kanada uttrycker oro över att beslut har fattats utan samråd med dem eller FN.</p>
-        <p><strong>Varför det är viktigt:</strong> Detta avspeglar de komplexa internationella relationerna och riskerna för civila liv i en snabbt eskalerande konflikt.</p>
-        <p class="meta"><a href="https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Vita huset svarar på frågor om USAs involvering i Iran</h3>
+
+        
+        <p class="ingress">USA har fått kritik efter en bombattack i Iran som enligt rapporter dödade 175 personer. Vita husets presschef Karoline Leavitt avfärdar frågor om amerikansk inblandning.</p>
+        
+
+        
+        <p class="summary-paragraph">Generalen Caine meddelade idag att USA nu kommer att utvidga sina angrepp in i iransk territorium.</p>
+        
+        <p class="summary-paragraph">Han betonade att luftrummet nu är under amerikansk kontroll, vilket möjliggör djupare insatser.</p>
+        
+        <p class="summary-paragraph">Caine påpekade att USA:s operationer kommer att intensifieras istället för att trappas ned.</p>
+        
+        <p class="summary-paragraph">Det finns inga bekräftelser på specifik amerikansk inblandning i den aktuella bombningen.</p>
+        
+        <p class="summary-paragraph">Frågor om USAs roll i konflikten kvarstår och pressas av olika medier.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Frågor om USAs militärstrategi kan påverka den internationella stabiliteten och relationerna i regionen. Det är viktigt att förstå konsekvenserna av amerikansk intervention i Iran.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> I grund och botten handlar det om att USA nu vill göra fler anfall i Iran, efter att de har lyckats ta kontroll över luftrummet där. Det har väckt många frågor om hur mycket USA egentligen är involverat i de senaste bombningarna.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Forskare hyllar livsförändrande läkemedel för barn med resistent epilepsi</h3>
-        <p>Tidiga tester av Zorevunersen visar att läkemedlet är säkert och väl tolererat hos barn med Dravet syndrom. Forskare kallar resultaten lovande för ett svårt behandlingsbart epilepsitillstånd. Dravet syndrom är en genetisk sjukdom som ofta orsakar motståndskraftig epilepsi tillsammans med tal- och utvecklingsförseningar.</p>
-        <p><strong>Varför det är viktigt:</strong> Detta läkemedel kan revolutionera behandlingen för barn som inte svarar på nuvarande terapier.</p>
-        <p class="meta"><a href="https://www.theguardian.com/society/2026/mar/04/scientists-drug-children-zorevunersen-epilepsy-dravet">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Forskare hyllar livsförändrande medicin för barn med svårbehandlad epilepsi</h3>
+
+        
+        <p class="ingress">Nya kliniska försök visar lovande resultat för läkemedlet Zorevunersen, som kan ge hopp till barn med Dravet syndrom.</p>
+        
+
+        
+        <p class="summary-paragraph">Zorevunersen har visat sig vara säkert och väl tolererat hos barn med Dravet syndrom.</p>
+        
+        <p class="summary-paragraph">Dravet syndrom är en genetisk sjukdom som orsakar behandlingresistent epilepsi samt tal- och utvecklingsförseningar.</p>
+        
+        <p class="summary-paragraph">I Storbritannien uppskattas omkring 3 000 personer vara drabbade av denna sällsynta sjukdom.</p>
+        
+        <p class="summary-paragraph">Nuvarande behandlingar fungerar ofta inte tillfredsställande, vilket gör Zorevunersen till ett potentiellt alternativ för dessa barn.</p>
+        
+        <p class="summary-paragraph">Forskare ser dessa tidiga resultat som ett steg framåt i jakten på bättre behandlingar.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna medicin kan förbättra livskvaliteten för många barn som lider av en svår typ av epilepsi. Det öppnar upp för nya behandlingsmöjligheter där andra alternativ har misslyckats.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Dravet syndrom gör att barn får många hjärtanfall som kan vara svåra att stoppa med vanliga mediciner. Zorevunersen är en ny medicin som kan hjälpa barn med denna sjukdom att få färre anfall och må bättre.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/society/2026/mar/04/scientists-drug-children-zorevunersen-epilepsy-dravet">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Pam Bondi i fokus i Epstein-utredning</h3>
-        <p>Fem republikaner i representanthuset har gått samman med demokrater för att utfärda en kallelse till USAs justitieminister Pam Bondi. Detta beslut, som röstades fram med 24-19, är en del av den pågående utredningen kring Jeffrey Epstein och Ghislaine Maxwell. Motionen att tvinga Bondi att vittna ledde av den republikanske representanten Nancy Mace, stödd av flera kollegor.</p>
-        <p><strong>Varför det är viktigt:</strong> Utredningen är avgörande för att belysa mycket kritiska aspekter av Epstein-fall och möjlig korruption.</p>
-        <p class="meta"><a href="https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Pam Bondi kallad att vittna i utredning om Jeffrey Epstein</h3>
+
+        
+        <p class="ingress">USAs representanthus har beslutat att kalla Pam Bondi, USA:s justitieminister, för att vittna i utredningen kring Jeffrey Epstein. Beslutet togs med 24 röster för och 19 emot.</p>
+        
+
+        
+        <p class="summary-paragraph">Fem republikaner i utskottet för övervakning röstade tillsammans med demokrater för att kalla Bondi, som en del av den pågående utredningen.</p>
+        
+        <p class="summary-paragraph">Rösten infördes av republikanen Nancy Mace, som fick stöd av kollegor från flera delstater.</p>
+        
+        <p class="summary-paragraph">De övriga som stödde motionen var Tim Burchett, Lauren Boebert, Michael Cloud och Scott Perry.</p>
+        
+        <p class="summary-paragraph">Utredningen fokuserar på Epstein och Ghislaine Maxwell, som varit centrala figurer i en omfattande och kontroversiell rättsprocess.</p>
+        
+        <p class="summary-paragraph">Kallelsen innebär att Bondi nu är skyldig att ge sin version av händelserna och eventuella involveringar i fallet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta beslut understryker både det bipartiska stödet för utredningen och vikten av att få klarhet i Epstein-affären. Utredningen kan ge insikter om hur rättssystemet hanterat mord och brott mot kvinnor.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Pam Bondi, som är USA:s justitieminister, måste nu svara på frågor om Jeffrey Epstein, en man som var inblandad i flera brott, inklusive människohandel. Utskottet som kallade henne har medlemmar från både republikaner och demokrater, vilket visar att detta är ett viktigt ämne för dem alla.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Techföretag bötfälls med 1,1 miljon dollar av Kalifornien för att ha sålt gymnasieelevers data</h3>
-        <p>Kaliforniens sekretessskyddsmyndighet har ålagt techföretaget GoFan en böter på 1,1 miljoner dollar. Företaget har brutit mot sekretesslagar efter att ha samlat in och sålt data från gymnasieelever. Elever som använde GoFans tjänst för att anmäla sig till evenemang har tvingats godkänna en samling av personlig information utan möjlighet att avstå.</p>
-        <p><strong>Varför det är viktigt:</strong> Detta fall belyser vikten av dataskydd och sekretess för unga användare i digitala tjänster.</p>
-        <p class="meta"><a href="https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Techföretag bötfälls med 1,1 miljon dollar för försäljning av gymnasieelevers data</h3>
+
+        
+        <p class="ingress">Det kaliforniska företaget GoFan har fått en stor böter för att ha brutit mot integritetslagar gällande gymnasieelevers personuppgifter. Detta efter att elever använt deras tjänst för att köpa biljetter till olika skolaktiviteter.</p>
+        
+
+        
+        <p class="summary-paragraph">Kaliforniska integritetsskyddsmyndigheten har ålagt GoFan en böter på 1,1 miljoner dollar.</p>
+        
+        <p class="summary-paragraph">Företaget sålde data från gymnasieelever som använde deras tjänst för att registrera sig för evenemang som fotbollsmatcher och baler.</p>
+        
+        <p class="summary-paragraph">Eleverna tvingades godkänna att deras personliga information skulle samlas in och säljas till annonsörer.</p>
+        
+        <p class="summary-paragraph">De hade inget alternativ att avstå från detta villkor innan de kunde köpa biljetter.</p>
+        
+        <p class="summary-paragraph">GoFan är ett biljettföretag som ägs av PlayOn, som sänder gymnasiesport i olika medier.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna böter belyser viktiga frågor kring dataskydd och skolungdomars integritet. Det visar också på vikten av att ungdomar informeras om hur deras personuppgifter används.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> GoFan, som låter elever köpa biljetter till skolarrangemang, fick böta mycket pengar för att de sålde elevernas privata information utan att ge dem möjlighet att säga nej. Det är som om du måste ge bort din hemlighet för att få köpa något, och det är inte rättvist.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Hur uttömda vapensamlingar kan påverka konflikten i Iran</h3>
-        <p>Vapensamlingar kommer inte ensamma att avgöra utfallet av konflikten, men de utgör en betydande faktor. Johnathan Beale från BBC framhäver att tillgången till vapen kan påverka parternas styrka och strategiska val. Den nuvarande situationen med uttömda lager kan leda till ökad osäkerhet och förändrade maktbalanser.</p>
-        <p><strong>Varför det är viktigt:</strong> Det är viktigt att förstå hur vapentillgången kan påverka både konflikten och regional stabilitet.</p>
-        <p class="meta"><a href="https://www.bbc.com/news/articles/cdxzzqe82d2o?at_medium=RSS&at_campaign=rss">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Hur bristande vapentestepot kan påverka konflikten med Iran</h3>
+
+        
+        <p class="ingress">Vapentillgångarna kommer inte att avgöra utgången av konflikten, men de spelar en betydande roll. Detta skriver BBC:s Jonathan Beale.</p>
+        
+
+        
+        <p class="summary-paragraph">Konflikten med Iran är komplex och involverar många faktorer.</p>
+        
+        <p class="summary-paragraph">Vapentestepot är en av dessa faktorer, men inte den enda.</p>
+        
+        <p class="summary-paragraph">Brist på vapen kan påverka beredskapen hos olika aktörer.</p>
+        
+        <p class="summary-paragraph">Det kan också leda till strategiska förändringar i konfliktens dynamik.</p>
+        
+        <p class="summary-paragraph">Inflödet av nya vapen kan förändra maktbalansen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Förståelsen av vapentestepotets påverkan är central för att analysera konflikten. Detta kan ge insikter i framtida händelseutvecklingar.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på vapenlager som en fotbollslags spelare. Om ett lag har färre spelare, kan de ha svårare att vinna matchen, men det handlar också om hur bra lag de är och hur de spelar tillsammans.
+        </div>
+        
+
+        <p class="source"><a href="https://www.bbc.com/news/articles/cdxzzqe82d2o?at_medium=RSS&at_campaign=rss">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Bard-fakultet kräver plan för ledarskapsövergång</h3>
-        <p>Fakultetsmedlemmar vid Bard College har uppmanat styrelsen att utarbeta en plan för ledarskapsövergång för presidenten Leon Botstein. Detta sker efter avslöjanden om hans kopplingar till den avlidne sexförbrytaren Jeffrey Epstein. Styrelsen har anlitat en extern advokatbyrå för att granska kommunikationen mellan Epstein och Botstein, som har varit president i 50 år.</p>
-        <p><strong>Varför det är viktigt:</strong> Frågan rör universitetets ledarskap och dess anseende i samband med allvarliga påståenden.</p>
-        <p class="meta"><a href="https://www.theguardian.com/us-news/2026/mar/04/bard-college-leon-botstein-jeffrey-epstein">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Bard College-fakultet kräver ledarskapsplan för president kopplad till Epstein</h3>
+
+        
+        <p class="ingress">Fakultetsmedlemmar vid Bard College uppmanar styrelsen att utveckla en plan för ledarskapsövergång för president Leon Botstein. Detta sker efter avslöjanden om hans relation med den dömde sexualbrottslingen Jeffrey Epstein.</p>
+        
+
+        
+        <p class="summary-paragraph">Fakultetsmedlemmarna har inte krävt Botsteins avgång.</p>
+        
+        <p class="summary-paragraph">De vädjar istället om en plan för att hantera ledarskapet.</p>
+        
+        <p class="summary-paragraph">Styrelsen för Bard College meddelade den 19 februari att de anlitat advokatbyrån WilmerHale för en oberoende granskning av samband mellan Epstein och Botstein.</p>
+        
+        <p class="summary-paragraph">Botstein har varit president för högskolan i 50 år.</p>
+        
+        <p class="summary-paragraph">Granskningen syftar till att klargöra kommunikationerna mellan de två personerna.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Frågan rör betydande etiska och ledarskapsrelaterade aspekter inom universitetet. Det kan få konsekvenser för institutionens anseende och framtida styrning.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Det handlar om att en högsta ledare på en skola haft saker att göra med en känd brottsling. Lärare vill att skolan ska tänka på vad som hänt och hur de går vidare.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/us-news/2026/mar/04/bard-college-leon-botstein-jeffrey-epstein">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Sánchez svarar på Trumps handelshot: 'Nej till krig'</h3>
+
+        
+        <p class="ingress">Spanien premiärminister Pedro Sánchez har svarat på USAs president Donald Trumps hot om att avsluta handelsrelationerna. Han uttrycker en tydlig avståndstagande från denna typ av hot.</p>
+        
+
+        
+        <p class="summary-paragraph">Pedro Sánchez betonar vikten av diplomati och handel istället för konflikten.</p>
+        
+        <p class="summary-paragraph">Trump har hotat med hårdare åtgärder mot länder som inte följer USA:s ekonomiska intressen.</p>
+        
+        <p class="summary-paragraph">Sánchez anser att ekonomiska relationer är avgörande för båda länderna.</p>
+        
+        <p class="summary-paragraph">Han förespråkar samarbete för att lösa internationella problem.</p>
+        
+        <p class="summary-paragraph">Sánchez manar till lugn och förnuft i detta underliggande spänning.</p>
+        
+        <p class="summary-paragraph">Det finns oro för hur sådana konflikter kan påverka den globala ekonomin.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Relationerna mellan Spanien och USA är av stor betydelse för ekonomin. Ett handelskrig kan få betydande konsekvenser för båda länder.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på handel som att byta leksaker med en vän. Om en av er hotar att sluta byta, kan det leda till att ni blir ovänner och ingen får leka med några leksaker.
+        </div>
+        
+
+        <p class="source"><a href="https://www.bbc.com/news/articles/c93wwq1n542o?at_medium=RSS&at_campaign=rss">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">60 procent av walesiska väljare ovetande om nytt system inför majvalen</h3>
+
+        
+        <p class="ingress">En ny rapport visar att nästan 60 procent av walesiska väljare inte vet hur det nya systemet för Seneddvalen kommer att fungera. Det råder också förvirring kring vilka maktbefogenheter som tillhör Cardiff Bay respektive Westminster.</p>
+        
+
+        
+        <p class="summary-paragraph">Enligt en undersökning från Cardiff University och YouGov, som publicerades onsdagen den 4 mars, är många väljare osäkra på de politiska beslutens ansvarsfördelning.</p>
+        
+        <p class="summary-paragraph">Trots att det har gått 26 år sedan devolutionen inleddes, finns det fortfarande en brist på förståelse bland väljarna.</p>
+        
+        <p class="summary-paragraph">Rapporten belyser att väljare inte vet vilka frågor som hanteras lokalt och vilka som styrs på nationell nivå.</p>
+        
+        <p class="summary-paragraph">Det framgår inte av källan hur många som har deltagit i undersökningen.</p>
+        
+        <p class="summary-paragraph">Den fackliga otydligheten kan påverka väljarengagemanget i det kommande valet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Att förstå hur det politiska systemet fungerar är centralt för väljarna. Okunskap kan leda till minskat intresse och deltagande i valprocessen.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Det handlar om att många människor i Wales inte vet vem som bestämmer vad. Det kan vara svårt att veta om det är lokala politiker eller de i London som har makten över olika frågor.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/uk-news/2026/mar/04/60-of-welsh-voters-unaware-of-how-new-system-will-work-in-may-elections">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Iranier beskriver livet under ständiga amerikansk-israeliska angrepp</h3>
+
+        
+        <p class="ingress">Iranier går igenom dagliga angrepp, internetavbrott och säkerhetspåtryckningar. Samtidigt försöker de hålla kontakten med sina nära och kära.</p>
+        
+
+        
+        <p class="summary-paragraph">Många iranier beskriver hur varje dag känns som en månad på grund av den rådande osäkerheten.</p>
+        
+        <p class="summary-paragraph">Regelbundna luftangrepp har blivit en del av vardagen, vilket skapar stor rädsla bland befolkningen.</p>
+        
+        <p class="summary-paragraph">Internettjänster stängs ofta ned för att förhindra information från att spridas.</p>
+        
+        <p class="summary-paragraph">Säkerhetsstyrkor intensifierar insatserna för att kontrollera eventuella protester.</p>
+        
+        <p class="summary-paragraph">Trots detta söker iranier sätt att kommunicera med sina familjer och vänner både inom och utanför landet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Artikeln belyser hur internationella konflikter påverkar civilbefolkningen i Iran. Det är viktigt att förstå de mänskliga konsekvenserna av politiska beslut.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk dig att du lever i ett område där du hela tiden hör bomber och inte kan använda din telefon för att prata med familjen. Det är så många iranier har det nu.
+        </div>
+        
+
+        <p class="source"><a href="https://www.bbc.com/news/articles/cj4zze5lzjpo?at_medium=RSS&at_campaign=rss">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Gavin Newsom kallar Israel för ’en apartheidstat’</h3>
+
+        
+        <p class="ingress">Kaliforniens guvernör, Gavin Newsom, kritiserar Israels agerande och USA:s militära partnerskap med landet. Detta under en bokturné i Los Angeles.</p>
+        
+
+        
+        <p class="summary-paragraph">Newsom yttrade sig om Israel under en framträdande för att marknadsföra sin memoarbok, 'Young Man in a Hurry: A Memoir of Discovery'.</p>
+        
+        <p class="summary-paragraph">Han attackerade landets gemensamma insatser med USA i kriget mot Iran.</p>
+        
+        <p class="summary-paragraph">Newsom, som anses vara en ledande kandidat för det demokratiska partiets presidentnomineringsval 2028, lär ha skapat uppmärksamhet med sina uttalanden.</p>
+        
+        <p class="summary-paragraph">Frågan om USA:s militära partnerskap med Israel återkommer ständigt i den politiska debatten.</p>
+        
+        <p class="summary-paragraph">Newsoms kommentar kan få konsekvenser för de framtida relationerna mellan USA och Israel.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Newsoms uttalande kan påverka diskussionen om USA:s utrikespolitik. Det sätter fokus på kritiska frågor om mänskliga rättigheter och militärt stöd.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> När Newsom säger att Israel liknar 'en apartheidstat', syftar han på att han anser att landet behandlar sina medborgare orättvist, vilket kan liknas vid det sätt som apartheid-systemet i Sydafrika fungerade. Han vill att USA ska tänka om sina relationer med Israel i ljuset av detta.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/us-news/2026/mar/04/gavin-newsom-israel-apartheid-state-iran-war">Läs original</a></p>
       </article>
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">VÄRLDEN</h2>
+
       
-      <article class="article">
-        <h3 class="article-title">Högre tullar väntas denna vecka enligt USA:s finansministerium</h3>
-        <p>Scott Bessent meddelar att USA troligen kommer att höja sin globala tull på importerade varor. Den nuvarande nivån på 10% kan därmed justeras uppåt. Nyheten förväntas offentliggöras inom de närmaste dagarna.</p>
-        <p><strong>Varför det är viktigt:</strong> En tullökning kan påverka både inhemsk och internationell handel.</p>
-        <p class="meta"><a href="https://www.bbc.com/news/articles/cjwzzq70qgvo?at_medium=RSS&at_campaign=rss">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Luftangrepp mot Iran-Irak-gränsen i samband med amerikansk och israelisk mobilisering av kurder</h3>
+
+        
+        <p class="ingress">Flera intensiva luftangrepp har riktats mot militära positioner och gränsposter längs Irans norra gräns mot Irak. Detta tyder på en möjlig ny konfliktfront som involverar både USA och Israel.</p>
+        
+
+        
+        <p class="summary-paragraph">Experter varnar för att stödja Irans etniska samhällen kan leda till en ökad risk för inbördeskrig.</p>
+        
+        <p class="summary-paragraph">Angreppen har fokuserat på olika militära anläggningar och polisstationer.</p>
+        
+        <p class="summary-paragraph">En amerikansk tjänsteman uppger att USA är berett att ge luftstöd om kurdiska peshmerga-kämpar korsar gränsen från Irak.</p>
+        
+        <p class="summary-paragraph">Det är oklart vilken strategisk plan USA och Israel har för regionen.</p>
+        
+        <p class="summary-paragraph">Konsekvenserna av dessa åtgärder kan påverka hela Mellanöstern.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Situationen vid Iran-Irak-gränsen kan leda till en bredare konflikt och påverka stabiliteten i regionen. Stöd till kurderna kan få långtgående konsekvenser för det geopolitiska läget.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> USA och Israel planerar att hjälpa kurdiska stridande vid gränsen mellan Iran och Irak. Samtidigt bombar de militära mål för att förbereda sig för en potentiell konflikt. Det finns risk för att detta kan leda till ett stort inbördeskrig.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/airstrikes-hit-iran-iraq-border-as-us-and-israeli-plan-to-mobilise-kurds-gathers-pace">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Krisen i Mellanöstern: USA:s ubåt sänker iranskt krigsfartyg</h3>
-        <p>Över 80 personer har dött och 32 ombord på fregatten Iris Dena har räddats. I ett israeliskt angrepp i Baalbek, Libanon, rapporterades fyra döda och sex skadade. Räddningsinsatser pågår för att hjälpa drabbade familjer.</p>
-        <p><strong>Varför det är viktigt:</strong> Krisen påverkar stabiliteten i regionen och relationerna mellan västländer och Iran.</p>
-        <p class="meta"><a href="https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Krisen i Mellanöstern: Ytterligare dödsfall efter israeliska attacker och sänkt iranskt krigsfartyg</h3>
+
+        
+        <p class="ingress">Över 80 personer har mist livet efter sänkningen av det iranska krigsfartyget Iris Dena. Samtidigt har Israel genomfört nya attacker mot mål i Libanon.</p>
+        
+
+        
+        <p class="summary-paragraph">Den iranska fregatten Iris Dena hade en besättning på 180 personer. Av dessa har 32 lyckats räddas.</p>
+        
+        <p class="summary-paragraph">Enligt rapporter har mer än 80 personer dött i samband med incidenten.</p>
+        
+        <p class="summary-paragraph">I Baalbek, östra Libanon, bekräftas fyra dödsfall och sex skadade efter en israelisk attack mot en byggnad.</p>
+        
+        <p class="summary-paragraph">Det libanesiska nyhetsbyrån rapporterade att räddningsarbeten pågår för att få ut familjer ur rasmassorna.</p>
+        
+        <p class="summary-paragraph">Den här utvecklingen sätter ytterligare press på den redan spända situationen i regionen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta stärker den pågående konflikten mellan Iran och Israel, vilket kan få stora konsekvenser för stabiliteten i Mellanöstern. Internationella intressen är också i riskzonen.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Mellanöstern är en region där många länder har konflikter med varandra. När ett krigsfartyg sänks och bombningar sker, påverkar det människors liv direkt och kan leda till större strider.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Rådet om ”krigskassan”: Tusen kronor i kontanter hemma – per vuxen</h3>
-        <p>Riksbanken rekommenderar att varje vuxen bör ha tusen kronor i kontanter hemma. Detta råd ges med tanke på det osäkra omvärldsläget. Nära 60 procent av hushållen behöver öka sina kontanta medel för att nå upp till den föreslagna summan.</p>
-        <p><strong>Varför det är viktigt:</strong> Rekommendationen är viktig för att säkerställa finansiell beredskap vid kriser.</p>
-        <p class="meta"><a href="https://www.svt.se/nyheter/inrikes/radet-om-krigskassan-tusen-kronor-i-kontanter-hemma-per-vuxen">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">USA överväger att höja tullar på import</h3>
+
+        
+        <p class="ingress">USA:s finansminister Scott Bessent meddelar att en ökning av de globala tullarna på importerade varor kan ske inom kort.</p>
+        
+
+        
+        <p class="summary-paragraph">I dagsläget är tullarna på importerade varor 10%.</p>
+        
+        <p class="summary-paragraph">Bessent antyder att denna siffra kan komma att ändras denna vecka.</p>
+        
+        <p class="summary-paragraph">Den exakta procentuella höjningen är för närvarande oklar.</p>
+        
+        <p class="summary-paragraph">En sådan förändring kan påverka flera branscher och konsumentpriser.</p>
+        
+        <p class="summary-paragraph">Reaktionerna på detta förslag är blandade bland ekonomer och företag.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> En höjning av tullarna kan få betydande konsekvenser för den globala handeln. Det kan också påverka amerikanska konsumenter genom högre priser.</p>
+
+        
+
+        <p class="source"><a href="https://www.bbc.com/news/articles/cjwzzq70qgvo?at_medium=RSS&at_campaign=rss">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Riksbankens rekommendation: Tusen kronor i kontanter per vuxen</h3>
+
+        
+        <p class="ingress">Riksbanken rekommenderar nu hushåll att ha tusen kronor i kontanter per vuxen hemma. Detta för att möta det råder omvärldsläget.</p>
+        
+
+        
+        <p class="summary-paragraph">Rekommendationen har utfärdats med tanke på det aktuella läget i världen.</p>
+        
+        <p class="summary-paragraph">Enligt Riksbanken behöver nästan 60 procent av hushållen öka sin kontantreserv.</p>
+        
+        <p class="summary-paragraph">Detta för att nå upp till den föreslagna nivån på tusen kronor.</p>
+        
+        <p class="summary-paragraph">Kontanter kan bli viktiga vid en kris där digitala betalningar inte fungerar.</p>
+        
+        <p class="summary-paragraph">Riksbankens råd väcker frågor om kontanthanteringens framtid.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Rekommendationen belyser behovet av beredskap i osäkra tider. Det kan hjälpa hushåll att vara bättre förberedda vid kriser.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på det som att ha en liten nödfond hemma. Om något går fel och vi inte kan använda kort eller mobiler för att betala, kan kontanterna hjälpa oss att köpa det vi behöver.
+        </div>
+        
+
+        <p class="source"><a href="https://www.svt.se/nyheter/inrikes/radet-om-krigskassan-tusen-kronor-i-kontanter-hemma-per-vuxen">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Putin anklagar Ukraina för attack mot gasfartyg som exploderade utanför Libyen</h3>
+
+        
+        <p class="ingress">Vladimir Putin har hävdat att Ukraina utförde en terroristattack mot ett ryskt gasfartyg som exploderade och sjönk i Medelhavet.</p>
+        
+
+        
+        <p class="summary-paragraph">Fartyget Arctic Metagaz brann innan det sjönk efter vad Putin beskriver som en attack.</p>
+        
+        <p class="summary-paragraph">Det ryska fartyg som transporterar flytande naturgas har tidigare varit föremål för sanktioner från USA och EU.</p>
+        
+        <p class="summary-paragraph">Det är en del av en så kallad "skuggflotta" som transporterar rysk olja och gas och undviker västerländska restriktioner.</p>
+        
+        <p class="summary-paragraph">Attacken inträffade utanför Libyens kust, vilket kan ha större geopolitiska konsekvenser.</p>
+        
+        <p class="summary-paragraph">Putins påstående har ännu inte verifierats av oberoende källor.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse kan öka spänningarna mellan Ryssland och Ukraina samt påverka den globala energimarknaden.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på att fartyget var som en stor båt som transporterade gas. Putin säger att Ukraina har saboterat den båten, vilket han kallar en attack. Det kan leda till problem mellan länderna och påverka hur vi får gas.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/putin-accuses-ukraine-of-attacking-gas-tanker-that-exploded-and-sank-off-libya">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">US-submarin sänker iranskt krigsfartyg vid Sri Lanka</h3>
+
+        
+        <p class="ingress">En amerikansk ubåt har sänkt ett iranskt krigsfartyg utanför Sri Lankas sydkust. Attacken sker i en tid av ökande spänningar mellan USA och Iran.</p>
+        
+
+        
+        <p class="summary-paragraph">Torpedattacken riktades mot fregatten Iris Dena, som återvände från en övning i Bengalbukten.</p>
+        
+        <p class="summary-paragraph">Minst 87 iranska sjömän rapporteras ha omkommit i händelsen.</p>
+        
+        <p class="summary-paragraph">Angreppet har väckt frågor om USA:s efterlevnad av internationell lag gällande militära operationer.</p>
+        
+        <p class="summary-paragraph">Det amerikanska regeringen har lovat att intensifiera sina attacker mot iransk militär och politik.</p>
+        
+        <p class="summary-paragraph">Det framgår inte av källan om det funnits några förvarningar innan angreppet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse markerar en allvarlig eskalering av konflikten mellan USA och Iran. Det kan få stora konsekvenser för stabiliteten i regionen.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> En amerikansk ubåt sköt en torped mot ett iranskt krigsfartyg som seglade på internationellt vatten. Många människor dog, och det kan leda till mer konflikter.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/us-submarine-torpedo-iran-warship-sri-lanka-coast-pete-hegseth">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Starmer avvaktar i konflikten med Iran, vilket kan påverka Storbritanniens säkerhet</h3>
+
+        
+        <p class="ingress">Storbritanniens premiärminister Keir Starmer har initialt tvekat att stödja USA i konflikten med Iran. Detta kan leda till att Storbritannien hamnar på efterkälken i skyddet av sina medborgare i Gulfområdet.</p>
+        
+
+        
+        <p class="summary-paragraph">Från och med januari i år blev det tydligt för Storbritannien att USA övervägde att attackera Iran.</p>
+        
+        <p class="summary-paragraph">USA:s styrka i form av USS Abraham Lincoln-stridsgrupp skickades till Arabian Sea i slutet av januari.</p>
+        
+        <p class="summary-paragraph">Trots den ökande militariseringen från USA, med en andra stridsgrupp i februari, var Storbritanniens egna insatser begränsade.</p>
+        
+        <p class="summary-paragraph">Det fanns en erkännande av att brittiska medborgare och baser kunde bli måltavlor för iranska motattacker.</p>
+        
+        <p class="summary-paragraph">Tvekan från den brittiska regeringen kan påverka landets förmåga att reagera effektivt under den pågående krisen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Säkerheten för brittiska medborgare i konfliktområden kan påverkas av regeringens beslut. Det är också viktigt för Storbritanniens relationer med sina allierade.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på det som ett spel där en del länder planerar att starta en konflikt. Om Storbritannien inte är redo eller hjälper sina allierade kan de hamna i problem och inte kunna skydda sina egna medborgare.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/starmer-slow-start-war-against-iran-uk-playing-catch-up">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Storblackout i Kuba lämnar miljoner utan el</h3>
+
+        
+        <p class="ingress">En omfattande strömavbrott drabbade västra Kuba och påverkade miljoner invånare i huvudstaden Havanna och omkringliggande områden. Detta inträffar mitt under en kris präglad av minskade oljereserver och tryck från USA.</p>
+        
+
+        
+        <p class="summary-paragraph">Blackouten inträffade på onsdagen och berörde många invånare från den östra staden Pinar del Rio till den centrala staden Camaguey.</p>
+        
+        <p class="summary-paragraph">Den kubanska regeringens Electric Union bekräftade händelsen via sociala medier.</p>
+        
+        <p class="summary-paragraph">Kuba kämpar med en åldrande elinfrastruktur och allt mer begränsade oljeleveranser.</p>
+        
+        <p class="summary-paragraph">Problemen med elförsörjningen är en återkommande fråga för den kubanska befolkningen.</p>
+        
+        <p class="summary-paragraph">Den ökande pressen från USA gör situationen ännu mer komplicerad.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta strömavbrott påverkar livskvaliteten för många kubaner och belyser de ekonomiska och politiska utmaningarna som landet står inför. Situationen kan också leda till ökade spänningar mellan Kuba och USA.</p>
+
+        
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/blackout-cuba-us-oil">Läs original</a></p>
       </article>
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">EKONOMI</h2>
+
+      
+      <article class="story">
+        <h3 class="story-title">Systrar omkom i Wales efter att ha paddlat fully klädda</h3>
+
+        
+        <p class="ingress">Två systrar har tragiskt omkommit i en olycka under en utflykt i Eryri nationalpark i Wales. Hajra Zahid, 29, och Haleema Zahid, 25, blev oskadliga efter att ha paddlat i en pool utan att kunna simma.</p>
+        
+
+        
+        <p class="summary-paragraph">Systerskapet paddlade vid Watkin Path på Mount Snowdon den 11 juni 2025 med tre vänner.</p>
+        
+        <p class="summary-paragraph">De två systrarna, som var studenter vid University of Chester, kunde inte simma och rörde sig mot en pool på Afon Cwm Llan-floden.</p>
+        
+        <p class="summary-paragraph">När de inte svarade på rop från sina vänner, hittades deras tillhörigheter vid kanten av vattnet.</p>
+        
+        <p class="summary-paragraph">Hajra, en gift kvinna och mor till två barn, återfanns först av sina vänner, medan Haleema senare blev hittad av räddningstjänsten.</p>
+        
+        <p class="summary-paragraph">Domstolen i Caernarfon konstaterade att deras död var en olyckshändelse efter att det framkommit att de fallit från en hal klippa.</p>
+        
+        <p class="summary-paragraph">Den assisterande koroner, Sarah Riley, uppmanade allmänheten att vara försiktig vid sådana vatten.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna tragiska händelse belyser riskerna med att vistas vid vatten, särskilt för dem som inte kan simma. Det är viktigt att öka medvetenheten om säkerhet vid bad och paddling.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Systrarna gick till en fin plats för att plaska i vattnet, men eftersom de inte kunde simma och blev blöta, halkade de och föll i vattnet. De kunde inte ta sig upp och tyvärr dog de.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/uk-news/2026/mar/04/sisters-drown-in-welsh-national-park-after-paddling-fully-clothed">Läs original</a></p>
+      </article>
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">VETENSKAP & MILJÖ</h2>
+
       
     </section>
     
-
-    <hr class="newspaper-divider" />
-
-    <section class="title-page">
-      <h1 class="newspaper-title">Tech &amp; AI-morgonbrief</h1>
-      <p class="newspaper-date">Datum: 2026-03-04</p>
-    </section>
-
-    
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">AI & MACHINE LEARNING</h2>
+
       
-      <article class="article">
-        <h3 class="article-title">Vad AI-modeller för krig verkligen innebär</h3>
-        <p>Företag som Anthropic diskuterar gränser för militär användning av AI. Samtidigt tränar Smack Technologies modeller för att planera stridsoperationer. Debatten handlar om etiska överväganden i en snabbt förändrande teknologisk miljö.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Detta är viktigt eftersom det kan påverka framtida militära strategier och skapa nya etiska dilemman.</p>
-        <p class="meta"><a href="https://www.wired.com/story/ai-model-military-use-smack-technologies/">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Stora teknikföretag skriver under avtal med Vita huset om datacenter</h3>
+
+        
+        <p class="ingress">Flera ledande teknikföretag har ingått ett avtal med Vita huset om att förbättra PR-arbetet kring datacenter. President Donald Trump underströk vikten av positiv publicitet.</p>
+        
+
+        
+        <p class="summary-paragraph">Avtalet syftar till att ge datacenter mer uppmärksamhet och stöd från regeringen.</p>
+        
+        <p class="summary-paragraph">Trump påpekade att datacenter behöver hjälp med sin image.</p>
+        
+        <p class="summary-paragraph">Det är oklart vilka konkreta åtgärder som kommer att vidtas som del av detta avtal.</p>
+        
+        <p class="summary-paragraph">Teknikföretag som signerat avtalet har inte specificerat några tydliga mål.</p>
+        
+        <p class="summary-paragraph">Kritiker menar att det kan handla mer om PR än om verkliga förbättringar.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Avtalet kan påverka hur datacenter uppfattas av allmänheten och politiker. Det är också ett exempel på samverkan mellan tekniksektorn och regeringen.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på datacenter som stora lagringshus för information. De behöver se bättre ut för människor så att fler kan förstå hur viktiga de är.
+        </div>
+        
+
+        <p class="source"><a href="https://www.wired.com/story/big-tech-signs-white-house-data-center-pledge-with-good-optics-not-much-substance/">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Apple Music inför transparensetiketter för AI-musik</h3>
-        <p>Enligt rapporter planerar Apple Music att införa etiketter som tydligt visar när musik är skapad av artificiell intelligens. Musikproducenter och distributörer måste aktivt välja att märka sin musik som AI-genererad. Det är oklart hur många som kommer att delta i denna process och hur stor effekt det får på plattformen.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Detta initiativ kan påverka hur användare uppfattar och väljer musik i en tid av växande AI-skapat innehåll.</p>
-        <p class="meta"><a href="https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">AI-modeller för krigföring under utveckling</h3>
+
+        
+        <p class="ingress">Inom försvarssektorn pågår en diskussion om AI:s roll i militära sammanhang. Smack Technologies tränar aktuellt modeller för att planera operationer på slagfältet.</p>
+        
+
+        
+        <p class="summary-paragraph">Flera företag, som Anthropic, undersöker gränserna för militäranvändning av AI.</p>
+        
+        <p class="summary-paragraph">Samtidigt jobbar Smack Technologies med att utveckla AI-modeller specifikt för att effektivisera krigsstrategier.</p>
+        
+        <p class="summary-paragraph">Detta innebär att AI kan användas för att optimera resurser och fatta beslut i realtid under konflikter.</p>
+        
+        <p class="summary-paragraph">Debatten handlar om etiska aspekter och riskerna med att använda AI i krig.</p>
+        
+        <p class="summary-paragraph">Frågan är om AI kan bidra till att minska mänskligt lidande eller om det ökar risken för konflikter.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Entydiga riktlinjer och etiska ramverk för AI i krig är avgörande för att förhindra oönskade konsekvenser. Utvecklingen kan påverka hur framtida konflikter utformas och hanteras.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Företag tar hjälp av AI för att bli bättre på att planera hur man ska slåss. Tänk på det som att använda en smart dator som hjälper soldater att göra kloka val på slagfältet.
+        </div>
+        
+
+        <p class="source"><a href="https://www.wired.com/story/ai-model-military-use-smack-technologies/">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">NotebookLM kan nu sammanfatta forskning i 'filmiska' videovisningar</h3>
-        <p>Googles NotebookLM har uppdaterats för att omvandla användares forskning och anteckningar till fullt animerade 'filmiska' videor. Denna nya funktion går längre än den tidigare videovisningsfunktionen som bara kunde skapa berättade bildspel. Den uppgraderade funktionen använder avancerade AI-modeller som Gemini 3.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Denna innovation förbättrar hur användare kan presentera och dela sina forskningsresultat på ett mer engagerande sätt.</p>
-        <p class="meta"><a href="https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Apple Music planerar att införa transparensetiketter för att särskilja AI-musik</h3>
+
+        
+        <p class="ingress">Apple Music kommer att införa etiketter för att markera musik skapad av artificiell intelligens. Detta initiativ syftar till att öka transparensen för lyssnarna.</p>
+        
+
+        
+        <p class="summary-paragraph">I en nyligen publicerad rapport framgår det att etiketter ska hjälpa användare att identifiera AI-genererad musik.</p>
+        
+        <p class="summary-paragraph">Det är upp till skivbolaget eller distributören att välja att märka sin musik som AI-musik.</p>
+        
+        <p class="summary-paragraph">Detta väcker frågor kring hur många aktörer som kommer att delta i programmet.</p>
+        
+        <p class="summary-paragraph">Effektiviteten av dessa etiketter är därmed osäker.</p>
+        
+        <p class="summary-paragraph">Det finns ännu ingen information om när dessa etiketter kan implementeras.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Transparens kring musikens ursprung kan ge lyssnarna möjlighet att fatta informerade val. Det kan också påverka hur AI-teknologi används inom musikbranschen.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på det som en etikett på en matförpackning. Om musiken är skapad av en dator, får lyssnarna veta det, precis som vi vet om en matvara är ekologisk eller inte.
+        </div>
+        
+
+        <p class="source"><a href="https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Ny MacBook Air lanseras med $50 presentkort</h3>
-        <p>Apples senaste MacBook Air, drivs av den nya M5-chipet och erbjuder nu dubbel baslagring på 512GB. Priset har dock ökat med $100 jämfört med föregående modell. Best Buy säljer den nya 13-tumsversionen för $1,099 och inkluderar ett presentkort på $50.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Den nya modellen erbjuder betydande prestandaförbättringar och bättre lagringskapacitet, vilket gör den intressant för både ny och befintlig användare av MacBook.</p>
-        <p class="meta"><a href="https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">NotebookLM kan nu sammanfatta forskning i animerade videor</h3>
+
+        
+        <p class="ingress">Google har uppdaterat NotebookLM så att programmet nu kan skapa helt animerade videosammanfattningar av användarnas forskning och anteckningar.</p>
+        
+
+        
+        <p class="summary-paragraph">Tidigare kunde videoöversikter endast generera berättade bildspel.</p>
+        
+        <p class="summary-paragraph">Den nya funktionen för videoöversikter använder en kombination av Googles AI-modeller.</p>
+        
+        <p class="summary-paragraph">Bland dessa modeller ingår Gemini 3 och Nano Banana Pro.</p>
+        
+        <p class="summary-paragraph">Uppgraderingen representerar ett steg framåt i AI-teknologiens kapabiliteter.</p>
+        
+        <p class="summary-paragraph">Användare kan nu få sina forskningsinsikter presenterade på ett mer visuellt tilltalande sätt.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna utveckling kan underlätta förståelse och kommunikation av komplex information, vilket i sin tur kan stödja forskningsspridning.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på det som att NotebookLM kan ta dina anteckningar och göra en rolig och intressant film av dem, istället för bara en trist presentation.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Världens största biltillverkare har en av de smutsigaste leveranskedjorna: rapport</h3>
-        <p>Tesla, Ford och Volvo ligger högst på en ny ranking av 18 globala biltillverkare. Rankingen bedömer deras insatser för att eliminera koldioxidutsläpp, miljöskador och kränkningar av mänskliga rättigheter i leveranskedjorna. Toyota placerar sig långt ner på listan, vilket visar på de utmaningar som företaget står inför.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Detta är viktigt eftersom bilindustrin spelar en avgörande roll för både miljö och mänskliga rättigheter.</p>
-        <p class="meta"><a href="https://www.theverge.com/transportation/889145/lead-the-charge-supply-chain-leaderboard-toyota-tesla">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Nya MacBook Air med M5-chip lanseras tillsammans med presentkort</h3>
+
+        
+        <p class="ingress">Apple har nyligen lanserat sin senaste MacBook Air, nu med M5-chipet. Den erbjuder dubbel baslagring och kostar $100 mer än föregående modell.</p>
+        
+
+        
+        <p class="summary-paragraph">Den nya 13-tum MacBook Air är utrustad med 512 GB lagringsutrymme som standard.</p>
+        
+        <p class="summary-paragraph">Trots den högre prislappen, finns det möjligheter till besparingar.</p>
+        
+        <p class="summary-paragraph">Best Buy erbjuder just nu MacBook Air för $1,099 och inkluderar ett presentkort på $50.</p>
+        
+        <p class="summary-paragraph">Detta gör det till en mer attraktiv affär för potentiella köpare.</p>
+        
+        <p class="summary-paragraph">Det nya M5-chipet ger förbättrad prestanda och energieffektivitet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Lanseringen av den nya MacBook Air visar Apples fortsatta innovationskraft inom bärbara datorer. För både konsumenter och professionella användare kan detta vara ett steg mot starkare och mer effektiva enheter.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på MacBook Air som en kraftfull laptop. Den nya versionen är snabbare och har mer utrymme för att spara bilder och program. Men den kostar också lite mer, så nu kan du få ett presentkort som ett erbjudande när du köper den.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">Konsol-exklusivitet kan vara på väg tillbaka</h3>
-        <p>Framtiden för spelkonsoler kan likna det förflutna. De senaste åren har konsol-exklusiva spel blivit allt mer sällsynta. Storbolag som Sony och Microsoft har experimenterat med flertalet plattformar för sina titlar. Nu diskuteras en eventuell återkomst av exklusivitet bland konsolspel.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Detta kan påverka spelmarknaden och hur utvecklare planerar sina titlar.</p>
-        <p class="meta"><a href="https://www.theverge.com/entertainment/889336/console-exclusives-comeback">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">De största biltillverkarna har smutsiga leveranskedjor, enligt rapport</h3>
+
+        
+        <p class="ingress">En ny ranking av globala biltillverkare visar att Tesla, Ford och Volvo leder arbetet för att minska koldioxidutsläpp och förbättra mänskliga rättigheter i sina leveranskedjor. Toyota hamnar däremot nära botten av listan.</p>
+        
+
+        
+        <p class="summary-paragraph">Tesla, Ford och Volvo är i topp med sina insatser för att eliminera koldioxidutsläpp och miljöskador.</p>
+        
+        <p class="summary-paragraph">Rankingen omfattar 18 biltillverkare och fokuserar på både miljöskydd och mänskliga rättigheter.</p>
+        
+        <p class="summary-paragraph">Trots framstegen för vissa företag, möter andra som Toyota svårigheter med att förbättra sina leveranskedjor.</p>
+        
+        <p class="summary-paragraph">Det framgår inte av källan varför Toyota hamnar lågt på listan, men deras stora storlek gör förändringar utmanande.</p>
+        
+        <p class="summary-paragraph">Denna ranking belyser vikten av ansvar i bilindustrin och pressar företag att bli mer hållbara.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna rapport är viktig eftersom den sätter fokus på hur stora företag hanterar miljö och mänskliga rättigheter i sina leveranskedjor. Det kan påverka både konsumenters val och företagsstrategier.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Tänk på biltillverkare som stora företag med många underleverantörer. Om de inte kontrollerar hur dessa företag arbetar kan det leda till dåliga miljöeffekter och kränkningar av mänskliga rättigheter.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theverge.com/transportation/889145/lead-the-charge-supply-chain-leaderboard-toyota-tesla">Läs original</a></p>
       </article>
       
-      <article class="article">
-        <h3 class="article-title">USB-hubbar kan spara dig mycket besvär – Här är 5 som vi gillar bäst 2026</h3>
-        <p>Dags att lägga ner donglarna. De här flerportshubbarna ger dig maximala anslutningsmöjligheter. Med ett brett utbud av portar kan du enkelt ansluta flera enheter samtidigt. Dessa hubbar är perfekta för både arbete och fritid.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Att optimera din anslutningskapacitet är avgörande i en alltmer digitaliserad värld.</p>
-        <p class="meta"><a href="https://www.wired.com/gallery/best-usb-hubs/">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Konsolexklusiviteter kan vara på väg tillbaka</h3>
+
+        
+        <p class="ingress">Framtiden för spelkonsoler kan likna det förflutna. Konsolspel som är exklusiva för en plattform har minskat i antal de senaste åren.</p>
+        
+
+        
+        <p class="summary-paragraph">Tidigare var konsolexklusiva spel en självklarhet inom spelindustrin.</p>
+        
+        <p class="summary-paragraph">Under de senaste åren har företag som Sony och Microsoft testar att släppa spel på flera plattformar.</p>
+        
+        <p class="summary-paragraph">Det har lett till en fråga om vad som ens definierar en Xbox idag.</p>
+        
+        <p class="summary-paragraph">Trots förändringarna finns det indikationer på att det kan bli ett trendbrott.</p>
+        
+        <p class="summary-paragraph">Fler exklusiva titlar kan återkomma, vilket skulle påverka konkurrensen på marknaden.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> En återgång till konsolexklusiva spel kan påverka både konsumentval och företagens strategier. Det kan även få konsekvenser för utvecklare och hur spel distribueras.</p>
+
+        
+
+        <p class="source"><a href="https://www.theverge.com/entertainment/889336/console-exclusives-comeback">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">USB-hubbar förbättrar din anslutningsmöjlighet</h3>
+
+        
+        <p class="ingress">Multiport USB-hubbar erbjuder en praktisk lösning för att hantera flera enheter samtidigt. Här är fem av de mest rekommenderade modellerna.</p>
+        
+
+        
+        <p class="summary-paragraph">Många moderna enheter har få USB-portar, vilket kan bli frustrerande. USB-hubbar gör det möjligt att ansluta flera enheter med ett enda uttag.</p>
+        
+        <p class="summary-paragraph">De finns i olika storlekar och funktioner för att passa olika behov. Vissa modeller har extra funktioner som snabbladdning och HDMI-anslutning.</p>
+        
+        <p class="summary-paragraph">Det är viktigt att välja en hubb av hög kvalitet för att undvika problem med överhettning eller instabilitet. En bra hubb kan också bidra till effektivare arbetsflöde.</p>
+        
+        <p class="summary-paragraph">Marknaden erbjuder flera alternativ, så det är bra att jämföra specifikationer och användarrecensioner.</p>
+        
+        <p class="summary-paragraph">Att överge donglar till förmån för en USB-hubb är en enkel men effektiv lösning för att frigöra fler portar.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Att ha rätt anslutningar är avgörande i dagens digitala värld. USB-hubbar kan förenkla hanteringen av flera enheter och öka produktiviteten.</p>
+
+        
+
+        <p class="source"><a href="https://www.wired.com/gallery/best-usb-hubs/">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Vilken iPhone 17-modell bör du välja?</h3>
+
+        
+        <p class="ingress">Apple har lanserat iPhone 17e som en del av sin senaste smartphoneserie. Här går vi igenom skillnader och likheter mellan modellerna för att underlätta ditt val.</p>
+        
+
+        
+        <p class="summary-paragraph">iPhone 17-serien består av flera modeller, inklusive den nya iPhone 17e.</p>
+        
+        <p class="summary-paragraph">Varje modell erbjuder unika funktioner och specifikationer som kan passa olika användarbehov.</p>
+        
+        <p class="summary-paragraph">Det är viktigt att överväga vad du värdesätter mest i en smartphone, såsom kamera, batteritid eller prestanda.</p>
+        
+        <p class="summary-paragraph">Genom att jämföra modellerna kan du hitta den som bäst möter dina krav och din budget.</p>
+        
+        <p class="summary-paragraph">Oavsett om du är en teknikentusiast eller en vardagsanvändare, finns det en modell för dig.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Att göra ett informerat val när det gäller smartphones kan påverka din användarupplevelse avsevärt. iPhone 17s olika modeller ger flera alternativ för olika behov och preferenser.</p>
+
+        
+
+        <p class="source"><a href="https://www.wired.com/story/which-apple-iphone-17-models-to-buy/">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Trumps konflikt med Iran kan påverka amerikanska bönders framtid</h3>
+
+        
+        <p class="ingress">Konflikten i Mellanöstern har lett till kraftigt stigande priser på gödningsmedel. Detta kan få allvarliga konsekvenser för amerikanska jordbrukare inför sådden.</p>
+        
+
+        
+        <p class="summary-paragraph">Mellanöstern är en betydande källa till gödningsmedel globalt. Förändringar i politik och konflikt i regionen påverkar tillgången.</p>
+        
+        <p class="summary-paragraph">Den nuvarande konflikten har lett till att priserna på gödningsmedel har skjutit i höjden.</p>
+        
+        <p class="summary-paragraph">Detta sker just innan den avgörande vårsådden för många amerikanska jordbrukare.</p>
+        
+        <p class="summary-paragraph">Höga kostnader för gödningsmedel kan påverka jordbrukets lönsamhet.</p>
+        
+        <p class="summary-paragraph">Om bönderna inte kan få tag på prisvärda gödningsmedel kan detta leda till lägre skördar.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Konsekvenserna av stigande priser på gödningsmedel kan påverka livsmedelsproduktionen i USA. Detta kan i sin tur påverka livsmedelspriserna på den inhemska marknaden.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> Mellanöstern producerar mycket av världen gödningsmedel. Om det är bråk där blir gödningsmedel dyrare, vilket gör det svårt för bönder att odla mat. Detta kan leda till att maten blir dyrare för alla.
+        </div>
+        
+
+        <p class="source"><a href="https://www.wired.com/story/trumps-war-on-iran-could-screw-over-us-farmers/">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Polis i USA och EU stänger ner LeakBase, en plattform för stulna lösenord och hackingverktyg</h3>
+
+        
+        <p class="ingress">Utsatta myndigheter har stängt ner LeakBase, som beskrivs som en av världens största onlineforum för cyberkriminella. Plattformen innehöll en omfattande databas med hundratals miljoner stulna lösenord.</p>
+        
+
+        
+        <p class="summary-paragraph">LeakBase var en central punkt för cyberbrott och gjorde det möjligt för kriminella att utbyta hackingverktyg och stulna uppgifter.</p>
+        
+        <p class="summary-paragraph">Myndigheternas insats inkluderade samarbete mellan flera länder för att bekämpa cyberbrottslighet.</p>
+        
+        <p class="summary-paragraph">Det är oklart hur många personer som haft tillgång till LeakBase eller vilken påverkan nedstängningen kommer att ha.</p>
+        
+        <p class="summary-paragraph">Hacking och identitetsstöld fortsätter att vara ett stort problem för både privatpersoner och företag.</p>
+        
+        <p class="summary-paragraph">Det framgår inte av källan om det finns några gripanden kopplade till operationen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Nedstängningen av LeakBase är ett steg mot att minska cyberbrottslighet och skydda individers privata information. Detta visar på myndigheternas engagemang i att motarbeta sådana aktiviteter.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> LeakBase fungerade som en online marknadsplats där cyberkriminella kunde köpa och sälja stulna lösenord och hackingverktyg, vilket gjorde det enklare för dem att utföra brott på nätet.
+        </div>
+        
+
+        <p class="source"><a href="https://techcrunch.com/2026/03/04/u-s-and-eu-police-shut-down-leakbase-a-site-accused-of-sharing-stolen-passwords-and-hacking-tools/">Läs original</a></p>
       </article>
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">TECH INDUSTRY</h2>
+
       
-      <article class="article">
-        <h3 class="article-title">Epic och Google ingår avtal för nya 'metaverse' appar</h3>
-        <p>Epic Games och Google har kommit överens om ett nytt samarbete. Avtalet rör en ny klass av appar som kallas 'metaverse-browsers'. Dokument visar att parterna enats om flera villkor, vilket kan förändra hur appar utvecklas och distribueras.</p>
-        <p><strong>Varför det är relevant för AI/tech:</strong> Detta avtal kan ha stor påverkan på framtiden för appbutiker och digitala plattformar.</p>
-        <p class="meta"><a href="https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps">Läs original</a></p>
+      <article class="story">
+        <h3 class="story-title">Google sänker avgiften för appbutiken</h3>
+
+        
+        <p class="ingress">Google har meddelat en sänkning av sin avgift för apputvecklare. Från juli kommer avgifterna att justeras beroende på köptyp och geografiskt läge.</p>
+        
+
+        
+        <p class="summary-paragraph">Från och med juli 2023 kommer Google att ta ut en avgift på 20 procent för in-app-köp och 10 procent för prenumerationer.</p>
+        
+        <p class="summary-paragraph">Denna förändring sker efter att Google har blivit bedömt som en illegal monopolist i USA.</p>
+        
+        <p class="summary-paragraph">Justeringen innebär ett avståndstagande från den tidigare standardavgiften på 30 procent.</p>
+        
+        <p class="summary-paragraph">Utvecklare runt om i världen kommer att påverkas, beroende på var de är baserade.</p>
+        
+        <p class="summary-paragraph">Det framgår inte av källan om det finns ytterligare villkor kopplade till avgiftsanpassningen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna förändring kan leda till lägre kostnader för utvecklare och potentiellt flera appalternativ för konsumenter. Det kan också påverka konkurrensen på marknaden.</p>
+
+        
+
+        <p class="source"><a href="https://www.theverge.com/tech/889538/google-apps-experience-games-level-up-program">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Epic Games och Google ingår avtal om nya metaverse-appar</h3>
+
+        
+        <p class="ingress">Epic Games och Google har kommit överens om samarbeten kring så kallade 'metaverse-webbläsare'. Avtalet betecknar en förändring i hur appar kan utvecklas och distribueras.</p>
+        
+
+        
+        <p class="summary-paragraph">Dokument som offentliggjorts visar att företagets relation har förbättrats.</p>
+        
+        <p class="summary-paragraph">De har enats om villkor för den nya klassen av appar.</p>
+        
+        <p class="summary-paragraph">Metaverse-webbläsare förväntas erbjuda innovativa sätt att interagera i digitala miljöer.</p>
+        
+        <p class="summary-paragraph">Avtalet kan få betydelse för både utvecklare och användare av appar.</p>
+        
+        <p class="summary-paragraph">Detaljer kring avtalet är dock kraftigt redigerade och många aspekter är oklara.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta avtal kan förändra landskapet för apputveckling och distribution. Samarbete mellan två stora aktörer kan påverka framtiden för digital interaktion.</p>
+
+        
+
+        <p class="source"><a href="https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">Google sänker avgifter för Play Store till 20%</h3>
+
+        
+        <p class="ingress">Google har beslutat att sänka sina avgifter för tjänster kopplade till Play Store. Den nya kommissionen ligger på 20 % med en valfri extra avgift för användning av deras betalningstjänster.</p>
+        
+
+        
+        <p class="summary-paragraph">Den tidigare avgiften var högre och har nu sänkts för att främja konkurrens.</p>
+        
+        <p class="summary-paragraph">Det innebär att utvecklare kan behålla en större del av sina intäkter.</p>
+        
+        <p class="summary-paragraph">I tillägg till sänkningen, introducerar Google en ny process för tredjeparts appbutiker.</p>
+        
+        <p class="summary-paragraph">Detta steg är en del av Googles strategi att anpassa sig till ökat tryck från både utvecklare och regulatorer.</p>
+        
+        <p class="summary-paragraph">Målet är att skapa en mer öppen plattform för apputveckling och distribution.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Sänkningen av avgiften kan förändra dynamiken på marknaden för mobilappar. Det kan också leda till fler alternativ för användare av appbutiker.</p>
+
+        
+
+        <p class="source"><a href="https://techcrunch.com/2026/03/04/google-settles-with-epic-games-drops-its-play-store-commissions-to-20/">Läs original</a></p>
+      </article>
+      
+      <article class="story">
+        <h3 class="story-title">PopSockets: Från försäkringspengar till globalt varumärke</h3>
+
+        
+        <p class="ingress">PopSockets har sålt 290 miljoner produkter världen över utan att ta in institutionellt kapital. Företaget är ett exempel på hur man kan lyckas utan stor extern finansiering.</p>
+        
+
+        
+        <p class="summary-paragraph">PopSockets grundades med mindre än 500 000 dollar i kapital och har vuxit till en global konsumenthardwarejätte.</p>
+        
+        <p class="summary-paragraph">Företaget har sålt produkter i 115 länder sedan starten för elva år sedan.</p>
+        
+        <p class="summary-paragraph">Trots att många startups söker investeringskapital har PopSockets visat att alternativ finansiering kan fungera.</p>
+        
+        <p class="summary-paragraph">Detta har utmanat den traditionella uppfattningen om hur teknikföretag ska finansieras.</p>
+        
+        <p class="summary-paragraph">PopSockets grundades av en filosofilärare som drivs av sin vision och beslutsamhet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> PopSockets framgång visar att entreprenörskap kan bedrivas på andra sätt än genom traditionell riskkapitalfinansiering. Detta kan inspirera andra företag att tänka om sina finansieringsstrategier.</p>
+
+        
+        <div class="eli5-box">
+          <strong>ELI5:</strong> PopSockets började som en liten idé utan mycket pengar, men med hårt arbete och smarta val har de blivit ett stort och känt varumärke. De visar att företag kan växa utan att ta in mycket pengar från andra investerare.
+        </div>
+        
+
+        <p class="source"><a href="https://techcrunch.com/video/his-house-burned-down-he-used-the-insurance-money-to-build-popsockets/">Läs original</a></p>
       </article>
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">VERKTYG & OPEN SOURCE</h2>
+
       
     </section>
     
-    <section class="section-block">
+    <section class="news-section">
       <h2 class="section-title">FORSKNING</h2>
+
       
     </section>
     
