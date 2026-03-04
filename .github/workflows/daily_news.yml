@@ -94,7 +94,7 @@ jobs:
             BASE_URL="${BASE_URL%/*}"
           fi
 
-          DAILY_URL="${BASE_URL}/${DAILY_DATE}.html"
+          DAILY_URL="${BASE_URL}/${DAILY_DATE}.html?t=$(date +%s)"
           echo "ARTICLE_URL=${DAILY_URL}" >> "$GITHUB_ENV"
           echo "Daily ARTICLE_URL set to: ${DAILY_URL}"
 
