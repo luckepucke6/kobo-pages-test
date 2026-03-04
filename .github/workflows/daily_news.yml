@@ -108,6 +108,7 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: update daily newspaper"
+            git pull --rebase origin main
             git push
           fi
 
