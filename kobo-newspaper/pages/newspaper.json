@@ -1,170 +1,171 @@
 {
   "date": "2026-03-04",
   "overview_bullets": [
-    "Miljontals kubaner drabbas av strömavbrott på grund av en djupnande bränslekris.",
-    "USA ökar sina militära insatser i Iran, vilket kan intensifiera konflikten.",
-    "Kanada stödjer anfall mot Iran, men med förbehåll, vilket belyser komplex geopolitik.",
-    "Asylsökande i Storbritannien kan nu få arbeta efter ett års väntan.",
-    "Senaten röstar ner förslaget att stoppa Trump från fortsatt krig med Iran.",
-    "Techföretag bötfälls med 1,1 miljoner dollar för olaglig försäljning av data från gymnasieelever."
+    "Kanada stödjer insatser mot Iran, vilket påverkar internationella relationer.",
+    "Miljoner kubaner drabbas av strömavbrott på grund av en pågående bränslekris.",
+    "Asylsökande i Storbritannien kan nu få arbeta efter ett års väntetid.",
+    "Senaten har röstat ner förslaget att stoppa Trump från fortsatt krig med Iran.",
+    "Ökade spänningar i Mellanöstern efter att en amerikansk ubåt sänkte ett iranskt krigsfartyg."
   ],
   "sections": [
     {
       "name": "SVERIGE",
       "stories": [
         {
-          "title": "Miljontals kubaner drabbas av strömavbrott i djupnande bränslekris",
-          "ingress": "Bränslebristen i Kuba har förvärrats av en amerikansk olje-blockad. Situationen har lett till omfattande strömavbrott i landet.",
+          "title": "Kanadas stöd för insatser mot Iran och Australien överväger militära alternativ",
+          "ingress": "Kanadas premiärminister Mark Carney talade om landets stöd för insatser mot Iran under ett evenemang i Sydney. Samtidigt diskuterar Australiens ledning möjligheten att använda militära medel för att återföra medborgare från konfliktområden.",
           "summary_paragraphs": [
-            "Enligt rapporter har miljontals kubaner fått sina liv påverkade av elavbrott. Bristen på bränsle har blivit kritisk.",
-            "Den amerikanska blokaden mot olja från Venezuela har bidragit till krisen. Många hushåll är nu utan elektricitet under längre perioder.",
-            "Det är inte bara strömmen som är påverkad, utan även andra resurser som är beroende av bränsle.",
-            "Kubanerna kämpar för att klara sig i vardagen, vilket skapar en ökad oro i samhället.",
-            "Krisen har även påverkat sjukvården och andra viktiga sektorer."
+            "James Paterson, Australiens skuggsäkerhetsminister, beskriver dagens läge i Mellanöstern som utmanande för kommersiella flygningar.",
+            "Han betonade att om civila alternativ inte är tillgängliga, måste militära resurser övervägas för att repatriera australiska medborgare.",
+            "Paterson uttrycker oro över den aktuella konflikten och Sveriges bristande engagemang i de internationella rättsliga ramverken.",
+            "Carney påpekar att Kanada inte blev informerat om de senaste åtgärderna av USA och Israel, vilket ses som problematiskt i förhållande till internationell lag.",
+            "Han framhåller att de nuvarande händelserna visar på brister i det globala säkerhetssystemet, trots tidigare diplomatiska insatser."
           ],
-          "why_important": "Krisen belyser de allvarliga effekterna av internationella sanktioner. Det kan få långsiktiga konsekvenser för landets ekonomi och befolkningens välbefinnande.",
+          "why_important": "Den politiska diskussionen påverkar inte bara medborgare i Australien, utan också hur internationella relationer och samarbeten fungerar i krissituationer.",
+          "source_url": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb",
+          "eli5": "Kanada och Australien diskuterar hur de kan hjälpa sina medborgare som befinner sig i konflikter. De ser att flygningar kanske inte är säkra, så de överväger att skicka militär för att hämta hem dem istället."
+        },
+        {
+          "title": "Sam Altman: OpenAI kan inte styra Pentagons användning av AI",
+          "ingress": "OpenAI:s VD Sam Altman medger att företaget saknar kontroll över hur Pentagon använder deras AI-teknik. Detta sker i en tid av ökad granskning av militärens användning av artificiell intelligens.",
+          "summary_paragraphs": [
+            "I ett meddelande till anställda sade Altman att OpenAI inte påverkar de operativa besluten inom Pentagon.",
+            "Uttalandet kommer i samband med växande etiska farhågor från AI-arbetare om hur deras teknologi kan användas i krig.",
+            "Altman betonade att beslut om användning av AI i militära operationer ligger utanför företagets kontroll.",
+            "Kritiken mot militärens användning av AI har ökat de senaste åren, med särskilt fokus på etiska aspekter.",
+            "Uppgifter har rapporterats av både Bloomberg och CNBC angående Altman och hans uttalanden."
+          ],
+          "why_important": "Detta visar på de utmaningar och etiska dilemman som företag inom tekniksektorn står inför när deras produkter används i militära sammanhang. Diskussionen kring ansvarsfull användning av AI i krig bör fortgå.",
+          "source_url": "https://www.theguardian.com/technology/2026/mar/04/sam-altman-openai-pentagon",
+          "eli5": "Tänk dig att ett företag gör leksaker, men de har ingen kontroll över hur barnen leker med dem. Samma sak gäller OpenAI och Pentagon – de kan göra AI, men hur militärerna använder det är upp till dem."
+        },
+        {
+          "title": "Miljoner kubaner drabbas av strömavbrott i kölvattnet av bränslekrisen",
+          "ingress": "Bränslebristen på Kuba har förvärrats av en amerikansk olje-blockad och bristen på stöd från Venezuela.",
+          "summary_paragraphs": [
+            "Miljoner kubaner lever just nu under svåra förhållanden på grund av omfattande strömavbrott.",
+            "Orsaken till problemen är en brist på bränsle, som har förvärrats ytterligare av en amerikansk blockad.",
+            "Denna blockad har sin grund i den politiska situationen i Venezuela, där president Nicolás Maduro har fått internationell kritik.",
+            "Bränslekrisen har lett till långa köer vid bensinstationer och en ökad frustration bland befolkningen.",
+            "Livskvaliteten på Kuba påverkas kraftigt av dessa bristande resurser.",
+            "Regeringen har svårt att hantera situationen, vilket har lett till en ökning av social oro."
+          ],
+          "why_important": "Krisen påverkar både den ekonomiska situationen och den sociala stabiliteten på Kuba. Det innebär också en stor utmaning för regeringen i att återfå förtroendet hos befolkningen.",
           "source_url": "https://www.bbc.com/news/articles/cx2ggpq1742o?at_medium=RSS&at_campaign=rss"
         },
         {
-          "title": "Vita huset svarar på frågor om USAs roll i Iran-bombning",
-          "ingress": "Det vita huset bemöter ökande frågor kring den senaste bombningen i Iran, som enligt rapporter har lett till 175 dödsfall. General Caine meddelar om en upptrappning av militära insatser.",
+          "title": "Colorados guvernör förväntas benåda valförnekarna Tina Peters",
+          "ingress": "En advokat till Tina Peters uppger att guvernör Jared Polis sannolikt kommer att benåda hennes nioåriga fängelsestraff. Peters är den enda som avtjänar ett straff kopplat till försök att ogiltigförklara valet 2020.",
           "summary_paragraphs": [
-            "Karoline Leavitt avvisade frågor om den dödliga bombningen, som har väckt stor uppståndelse.",
-            "General Caine meddelade att USA nu planerar att expandera sina militära insatser djupare in i iransk territorium.",
-            "Han beskrev situationen som att 'gasen tramps upp' snarare än att trappa ner.",
-            "Den nuvarande militärstrategin syftar till att etablera luftöverläge.",
-            "Det är oklart hur detta kommer att påverka relationerna mellan USA och Iran."
+            "Tina Peters var valmyndighetens chef i Mesa county, Colorado, under valet 2020.",
+            "Hon tillät en obehörig person att använda en säkerhetsnyckel för att få tillgång till röstningsutrustningen.",
+            "Senare blev känslig information som lösenord offentlig och användes av valförnekarna för att ifrågasätta valresultatet.",
+            "Peters fällande dom är en del av de rättsliga påföljder som uppstått efter valet 2020.",
+            "Ett beslut om benådning från guvernören kan skapa enighet eller splittring inom det politiska landskapet i Colorado.",
+            "Det är oklart när eller hur ett formellt beslut kan göras."
           ],
-          "why_important": "Situationen i Iran kan ha betydande konsekvenser för regional stabilitet och internationella relationer. USAs beslut att öka sina militära insatser kan intensifiera konflikten.",
+          "why_important": "Detta beslut kan påverka hur rättssystemet hanterar frågor kring valintegritet. Det kan också ha betydelse för den politiska debatten omkring valet 2020.",
+          "source_url": "https://www.theguardian.com/us-news/2026/mar/04/colorado-governor-tina-peters-election",
+          "eli5": "Tina Peters är en person som har suttit i fängelse för att ha gjort fel med valet 2020. Nu ser det ut som om guvernören kan låta henne gå fri, vilket många tycker är viktigt eller orättvist."
+        },
+        {
+          "title": "Vita huset svarar på frågor om USA:s eventuella inblandning i Iran-attack",
+          "ingress": "Det amerikanska Vita huset bemöter frågor kring en bombning i Iran som rapporteras ha lett till 175 dödsfall. Diskussionen kring USA:s militärstrategi i regionen fortsätter.",
+          "summary_paragraphs": [
+            "Karoline Leavitt avfärdade frågor om den dödliga bombningen och den möjliga amerikanska inblandningen.",
+            "General Caine meddelade att USA nu kommer att intensifiera sina militära insatser i Iran.",
+            "Caine betonade att strategin är att utöka operationsområdet och slå djupare in i Irans territorium.",
+            "Han uttryckte att det inte är tal om att trappa ner insatser, utan snarare att öka dem.",
+            "Det framgår inte av källan varför USA:s sanktioner och militära strategi i regionen förändras."
+          ],
+          "why_important": "Denna utveckling kan påverka stabiliteten i Mellanöstern och USAs relationer med Iran. Det är även relevant för den globala säkerhetssituationen.",
           "source_url": "https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates",
-          "eli5": "USA har kört en viss strategi i Iran, men nu verkar de vilja ta det längre och attackera mer djupt in i landet. Detta kan leda till fler konflikter och påverka andra länder i regionen."
+          "eli5": "Det handlar om en bombning i Iran som dödat många människor. USA säger att de inte är involverade, men uppmanar sina militära styrkor att agera mer aktivt i området."
         },
         {
-          "title": "Kanada stödjer anfall mot Iran, men med förbehåll",
-          "ingress": "Kanadas premiärminister Mark Carney talade vid Lowy Institute i Sydney och uttryckte stöd för militära insatser mot Iran, men med en känsla av regret. Samtidigt har en australiensisk senator föreslagit att militärresurser ska användas för att evakuera australier från konfliktområden.",
+          "title": "Asylsökande i Storbritannien kan få arbeta efter ett års väntetid",
+          "ingress": "Regeringen i Storbritannien planerar nya åtgärder för att låta asylsökande som väntat över ett år få möjlighet att arbeta. Detta syftar till att minska antalet asylsökande som bor i hotell.",
           "summary_paragraphs": [
-            "James Paterson, skuggsvarandets försvarsminister, uppgav att situationen i Mellanöstern är utmanande för kommersiella flygplan.",
-            "Han betonade att om det inte finns några kommersiella alternativ, så måste alla andra alternativ övervägas, inklusive användning av australiska försvarsmaktens resurser.",
-            "Paterson uttryckte samtidigt en viss sorg över situationen, då den pågående konflikten visar på brister i det internationella systemet.",
-            "Trots flera FN-resolutioner kvarstår det nukleära hotet från Iran, och USA samt Israel har agerat utan att rådfråga FN eller sina allierade, däribland Kanada.",
-            "Carney påpekade att Kanada inte blev konsulterad om de senaste militära insatserna, vilket kan vara i strid med internationell lag."
+            "Upp till 21 000 asylsökande som har väntat länge på att få sina ärenden behandlade kan nu ges tillgång till arbetsmarknaden.",
+            "Åtgärden kommer att offentliggöras av inrikesministeriet på torsdag.",
+            "Regeringen har också som mål att minska antalet asylsökande som bor på hotell i Storbritannien.",
+            "Från juni kommer asylsökande som bryter mot lagen eller har tillgångar nog att klara sig utan stöd att bli av med sina stödbetalningar.",
+            "Detta är en del av en större strategi för att hantera situationen med asylsökande i landet."
           ],
-          "why_important": "Artikeln belyser de komplexa geopolitikfrågorna kring konflikten med Iran och den roll som Kanada och Australien spelar i detta sammanhang. Det visar också på spänningarna inom den internationella diplomatin.",
-          "source_url": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb",
-          "eli5": "USA och Israel har genomfört militära angrepp mot Iran utan att ha pratat med andra länder som Kanada. Detta kan skapa problem och brist på samordning i hur världsproblemen hanteras. Australien diskuterar att använda sina militära resurser för att hjälpa medborgare i farliga områden."
-        },
-        {
-          "title": "Asylsökande i Storbritannien kan få arbeta efter ett års väntan",
-          "ingress": "Upp till 21,000 asylsökande som väntar mer än ett år på sina ansökningar kan få möjlighet att arbeta. Detta är del av nya åtgärder från inrikesministeriet.",
-          "summary_paragraphs": [
-            "Inrikesminister Shabana Mahmood föreslår åtgärder för att minska antalet asylsökande som bor i hotell.",
-            "Det handlar om att ge asylsökande möjlighet att försörja sig själva.",
-            "De som arbetar olagligt eller har tillräckligt med tillgångar för att klara sig utan stöd riskerar att förlora sina betalningar.",
-            "Åtgärderna planeras att träda i kraft i juni.",
-            "Målet är att frigöra plats i asylhotellen och minska kostnaderna för staten."
-          ],
-          "why_important": "Åtgärderna kan påverka livsvillkoren för många asylsökande i Storbritannien och samtidigt avlasta systemet. Det finns en allmän efterfrågan på förändringar inom asylsystemet.",
+          "why_important": "Genom att ge asylsökande möjlighet att arbeta hoppas regeringen kunna avlasta asylsystemet. Det kan också förbättra livskvaliteten för dem som väntar på beslut.",
           "source_url": "https://www.theguardian.com/politics/2026/mar/04/asylum-seekers-allowed-to-enter-uk-jobs-market-under-new-measures",
-          "eli5": "Tänk på att asylsökande är personer som har lämnat sitt land för att söka skydd. Om de har väntat länge utan att kunna arbeta, så föreslår regeringen nu att de ska få jobba för att kunna försörja sig. Det handlar om att hjälpa dem att klara sig själva samtidigt som man försöker minska antalet personer som bor på hotell."
+          "eli5": "Tänk på det som att ge personer som väntar länge på sitt asylbesked chansen att själva tjäna pengar istället för att bara få stöd. Det kan hjälpa dem att bli mer självständiga."
         },
         {
-          "title": "Senaten röstar ner förslag att stoppa Trump från fortsatt krig med Iran",
-          "ingress": "Senaten har röstat ner ett förslag som skulle kräva att Donald Trump fick kongressens godkännande innan han fortsatte med kriget mot Iran. Röstsiffrorna visar tydliga partilinjer i beslutet.",
+          "title": "Senaten röstar ner förslaget att stoppa Trump från fortsatt krig med Iran",
+          "ingress": "Senaten röstade på onsdagen ner ett förslag som skulle kräva att Donald Trump fick kongressens tillstånd innan han fortsatte konflikten med Iran. Röstsiffrorna speglade tydligt partilinjerna.",
           "summary_paragraphs": [
-            "Rösten i senaten ägde rum på onsdagen med 47 röster mot 53 emot förslaget, vilket introducerades av demokraten Tim Kaine från Virginia.",
-            "Mestadels av demokraterna stödde resolutionen, medan flertalet republikaner var emot.",
-            "Endast en demokrat, John Fetterman från Pennsylvania, röstade emot förslaget, medan Rand Paul från Kentucky var den enda republikan som stödde det.",
-            "Demokraterna uttryckte oro över att kampanjen mot Iran är olaglig och kan leda till en utdragen konflikt för USA.",
-            "Demokraterna uttryckte oro över att kampanjen mot Iran är olaglig och kan leda till en utdragen konflikt för USA."
+            "Den slutliga röstsiffran blev 47 mot 53, där nästan alla demokrater stödde förslaget.",
+            "John Fetterman från Pennsylvania var den enda demokraten som röstade emot, medan Rand Paul från Kentucky var den enda republikanen som stödde resolutionen.",
+            "Demokrater uttryckte oro över att kampanjen är olaglig och riskerar att dra in USA i en långvarig konflikt.",
+            "Förslaget presenterades av Virginia-demokraten Tim Kaine.",
+            "Röstningen visar på den djupa polariseringen inom senaten i frågor som rör krigsbefogenheter."
           ],
-          "why_important": "Röstdomen visar den politiska splittringen i frågor om krigsbefogenheter. Det innebär också att president Trump kan fortsätta sitt agerande utan kongressens godkännande.",
+          "why_important": "Denna omröstning är betydelsefull eftersom den handlar om kontrollen av krigsmakt och hur mycket makt en president kan utöva utan kongressens godkännande. Det framhäver också de politiska skillnaderna mellan demokrater och republikaner i säkerhetspolitiska frågor.",
           "source_url": "https://www.theguardian.com/us-news/2026/mar/04/us-israeli-iran-war-senate-vote-congress-prevent-trump",
-          "eli5": "Kongressen, som består av senaten och representanthuset, måste ibland ge sitt tillstånd innan presidenten kan föra krig. Den här omröstningen handlade om att se till att Trump skulle behöva fråga dem först innan han fortsatte med kriget i Iran."
+          "eli5": "Tänk på senaten som en stor grupp personer som bestämmer om reglerna för vad regeringen får och inte får göra. Den här omröstningen handlade om ifall presidenten skulle behöva fråga om lov innan han fortsatte ett krig. Demokraterna ville ha mer kontroll, men republikanerna sa nej."
         },
         {
-          "title": "Forskare hyllar livsförändrande läkemedel för barn med resistent epilepsi",
-          "ingress": "En ny behandling visar lovande resultat för barn med Dravet syndrom, en form av epilepsi som är svårbehandlad. Tidiga kliniska tester av läkemedlet Zorevunersen visar att det är säkert och väl tolererat.",
+          "title": "Forskare hyllar livsförändrande läkemedel för barn med behandlingsresistent epilepsi",
+          "ingress": "Preliminära studier visar att Zorevunersen är säkert och väl tolererat av patienter med Dravet syndrom.",
           "summary_paragraphs": [
-            "Dravet syndrom är en genetisk störning som orsakar läkemedelsresistent epilepsi. Många barn med denna diagnos har även tal- och utvecklingsförseningar.",
-            "I Storbritannien beräknas omkring 3 000 personer leva med Dravet syndrom.",
-            "Nuvarande behandlingar fokuserar på att minska antalet och svårighetsgraden av anfall, men de är ofta ineffektiva.",
-            "De tidiga resultaten av Zorevunersen tyder på en säker användning hos barn med denna störning.",
-            "Forskningen går nu vidare med fler studier för att bekräfta läkemedlets effekter och säkerhet."
+            "Forskare har fått positiva resultat från tidiga kliniska prövningar av ett nytt läkemedel för barn med Dravet syndrom.",
+            "Dravet syndrom är en genetisk störning som orsakar behandlingsresistent epilepsi.",
+            "Det är också kopplat till tal- och utvecklingsförseningar.",
+            "I Storbritannien uppskattas omkring 3 000 personer ha denna sjukdom.",
+            "Nuvarande behandlingar syftar till att kontrollera antalet och svårighetsgraden av anfall, men de fungerar ofta inte.",
+            "Zorevunersen kan ge nytt hopp för dessa barn och deras familjer."
           ],
-          "why_important": "Denna nya behandling kan erbjuda hopp för många barn och deras familjer som kämpar med svårbehandlad epilepsi. Om resultaten bekräftas kan det leda till förbättrad livskvalitet.",
+          "why_important": "Denna forskning kan leda till bättre behandlingar för en svårbehandlad sjukdom. Det handlar om att förbättra livskvaliteten för tusentals drabbade barn.",
           "source_url": "https://www.theguardian.com/society/2026/mar/04/scientists-drug-children-zorevunersen-epilepsy-dravet",
-          "eli5": "Tänk på Zorevunersen som en ny medicin som kan hjälpa barn med en typ av epilepsi som inte reagerar på vanliga läkemedel. Det kan göra stor skillnad för deras liv och hälsa."
+          "eli5": "Dravet syndrom gör att barn får många anfall som kan vara svåra att behandla. Zorevunersen är ett nytt läkemedel som verkar fungera bra i tidiga tester, vilket kan hjälpa barnen att må bättre."
         },
         {
-          "title": "Pam Bondi vittnar i utredning om Jeffrey Epstein",
-          "ingress": "USAs representanthus har utfärdat en subpena för Pam Bondi i samband med utredningen av Jeffrey Epstein och Ghislaine Maxwell. Beslutet togs efter en omröstning där fem republikaner anslöt sig till demokrater.",
+          "title": "Hur uttömda vapenlager kan påverka konflikten med Iran",
+          "ingress": "Vapenlagrens status kan ha betydelse för hur konflikten med Iran utvecklas. Jonathan Beale från BBC diskuterar hur detta kan påverka utfallet.",
           "summary_paragraphs": [
-            "Republikanerna och demokraterna röstade 24–19 för att tvinga USA:s justitieminister Pam Bondi att vittna.",
-            "Omröstningen leddes av den republikanska representanten Nancy Mace.",
-            "De fem republikaner som röstade för motionen var Tim Burchett, Lauren Boebert, Michael Cloud och Scott Perry.",
-            "Utredningen handlar om Epstein och Maxwell, som är kopplade till allvarliga anklagelser om sexhandel.",
-            "Subpenas som dessa kan ge mer information om de inblandade parternas roll i utredningen."
+            "Vapenlager är en viktig, men inte den enda faktorn i konflikten med Iran.",
+            "Ett uttömt vapenlager kan påverka en nations förmåga att agera effektivt.",
+            "Militär styrka och strategisk planering är också avgörande.",
+            "Beslut kring vapenanvändning påverkas av flera variabler, inklusive diplomatiska relationer.",
+            "Den aktuella situationen i regionen kräver noggranna bedömningar av tillgångar."
           ],
-          "why_important": "Att Bondi vittnar kan ge insikter i de pågående utredningarna kring Epstein och Maxwell. Det kan också påverka hur rättssystemet hanterar ärenden av denna typ i framtiden.",
-          "source_url": "https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files",
-          "eli5": "I denna artikel handlar det om att en politiker, Pam Bondi, har blivit beordrad att prata om sin kunskap om Jeffrey Epstein och andra viktiga personer. Det är som när en lärare frågar en elev om något viktigt som hänt, för att få veta mer."
-        },
-        {
-          "title": "Techföretag bötfälls med 1,1 miljoner dollar för försäljning av data från gymnasieelever",
-          "ingress": "Det kaliforniska teknologiföretaget GoFan har dömts till en böter av 1,1 miljoner dollar. Böternutskottet beror på att företaget olovligen har samlat in och sålt data från högstadieelever.",
-          "summary_paragraphs": [
-            "Böterna utfärdades av California Privacy Protection Agency efter att GoFan bröt mot privacy-lagar.",
-            "Elever använde företagets tjänst för att anmäla sig till olika skolaktiviteter, inklusive idrottsevenemang och baler.",
-            "GoFans programvara krävde att användarna godkände villkor som tillät insamling av personlig information och försäljning av denna till annonsörer.",
-            "Användarna kunde bara fortsätta med köpet av biljetter om de tryckte på en vit 'godkänn'-knapp.",
-            "Det fanns ingen möjlighet för dem att avstå från att dela sin information."
-          ],
-          "why_important": "Denna händelse belyser vikten av datasäkerhet och skydd av personuppgifter, särskilt för yngre användare. Det visar även hur företag kan begå överträdelser mot lagar avsedda att skydda konsumenter.",
-          "source_url": "https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine",
-          "eli5": "GoFan är ett företag som sålde biljetter till skolaktiviteter. När elever registrerade sig, fick de inte veta vart deras personliga information gick och kunde inte säga nej till att dela den. Kalifornien kritiserade företaget för detta och sade att det var olagligt."
-        },
-        {
-          "title": "Hur uttömda vapensamlingar kan påverka konflikten med Iran",
-          "ingress": "Vapensamlingar spelar en viktig roll i konflikten mellan Iran och andra aktörer. Även om de inte avgör konflikten på egen hand, har de en betydande inverkan, enligt BBC:s Jonathan Beale.",
-          "summary_paragraphs": [
-            "Vapensamlingarnas tillstånd är centralt för både Iran och dess motståndare.",
-            "Brister i vapenlager kan leda till svagare bostäder och mindre makt.",
-            "En konflikt kan påverkas av vilket land som har starkare och mer moderna vapen.",
-            "Det framgår inte av källan hur stor del av vapensamlingarna som är uttömda.",
-            "Strategiska beslut kommer att påverkas av tillgången till resurser."
-          ],
-          "why_important": "Konflikten med Iran har globala konsekvenser. Förståelsen för vapensituationens betydelse kan påverka diplomatiska förhandlingar.",
+          "why_important": "Att förstå vapenlagrens påverkan kan ge insikter om framtida konflikter. Det hjälper också till att bedöma risker och möjligheter i internationella relationer.",
           "source_url": "https://www.bbc.com/news/articles/cdxzzqe82d2o?at_medium=RSS&at_campaign=rss",
-          "eli5": "Tänk på det som att ha tillräckligt med leksaker att leka med. Om en person har färre leksaker, kan de ha svårare att vinna i en lek. Samma sak gäller för länder och deras vapen."
+          "eli5": "Tänk på ett vapenlager som en skur av leksaker. Om du har många leksaker kan du leka länge och göra roliga saker. Men om leksaken är skadad eller saknas, kan det hindra leken. På samma sätt kan länder med få vapen ha svårare att delta i konflikter."
         },
         {
-          "title": "Spanien svarar Trump om handelshot",
-          "ingress": "Spanien premierminister Pedro Sánchez har svarat på USAs president Donald Trumps hot om att avsluta handelsrelationerna. Sánchez avvisar hotet och framhåller vikten av fredlig samverkan.",
+          "title": "Pedro Sánchez svarar Trump: 'Nej till krig!'",
+          "ingress": "Spaniels premiärminister Pedro Sánchez reagerar starkt på Donald Trumps hot om att avsluta handeln med Spanien.",
           "summary_paragraphs": [
-            "Trump hotade nyligen att skära av handelsbanden med Spanien.",
-            "Detta har skapat oro bland företag och medborgare i Spanien.",
-            "Pedro Sánchez uppmanar till dialog och motverkar krigsliknande retorik.",
-            "Han betonar att samarbete är nyckeln för att lösa internationella frågor.",
-            "Sánchez påpekar också att handel gynnar både Spaniens och USA:s ekonomier.",
-            "Reaktionen från Sánchez anses vara avgörande för att stärka Spaniens ställning på den globala arenan."
+            "Trump hotade nyligen med att bryta handelsavtalet med Spanien, vilket skulle kunna få negativa konsekvenser för båda länder.",
+            "Sánchez svarade med att betona vikten av samarbete och dialog istället för konflikt.",
+            "Han uttryckte att Spanien inte är villigt att acceptera hot som ett sätt att lösa handelsfrågor.",
+            "Sánchez påpekade att handel är en grundpelare för ekonomisk tillväxt och samhällelig stabilitet.",
+            "Reaktionen från den spanske premiärministern har fått stor uppmärksamhet både i Europa och USA."
           ],
-          "why_important": "Handelsrelationer mellan länder är avgörande för ekonomisk stabilitet. Sánchez svar kan påverka hur andra länder ser på USA:s handelsstrategi.",
+          "why_important": "Hanterningen av handelsfrågor har stor betydelse för internationella relationer och ekonomiska förbindelser. Det framhäver också vikten av diplomati i mötet mellan stormakter.",
           "source_url": "https://www.bbc.com/news/articles/c93wwq1n542o?at_medium=RSS&at_campaign=rss",
-          "eli5": "När Trump hotar att sluta handla med Spanien betyder det att köpmän och företag i båda länderna kan få svårare att sälja varor och tjänster. Sánchez säger att det är bättre att prata och samarbeta istället för att hota varandra."
+          "eli5": "Det handlar om att Spaniens ledare tycker att det är bättre att prata och lösa problem genom diskussioner, istället för att hota med att sluta handla med varandra, vilket kan skapa fler problem."
         },
         {
-          "title": "60% av walesiska väljare ovetande om det nya systemet inför majvalen",
-          "ingress": "Nära 60% av walesiska väljare saknar kunskap om hur det nya systemet kommer att fungera inför senatsvalen i maj. Rapporten visar även förvirring kring devolutionsmakter.",
+          "title": "60 % av walesiska väljare ovetande om det nya systemet inför majvalen",
+          "ingress": "En ny rapport visar att nästan 60 % av walesiska väljare är osäkra på hur det nya valsystemet kommer att fungera i de kommande Senedd-valen.",
           "summary_paragraphs": [
-            "En rapport från Cardiff University och YouGov visar att många väljare är osäkra på hur makt fördelas mellan Cardiff Bay och Westminster.",
-            "Trots att det har gått 26 år sedan devolutionsprocessen inleddes, kvarstår förvirringen bland väljarna.",
-            "Det framgår inte av källan hur många intervjuer som ingick i undersökningen.",
-            "Siffrorna indikerar att kunskapsgapet kring politiska beslut är betydande.",
-            "Detta kan påverka valdeltagandet och väljarnas åsikter inför kommande val."
+            "Flera väljare känner sig förvirrade över vilka beslut som fattas i Cardiff Bay respektive Westminster.",
+            "Det framgår av en opinionsundersökning utförd av Cardiff University och YouGov.",
+            "Trots att devolutionen inleddes för 26 år sedan är många fortfarande osäkra på vilka maktområden som tillhör den walesiska parlamentet.",
+            "Rapporten lyfter fram behovet av ökad information till väljarna.",
+            "Obekanthet kring politiska frågor kan påverka valdeltagandet och den demokratiska processen."
           ],
-          "why_important": "Förståelsen av maktfördelningen är avgörande för valseende och demokratiskt deltagande. Utan tydlig information riskerar väljare att känna sig alienerade från beslut som påverkar deras liv.",
+          "why_important": "Att förstå det politiska systemet är centralt för att kunna delta i den demokratiska processen. Osäkerhet kan leda till minskat valdeltagande vilket påverkar mandatets legitimitet.",
           "source_url": "https://www.theguardian.com/uk-news/2026/mar/04/60-of-welsh-voters-unaware-of-how-new-system-will-work-in-may-elections",
-          "eli5": "Det handlar om att många väljare i Wales inte vet vilka politiska frågor som beslutas av deras lokala regering och vilka som beslutas av den brittiska regeringen. Detta kan göra det svårt för dem att veta hur de ska rösta i valet."
+          "eli5": "Det handlar om att många i Wales inte vet vilka frågor som avgörs lokalt i Wales och vilka som avgörs av den brittiska regeringen. Det gör att de kan vara osäkra på hur de ska rösta i valet."
         }
       ]
     },
@@ -172,114 +173,114 @@
       "name": "VÄRLDEN",
       "stories": [
         {
-          "title": "Krisen i Mellanöstern: Amerikansk ubåt sänkte iranskt krigsfartyg",
-          "ingress": "Över 80 personer har dött efter att den iranska fregatten Iris Dena sänkts. Samtidigt rapporteras nya attacker från Israel mot mål i Libanon.",
+          "title": "Ökade spänningar i Mellanöstern: Amerikansk ubåt sänkte iranskt krigsfartyg",
+          "ingress": "Över 80 personer har dött efter sänkningen av det iranska fregatten Iris Dena. Israel har genomfört nya attacker på mål i Libanon.",
           "summary_paragraphs": [
-            "Enligt rapporter har 32 besättningsmedlemmar räddats från det sjunkna fartyg som hade 180 personer ombord.",
-            "I en separat incident har fyra personer bekräftats döda och sex skadade efter en israelisk attack i Baalbek, Libanon.",
-            "Den libanesiska statliga nyhetsbyrån uppger att räddningsinsatser pågår för att få familjer ur rasmassorna.",
-            "Detta har ökat spänningarna ytterligare i regionen där konflikten mellan Israel och Iran blir alltmer komplex.",
-            "Flera analysartiklar undersöker de underliggande orsakerna till den amerikanska militärens involvement i Iran."
+            "Den iranska fregatten Iris Dena hade 180 besättningsmedlemmar, av vilka 32 har räddats.",
+            "Enligt initiala rapporter dödades fyra personer och sex skadades i en israelsk attack i Baalbek, Libanon.",
+            "Libanesiska medier meddelar att räddningsarbeten pågår för att extrahera familjer från rasmassor.",
+            "Det framgår inte av källan om det har skett någon form av reaktion från den iranska regeringen.",
+            "Konflikten i regionen påverkar civila livet och samhällssäkerheten."
           ],
-          "why_important": "Krisen påverkar inte bara de involverade länderna utan kan också få långtgående konsekvenser för stabiliteten i hela Mellanöstern.",
+          "why_important": "Den pågående konflikten har potential att eskalera och påverka stabiliteten i hela Mellanöstern. Händelserna kan påverka internationella relationer och oljepriser.",
           "source_url": "https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis",
-          "eli5": "I grunden handlar detta om en konflikt där två länder, Israel och Iran, är i strid med varandra, och nu har USA blivit involverat genom att sänka ett iranskt fartyg. Detta gör att fler länder blir delaktiga, vilket kan leda till ännu mer oro i regionen."
+          "eli5": "Mellanösternkonflikten handlar om olika länder som kämpar om makt och inflytande. Nu har en iransk krigsbåt sänkts av USA, vilket kan leda till fler attacker och konflikter i regionen."
         },
         {
-          "title": "Luftangrepp vid Iran-Irak-gränsen i väntan på USA:s och Israels planer för kurderna",
-          "ingress": "Intensiva luftangrepp har träffat militärpositioner och polisstationer längs den norra gränsen mellan Iran och Irak. USA och Israel förbereder sig för att stödja kurdiska styrkor i regionen.",
+          "title": "Luftangrepp vid Iran-Irak-gränsen som förberedelse för USAs och Israels stöd till kurdiska styrkor",
+          "ingress": "Intensiva luftangrepp har riktats mot militärpositioner och polisstationer längs Irans norra gräns mot Irak. Detta kan vara ett led i USAs och Israels planer för att mobilisera kurdiska peshmerga-fighters.",
           "summary_paragraphs": [
-            "Angreppen tyder på en potentiell ny front i konflikten mellan USA, Israel och Iran.",
-            "Experter varnar för att stöd till Irans etniska grupper kan leda till en ökad risk för ett kaotiskt inbördeskrig.",
-            "En amerikansk tjänsteman har bekräftat att USA är beredd att ge flygunderstöd om de kurdiska peshmerga-striderna korsar gränsen.",
-            "Detta kan skapa en instabil situation i den redan känsliga regionen.",
-            "Den militära aktiviteten har intensifierats på grund av de pågående samtalen mellan Washington och kurdiska ledare."
+            "Luftangreppen har träffat flera olika mål, vilket tyder på ett förberedande arbete inför en ny front i konflikten.",
+            "En amerikansk tjänsteman uppger att USA är berett att ge luftstöd om kurdiska styrkor korsar gränsen från norra Irak.",
+            "Experter varnar för att stödja Irans etniska grupper kan leda till ökad instabilitet och en risk för inbördeskrig.",
+            "Det finns en viss oro för att situationen kan eskalera ytterligare.",
+            "Det är oklart hur detta kommer att påverka den redan komplicerade konflikten i regionen."
           ],
-          "why_important": "Detta utvecklar en redan komplex geopolitisk situation i Mellanöstern. Stöd till kurdisk militär kan få konsekvenser för stabiliteten i regionen.",
+          "why_important": "Denna utveckling kan markera en förändring i dynamiken i regionen och riskerar att beblanda flera aktörer i konflikten. Stödet till kurdiska grupper kan också påverka relationerna mellan USA, Iran och andra länder.",
           "source_url": "https://www.theguardian.com/world/2026/mar/04/airstrikes-hit-iran-iraq-border-as-us-and-israeli-plan-to-mobilise-kurds-gathers-pace",
-          "eli5": "USA och Israel planerar att hjälpa kurdiska fighters i att bekämpa iranska styrkor. Men experter säger att detta kan orsaka ännu mer oro och kaos i området."
+          "eli5": "Det handlar om att USA och Israel planerar att ge stöd till kurdisk militär för att bekämpa Irans makt. För detta förbereder de sig med luftangrepp mot Iran, vilket kan leda till mer oroligheter."
         },
         {
-          "title": "USA planerar att höja importtullarna",
-          "ingress": "Enligt Scott Bessent väntas USA öka sina globala tullavgifter på importerade varor. Detta kan ske redan denna vecka.",
+          "title": "USA förväntar sig höjda tullar denna vecka",
+          "ingress": "Enligt Scott Bessent väntas USA öka sina globala tullar på importerade varor. Tullarna kan komma att stiga från nuvarande 10%.",
           "summary_paragraphs": [
-            "För närvarande ligger tullarna på 10%.",
-            "Den föreslagna förändringen kan påverka många internationella handelspartner.",
-            "Höjningen av tullarna kan ha konsekvenser för priserna på importerade varor.",
-            "Detaljer om hur mycket tullarna kommer att öka framgår inte av källan.",
-            "Det är oklart vilka varor som kommer att omfattas av den föreslagna förändringen."
+            "Scott Bessent, en rådgivare till USA:s finansdepartement, har uttalat sig om de kommande tullhöjningarna.",
+            "Den exakta procenten för den planerade höjningen har inte specificerats.",
+            "Bessent angav att förändringen sannolikt kommer att ske inom veckan.",
+            "Detta är en del av USA:s bredare handelspolitik.",
+            "Höjda tullar kan påverka priser på konsumentvaror och internationell handel."
           ],
-          "why_important": "En höjning av tullarna kan påverka den globala ekonomin och handelsrelationer. Det kan också påverka konsumentpriserna i USA.",
+          "why_important": "Höjda tullar kan påverka den globala ekonomin och handeln mellan länder. Det kan få konsekvenser för konsumentpriser och tillgången på importerade varor.",
           "source_url": "https://www.bbc.com/news/articles/cjwzzq70qgvo?at_medium=RSS&at_campaign=rss"
         },
         {
-          "title": "Riksbanken rekommenderar kontanter hemma: Tusen kronor per vuxen",
-          "ingress": "Riksbanken har nu utfärdat en rekommendation om att ha tusen kronor i kontanter hemma per vuxen. Detta beslut baseras på den aktuella säkerhetssituationen i omvärlden.",
+          "title": "Riksbanken rekommenderar tusen kronor i kontanter per vuxen",
+          "ingress": "Riksbanken rekommenderar att varje vuxen bör ha tusen kronor i kontanter hemma. Detta görs med hänvisning till det rådande omvärldsläget.",
           "summary_paragraphs": [
-            "Rekommendationen syftar till att förbereda hushåll för eventuella stölder av digitala betalningsmetoder.",
-            "Närmare sex av tio hushåll uppmanas att öka sina kontanta medel för att följa Riksbankens råd.",
-            "Det framgår inte av källan om det finns några specifika åtgärder för att säkerställa kontantflödet.",
-            "Riksbanken har motiverat sitt ställningstagande med det rådande omvärldsläget.",
-            "Den ökande osäkerheten gör att fler medborgare bör överväga att ha kontanter tillgängliga.",
-            "Rekommendationen aktualiserar behovet av att vara förberedd på oförutsedda situationer."
+            "Rekommendationen kommer i ljuset av aktuella påfrestningar och osäkerhet i samhället.",
+            "Närmare sex av tio hushåll behöver öka sin kontanter för att uppnå denna summa.",
+            "Detta visar på ett ökande behov av att vara förberedd för oförutsedda händelser.",
+            "Riksbankens råd syftar till att öka hushållens ekonomiska trygghet.",
+            "Att ha kontanter kan vara viktigt i situationer där digitala betalningsmetoder inte fungerar."
           ],
-          "why_important": "Rekommendationen belyser vikten av beredskap i en osäker tid. Kontanter kan ge en säkerhet vid eventuella störningar i betalningssystemen.",
+          "why_important": "Rådet kan påverka hushållens beredskap och säkerhet i krissituationer. Det speglar också en bredare oro kring den ekonomiska stabiliteten.",
           "source_url": "https://www.svt.se/nyheter/inrikes/radet-om-krigskassan-tusen-kronor-i-kontanter-hemma-per-vuxen",
-          "eli5": "Tänk på det som en säkerhetsåtgärd. Om något händer och du inte kan använda ditt kort, kan du fortfarande betala med kontanter. Riksbanken säger att det är bra att ha lite pengar hemma för att vara på den säkra sidan."
+          "eli5": "Tänk på kontanter som pengarna du har i din plånbok. Riksbanken säger att det är bra att ha tusen kronor hemma i kontanter i händelse av att andra sätt att betala inte fungerar, som under en kris."
         },
         {
-          "title": "Putin anklagar Ukraina för attack mot gas tanker utanför Libyen",
-          "ingress": "Vladimir Putin har hävdat att Ukraina genomfört en terroristattack mot det ryska gasfartyget Arctic Metagaz. Fartyget exploderade och sjönk i Medelhavet efter attacken.",
+          "title": "Putin anklagar Ukraina för attack på gastransportfartyg utanför Libyen",
+          "ingress": "Vladimir Putin har anklagat Ukraina för att ha genomfört en terroristattack mot det ryska gastransportfartyg Arctic Metagaz. Fartyget exploderade och sjönk i Medelhavet.",
           "summary_paragraphs": [
-            "Arctic Metagaz fattade eld innan det sjönk, enligt ryska myndigheter.",
-            "Putin beskriver händelsen som en terroristattack riktad mot Ryssland.",
-            "Fartyget var en del av vad USA och EU benämner Rysslands 'skuggfleet' av äldre tankers.",
-            "Dessa tankers transporterar rysk olja och gas runt om i världen, trots västerländska sanktioner.",
-            "Sanktionerna har restriktioner mot Rysslands energiflöden och dess export av fossila bränslen."
+            "Den ryska presidenten påstod att attacken ledde till en explosion och att fartyget senare sjönk.",
+            "Arctic Metagaz har tidigare blivit föremål för sanktioner från USA och EU.",
+            "Fartyget är en del av vad Putin beskriver som Moskvas så kallade 'skuggflotta', som transporterar olja och gas globalt.",
+            "Sanktionerna syftar till att motverka Rysslands energiförsörjning och handelsverksamhet.",
+            "Påståendet om attacken kommer mitt under en spänd tid mellan Ukraina och Ryssland.",
+            "Det framgår inte av källan vilka bevis som ligger bakom anklagelserna."
           ],
-          "why_important": "Händelsen kan ytterligare eskalera spänningarna mellan Ryssland och Ukraina. Den påverkar också den globala energimarknaden och säkerhetssituationen i Medelhavet.",
+          "why_important": "Anklagelserna kan påverka den redan ansträngda relationen mellan Ryssland och Ukraina. Det kan också få konsekvenser för energisäkerheten i Europa.",
           "source_url": "https://www.theguardian.com/world/2026/mar/04/putin-accuses-ukraine-of-attacking-gas-tanker-that-exploded-and-sank-off-libya",
-          "eli5": "Tänk på ett stort fartyg som transporterar gas. Om det blir attackerat och sjunker är det som om en stor slagsmålssituation på havet inträffar—det kan påverka många länder och hur vi får energi."
+          "eli5": "Tänk på att fartyget är som en lastbil som transporterar gas. Putin säger att Ukraina har attackerat den här lastbilen, vilket kan leda till stora problem för Ryssland och påverka gasförsörjningen till andra länder."
         },
         {
-          "title": "USAs ubåt sänker iranskt krigsfartyg utanför Sri Lanka",
-          "ingress": "En amerikansk ubåt har sänkt ett iranskt krigsfartyg utanför Sri Lankas kust. Detta skeende inträffar i samband med att USA och Israel intensifierar sina militära åtgärder mot Iran.",
+          "title": "Amerikansk ubåt sänker iranskt krigsfartyg utanför Sri Lanka",
+          "ingress": "En amerikansk ubåt har sänkt ett iranskt krigsfartyg utanför Sri Lankas kust. Attacken följer på ökade hot från USA mot Teherans militära ledarskap.",
           "summary_paragraphs": [
-            "Torpedoattacken mot det iranska fregatten Iris Dena ägde rum när fartyget återvände från en indisk övning i Bengaliska bukten.",
-            "Minst 87 iranska sjömän rapporteras ha omkommit i attacken.",
-            "Händelsen har väckt frågor om huruvida USA:s strategi bryter mot internationell lag.",
-            "Tidigare amerikanska tjänstemän har uttryckt oro över den potentiella rättsliga grunden för attacken.",
-            "Det finns ett växande fokus på insatserna i konflikten mellan USA och Iran, vilket påverkar säkerhetssituationen i regionen."
+            "Torpeden träffade det iranska fregatten Iris Dena, vilket resulterade i att minst 87 iranska sjömän omkom.",
+            "Fregatten befann sig i internationellt vatten efter att ha deltagit i en marin övning i Bengalviken.",
+            "Denna incident väcker frågor om huruvida USA:s handlingar kan bryta mot internationell lag.",
+            "Före detta amerikanska tjänstemän uttrycker oro över de potentiella juridiska följderna av attacken.",
+            "Konflikten i regionen förväntas eskalera ytterligare, då både USA och Israel har lovat att slå mot djupare mål i Iran."
           ],
-          "why_important": "Denna händelse markerar en eskalering i konflikten mellan USA och Iran, vilket kan få långtgående konsekvenser för regional stabilitet. Den väcker även diskussioner kring internationell rätt och militära åtgärder.",
+          "why_important": "Denna händelse markerar en betydande upptrappning i den militära konflikten mellan USA och Iran. Det kan få allvarliga konsekvenser för stabiliteten i Mellanöstern.",
           "source_url": "https://www.theguardian.com/world/2026/mar/04/us-submarine-torpedo-iran-warship-sri-lanka-coast-pete-hegseth",
-          "eli5": "Tänk på att två länder som slåss om makt även kan påverka andra länder. När USA sänker ett iranskt krigsfartyg kan det leda till mer bråk och osäkerhet, både i nära områden och längre bort."
+          "eli5": "En amerikansk ubåt sänkte ett iranskt krigsfartyg. Det hände när USA ville stoppa Irans militär. Många på fartyget dog, och nu pratar folk om vad som är lagligt i sådana här krig."
         },
         {
-          "title": "Starmer står inför utmaningar i konflikten med Iran",
-          "ingress": "Brittiska premiärministerns initiala avvisande av stöd till USA kan begränsa landets möjlighet att skydda sina medborgare i Gulfen.",
+          "title": "Starmer riskerar att lämna Storbritannien på efterkälken i konflikten med Iran",
+          "ingress": "Premierminister Keir Starmer är tveksam till att stötta USA i konflikten med Iran, vilket kan påverka Storbritanniens förmåga att skydda sina medborgare i Gulfområdet.",
           "summary_paragraphs": [
-            "Storbritannien var medvetet om att USA övervägde angrepp mot Iran redan i januari, i samband med att USS Abraham Lincoln sändes till Arabiska havet.",
-            "Under februari förstärkte USA sin närvaro med en andra hangarfartygsgrupp, medan brittiska militära insatser förblev begränsade.",
-            "Det fanns en medvetenhet om risken att brittiska soldater och allierade skulle påverkas av iranska motdrag.",
-            "Trots detta agerade Storbritannien långsamt, vilket kan påverka deras position i regionen.",
-            "Det är oklart hur detta kommer att påverka relationerna med både USA och andra allierade."
+            "Britain hade insikt om att USA övervägde att attackera Iran så tidigt som i januari.",
+            "Det stod klart att USA:s avsikter var allvarliga när USS Abraham Lincoln skickades till Arabiska havet samma månad.",
+            "Trots den växande militära närvaron från USA, kunde Storbritannien inte förstärka sina egna truppinsatser.",
+            "Detta trots att det fanns en insikt om att brittiska soldater kunde bli attackerade i en eventuell iransk hämnd.",
+            "Den begränsade responsen från den brittiska sidan kan leda till att landet får svårt att agera effektivt i denna eskalerande situation."
           ],
-          "why_important": "Situationens komplexitet kan få långtgående konsekvenser för brittisk säkerhetspolitik. Att agera snabbt kan vara avgörande för att stödja medborgare och allierade i regionen.",
+          "why_important": "En aktiv och tidig reaktion från Storbritannien är avgörande för att skydda medborgare och samarbeta med allierade. Bristen på handling kan leda till allvarliga konsekvenser för landets säkerhet.",
           "source_url": "https://www.theguardian.com/world/2026/mar/04/starmer-slow-start-war-against-iran-uk-playing-catch-up",
-          "eli5": "Brittiska premiärministern har varit långsam med att stödja USA i konflikten mot Iran. Detta kan göra det svårt för Storbritannien att skydda sina medborgare och samarbeta med sina allierade."
+          "eli5": "Storbritannien har missat chansen att hjälpa USA mot Iran, vilket betyder att de kan ha svårt att skydda sina medborgare och arbetet med sina vänner kan bli problematiskt."
         },
         {
-          "title": "Stort strömavbrott i Kuba lämnar miljontals utan el",
-          "ingress": "Ett omfattande strömavbrott drabbade västra Kuba på onsdagen. Många i Havanna och omgivande områden är utan ström i en tid av minskande oljereserver.",
+          "title": "Eldsnutt i Kuba lämnar miljontals utan ström mitt i oljebrist",
+          "ingress": "En omfattande strömavbrott drabbade den västra delen av Kuba, vilket lämnade miljontals människor utan el. Situationen förvärras av minskande olje-reserver och press från USA.",
           "summary_paragraphs": [
-            "Strömavbrottet påverkar invånare i städer från Pinar del Rio i öster till Camaguey i mitten av landet.",
-            "Kuba kämpar med en föråldrad elnät och begränsade oljeresurser.",
-            "Elunionen bekräftade avbrottet via sociala medier.",
-            "Detta är det senaste av många avbrott som drabbat ön den senaste tiden.",
-            "Trycket från USA på Kubas oljeimport påverkar bland annat situationen."
+            "Ett strömavbrott inträffade på onsdagen och drabbade stora delar av Kuba.",
+            "Miljontals invånare i Havana och andra delar av ön är utan el.",
+            "Kuba kämpar med en brist på olje-reserver och ett uselt elnät.",
+            "Regeringens Elektriska union bekräftade avbrottet via sociala medier.",
+            "Avbrottet påverkade medborgare från Pinar del Rio i öst till Camaguey i mitten av landet."
           ],
-          "why_important": "Avbrott i elförsörjningen har stor påverkan på både vardagslivet och ekonomin i Kuba. Situationen förvärras av externa påtryckningar.",
+          "why_important": "Denna situation belyser de pågående utmaningarna för Kuba, där energikrisen förvärras av internationell press. Det kan påverka livskvaliteten och stabiliteten i regionen.",
           "source_url": "https://www.theguardian.com/world/2026/mar/04/blackout-cuba-us-oil"
         }
       ]
@@ -288,20 +289,19 @@
       "name": "EKONOMI",
       "stories": [
         {
-          "title": "Systrar drunknar i walesisk nationalpark efter att ha paddlat fullt klädda",
-          "ingress": "Två systrar, Hajra Zahid och Haleema Zahid, drunknade vid en badplats i Eryri (Snowdonia) nationalpark. Båda systrarna kunde inte simma och olyckan inträffade den 11 juni 2025.",
+          "title": "Systernas drunkning i walesisk nationalpark under paddling",
+          "ingress": "Två systrar, Hajra och Haleema Zahid, drunknade efter att ha paddlat i kläderna vid en populär badplats i Wales. Ingen av dem kunde simma.",
           "summary_paragraphs": [
-            "Systrarna, som var studenter vid University of Chester, var på en utflykt med tre manliga vänner.",
-            "Under besöket delade gruppen upp sig av privata skäl.",
-            "Syrorna begav sig till en pool i Afon Cwm Llan-floden och paddlade fullt klädda.",
-            "Deras vänner ropade på dem när de inte fick något svar och fann senare deras personliga tillhörigheter vid poolen.",
-            "Hajra hittades flytande och räddades till land, men Haleema återfanns senare av räddningstjänsten från djupt vatten.",
-            "Enligt den assisterande koroner Sarah Riley var deras dödsfall accidentella och föreslog att de kan ha halkat på en hal klippa.",
-            "Hon uppmanade allmänheten att vara försiktiga vid sådana platser för att undvika liknande tragiska händelser."
+            "Hajra Zahid, 29, och hennes syster Haleema, 25, besökte Eryri (Snowdonia) nationalpark den 11 juni 2025 tillsammans med tre manliga vänner.",
+            "Systrarna, som inte kunde simma, förflyttade sig uppströms på Afon Cwm Llan-floden för att paddla vid en pool.",
+            "Vännerna kallade på systrarna när de saknades, och fann deras tillhörigheter vid poolen.",
+            "Hajra hittades flytande medvetslös i vattnet och Haleema återfanns senare av räddningstjänsten.",
+            "Båda systrarna förklarades döda på plats av sjukvårdspersonal.",
+            "En assistentåklagare konstaterade att dödsfallen var oavsiktliga och varnade allmänheten för riskerna med att vistas i sådana pooler."
           ],
-          "why_important": "Denna tragiska händelse understryker vikten av att vara medveten om vattenfaror, särskilt för dem som inte kan simma. Det är en påminnelse om behovet av försiktighet när man vistas vid vattendrag.",
+          "why_important": "Denna tragiska händelse belyser farorna med att bada i okända vatten, särskilt för personer som inte kan simma. Det är viktigt att vara medveten om riskerna i naturen.",
           "source_url": "https://www.theguardian.com/uk-news/2026/mar/04/sisters-drown-in-welsh-national-park-after-paddling-fully-clothed",
-          "eli5": "Det handlar om två systrar som miste livet när de försökte leka i vattnet, men de kunde inte simma. Det är farligt att gå nära vatten om man inte kan simma, speciellt på hala ställen."
+          "eli5": "Två systrar ville paddla i en vattenpool men föll i vattnet istället. Eftersom de inte kunde simma, kunde de inte ta sig upp ur vattnet och dog. Det är viktigt att vara försiktig vid bad i naturen, speciellt om man inte kan simma."
         }
       ]
     },
@@ -313,155 +313,157 @@
       "name": "AI & MACHINE LEARNING",
       "stories": [
         {
-          "title": "Anthropics vd Dario Amodei kritiserar OpenAI:s påståenden om militäravtal",
-          "ingress": "Dario Amodei, vd för Anthropic, har kallat påståendena från OpenAI om ett militäravtal för 'rent lögner'. Detta efter att Anthropic avbröt sitt kontrakt med Pentagon på grund av oenigheter kring AI-säkerhet.",
+          "title": "Grammarly erbjuder AI-recensioner baserade på kända författares verk",
+          "ingress": "Verktyget, som utvecklats av det nyligen ommärkte företaget Superhuman, ger återkoppling baserat på verk av både avlidna och levande författare. Detta görs utan deras tillstånd.",
           "summary_paragraphs": [
-            "Anthropic har nyligen dragit sig ur sitt avtal med Pentagon på grund av meningsskiljaktigheter kring AI-säkerhet.",
-            "OpenAI har enligt Amodei tagit över i detta avseende, vilket han anser oetiskt.",
-            "Kritiken riktas mot OpenAI:s kommunikation, som Amodei menar vilseleder.",
-            "Det har väckt debatt inom tech- och försvarssektorn kring etiska riktlinjer för AI.",
-            "Amodeis uttalande kan påverka hur dessa företag samarbetar med statliga organ framöver."
+            "Grammarly har lanserat en tjänst som erbjuder AI-genererade recensioner av texter. Verktyget analyserar och ger feedback inspirerad av kända författares arbete.",
+            "Det inkluderar verk från både historiska författare och samtida skrivande. Tekniken bygger på stora mängder textdata för att efterlikna stilar och tekniker.",
+            "Grammarly, nu Superhuman, menar att detta kan hjälpa skribenter att förbättra sitt skrivande. Kritiker ifrågasätter dock lagligheten och etiken i att använda avlidna författares verk utan tillstånd.",
+            "Tjänsten erbjuder en ny dimension av AI-stödd skrivhjälp, men väcker också frågor om upphovsrätt och kreativitet.",
+            "Tjänsten erbjuder en ny dimension av AI-stödd skrivhjälp, men väcker också frågor om upphovsrätt och kreativitet."
           ],
-          "why_important": "Kritiken belyser de etiska dilemman som företag står inför när de arbetar med AI och militära kontrakt. Det kan påverka framtida samarbeten inom teknik och försvar.",
+          "why_important": "Denna tjänst kan förändra hur skribenter arbetar och få oss att tänka på upphovsrätt på nya sätt. Det kan också påverka hur vi ser på kreativitet och inspiration i skrivande.",
+          "source_url": "https://www.wired.com/story/grammarly-is-offering-expert-ai-reviews-from-your-favorite-authors-dead-or-alive/",
+          "eli5": "Tänk på det som att en dator lär sig av dina favoritförfattares böcker för att ge dig tips på hur du kan skriva bättre. Men ingen av författarna har egentligen sagt att de gillar idén."
+        },
+        {
+          "title": "Anthropics VD Dario Amodei kritiserar OpenAI för 'rena lögner' om militäravtal",
+          "ingress": "Anthropic har avbrutit sitt avtal med Pentagon på grund av oenigheter kring AI-säkerhet. OpenAI tog snabbt över detta avtal.",
+          "summary_paragraphs": [
+            "Dario Amodei, VD för Anthropic, har ifrågasatt OpenAIs kommunikation kring ett militäravtal.",
+            "Han beskriver informationen som 'rena lögner'.",
+            "Anthropic hade tidigare ett kontrakt med Pentagon men beslutade att avsluta det.",
+            "Skillnader i synsätt på AI-säkerhet ska ha varit orsaken till avbrutet avtal.",
+            "OpenAI ska ha reagerat snabbt genom att ta över kontraktet.",
+            "Debatten belyser de komplexa etiska och säkerhetsfrågorna kring användningen av AI inom militären."
+          ],
+          "why_important": "Kritiken visar på spänningarna inom AI-industrin och dess relation till militära projekt. Det väcker frågor om etik och ansvar i utvecklingen av AI-teknologi.",
           "source_url": "https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/",
-          "eli5": "Dario Amodei säger att OpenAI ljuger om varför de arbetar med militärerna, vilket är viktigt för hur företag som gör AI ska tänka på etik och säkerhet."
+          "eli5": "Tänk på AI som en stadig och intelligent assistent. Om två företag ska hjälpa militären, men ett av dem tycker att det är farligt och slutar, kan den andra snabbt ta över uppdraget. Men om de ljuger om vad som hänt, kan det skapa stor misstro."
         },
         {
-          "title": "Big Tech ingår avtal om datacenter med Vita huset",
-          "ingress": "Stora teknikföretag har undertecknat ett avtal om datacenter med den amerikanska regeringen. Enligt president Donald Trump finns det ett behov av bättre PR kring datacenter.",
+          "title": "Stora teknikföretag skriver avtal med Vita Huset om datacenter",
+          "ingress": "Stora teknikföretag har ingått ett åtagande med Vita Huset angående datacenter. President Donald Trump uttryckte att datacenter behöver bättre PR.",
           "summary_paragraphs": [
-            "Avtalet syftar till att stärka samarbetet mellan teknikföretag och den federala regeringen.",
-            "President Trump betonar vikten av att förbättra offentligheten kring datacenter.",
-            "Det framgår inte av källan vilka specifika åtgärder som kommer vidtas.",
-            "Kritiker ifrågasätter avtalets substans och effekter.",
-            "Det är oklart hur avtalet kommer att påverka datacenterverksamheten i praktiken."
+            "Under ett nyligen hållit evenemang diskuterades datacenter och deras roll i den digitala ekonomin.",
+            "President Trump betonade vikten av att förbättra public relations för dessa anläggningar.",
+            "Det framgår inte av källan vilken konkret påverkan åtagandet kan få.",
+            "Flera stora teknikföretag deltog i diskussionen men detaljer om deras specifika bidrag saknas.",
+            "Detta initiativ kan ses som ett försök att skapa en mer positiv bild av datacenter."
           ],
-          "why_important": "Samarbetet kan påverka framtida regler och investeringar inom tekniksektorn. Det kan även ha inverkan på hur datacenter uppfattas av allmänheten.",
+          "why_important": "Datacenter är avgörande för den moderna infrastrukturen. Genom att lyfta fram deras betydelse kan det bidra till att forma framtida policyer.",
           "source_url": "https://www.wired.com/story/big-tech-signs-white-house-data-center-pledge-with-good-optics-not-much-substance/",
-          "eli5": "Big Tech-företag och regeringen pratar om att förbättra hur människor ser på datacenter, men det är osäkert om avtalet verkligen kommer att leda till konkreta förändringar."
+          "eli5": "Datacenter är stora byggnader som lagrar och hanterar data för internet. Detta avtal syftar till att göra dem mer populära och förstådda av allmänheten."
         },
         {
-          "title": "AI-modeller för krigföring: En inblick i utvecklingen",
-          "ingress": "Flera företag diskuterar nu hur artificiell intelligens ska användas inom militären. Smack Technologies tränar AI-modeller för att planera stridsoperationer.",
+          "title": "AI-modeller för militär användning",
+          "ingress": "Flera företag diskuterar gränserna för användning av AI i militära sammanhang. Smack Technologies tränar modeller för att planera stridsoperationer.",
           "summary_paragraphs": [
-            "Företaget Anthropic överväger riktlinjer för militära tillämpningar av AI. Deras fokus ligger på att sätta gränser för vad som är etiskt försvarbart.",
-            "Samtidigt går Smack Technologies i en annan riktning. De tränar AI-modeller för att optimera planering och strategier i krigssituationer.",
-            "Detta väcker frågor om användningen av AI i krig, både etiska och praktiska. Vilka risker kan uppstå om AI-system används för att fatta kritiska beslut i strid?",
-            "Diskussionen kring militära AI-modeller är aktuell och komplex. Det handlar om makt, kontroll och ansvar.",
-            "Det är oklart hur dessa utvecklingar påverkar framtida konflikter och krigföring."
+            "Anthropic är ett av företagen som debatterar etiska gränser gällande AI i militära ändamål.",
+            "Smack Technologies fokuserar på att utveckla AI-modeller specifikt för krigföring.",
+            "Dessa modeller kan potentiellt förändra hur strider planeras och genomförs.",
+            "Frågor kring ansvar och etik i användningen av AI i krig kvarstår.",
+            "Det finns en risk för att AI-system kan fatta beslut utan mänsklig inblandning.",
+            "Den tekniska utvecklingen ställer samhället inför nya utmaningar och dilemman."
           ],
-          "why_important": "Utvecklingen av AI inom militären kan förändra sättet vi ser på krig och konflikter. Det sätter spotlight på etiska frågor och behovet av reglering.",
+          "why_important": "Utvecklingen av AI inom militären kan påverka globala maktförhållanden och krigets natur. Det är avgörande att förstå de etiska konsekvenserna av dessa teknologier.",
           "source_url": "https://www.wired.com/story/ai-model-military-use-smack-technologies/",
-          "eli5": "Tänk dig att AI är en mycket smart robot som kan hjälpa till att planera hur man vinner en strid. Vissa företag jobbar hårt för att träna dessa robotar, samtidigt som andra diskuterar om det är rätt att använda dem i krig."
+          "eli5": "Tänk på AI som en mycket smart robot. I militära sammanhang handlar det om att träna robotar att hjälpa soldater att planera och vinna strider, vilket kan leda till både fördelar och faror."
         },
         {
-          "title": "Apple Music föreslår tydliga märkningar för AI-genererad musik",
-          "ingress": "Apple Music planerar att införa så kallade 'Transparensmärkningar' för att identifiera musik skapad av artificiell intelligens. Detta innebär att etikettering av låtar som AI-producerade kommer att vara möjligt för skivbolag och distributörer.",
+          "title": "Apple Music inför transparensmärkning för att särskilja AI-musik",
+          "ingress": "Apple Music planerar att införa en märkning för att identifiera musik skapad med hjälp av artificiell intelligens. Det är oklart hur effektivt detta system kommer att vara.",
           "summary_paragraphs": [
-            "Märkningarna är frivilliga, vilket innebär att endast de som vill kan opta in.",
-            "Detta skapar osäkerhet kring hur många låtar som faktiskt kommer att märkas som AI-musik.",
-            "Kritiker anser att ett sådant system kan vara svårt att genomföra effektivt.",
-            "Det finns också frågor kring konsumenternas förståelse för märkningarna.",
-            "Apple Music strävar efter att öka transparensen inom musikbranschen."
+            "Enligt rapporter kommer Apple Music att ge möjligheten att märka musik som skapats av AI. Denna märkning är valfri för skivbolag och distributörer.",
+            "Det framgår inte av källan hur många företag som kommer att välja att använda denna märkning. Därför är det oklart hur många låtar som faktiskt kommer att märkas som AI-music.",
+            "Märkningen syftar till att öka transparensen för lyssnare och hjälpa dem att förstå ursprunget till musiken. Användare av plattformen får därmed en klarare bild av vad de lyssnar på.",
+            "Det är en del av en större trend inom musikbranschen som strävar efter att hantera den ökande användningen av AI i musikproduktion.",
+            "Det är en del av en större trend inom musikbranschen som strävar efter att hantera den ökande användningen av AI i musikproduktion."
           ],
-          "why_important": "Denna åtgärd syftar till att skydda lyssnare och skapa tydlighet vad gäller musikens ursprung. Det kan också påverka hur AI-musik uppfattas och konsumeras i framtiden.",
+          "why_important": "Införandet av transparensmärkning kan påverka hur musik konsumeras och förstås av allmänheten. Det kan också ställa krav på etik och ursprung inom musikproduktion.",
           "source_url": "https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/",
-          "eli5": "Tänk på det som att sätta en etikett på en burk mat som säger om den är gjord av maskin eller människa. Det hjälper människor att förstå vad de köper och lyssnar på."
+          "eli5": "AI-musik är musik som skapats av datorprogram istället för av människor. Apple Music vill hjälpa folk att se vilken musik som gjorts av datorer, så att de vet vad de lyssnar på."
         },
         {
-          "title": "NotebookLM presenterar animerade videoöversikter för forskning",
-          "ingress": "Google har uppdaterat NotebookLM så att användare nu kan skapa animerade och 'cinematiska' videoöversikter av sin forskning. Detta är ett steg framåt från den tidigare funktionen med berättande bildspel.",
+          "title": "NotebookLM kan nu sammanfatta forskning med animerade videor",
+          "ingress": "Google har uppdaterat NotebookLM med en ny funktion som låter användare skapa animerade, 'cinematiska' videor av sin forskning och sina anteckningar. Detta är en utvidgning av en tidigare funktion för videogenomgångar.",
           "summary_paragraphs": [
-            "Den nya funktionen kombinerar flera av Googles AI-modeller, inklusive Gemini 3.",
-            "Tidigare var videoöversikterna begränsade till slidsvisningar med narration.",
-            "Den förbättrade funktionen syftar till att göra presentationsupplevelsen mer engagerande.",
-            "Användare kan nu få en mer dynamisk och visuell sammanfattning av sina anteckningar.",
-            "Denna utveckling kan underlätta förståelse och presentation av komplex information."
+            "Tidigare kunde användare endast skapa inlästa bildspel, men den nya funktionen erbjuder mer avancerade möjligheter.",
+            "Genom att använda olika AI-modeller, såsom Gemini 3 och Nano Banana Pro, kan NotebookLM generera rörliga bilder som gör det enklare att förmedla information.",
+            "Användare kan förvänta sig en mer engagerande presentation av sina forskningsresultat.",
+            "Denna uppdatering syftar till att förbättra hur information presenteras och tas emot.",
+            "Det är ett exempel på hur teknik kan underlätta lärande och kommunikation."
           ],
-          "why_important": "Detta initiativ kan förändra hur användare presenterar och konsumerar information. Animerade översikter kan öka engagemanget och förbättra lärandeupplevelsen.",
+          "why_important": "Uppgraderingen kan hjälpa forskare och studenter att bättre dela sina insikter och resultat. Det kan också öka förmågan att nå en bredare publik genom visuellt tilltalande innehåll.",
           "source_url": "https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews",
-          "eli5": "Tänk på det som att din forskning nu kan bli en film istället för en tråkig bildpresentation. Det gör det lättare att förstå och minnas."
+          "eli5": "Tänk på NotebookLM som en assistent som tar dina anteckningar och förvandlar dem till en tecknad film, så att andra lättare kan förstå vad du jobbat med."
         },
         {
-          "title": "Nya MacBook Air lanseras med $50 presentkort och M5-chip",
-          "ingress": "Apple har introducerat sin senaste MacBook Air, nu med M5-chip och dubbel lagringskapacitet. Priset har dock ökat med $100 jämfört med föregående modell.",
+          "title": "Nya MacBook Air med M5-chip lanseras med $50 presentkort",
+          "ingress": "Apple har lanserat sin senaste MacBook Air, nu med M5-chip och ökad lagringskapacitet. Modellen kostar $100 mer än föregångaren, men det finns möjligheter till rabatter.",
           "summary_paragraphs": [
-            "Den nya 13-tum MacBook Air med M5-chip erbjuder nu 512GB grundlagring.",
-            "Best Buy säljer den nya modellen för $1,099 och inkluderar ett presentkort på $50.",
-            "M5-chipet ger en betydande prestandaförbättring jämfört med tidigare versioner.",
-            "Trots högre pris finns det möjligheter att spara genom erbjudanden som detta.",
-            "Konsumenter som söker en kraftfull laptop kan dra nytta av dessa uppgraderingar."
+            "Den nya 13-tums MacBook Air drivs av M5-chippet och erbjuder nu 512 GB som standardlagring.",
+            "Det är en ökning från föregående modell, vilket ger mer utrymme för användarna.",
+            "Den nya modellen har ett pris på $1,099 hos Best Buy.",
+            "Som en bonus erbjuds även ett presentkort på $50 vid köp.",
+            "Detta kan göra det mer attraktivt för de som överväger att köpa den senaste modellen."
           ],
-          "why_important": "Den nya MacBook Air erbjuder högre prestanda och lagringskapacitet, vilket kan vara attraktivt för användare. Erbjudanden som presentkort kan mildra den prishöjning som skett.",
+          "why_important": "Den nya MacBook Air representerar en betydande uppgradering i prestanda och lagring för användare. Rabatterna kan underlätta för fler att investera i den senaste teknologin.",
           "source_url": "https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale",
-          "eli5": "Tänk på MacBook Air som en snabb och kraftfull dator. Nya M5-chipet gör den ännu snabbare, men den kostar mer. Butiker erbjuder ofta rabatter, som presentkort, för att locka köp."
+          "eli5": "Tänk på MacBook Air som en dator med nästan all kraft som behövs för att göra vanliga uppgifter, men nu har den mer plats för filer och program. Den är enklare att använda än många andra datorer."
         },
         {
-          "title": "De största biltillverkarna har smutsiga leveranskedjor, enligt rapport",
-          "ingress": "Tesla, Ford och Volvo är i topp när det gäller att minska koldioxidutsläpp och förbättra mänskliga rättigheter i sina leveranskedjor. Toyota hamnar längst ner på listan, vilket belyser svårigheterna för den största biltillverkaren.",
+          "title": "Största biltillverkaren har en av de smutsigaste försörjningskedjorna",
+          "ingress": "Tesla, Ford och Volvo toppar en ny ranking av globala bilföretag baserat på deras arbete för att minska koldioxidutsläpp och andra miljöskador.",
           "summary_paragraphs": [
-            "En ny ranking av 18 globala biltillverkare visar att Tesla, Ford och Volvo gör mest för att eliminera miljöskador och kränkningar av mänskliga rättigheter.",
-            "Rankingen betonar vikten av hållbara och etiska leveranskedjor inom bilindustrin.",
-            "Toyota, som är världens största biltillverkare, ligger nära botten av listan.",
-            "Detta påvisar de utmaningar som stora företag står inför när det gäller att förbättra sina leveranskedjor.",
-            "Kritiken mot Toyota pekar på en bristande åtgärd mot koldioxidutsläpp och sociala frågor."
+            "Rankingen omfattar 18 biltillverkare och fokuserar på miljöpåverkan och mänskliga rättigheter i försörjningskedjan.",
+            "Tesla, Ford och Volvo visas som föredömen bland de granskade företagen.",
+            "I kontrast hamnar Toyota långt ner på listan, vilket pekar på långvariga utmaningar för världens största biltillverkare.",
+            "Det framgår inte av källan hur många poäng de olika företagen har fått.",
+            "Denna ranking är en del av ett större arbete för att hållbarhetsredovisa inom bilindustrin."
           ],
-          "why_important": "Rapporten understryker vikten av transparens och ansvar inom bilindustrin. Att förbättra leveranskedjorna är avgörande för att minska klimatpåverkan och skydda mänskliga rättigheter.",
+          "why_important": "Rapporten avslöjar brister i flera stora företag och sätter fokus på hållbarhet inom bilbranschen. Att förstå dessa utmaningar kan driva förändringar i industrin.",
           "source_url": "https://www.theverge.com/transportation/889145/lead-the-charge-supply-chain-leaderboard-toyota-tesla",
-          "eli5": "Tänk på biltillverkare som stort företag. Om de inte ser till att deras råvaror kommer från ställen som behandlar folk och miljön bra, kan de bidra till dåliga saker, som föroreningar och utnyttjande av arbetare. Rapporten visar vilka företag som gör ett bra jobb och vilka som behöver förbättras."
+          "eli5": "Tänk dig att stora bilar tillverkas som våra leksaker. Vissa företag gör det utan att skada miljön, medan andra slitsar och smutsar ner jorden. Denna rapport berättar om vilka företag som bäst tar hand om vår planet."
         },
         {
-          "title": "Spelkonsolers exklusiva titlar kan vara på väg tillbaka",
-          "ingress": "Framtiden för spelkonsoler kan likna deras förflutna. Konsol-exklusiva spel har blivit allt ovanligare.",
+          "title": "Konsolexklusiva spel kan återvända",
+          "ingress": "Spelmarknaden kan stå inför förändringar där konsolexklusiva titlar får en större roll. Detta är en utveckling som vi inte sett på flera år.",
           "summary_paragraphs": [
-            "Under de senaste åren har företag som Sony och Microsoft erbjudit titlar på flera plattformar.",
-            "Detta har gjort att konsol-exklusiva spel har blivit en sällsynthet.",
-            "Tidigare var sådana spel en grundpelare inom spelindustrin.",
-            "Konsumenternas intresse för specifika konsoler kan ha minskat.",
-            "Diskussionen kring konsolernas framtid väcks nu återigen."
+            "Under de senaste åren har konsolexklusiva spel blivit allt mer sällsynta. Företag som Sony och Microsoft har börjat erbjuda spel på flera plattformar.",
+            "Detta har lett till att många gamers undrar vad det egentligen innebär att äga en konsol. Frågan om vad som definierar en konsol i dagens läge blir allt mer aktuell.",
+            "Det finns tecken på att branschen kan återgå till en mer traditionell modell med exklusiva titlar för olika konsoler. Det kan innebära en ny riktning för marknadsföring och försäljning.",
+            "Fler exklusiva spel kan påverka hur konsumenter väljer att investera i olika plattformar. Denna dynamik kan förändra konkurrenssituationen mellan tillverkarna.",
+            "Fler exklusiva spel kan påverka hur konsumenter väljer att investera i olika plattformar. Denna dynamik kan förändra konkurrenssituationen mellan tillverkarna."
           ],
-          "why_important": "En återkomst av konsol-exklusiva spel kan påverka marknaden och hur företag strategiskt positionerar sig. Det kan också förändra konsumenternas val av spelkonsoler.",
+          "why_important": "Om konsolexklusiva spel blir vanliga igen kan det få stora konsekvenser för både spelutvecklare och konsumenter. Det kan också påverka framtiden för spelkonsoler.",
           "source_url": "https://www.theverge.com/entertainment/889336/console-exclusives-comeback"
         },
         {
           "title": "USB-hubbar för ökad anslutningsmöjlighet",
-          "ingress": "I en tid där många enheter kräver fler anslutningar kan USB-hubbar vara lösningen. Här presenterar vi fem pålitliga modeller.",
+          "ingress": "USB-hubbar kan avsevärt förbättra din enhets anslutningsmöjligheter. Här är fem av de mest rekommenderade modellerna.",
           "summary_paragraphs": [
-            "Att använda flera donglar kan vara både otympligt och frustrerande. USB-hubbar erbjuder en smidig lösning för att hantera flera enheter.",
-            "De här multifunktionshubbarna gör det enkelt att koppla in allt från tangentbord till externa hårddiskar.",
-            "Genom att välja rätt hub kan du maximera din produktivitet och minimera trassel med kablar.",
-            "Det finns olika modeller anpassade för olika behov, vilket gör det enkelt att hitta en som passar just dig.",
-            "Kvalitet och prestanda varierar, så det är viktigt att jämföra alternativ innan du bestämmer dig."
+            "Att använda en USB-hubb kan eliminera behovet av flera donglar. Dessa flerportshubbar gör det lättare att ansluta fler enheter samtidigt.",
+            "Det finns olika typer av USB-hubbar anpassade för olika behov. Vissa hubbar erbjuder snabbladdning, medan andra fokuserar på hög överföringshastighet.",
+            "Genom att välja en högkvalitativ hubb kan du förbättra funktionen på din dator eller surfplatta. Detta är särskilt viktigt för de som använder flera enheter dagligen.",
+            "Det finns modeller som är kompakta och lätta att transportera, vilket gör dem idealiska för resenärer. Andra är designade för skrivbordsmiljöer med fler portar.",
+            "Med rätt USB-hubb kan du också undvika problem med begränsade portar. Detta gör det lättare att arbeta effektivt utan störningar."
           ],
-          "why_important": "USB-hubbar är viktiga för att underlätta arbetet med flera enheter. De sparar plats och tid genom att minska behovet av flera kablar och adaptrar.",
+          "why_important": "I en tid där många enheter kräver anslutning är USB-hubbar avgörande för att maximera användning av teknik. De förenklar vardagen för både privatpersoner och professionella.",
           "source_url": "https://www.wired.com/gallery/best-usb-hubs/"
         },
         {
-          "title": "Vilken iPhone 17-modell ska du köpa?",
-          "ingress": "Apple lanserar nu iPhone 17e, som kompletterar företagets telefonutbud. Denna artikel presenterar skillnader och likheter mellan modellerna för att underlätta ditt val.",
+          "title": "Vilken iPhone 17-modell bör du köpa?",
+          "ingress": "iPhone 17e har lanserats och kompletterar Apples smartphone-sortiment. Här är en översikt av skillnaderna och likheterna mellan modellerna.",
           "summary_paragraphs": [
-            "Det finns flera modeller av iPhone 17, inklusive iPhone 17e.",
-            "Varje modell har sina egna funktioner och specifikationer som kan påverka ditt köp.",
-            "Att förstå skillnaderna kan hjälpa dig att hitta den telefon som passar dina behov bäst.",
-            "Fundera på vad som är viktigast för dig; kamera, batteritid eller skärmstorlek.",
-            "Läs också om de nyaste funktionerna som erbjuds i de olika modellerna."
+            "Den nya iPhone 17-serien består av flera modeller. Var och en erbjuder olika funktioner och prisklasser.",
+            "iPhone 17e riktar sig till dem som vill ha ett mer prisvärt alternativ med bra prestanda.",
+            "Flaggskeppsmodellerna är utrustade med avancerad teknik och högre specifikationer.",
+            "Detta ger konsumenterna möjlighet att välja en telefon som passar deras behov och budget.",
+            "Genom att jämföra modeller kan du fatta ett informerat beslut inför ditt köp."
           ],
-          "why_important": "Att välja rätt iPhone är avgörande för att få en enhet som matchar dina krav. Det kan spara både tid och pengar i längden.",
+          "why_important": "Att förstå skillnaderna mellan modellerna kan leda till en bättre köpupplevelse. Det hjälper konsumenterna att välja den bästa telefonen för sina behov.",
           "source_url": "https://www.wired.com/story/which-apple-iphone-17-models-to-buy/"
-        },
-        {
-          "title": "Trumps konflikt med Iran kan påverka amerikanska bönder negativt",
-          "ingress": "Konflikten i Mellanöstern har lett till stigande priser på gödningsmedel, vilket kan få allvarliga konsekvenser för amerikansk lantbruk.",
-          "summary_paragraphs": [
-            "Mellanöstern står för en stor del av världens tillgångar av gödningsmedel.",
-            "Pågående konflikter i regionen har drivit upp priserna.",
-            "Detta sker inför den viktiga vårsådden i USA.",
-            "Bönder som är beroende av rimliga kostnader för gödningsmedel kan påverkas negativt.",
-            "Höga priser kan leda till minskad produktion och högre livsmedelskostnader."
-          ],
-          "why_important": "Det är viktigt att förstå hur internationella konflikter kan påverka den inhemska ekonomin. Bönder i USA kan behöva anpassa sina strategier på grund av dessa prishöjningar.",
-          "source_url": "https://www.wired.com/story/trumps-war-on-iran-could-screw-over-us-farmers/",
-          "eli5": "Tänk på hur viktigt det är att ha frön och gödningsmedel för att odla mat. Om det blir dyrt att köpa gödningsmedel, kanske bönder inte kan odla tillräckligt mycket mat, och det kan påverka priserna på livsmedel i affären."
         }
       ]
     },
@@ -469,57 +471,58 @@
       "name": "TECH INDUSTRY",
       "stories": [
         {
-          "title": "Google sänker avgifter för appbutik och delvis avvecklar Google Play Billing",
-          "ingress": "Google har idag meddelat att de sänker sina avgifter för apputvecklare. Från juli kommer avgiften för in-app köp och abonnemang att reduceras beroende på var utvecklarna är verksamma.",
+          "title": "Google sänker appstoreavgiften för utvecklare",
+          "ingress": "Google har justerat sina avgifter för apputvecklare och reducerat sin tidigare 30-procentiga avgift. Detta följer efter anklagelser om monopolställning i USA.",
           "summary_paragraphs": [
-            "Från och med juli kommer Google att ta ut 20 procent i avgift för in-app köp.",
-            "För abonnemang kommer avgiften sänkas till 10 procent.",
-            "Denna förändring följer efter att Google blivit bedömt som en olaglig monopolaktör i USA.",
-            "Genom att delvis koppla bort Google Play från Google Play Billing, kan utvecklare nu få mer flexibilitet.",
-            "Det framgår inte av källan exakt vilka regioner som berörs av dessa nya avgifter."
+            "Från och med juli kommer Google att ta ut 20 procent på in-app-köp, beroende på var utvecklaren är verksam.",
+            "För prenumerationer sjunker avgiften till 10 procent.",
+            "Denna förändring innebär en stor lättnad för många utvecklare som tidigare haft svårt att hantera de höga kostnaderna.",
+            "Dessutom har Google delvis separerat Google Play från Google Play Billing.",
+            "Detta är en reaktion på juridiska påtryckningar och kritik angående företagets affärsmetoder.",
+            "Det framgår inte av källan vilka specifika länder som kommer att påverkas av dessa nya avgifter."
           ],
-          "why_important": "Ändringarna kan få stor betydelse för apputvecklare och kan påverka konkurrensen på marknaden. Det är särskilt relevant i ljuset av pågående lagstiftning kring digitala plattformar.",
+          "why_important": "Ändringarna kan påverka hur många utvecklare väljer att använda plattformen, vilket i sin tur kan påverka utbudet av appar och tjänster på Google Play.",
           "source_url": "https://www.theverge.com/tech/889538/google-apps-experience-games-level-up-program"
         },
         {
-          "title": "Epic och Google ingår avtal om nya 'metaverse' appar",
-          "ingress": "Epic Games och Google har kommit överens om ett nytt samarbete kring appbutiker och en ny klass av applikationer kallade 'metaverse browsers'.",
+          "title": "Epic Games och Google ingår avtal om nya 'metaverse'-appar",
+          "ingress": "Epic Games och Google har nått en överenskommelse om en ny klass av appar kallade 'metaverse-browsers'.",
           "summary_paragraphs": [
-            "Avtalet mellan de två techjättarna markerar en förändring i deras tidigare motsättningar.",
-            "Enligt nyligen offentliggjorda dokument kommer de att samarbeta kring utvecklingen av dessa metaverse-appar.",
-            "Det framgår inte av källan hur avtalet konkret kommer att påverka användarna eller applikationerna.",
-            "Den nya klassificeringen av appar syftar till att förbättra användarupplevelsen i digitala miljöer.",
-            "Det är oklart vilka specifika funktioner dessa metaverse-browsers kommer att ha."
+            "Avtalet innebär att de två företagen samarbetar för att utveckla applikationer som ska fungera inom det så kallade metaverset.",
+            "Det framgår inte av källan hur omfattande detta samarbete kommer att vara.",
+            "Enligt dokument som offentliggjorts idag tyder mycket på att Google kommer att göra förändringar i sina appbutiker.",
+            "Det är oklart vilka specifika funktioner som kommer att ingå i dessa nya appar.",
+            "Detta partnerskap markerar en tydlig ändring i relationen mellan Epic och Google, som tidigare varit i konflikt."
           ],
-          "why_important": "Detta samarbete kan få betydelse för framtida apputveckling och användarinteraktion i digitala världar. Avtalet kan också påverka hur andra företag ser på samarbeten inom tekniksektorn.",
+          "why_important": "Samarbetet kan påverka framtidens apputveckling och hur användare interagerar med digitala plattformar. Det kan också få konsekvenser för andra aktörer inom teknikbranschen.",
           "source_url": "https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps"
         },
         {
-          "title": "Google sänker sin Play Store-kommission till 20% efter avtal med Epic Games",
-          "ingress": "Google har beslutat att sänka sin tjänsteavgift för appar på Play Store. Den nya avgiften är 20%, med en valfri 5% för användning av Googles faktureringstjänster.",
+          "title": "Google sänker kommissionen i Play Store till 20%",
+          "ingress": "Google har justerat sin avgiftsstruktur för appbutiken Play Store. Företaget inför en sänkning av kommissionen och nya alternativ för tredjepartsappbutiker.",
           "summary_paragraphs": [
-            "Den nya avgiftsstrukturen kommer att påverka utvecklare som använder Play Store.",
-            "Dessutom planerar Google att införa en ny process för tredjeparts appbutiker.",
-            "Detta steg är en del av ett avtal mellan Google och Epic Games, företaget bakom Fortnite.",
-            "Avgiftssänkningen syftar till att gynna fler apputvecklare och öka konkurrensen.",
-            "Det är oklart hur detta kommer att påverka de redan etablerade alternativen på marknaden."
+            "Den nya avgiften som Google tar ut är 20%, med en valfri tilläggsavgift på 5% för användning av deras faktureringstjänster.",
+            "Ändringarna innebär att utvecklare kan få bättre villkor i sin strävan att nå användare.",
+            "Google planerar också att introducera en ny process för tredjepartsappbutiker.",
+            "Detta steg kan resultera i ökad konkurrens inom appmarknaden.",
+            "Sådana förändringar kan påverka både små och stora utvecklare."
           ],
-          "why_important": "Den förändrade kommissionen kan leda till lägre kostnader för apputvecklare. Detta kan också förändra dynamiken på marknaden för mobilappar.",
+          "why_important": "Ändringarna i kommissionen kan leda till en mer rättvis marknadsplats för apputvecklare. Det kan också påverka valmöjligheterna för användare av appar.",
           "source_url": "https://techcrunch.com/2026/03/04/google-settles-with-epic-games-drops-its-play-store-commissions-to-20/"
         },
         {
-          "title": "PopSockets: En framgångssaga utan riskkapital",
-          "ingress": "PopSockets har sålt 290 miljoner produkter över 115 länder utan att förlita sig på riskkapital. Företaget har visat att en alternativ väg till framgång är möjlig.",
+          "title": "PopSockets: Från försäkringspengar till global succé",
+          "ingress": "PopSockets har på elva år sålt 290 miljoner produkter världen över utan att ta in externa investeringar. Företaget visar att det går att bygga en framgångsrik verksamhet med begränsad finansiering.",
           "summary_paragraphs": [
-            "PopSockets grundades på en vision utan att använda mer än 500 000 dollar i startkapital.",
-            "Företaget har hållit sig borta från traditionella finansieringsmetoder och undvikit utspädning av ägandet.",
-            "Genom att fokusera på innovation och kvalitet har PopSockets blivit en global aktör inom konsumenthårdvara.",
-            "Det framgår att företagets grundare, en filosofilärare, har spelat en central roll i dess framgång.",
-            "PopSockets utmanar den vanliga uppfattningen om att företag måste söka riskkapital för att lyckas."
+            "PopSockets grundades med mindre än 500 000 dollar och en gedigen affärsidé.",
+            "Företaget har sålt produkter i 115 länder.",
+            "Trots branschens fokus på riskkapital visar PopSockets att det finns alternativa vägar till framgång.",
+            "Den drivande kraften bakom företaget är en filosofi-professor som bestämt sig för att förverkliga sin idé.",
+            "Denna strategi av låg dilution har utmanat traditionella affärsmodeller inom konsumentteknik."
           ],
-          "why_important": "Denna framgång visar att alternativa finansieringsmodeller kan vara effektiva. Företaget kan inspirera andra entreprenörer att tänka utanför boxen.",
+          "why_important": "PopSockets erbjuder en alternativ finansieringsmodell som kan inspirera andra entreprenörer. Företagets framgång visar att det är möjligt att växa utan att ge bort ägande.",
           "source_url": "https://techcrunch.com/video/his-house-burned-down-he-used-the-insurance-money-to-build-popsockets/",
-          "eli5": "PopSockets är en typ av tillbehör för mobiltelefoner som gör det enklare att hålla i dem. De började med en liten summa pengar istället för att be rika investerare om hjälp, och ändå blev de jättestora."
+          "eli5": "PopSockets började med att deras grundare fick pengar från sin försäkring för att bygga företaget. Istället för att be rika investerare om pengar, använde han sina egna och lyckades bygga ett stort företag."
         }
       ]
     },
