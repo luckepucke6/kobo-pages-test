@@ -8,53 +8,53 @@
         "name": "SVERIGE",
         "articles": [
           {
-            "rubrik": "Kanada stöder attacker mot Iran med motvilja",
-            "kort_sammanfattning": "Emotiva scener i Sydney när människor flyr konfliktzonen. Australiens skuggförsvarsminister James Paterson framhåller att militärresurser kan behövas för repatriering av medborgare. Han uttrycker oro över bristen på internationell samordning i konflikten och ifrågasätter lagligheten i angripande aktioner. Kanada understryker vikten av internationella lagar för alla involverade parter.",
-            "varfor_det_ar_viktigt": "Detta belyser de globala politiska spänningarna och hur konflikter påverkar civila liv och internationellt samarbete.",
-            "link": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb",
-            "published": "2026-03-04T21:52:35+00:00"
+            "rubrik": "Vita huset svarar på frågor om USAs delaktighet i attack i Iran",
+            "kort_sammanfattning": "Karoline Leavitt avfärdar frågor kring en bombning som påstås ha dödat 175 personer. General Caine meddelar att USA nu kommer att utvidga sina operationer djupare in i iransk territorium. Han betonade att intensiteten av dessa insatser kommer att öka snarare än minska.",
+            "varfor_det_ar_viktigt": "Situationens utveckling kan påverka det geopolitiska läget i Mellanöstern och relationerna mellan USA och Iran.",
+            "link": "https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates",
+            "published": "2026-03-04T22:08:22+00:00"
           },
           {
-            "rubrik": "Techbolag fälld för att ha sålt gymnasieelevers data",
-            "kort_sammanfattning": "GoFan har bestraffats med 1,1 miljoner dollar av Kaliforniens integritetsskyddsmyndighet för att ha sålt data från gymnasieelever. Elever använde tjänsten för att registrera sig till evenemang som fotbollsmatcher och skolbal. När de registrerade sig tvingades de acceptera villkor som tillät företaget att samla och sälja deras personliga information, utan möjlighet att avstå.",
-            "varfor_det_ar_viktigt": "Detta fall belyser allvaret i dataskydd och hur teknikföretag kan bryta mot integritetslagar.",
+            "rubrik": "Kanada stöder attacker mot Iran ‘med sorg’",
+            "kort_sammanfattning": "På morgonen torsdag landade människor som har fastnat i konflikt i Sydney. Liberalen James Paterson säger att det är en utmanande miljö för kommersiella flyg i Mellanöstern. Han menar att militärens hjälp kan behövas för att återföra australiensare om det krävs. Kanada uttrycker oro över att beslut har fattats utan samråd med dem eller FN.",
+            "varfor_det_ar_viktigt": "Detta avspeglar de komplexa internationella relationerna och riskerna för civila liv i en snabbt eskalerande konflikt.",
+            "link": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb",
+            "published": "2026-03-04T22:05:49+00:00"
+          },
+          {
+            "rubrik": "Forskare hyllar livsförändrande läkemedel för barn med resistent epilepsi",
+            "kort_sammanfattning": "Tidiga tester av Zorevunersen visar att läkemedlet är säkert och väl tolererat hos barn med Dravet syndrom. Forskare kallar resultaten lovande för ett svårt behandlingsbart epilepsitillstånd. Dravet syndrom är en genetisk sjukdom som ofta orsakar motståndskraftig epilepsi tillsammans med tal- och utvecklingsförseningar.",
+            "varfor_det_ar_viktigt": "Detta läkemedel kan revolutionera behandlingen för barn som inte svarar på nuvarande terapier.",
+            "link": "https://www.theguardian.com/society/2026/mar/04/scientists-drug-children-zorevunersen-epilepsy-dravet",
+            "published": "2026-03-04T22:00:42+00:00"
+          },
+          {
+            "rubrik": "Pam Bondi i fokus i Epstein-utredning",
+            "kort_sammanfattning": "Fem republikaner i representanthuset har gått samman med demokrater för att utfärda en kallelse till USAs justitieminister Pam Bondi. Detta beslut, som röstades fram med 24-19, är en del av den pågående utredningen kring Jeffrey Epstein och Ghislaine Maxwell. Motionen att tvinga Bondi att vittna ledde av den republikanske representanten Nancy Mace, stödd av flera kollegor.",
+            "varfor_det_ar_viktigt": "Utredningen är avgörande för att belysa mycket kritiska aspekter av Epstein-fall och möjlig korruption.",
+            "link": "https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files",
+            "published": "2026-03-04T21:56:10+00:00"
+          },
+          {
+            "rubrik": "Techföretag bötfälls med 1,1 miljon dollar av Kalifornien för att ha sålt gymnasieelevers data",
+            "kort_sammanfattning": "Kaliforniens sekretessskyddsmyndighet har ålagt techföretaget GoFan en böter på 1,1 miljoner dollar. Företaget har brutit mot sekretesslagar efter att ha samlat in och sålt data från gymnasieelever. Elever som använde GoFans tjänst för att anmäla sig till evenemang har tvingats godkänna en samling av personlig information utan möjlighet att avstå.",
+            "varfor_det_ar_viktigt": "Detta fall belyser vikten av dataskydd och sekretess för unga användare i digitala tjänster.",
             "link": "https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine",
             "published": "2026-03-04T21:44:53+00:00"
           },
           {
-            "rubrik": "Vita huset svarar på frågor om amerikansk inblandning i iransk skolbombning",
-            "kort_sammanfattning": "Karoline Leavitt avfärdar frågor angående en bombning i Iran som dödade 175 personer. General Caine meddelar att USA planerar att utöka sina militära insatser inåt i iransk territorium. Han betonar att offensiven intensifieras och att USA nu har luftöverlägsenhet.",
-            "varfor_det_ar_viktigt": "Detta är viktigt då eventuella militära handlingar kan påverka relationerna mellan USA och Iran samt den regionala stabiliteten.",
-            "link": "https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates",
-            "published": "2026-03-04T21:25:46+00:00"
-          },
-          {
-            "rubrik": "Pam Bondi kallad att vittna i Epstein-utredningen",
-            "kort_sammanfattning": "Republikaner röstade tillsammans med demokrater för att kräva att USA:s justitieminister Pam Bondi ska vittna i utredningen kring Jeffrey Epstein och Ghislaine Maxwell. Omröstningen i representanthuset slutade 24-19 efter att republikanska företrädare, inklusive Nancy Mace, stöttat förslaget. Sex republikaner röstade för motionen, vilket visar på ett intresse från flera håll att följa upp Epstein-fallet.",
-            "varfor_det_ar_viktigt": "Detta kan leda till nya insikter om Epstein-skandalen och potentialen för ökad insyn i rättsväsendets hantering av ärendet.",
-            "link": "https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files",
-            "published": "2026-03-04T21:17:56+00:00"
-          },
-          {
-            "rubrik": "Hur uttömda vapendepåer kan påverka konflikten med Iran",
-            "kort_sammanfattning": "Vapendepåer spelar en betydande roll i den pågående konflikten kring Iran, även om de inte ensam avgör utfallet. Jonathan Beale från BBC framhäver att bristen på vapen kan påverka strategiska val och militära operationer. Detta kan leda till nya dynamiker i konflikten som påverkar både regional och global säkerhet.",
-            "varfor_det_ar_viktigt": "Förståelsen av vapendepåers påverkan är avgörande för att förutsäga framtida militära och politiska beslut i regionen.",
+            "rubrik": "Hur uttömda vapensamlingar kan påverka konflikten i Iran",
+            "kort_sammanfattning": "Vapensamlingar kommer inte ensamma att avgöra utfallet av konflikten, men de utgör en betydande faktor. Johnathan Beale från BBC framhäver att tillgången till vapen kan påverka parternas styrka och strategiska val. Den nuvarande situationen med uttömda lager kan leda till ökad osäkerhet och förändrade maktbalanser.",
+            "varfor_det_ar_viktigt": "Det är viktigt att förstå hur vapentillgången kan påverka både konflikten och regional stabilitet.",
             "link": "https://www.bbc.com/news/articles/cdxzzqe82d2o?at_medium=RSS&at_campaign=rss",
             "published": "2026-03-04T20:57:50+00:00"
           },
           {
-            "rubrik": "Fakulteten vid Bard kräver ledarskapsplan för universitetets president kopplad till Epstein",
-            "kort_sammanfattning": "Fakultetsmedlemmar vid Bard College har begärt att styrelsen utarbetar en plan för övergång av ledarskap för president Leon Botstein. Detta efter avslöjanden om hans relation till den dömda sexualbrottslingen Jeffrey Epstein. Styrelsen har anlitat en extern advokatfirma för att genomföra en oberoende granskning av kommunikationen mellan Epstein och Botstein.",
-            "varfor_det_ar_viktigt": "Frågan påverkar universitetets rykte och ledarskap samtidigt som den belyser allvarliga frågor kring ansvar och etik inom akademiska institutioner.",
+            "rubrik": "Bard-fakultet kräver plan för ledarskapsövergång",
+            "kort_sammanfattning": "Fakultetsmedlemmar vid Bard College har uppmanat styrelsen att utarbeta en plan för ledarskapsövergång för presidenten Leon Botstein. Detta sker efter avslöjanden om hans kopplingar till den avlidne sexförbrytaren Jeffrey Epstein. Styrelsen har anlitat en extern advokatbyrå för att granska kommunikationen mellan Epstein och Botstein, som har varit president i 50 år.",
+            "varfor_det_ar_viktigt": "Frågan rör universitetets ledarskap och dess anseende i samband med allvarliga påståenden.",
             "link": "https://www.theguardian.com/us-news/2026/mar/04/bard-college-leon-botstein-jeffrey-epstein",
             "published": "2026-03-04T20:55:46+00:00"
-          },
-          {
-            "rubrik": "Sánchez svarar på Trumps handelsutspel",
-            "kort_sammanfattning": "Spanien premiärminister Pedro Sánchez har svarat på Donald Trumps hot om att avsluta handeln med Spanien. Sánchez betonar vikten av fredliga relationer och avvisar alla former av konflikter. Han uppmanar istället till samarbete och dialog mellan länder.",
-            "varfor_det_ar_viktigt": "Denna konflikt kan påverka handelsrelationerna mellan USA och EU, vilket gör det viktigt att följa utvecklingen.",
-            "link": "https://www.bbc.com/news/articles/c93wwq1n542o?at_medium=RSS&at_campaign=rss",
-            "published": "2026-03-04T20:42:35+00:00"
           }
         ]
       },
@@ -62,25 +62,25 @@
         "name": "VÄRLDEN",
         "articles": [
           {
-            "rubrik": "Kris i Mellanöstern: USA sänker iranskt krigsfartyg, Israel genomför nya attacker",
-            "kort_sammanfattning": "Över 80 personer har dött och 32 av de 180 besättningsmedlemmarna på fregatten Iris Dena har räddats efter en amerikansk attack. I östra Libanon dödades fyra personer och sex skadades vid en israelisk bombning i Baalbek. Räddningsinsatser pågår för att få ut familjer som är begravda under rasmassorna.",
-            "varfor_det_ar_viktigt": "Den pågående konflikten påverkar stabiliteten i regionen och riskerar att eskalera mellan flera länder.",
-            "link": "https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis",
-            "published": "2026-03-04T21:50:32+00:00"
+            "rubrik": "Högre tullar väntas denna vecka enligt USA:s finansministerium",
+            "kort_sammanfattning": "Scott Bessent meddelar att USA troligen kommer att höja sin globala tull på importerade varor. Den nuvarande nivån på 10% kan därmed justeras uppåt. Nyheten förväntas offentliggöras inom de närmaste dagarna.",
+            "varfor_det_ar_viktigt": "En tullökning kan påverka både inhemsk och internationell handel.",
+            "link": "https://www.bbc.com/news/articles/cjwzzq70qgvo?at_medium=RSS&at_campaign=rss",
+            "published": "2026-03-04T22:11:17+00:00"
           },
           {
-            "rubrik": "Rådet om 'krigskassan': Tusen kronor i kontanter hemma – per vuxen",
-            "kort_sammanfattning": "Riksbanken rekommenderar att varje vuxen har tusen kronor i kontanter hemma. Detta beslut grundas i det aktuella omvärldsläget. Nära 60 procent av hushållen behöver öka sina kontanta medel för att kunna följa rekommendationen.",
-            "varfor_det_ar_viktigt": "Rekommendationen syftar till att stärka hushållens beredskap vid samhällstörningar.",
+            "rubrik": "Krisen i Mellanöstern: USA:s ubåt sänker iranskt krigsfartyg",
+            "kort_sammanfattning": "Över 80 personer har dött och 32 ombord på fregatten Iris Dena har räddats. I ett israeliskt angrepp i Baalbek, Libanon, rapporterades fyra döda och sex skadade. Räddningsinsatser pågår för att hjälpa drabbade familjer.",
+            "varfor_det_ar_viktigt": "Krisen påverkar stabiliteten i regionen och relationerna mellan västländer och Iran.",
+            "link": "https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis",
+            "published": "2026-03-04T22:01:10+00:00"
+          },
+          {
+            "rubrik": "Rådet om ”krigskassan”: Tusen kronor i kontanter hemma – per vuxen",
+            "kort_sammanfattning": "Riksbanken rekommenderar att varje vuxen bör ha tusen kronor i kontanter hemma. Detta råd ges med tanke på det osäkra omvärldsläget. Nära 60 procent av hushållen behöver öka sina kontanta medel för att nå upp till den föreslagna summan.",
+            "varfor_det_ar_viktigt": "Rekommendationen är viktig för att säkerställa finansiell beredskap vid kriser.",
             "link": "https://www.svt.se/nyheter/inrikes/radet-om-krigskassan-tusen-kronor-i-kontanter-hemma-per-vuxen",
             "published": "2026-03-04T21:12:07+00:00"
-          },
-          {
-            "rubrik": "Putin anklagar Ukraina för attack mot gaslastare som exploderade och sjönk utanför Libyen",
-            "kort_sammanfattning": "Vladimir Putin har hävdat att Ukraina genomfört en terroristattack mot det ryska LNG-fartyget Arctic Metagaz. Fartyget, som hade sanktioner från USA och EU, exploderade och sjönk i Medelhavet. Putin beskriver händelsen som ett angrepp på rysk energiinfrastruktur.",
-            "varfor_det_ar_viktigt": "Denna incident kan ytterligare eskalera spänningarna mellan Ryssland och Ukraina samt påverka den globala energimarknaden.",
-            "link": "https://www.theguardian.com/world/2026/mar/04/putin-accuses-ukraine-of-attacking-gas-tanker-that-exploded-and-sank-off-libya",
-            "published": "2026-03-04T19:51:28+00:00"
           }
         ]
       },
@@ -102,51 +102,51 @@
         "name": "AI & MACHINE LEARNING",
         "articles": [
           {
-            "rubrik": "Vad AI-modeller för krig egentligen innebär",
-            "kort_forklaring": "Företag som Anthropic diskuterar gränser för militär användning av AI. Samtidigt tränar Smack Technologies modeller som ska planera militära operationer på slagfältet. Detta väcker frågor om etik och säkerhet i användningen av AI inom försvaret.",
-            "varfor_relevant_ai_tech": "Utvecklingen av AI för militär bruk kan påverka framtida konflikter och globala säkerhetsstrategier.",
+            "rubrik": "Vad AI-modeller för krig verkligen innebär",
+            "kort_forklaring": "Företag som Anthropic diskuterar gränser för militär användning av AI. Samtidigt tränar Smack Technologies modeller för att planera stridsoperationer. Debatten handlar om etiska överväganden i en snabbt förändrande teknologisk miljö.",
+            "varfor_relevant_ai_tech": "Detta är viktigt eftersom det kan påverka framtida militära strategier och skapa nya etiska dilemman.",
             "link": "https://www.wired.com/story/ai-model-military-use-smack-technologies/",
             "published": "2026-03-04T22:00:03+00:00"
           },
           {
             "rubrik": "Apple Music inför transparensetiketter för AI-musik",
-            "kort_forklaring": "Enligt rapporter kommer Apple Music att införa etiketter för att särskilja musik skapad av AI. Det är oklart hur effektivt detta blir, eftersom etiketten eller distributören måste välja att märka sin musik som AI. Detta kan leda till förvirring kring musiktitlar och deras ursprung.",
-            "varfor_relevant_ai_tech": "Detta steg kan påverka hur användare uppfattar och väljer musik skapad av artificiell intelligens.",
+            "kort_forklaring": "Enligt rapporter planerar Apple Music att införa etiketter som tydligt visar när musik är skapad av artificiell intelligens. Musikproducenter och distributörer måste aktivt välja att märka sin musik som AI-genererad. Det är oklart hur många som kommer att delta i denna process och hur stor effekt det får på plattformen.",
+            "varfor_relevant_ai_tech": "Detta initiativ kan påverka hur användare uppfattar och väljer musik i en tid av växande AI-skapat innehåll.",
             "link": "https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/",
             "published": "2026-03-04T21:43:58+00:00"
           },
           {
-            "rubrik": "NotebookLM kan nu sammanfatta forskning i 'cinematiska' videoöversikter",
-            "kort_forklaring": "Google har uppdaterat NotebookLM för att skapa animerade 'cinematiska' videor från användarnas forskning och anteckningar. Tidigare kunde systemet endast generera röstberättade bildspel. Den nya funktionen använder avancerade AI-modeller, inklusive Gemini 3, för att producera mer engagerande videoöversikter.",
-            "varfor_relevant_ai_tech": "Denna innovation gör vetenskaplig information mer tillgänglig och lättförståelig.",
+            "rubrik": "NotebookLM kan nu sammanfatta forskning i 'filmiska' videovisningar",
+            "kort_forklaring": "Googles NotebookLM har uppdaterats för att omvandla användares forskning och anteckningar till fullt animerade 'filmiska' videor. Denna nya funktion går längre än den tidigare videovisningsfunktionen som bara kunde skapa berättade bildspel. Den uppgraderade funktionen använder avancerade AI-modeller som Gemini 3.",
+            "varfor_relevant_ai_tech": "Denna innovation förbättrar hur användare kan presentera och dela sina forskningsresultat på ett mer engagerande sätt.",
             "link": "https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews",
             "published": "2026-03-04T20:32:42+00:00"
           },
           {
             "rubrik": "Ny MacBook Air lanseras med $50 presentkort",
-            "kort_forklaring": "Apples senaste MacBook Air, driven av M5-processorn, erbjuder mer kraft och dubbelt så mycket lagring som tidigare. Basmodellen har nu 512GB lagring men kostar $100 mer än föregångaren. Best Buy säljer den nya 13-tums modellen för $1,099 och erbjuder ett presentkort på $50.",
-            "varfor_relevant_ai_tech": "Denna lansering visar Apples fortsatta innovation och prisstrategi i ett konkurrensutsatt laptopmarknad.",
+            "kort_forklaring": "Apples senaste MacBook Air, drivs av den nya M5-chipet och erbjuder nu dubbel baslagring på 512GB. Priset har dock ökat med $100 jämfört med föregående modell. Best Buy säljer den nya 13-tumsversionen för $1,099 och inkluderar ett presentkort på $50.",
+            "varfor_relevant_ai_tech": "Den nya modellen erbjuder betydande prestandaförbättringar och bättre lagringskapacitet, vilket gör den intressant för både ny och befintlig användare av MacBook.",
             "link": "https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale",
             "published": "2026-03-04T20:23:41+00:00"
           },
           {
             "rubrik": "Världens största biltillverkare har en av de smutsigaste leveranskedjorna: rapport",
-            "kort_forklaring": "Tesla, Ford och Volvo toppar en ny ranking av 18 globala biltillverkare gällande deras arbete mot koldioxidutsläpp och mänskliga rättigheter. Toyota hamnar på en av de lägsta platserna, vilket visar på utmaningarna inom branschen. Rapporten lyfter fram behovet av mer hållbara och etiska leveranskedjor i bilindustrin.",
-            "varfor_relevant_ai_tech": "Detta är viktigt eftersom hållbara metoder kan påverka både miljö och mänskliga rättigheter globalt.",
+            "kort_forklaring": "Tesla, Ford och Volvo ligger högst på en ny ranking av 18 globala biltillverkare. Rankingen bedömer deras insatser för att eliminera koldioxidutsläpp, miljöskador och kränkningar av mänskliga rättigheter i leveranskedjorna. Toyota placerar sig långt ner på listan, vilket visar på de utmaningar som företaget står inför.",
+            "varfor_relevant_ai_tech": "Detta är viktigt eftersom bilindustrin spelar en avgörande roll för både miljö och mänskliga rättigheter.",
             "link": "https://www.theverge.com/transportation/889145/lead-the-charge-supply-chain-leaderboard-toyota-tesla",
             "published": "2026-03-04T20:22:27+00:00"
           },
           {
-            "rubrik": "Konsolexklusivitet kan vara på väg tillbaka",
-            "kort_forklaring": "Framtiden för spelkonsoler kan påminna om det förflutna. Tidigare var konsol-exklusiva spel vanliga, men på senare år har Sony och Microsoft istället erbjudit sina spel på flera plattformar. Nu spekuleras det i att exklusiva titlar kan återvända.",
-            "varfor_relevant_ai_tech": "Detta kan påverka konsolmarknaden och hur spelare upplever titlar i framtiden.",
+            "rubrik": "Konsol-exklusivitet kan vara på väg tillbaka",
+            "kort_forklaring": "Framtiden för spelkonsoler kan likna det förflutna. De senaste åren har konsol-exklusiva spel blivit allt mer sällsynta. Storbolag som Sony och Microsoft har experimenterat med flertalet plattformar för sina titlar. Nu diskuteras en eventuell återkomst av exklusivitet bland konsolspel.",
+            "varfor_relevant_ai_tech": "Detta kan påverka spelmarknaden och hur utvecklare planerar sina titlar.",
             "link": "https://www.theverge.com/entertainment/889336/console-exclusives-comeback",
             "published": "2026-03-04T20:15:00+00:00"
           },
           {
-            "rubrik": "USB-hubbar som kan spara dig mycket besvär",
-            "kort_forklaring": "De många donglarna är ett minne blott. Multiport USB-hubbar erbjuder en bättre lösning för att maximera dina anslutningsmöjligheter. Här är fem av de bästa alternativen för 2026 som underlättar din teknikvardag.",
-            "varfor_relevant_ai_tech": "Att ha rätt USB-hub kan effektivisera arbetsflödet och minska trassel med kablar.",
+            "rubrik": "USB-hubbar kan spara dig mycket besvär – Här är 5 som vi gillar bäst 2026",
+            "kort_forklaring": "Dags att lägga ner donglarna. De här flerportshubbarna ger dig maximala anslutningsmöjligheter. Med ett brett utbud av portar kan du enkelt ansluta flera enheter samtidigt. Dessa hubbar är perfekta för både arbete och fritid.",
+            "varfor_relevant_ai_tech": "Att optimera din anslutningskapacitet är avgörande i en alltmer digitaliserad värld.",
             "link": "https://www.wired.com/gallery/best-usb-hubs/",
             "published": "2026-03-04T20:09:28+00:00"
           }
@@ -156,9 +156,9 @@
         "name": "TECH INDUSTRY",
         "articles": [
           {
-            "rubrik": "Epic och Google ingår avtal om nya 'metaverse'-appar",
-            "kort_forklaring": "Epic Games och Google har enats om ett avtal som syftar till att utveckla en ny kategori av appar, kallade 'metaverse browsers'. Det framgår av nyligen offentliggjorda dokument. Samtidigt visar avtalet på ett förändrat samarbete mellan de två företagen, som tidigare varit i konflikt.",
-            "varfor_relevant_ai_tech": "Avtalet kan bana väg för nya innovationer inom apputveckling och digital interaktion.",
+            "rubrik": "Epic och Google ingår avtal för nya 'metaverse' appar",
+            "kort_forklaring": "Epic Games och Google har kommit överens om ett nytt samarbete. Avtalet rör en ny klass av appar som kallas 'metaverse-browsers'. Dokument visar att parterna enats om flera villkor, vilket kan förändra hur appar utvecklas och distribueras.",
+            "varfor_relevant_ai_tech": "Detta avtal kan ha stor påverkan på framtiden för appbutiker och digitala plattformar.",
             "link": "https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps",
             "published": "2026-03-04T21:49:16+00:00"
           }
@@ -180,54 +180,54 @@
       "name": "Morgontidningen",
       "articles": [
         {
-          "title": "[SVERIGE] Kanada stöder attacker mot Iran med motvilja",
-          "summary": "Emotiva scener i Sydney när människor flyr konfliktzonen. Australiens skuggförsvarsminister James Paterson framhåller att militärresurser kan behövas för repatriering av medborgare. Han uttrycker oro över bristen på internationell samordning i konflikten och ifrågasätter lagligheten i angripande aktioner. Kanada understryker vikten av internationella lagar för alla involverade parter. Detta belyser de globala politiska spänningarna och hur konflikter påverkar civila liv och internationellt samarbete.",
-          "link": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb"
-        },
-        {
-          "title": "[SVERIGE] Techbolag fälld för att ha sålt gymnasieelevers data",
-          "summary": "GoFan har bestraffats med 1,1 miljoner dollar av Kaliforniens integritetsskyddsmyndighet för att ha sålt data från gymnasieelever. Elever använde tjänsten för att registrera sig till evenemang som fotbollsmatcher och skolbal. När de registrerade sig tvingades de acceptera villkor som tillät företaget att samla och sälja deras personliga information, utan möjlighet att avstå. Detta fall belyser allvaret i dataskydd och hur teknikföretag kan bryta mot integritetslagar.",
-          "link": "https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine"
-        },
-        {
-          "title": "[SVERIGE] Vita huset svarar på frågor om amerikansk inblandning i iransk skolbombning",
-          "summary": "Karoline Leavitt avfärdar frågor angående en bombning i Iran som dödade 175 personer. General Caine meddelar att USA planerar att utöka sina militära insatser inåt i iransk territorium. Han betonar att offensiven intensifieras och att USA nu har luftöverlägsenhet. Detta är viktigt då eventuella militära handlingar kan påverka relationerna mellan USA och Iran samt den regionala stabiliteten.",
+          "title": "[SVERIGE] Vita huset svarar på frågor om USAs delaktighet i attack i Iran",
+          "summary": "Karoline Leavitt avfärdar frågor kring en bombning som påstås ha dödat 175 personer. General Caine meddelar att USA nu kommer att utvidga sina operationer djupare in i iransk territorium. Han betonade att intensiteten av dessa insatser kommer att öka snarare än minska. Situationens utveckling kan påverka det geopolitiska läget i Mellanöstern och relationerna mellan USA och Iran.",
           "link": "https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates"
         },
         {
-          "title": "[SVERIGE] Pam Bondi kallad att vittna i Epstein-utredningen",
-          "summary": "Republikaner röstade tillsammans med demokrater för att kräva att USA:s justitieminister Pam Bondi ska vittna i utredningen kring Jeffrey Epstein och Ghislaine Maxwell. Omröstningen i representanthuset slutade 24-19 efter att republikanska företrädare, inklusive Nancy Mace, stöttat förslaget. Sex republikaner röstade för motionen, vilket visar på ett intresse från flera håll att följa upp Epstein-fallet. Detta kan leda till nya insikter om Epstein-skandalen och potentialen för ökad insyn i rättsväsendets hantering av ärendet.",
+          "title": "[SVERIGE] Kanada stöder attacker mot Iran ‘med sorg’",
+          "summary": "På morgonen torsdag landade människor som har fastnat i konflikt i Sydney. Liberalen James Paterson säger att det är en utmanande miljö för kommersiella flyg i Mellanöstern. Han menar att militärens hjälp kan behövas för att återföra australiensare om det krävs. Kanada uttrycker oro över att beslut har fattats utan samråd med dem eller FN. Detta avspeglar de komplexa internationella relationerna och riskerna för civila liv i en snabbt eskalerande konflikt.",
+          "link": "https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb"
+        },
+        {
+          "title": "[SVERIGE] Forskare hyllar livsförändrande läkemedel för barn med resistent epilepsi",
+          "summary": "Tidiga tester av Zorevunersen visar att läkemedlet är säkert och väl tolererat hos barn med Dravet syndrom. Forskare kallar resultaten lovande för ett svårt behandlingsbart epilepsitillstånd. Dravet syndrom är en genetisk sjukdom som ofta orsakar motståndskraftig epilepsi tillsammans med tal- och utvecklingsförseningar. Detta läkemedel kan revolutionera behandlingen för barn som inte svarar på nuvarande terapier.",
+          "link": "https://www.theguardian.com/society/2026/mar/04/scientists-drug-children-zorevunersen-epilepsy-dravet"
+        },
+        {
+          "title": "[SVERIGE] Pam Bondi i fokus i Epstein-utredning",
+          "summary": "Fem republikaner i representanthuset har gått samman med demokrater för att utfärda en kallelse till USAs justitieminister Pam Bondi. Detta beslut, som röstades fram med 24-19, är en del av den pågående utredningen kring Jeffrey Epstein och Ghislaine Maxwell. Motionen att tvinga Bondi att vittna ledde av den republikanske representanten Nancy Mace, stödd av flera kollegor. Utredningen är avgörande för att belysa mycket kritiska aspekter av Epstein-fall och möjlig korruption.",
           "link": "https://www.theguardian.com/us-news/2026/mar/04/house-subpoena-pam-bondi-epstein-files"
         },
         {
-          "title": "[SVERIGE] Hur uttömda vapendepåer kan påverka konflikten med Iran",
-          "summary": "Vapendepåer spelar en betydande roll i den pågående konflikten kring Iran, även om de inte ensam avgör utfallet. Jonathan Beale från BBC framhäver att bristen på vapen kan påverka strategiska val och militära operationer. Detta kan leda till nya dynamiker i konflikten som påverkar både regional och global säkerhet. Förståelsen av vapendepåers påverkan är avgörande för att förutsäga framtida militära och politiska beslut i regionen.",
+          "title": "[SVERIGE] Techföretag bötfälls med 1,1 miljon dollar av Kalifornien för att ha sålt gymnasieelevers data",
+          "summary": "Kaliforniens sekretessskyddsmyndighet har ålagt techföretaget GoFan en böter på 1,1 miljoner dollar. Företaget har brutit mot sekretesslagar efter att ha samlat in och sålt data från gymnasieelever. Elever som använde GoFans tjänst för att anmäla sig till evenemang har tvingats godkänna en samling av personlig information utan möjlighet att avstå. Detta fall belyser vikten av dataskydd och sekretess för unga användare i digitala tjänster.",
+          "link": "https://www.theguardian.com/us-news/2026/mar/04/california-tech-gofan-fine"
+        },
+        {
+          "title": "[SVERIGE] Hur uttömda vapensamlingar kan påverka konflikten i Iran",
+          "summary": "Vapensamlingar kommer inte ensamma att avgöra utfallet av konflikten, men de utgör en betydande faktor. Johnathan Beale från BBC framhäver att tillgången till vapen kan påverka parternas styrka och strategiska val. Den nuvarande situationen med uttömda lager kan leda till ökad osäkerhet och förändrade maktbalanser. Det är viktigt att förstå hur vapentillgången kan påverka både konflikten och regional stabilitet.",
           "link": "https://www.bbc.com/news/articles/cdxzzqe82d2o?at_medium=RSS&at_campaign=rss"
         },
         {
-          "title": "[SVERIGE] Fakulteten vid Bard kräver ledarskapsplan för universitetets president kopplad till Epstein",
-          "summary": "Fakultetsmedlemmar vid Bard College har begärt att styrelsen utarbetar en plan för övergång av ledarskap för president Leon Botstein. Detta efter avslöjanden om hans relation till den dömda sexualbrottslingen Jeffrey Epstein. Styrelsen har anlitat en extern advokatfirma för att genomföra en oberoende granskning av kommunikationen mellan Epstein och Botstein. Frågan påverkar universitetets rykte och ledarskap samtidigt som den belyser allvarliga frågor kring ansvar och etik inom akademiska institutioner.",
+          "title": "[SVERIGE] Bard-fakultet kräver plan för ledarskapsövergång",
+          "summary": "Fakultetsmedlemmar vid Bard College har uppmanat styrelsen att utarbeta en plan för ledarskapsövergång för presidenten Leon Botstein. Detta sker efter avslöjanden om hans kopplingar till den avlidne sexförbrytaren Jeffrey Epstein. Styrelsen har anlitat en extern advokatbyrå för att granska kommunikationen mellan Epstein och Botstein, som har varit president i 50 år. Frågan rör universitetets ledarskap och dess anseende i samband med allvarliga påståenden.",
           "link": "https://www.theguardian.com/us-news/2026/mar/04/bard-college-leon-botstein-jeffrey-epstein"
         },
         {
-          "title": "[SVERIGE] Sánchez svarar på Trumps handelsutspel",
-          "summary": "Spanien premiärminister Pedro Sánchez har svarat på Donald Trumps hot om att avsluta handeln med Spanien. Sánchez betonar vikten av fredliga relationer och avvisar alla former av konflikter. Han uppmanar istället till samarbete och dialog mellan länder. Denna konflikt kan påverka handelsrelationerna mellan USA och EU, vilket gör det viktigt att följa utvecklingen.",
-          "link": "https://www.bbc.com/news/articles/c93wwq1n542o?at_medium=RSS&at_campaign=rss"
+          "title": "[VÄRLDEN] Högre tullar väntas denna vecka enligt USA:s finansministerium",
+          "summary": "Scott Bessent meddelar att USA troligen kommer att höja sin globala tull på importerade varor. Den nuvarande nivån på 10% kan därmed justeras uppåt. Nyheten förväntas offentliggöras inom de närmaste dagarna. En tullökning kan påverka både inhemsk och internationell handel.",
+          "link": "https://www.bbc.com/news/articles/cjwzzq70qgvo?at_medium=RSS&at_campaign=rss"
         },
         {
-          "title": "[VÄRLDEN] Kris i Mellanöstern: USA sänker iranskt krigsfartyg, Israel genomför nya attacker",
-          "summary": "Över 80 personer har dött och 32 av de 180 besättningsmedlemmarna på fregatten Iris Dena har räddats efter en amerikansk attack. I östra Libanon dödades fyra personer och sex skadades vid en israelisk bombning i Baalbek. Räddningsinsatser pågår för att få ut familjer som är begravda under rasmassorna. Den pågående konflikten påverkar stabiliteten i regionen och riskerar att eskalera mellan flera länder.",
+          "title": "[VÄRLDEN] Krisen i Mellanöstern: USA:s ubåt sänker iranskt krigsfartyg",
+          "summary": "Över 80 personer har dött och 32 ombord på fregatten Iris Dena har räddats. I ett israeliskt angrepp i Baalbek, Libanon, rapporterades fyra döda och sex skadade. Räddningsinsatser pågår för att hjälpa drabbade familjer. Krisen påverkar stabiliteten i regionen och relationerna mellan västländer och Iran.",
           "link": "https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis"
         },
         {
-          "title": "[VÄRLDEN] Rådet om 'krigskassan': Tusen kronor i kontanter hemma – per vuxen",
-          "summary": "Riksbanken rekommenderar att varje vuxen har tusen kronor i kontanter hemma. Detta beslut grundas i det aktuella omvärldsläget. Nära 60 procent av hushållen behöver öka sina kontanta medel för att kunna följa rekommendationen. Rekommendationen syftar till att stärka hushållens beredskap vid samhällstörningar.",
+          "title": "[VÄRLDEN] Rådet om ”krigskassan”: Tusen kronor i kontanter hemma – per vuxen",
+          "summary": "Riksbanken rekommenderar att varje vuxen bör ha tusen kronor i kontanter hemma. Detta råd ges med tanke på det osäkra omvärldsläget. Nära 60 procent av hushållen behöver öka sina kontanta medel för att nå upp till den föreslagna summan. Rekommendationen är viktig för att säkerställa finansiell beredskap vid kriser.",
           "link": "https://www.svt.se/nyheter/inrikes/radet-om-krigskassan-tusen-kronor-i-kontanter-hemma-per-vuxen"
-        },
-        {
-          "title": "[VÄRLDEN] Putin anklagar Ukraina för attack mot gaslastare som exploderade och sjönk utanför Libyen",
-          "summary": "Vladimir Putin har hävdat att Ukraina genomfört en terroristattack mot det ryska LNG-fartyget Arctic Metagaz. Fartyget, som hade sanktioner från USA och EU, exploderade och sjönk i Medelhavet. Putin beskriver händelsen som ett angrepp på rysk energiinfrastruktur. Denna incident kan ytterligare eskalera spänningarna mellan Ryssland och Ukraina samt påverka den globala energimarknaden.",
-          "link": "https://www.theguardian.com/world/2026/mar/04/putin-accuses-ukraine-of-attacking-gas-tanker-that-exploded-and-sank-off-libya"
         }
       ]
     },
@@ -235,43 +235,43 @@
       "name": "Tech & AI-morgonbrief",
       "articles": [
         {
-          "title": "[AI & MACHINE LEARNING] Vad AI-modeller för krig egentligen innebär",
-          "summary": "Företag som Anthropic diskuterar gränser för militär användning av AI. Samtidigt tränar Smack Technologies modeller som ska planera militära operationer på slagfältet. Detta väcker frågor om etik och säkerhet i användningen av AI inom försvaret. Utvecklingen av AI för militär bruk kan påverka framtida konflikter och globala säkerhetsstrategier.",
+          "title": "[AI & MACHINE LEARNING] Vad AI-modeller för krig verkligen innebär",
+          "summary": "Företag som Anthropic diskuterar gränser för militär användning av AI. Samtidigt tränar Smack Technologies modeller för att planera stridsoperationer. Debatten handlar om etiska överväganden i en snabbt förändrande teknologisk miljö. Detta är viktigt eftersom det kan påverka framtida militära strategier och skapa nya etiska dilemman.",
           "link": "https://www.wired.com/story/ai-model-military-use-smack-technologies/"
         },
         {
           "title": "[AI & MACHINE LEARNING] Apple Music inför transparensetiketter för AI-musik",
-          "summary": "Enligt rapporter kommer Apple Music att införa etiketter för att särskilja musik skapad av AI. Det är oklart hur effektivt detta blir, eftersom etiketten eller distributören måste välja att märka sin musik som AI. Detta kan leda till förvirring kring musiktitlar och deras ursprung. Detta steg kan påverka hur användare uppfattar och väljer musik skapad av artificiell intelligens.",
+          "summary": "Enligt rapporter planerar Apple Music att införa etiketter som tydligt visar när musik är skapad av artificiell intelligens. Musikproducenter och distributörer måste aktivt välja att märka sin musik som AI-genererad. Det är oklart hur många som kommer att delta i denna process och hur stor effekt det får på plattformen. Detta initiativ kan påverka hur användare uppfattar och väljer musik i en tid av växande AI-skapat innehåll.",
           "link": "https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/"
         },
         {
-          "title": "[AI & MACHINE LEARNING] NotebookLM kan nu sammanfatta forskning i 'cinematiska' videoöversikter",
-          "summary": "Google har uppdaterat NotebookLM för att skapa animerade 'cinematiska' videor från användarnas forskning och anteckningar. Tidigare kunde systemet endast generera röstberättade bildspel. Den nya funktionen använder avancerade AI-modeller, inklusive Gemini 3, för att producera mer engagerande videoöversikter. Denna innovation gör vetenskaplig information mer tillgänglig och lättförståelig.",
+          "title": "[AI & MACHINE LEARNING] NotebookLM kan nu sammanfatta forskning i 'filmiska' videovisningar",
+          "summary": "Googles NotebookLM har uppdaterats för att omvandla användares forskning och anteckningar till fullt animerade 'filmiska' videor. Denna nya funktion går längre än den tidigare videovisningsfunktionen som bara kunde skapa berättade bildspel. Den uppgraderade funktionen använder avancerade AI-modeller som Gemini 3. Denna innovation förbättrar hur användare kan presentera och dela sina forskningsresultat på ett mer engagerande sätt.",
           "link": "https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews"
         },
         {
           "title": "[AI & MACHINE LEARNING] Ny MacBook Air lanseras med $50 presentkort",
-          "summary": "Apples senaste MacBook Air, driven av M5-processorn, erbjuder mer kraft och dubbelt så mycket lagring som tidigare. Basmodellen har nu 512GB lagring men kostar $100 mer än föregångaren. Best Buy säljer den nya 13-tums modellen för $1,099 och erbjuder ett presentkort på $50. Denna lansering visar Apples fortsatta innovation och prisstrategi i ett konkurrensutsatt laptopmarknad.",
+          "summary": "Apples senaste MacBook Air, drivs av den nya M5-chipet och erbjuder nu dubbel baslagring på 512GB. Priset har dock ökat med $100 jämfört med föregående modell. Best Buy säljer den nya 13-tumsversionen för $1,099 och inkluderar ett presentkort på $50. Den nya modellen erbjuder betydande prestandaförbättringar och bättre lagringskapacitet, vilket gör den intressant för både ny och befintlig användare av MacBook.",
           "link": "https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale"
         },
         {
           "title": "[AI & MACHINE LEARNING] Världens största biltillverkare har en av de smutsigaste leveranskedjorna: rapport",
-          "summary": "Tesla, Ford och Volvo toppar en ny ranking av 18 globala biltillverkare gällande deras arbete mot koldioxidutsläpp och mänskliga rättigheter. Toyota hamnar på en av de lägsta platserna, vilket visar på utmaningarna inom branschen. Rapporten lyfter fram behovet av mer hållbara och etiska leveranskedjor i bilindustrin. Detta är viktigt eftersom hållbara metoder kan påverka både miljö och mänskliga rättigheter globalt.",
+          "summary": "Tesla, Ford och Volvo ligger högst på en ny ranking av 18 globala biltillverkare. Rankingen bedömer deras insatser för att eliminera koldioxidutsläpp, miljöskador och kränkningar av mänskliga rättigheter i leveranskedjorna. Toyota placerar sig långt ner på listan, vilket visar på de utmaningar som företaget står inför. Detta är viktigt eftersom bilindustrin spelar en avgörande roll för både miljö och mänskliga rättigheter.",
           "link": "https://www.theverge.com/transportation/889145/lead-the-charge-supply-chain-leaderboard-toyota-tesla"
         },
         {
-          "title": "[AI & MACHINE LEARNING] Konsolexklusivitet kan vara på väg tillbaka",
-          "summary": "Framtiden för spelkonsoler kan påminna om det förflutna. Tidigare var konsol-exklusiva spel vanliga, men på senare år har Sony och Microsoft istället erbjudit sina spel på flera plattformar. Nu spekuleras det i att exklusiva titlar kan återvända. Detta kan påverka konsolmarknaden och hur spelare upplever titlar i framtiden.",
+          "title": "[AI & MACHINE LEARNING] Konsol-exklusivitet kan vara på väg tillbaka",
+          "summary": "Framtiden för spelkonsoler kan likna det förflutna. De senaste åren har konsol-exklusiva spel blivit allt mer sällsynta. Storbolag som Sony och Microsoft har experimenterat med flertalet plattformar för sina titlar. Nu diskuteras en eventuell återkomst av exklusivitet bland konsolspel. Detta kan påverka spelmarknaden och hur utvecklare planerar sina titlar.",
           "link": "https://www.theverge.com/entertainment/889336/console-exclusives-comeback"
         },
         {
-          "title": "[AI & MACHINE LEARNING] USB-hubbar som kan spara dig mycket besvär",
-          "summary": "De många donglarna är ett minne blott. Multiport USB-hubbar erbjuder en bättre lösning för att maximera dina anslutningsmöjligheter. Här är fem av de bästa alternativen för 2026 som underlättar din teknikvardag. Att ha rätt USB-hub kan effektivisera arbetsflödet och minska trassel med kablar.",
+          "title": "[AI & MACHINE LEARNING] USB-hubbar kan spara dig mycket besvär – Här är 5 som vi gillar bäst 2026",
+          "summary": "Dags att lägga ner donglarna. De här flerportshubbarna ger dig maximala anslutningsmöjligheter. Med ett brett utbud av portar kan du enkelt ansluta flera enheter samtidigt. Dessa hubbar är perfekta för både arbete och fritid. Att optimera din anslutningskapacitet är avgörande i en alltmer digitaliserad värld.",
           "link": "https://www.wired.com/gallery/best-usb-hubs/"
         },
         {
-          "title": "[TECH INDUSTRY] Epic och Google ingår avtal om nya 'metaverse'-appar",
-          "summary": "Epic Games och Google har enats om ett avtal som syftar till att utveckla en ny kategori av appar, kallade 'metaverse browsers'. Det framgår av nyligen offentliggjorda dokument. Samtidigt visar avtalet på ett förändrat samarbete mellan de två företagen, som tidigare varit i konflikt. Avtalet kan bana väg för nya innovationer inom apputveckling och digital interaktion.",
+          "title": "[TECH INDUSTRY] Epic och Google ingår avtal för nya 'metaverse' appar",
+          "summary": "Epic Games och Google har kommit överens om ett nytt samarbete. Avtalet rör en ny klass av appar som kallas 'metaverse-browsers'. Dokument visar att parterna enats om flera villkor, vilket kan förändra hur appar utvecklas och distribueras. Detta avtal kan ha stor påverkan på framtiden för appbutiker och digitala plattformar.",
           "link": "https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps"
         }
       ]
