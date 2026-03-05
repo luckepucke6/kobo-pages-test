@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime
+import re
+from datetime import datetime, timedelta
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
@@ -65,6 +67,91 @@ def _clean_text(raw: str) -> str:
     return " ".join(raw.replace("\n", " ").split())
 
 
+def _normalize_title(title: str) -> str:
+    lowered = _clean_text(title).lower()
+    no_punctuation = re.sub(r"[^\w\s]", " ", lowered)
+    return " ".join(no_punctuation.split())
+
+
+def _load_yesterday_titles() -> set[str]:
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    candidate_paths = [
+        PROJECT_ROOT / "pages" / f"{yesterday}.json",
+        OUTPUT_JSON,
+    ]
+
+    for candidate_path in candidate_paths:
+        if not candidate_path.exists():
+            continue
+
+        try:
+            payload = json.loads(candidate_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+
+        if payload.get("date") != yesterday:
+            continue
+
+        titles: set[str] = set()
+        for section in payload.get("sections", []):
+            stories = section.get("stories", []) if isinstance(section, dict) else []
+            if not isinstance(stories, list):
+                continue
+            for story in stories:
+                if not isinstance(story, dict):
+                    continue
+                normalized = _normalize_title(str(story.get("title", "")))
+                if normalized:
+                    titles.add(normalized)
+        return titles
+
+    return set()
+
+
+def _is_duplicate_title(normalized_title: str, yesterday_titles: set[str]) -> bool:
+    if not normalized_title or not yesterday_titles:
+        return False
+
+    if normalized_title in yesterday_titles:
+        return True
+
+    def _token_set(value: str) -> set[str]:
+        return {token for token in value.split() if token}
+
+    def _token_overlap(a: str, b: str) -> float:
+        a_tokens = _token_set(a)
+        b_tokens = _token_set(b)
+        if not a_tokens or not b_tokens:
+            return 0.0
+        intersection = len(a_tokens & b_tokens)
+        union = len(a_tokens | b_tokens)
+        return intersection / union if union else 0.0
+
+    for previous_title in yesterday_titles:
+        sequence_similarity = SequenceMatcher(None, normalized_title, previous_title).ratio()
+        overlap_similarity = _token_overlap(normalized_title, previous_title)
+
+        # If headline is very close, treat as duplicate and skip.
+        if sequence_similarity >= 0.88 or overlap_similarity >= 0.72:
+            return True
+
+    return False
+
+
+def _filter_new_articles(articles: list[dict[str, str]], yesterday_titles: set[str]) -> list[dict[str, str]]:
+    if not yesterday_titles:
+        return articles
+
+    filtered: list[dict[str, str]] = []
+    for article in articles:
+        normalized = _normalize_title(article.get("title", ""))
+        if _is_duplicate_title(normalized, yesterday_titles):
+            continue
+        filtered.append(article)
+
+    return filtered
+
+
 def _keyword_map() -> dict[str, list[str]]:
     return {
         "SVERIGE": ["sverige", "svensk", "sweden", "svt", "stockholm", "göteborg", "malmö"],
@@ -100,13 +187,33 @@ def _keyword_map() -> dict[str, list[str]]:
 
 
 def _pick_section(article: dict[str, str], section_names: list[str]) -> str:
-    text = f"{article.get('title', '')} {article.get('summary', '')}".lower()
-    keywords = _keyword_map()
+    title_text = _clean_text(article.get("title", "")).lower()
+    summary_text = _clean_text(article.get("summary", "")).lower()
+    combined_text = f"{title_text} {summary_text}".strip()
 
-    for section in section_names:
-        for keyword in keywords.get(section, []):
-            if keyword in text:
-                return section
+    rules: list[tuple[str, list[str]]] = [
+        ("SVERIGE", ["sverige", "svensk", "sweden", "stockholm", "göteborg", "malmö", "riksdag", "regering"]),
+        ("VÄRLDEN", ["world", "världen", "internation", "global", "utrikes", "krig", "konflikt", "diplom", "nato", "ukraina", "usa", "eu", "mellanöstern"]),
+        ("EKONOMI", ["ekonomi", "finance", "finans", "börs", "inflation", "ränta", "bank", "budget", "marknad", "gdp", "recession"]),
+        ("AI", ["ai", "artificial intelligence", "machine learning", "ml", "llm", "modell", "model", "neural", "transformer", "inference"]),
+        ("TECH INDUSTRY", ["apple", "google", "microsoft", "meta", "amazon", "nvidia", "big tech", "tech company", "semiconductor", "chip"]),
+        ("VETENSKAP", ["science", "vetenskap", "climate", "klimat", "miljö", "environment", "utsläpp", "forskning", "väder", "biodiversity"]),
+    ]
+
+    canonical_to_project = {
+        "AI": "AI för utvecklare",
+        "VETENSKAP": "VETENSKAP & MILJÖ",
+    }
+
+    for canonical_section, keywords in rules:
+        if any(keyword in combined_text for keyword in keywords):
+            mapped_section = canonical_to_project.get(canonical_section, canonical_section)
+            if mapped_section in section_names:
+                return mapped_section
+
+    if "VÄRLDEN" in section_names:
+        return "VÄRLDEN"
+
     return section_names[0]
 
 
@@ -168,10 +275,18 @@ def _select_most_important_articles(
     return [articles[index] for index in valid_indices[:limit]]
 
 
-def summarize_article(title: str, content: str) -> dict:
+def summarize_article(
+    title: str,
+    content: str,
+    *,
+    require_eli5: bool = False,
+    include_dev_implication: bool = False,
+) -> dict:
     content = _clean_text(content)
     combined = f"{title} {content}".lower()
     is_complex = any(topic in combined for topic in COMPLEX_TOPICS)
+    json_dev_field = ',\n  "implication_for_developers": "1–2 meningar"' if include_dev_implication else ""
+    rules_dev_line = "\n- Lägg till implication_for_developers med 1–2 korta meningar för utvecklare." if include_dev_implication else ""
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -193,7 +308,8 @@ def summarize_article(title: str, content: str) -> dict:
                     '  "ingress": "1–2 meningar",\n'
                     '  "summary_paragraphs": ["Brödtext, totalt 4–6 meningar i korta stycken"],\n'
                     '  "why_important": "1–2 meningar",\n'
-                    '  "eli5": "valfritt, bara vid komplexa ämnen"\n'
+                    '  "eli5": "valfritt, bara vid komplexa ämnen"'
+                    f"{json_dev_field}\n"
                     "}\n\n"
                     "Regler:\n"
                     "- Skriv på svenska.\n"
@@ -201,7 +317,8 @@ def summarize_article(title: str, content: str) -> dict:
                     "- Ingress ska ge snabb överblick.\n"
                     "- Brödtext ska vara 4–6 meningar totalt och lätt att läsa på e-läsare.\n"
                     "- Varför det är viktigt ska vara 1–2 meningar.\n"
-                    f"- ELI5 ska {'inkluderas' if is_complex else 'utelämnas'} för den här artikeln."
+                    f"- ELI5 ska {'inkluderas' if (is_complex or require_eli5) else 'utelämnas'} för den här artikeln."
+                    f"{rules_dev_line}"
                 ),
             },
         ],
@@ -227,20 +344,34 @@ def summarize_article(title: str, content: str) -> dict:
         summary_paragraphs = summary_paragraphs + [summary_paragraphs[-1]] * (4 - len(summary_paragraphs))
 
     eli5 = _clean_text(payload.get("eli5", ""))
+    implication_for_developers = _clean_text(payload.get("implication_for_developers", ""))
+
+    if require_eli5 and not eli5:
+        eli5 = "I korthet: nyheten handlar om hur AI-modeller och verktyg utvecklas och används i praktiken."
+
+    if include_dev_implication and not implication_for_developers:
+        implication_for_developers = "Detta påverkar val av modell, verktyg och driftmiljö för utvecklare."
 
     return {
         "title": _clean_text(payload.get("title", title)) or title,
         "ingress": _clean_text(payload.get("ingress", "")) or "En snabb överblick över dagens utveckling.",
         "summary_paragraphs": summary_paragraphs,
         "why_important": _clean_text(payload.get("why_important", "Det här är viktigt för att förstå dagens nyhetsläge.")),
-        "eli5": eli5 if is_complex and eli5 else None,
+        "eli5": eli5 if (is_complex or require_eli5) and eli5 else None,
+        "implication_for_developers": implication_for_developers if include_dev_implication else None,
     }
 
 
-def _build_story(article: dict[str, str]) -> dict[str, Any]:
+def _build_story(article: dict[str, str], section_name: str) -> dict[str, Any]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
     source_summary = _clean_text(article.get("summary", ""))
-    summarized = summarize_article(title=title, content=source_summary)
+    is_ai_section = section_name in {"AI", "AI för utvecklare", "AI & MACHINE LEARNING"}
+    summarized = summarize_article(
+        title=title,
+        content=source_summary,
+        require_eli5=is_ai_section,
+        include_dev_implication=is_ai_section,
+    )
     image_url = article.get("image_url")
 
     story: dict[str, Any] = {
@@ -255,15 +386,18 @@ def _build_story(article: dict[str, str]) -> dict[str, Any]:
     if summarized.get("eli5"):
         story["eli5"] = summarized["eli5"]
 
+    if summarized.get("implication_for_developers"):
+        story["implication_for_developers"] = summarized["implication_for_developers"]
+
     return story
 
 
-def _build_general_article(article: dict[str, str]) -> dict[str, Any]:
-    return _build_story(article)
+def _build_general_article(article: dict[str, str], section_name: str) -> dict[str, Any]:
+    return _build_story(article, section_name)
 
 
-def _build_tech_article(article: dict[str, str]) -> dict[str, Any]:
-    return _build_story(article)
+def _build_tech_article(article: dict[str, str], section_name: str) -> dict[str, Any]:
+    return _build_story(article, section_name)
 
 
 def _story_priority_bucket(story: dict[str, Any], section_name: str) -> int:
@@ -313,7 +447,7 @@ def _sectioned_newspaper(
         if limit is not None:
             section_articles = _select_most_important_articles(section_name, section_articles, limit)
 
-        mapped_stories = [mapper(article) for article in section_articles]
+        mapped_stories = [mapper(article, section_name) for article in section_articles]
         grouped[section_name] = _sort_stories_by_importance(mapped_stories, section_name)
 
     return [{"name": name, "stories": grouped[name]} for name in section_names]
@@ -346,6 +480,20 @@ def _generate_overview_bullets(sections: list[dict[str, Any]]) -> list[str]:
         "kändis",
     }
 
+    def _short_explanation(text: str, max_words: int = 10) -> str:
+        cleaned = _clean_text(text)
+        if not cleaned:
+            return "Viktig utveckling idag."
+
+        words = cleaned.split()
+        limited_words = words[:max_words]
+        compact = " ".join(limited_words).rstrip(" ,;:-")
+        if not compact:
+            return "Viktig utveckling idag."
+        if not compact.endswith((".", "!", "?")):
+            compact += "."
+        return compact
+
     for section in sections:
         section_name = section.get("name", "")
         for story in section.get("stories", []):
@@ -373,43 +521,27 @@ def _generate_overview_bullets(sections: list[dict[str, Any]]) -> list[str]:
         return []
 
     ranked_candidates = sorted(story_candidates, key=lambda item: int(item.get("score", 0)), reverse=True)
-    top_candidates = ranked_candidates[:16]
+    top_candidates = ranked_candidates[:5]
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        response_format={"type": "json_object"},
-        messages=[
-            {
-                "role": "system",
-                "content": SYSTEM_PROMPT,
-            },
-            {
-                "role": "user",
-                "content": (
-                    "Skapa avsnittet 'Det viktigaste idag' med 4–6 punktlistor. "
-                    "Varje punkt ska vara exakt en kort mening. "
-                    "Prioritera globalt viktiga nyheter inom geopolitik, ekonomi, teknik och klimat. "
-                    "Undvik lokala småhändelser.\n\n"
-                    "Kandidater:\n"
-                    f"{json.dumps(top_candidates, ensure_ascii=False)}\n\n"
-                    "Returnera endast JSON: {\"overview_bullets\": [\"...\", \"...\"]}"
-                ),
-            },
-        ],
-    )
+    bullets: list[str] = []
+    for candidate in top_candidates:
+        headline = _clean_text(str(candidate.get("title", "")))
+        explanation_source = _clean_text(str(candidate.get("why", "")))
 
-    payload = json.loads(response.choices[0].message.content or "{}")
-    bullets = payload.get("overview_bullets", [])
-    if not isinstance(bullets, list):
-        return []
+        if not headline:
+            continue
 
-    clean_bullets = [_clean_text(str(item)) for item in bullets if _clean_text(str(item))]
-    return clean_bullets[:6]
+        explanation = _short_explanation(explanation_source, max_words=10)
+        bullets.append(f"{headline} – {explanation}")
+
+    return bullets[:5]
 
 
 def _build_payload(raw_news: dict[str, list[dict[str, str]]]) -> dict[str, Any]:
-    general_articles = raw_news.get("general", [])
-    tech_articles = raw_news.get("tech", [])
+    yesterday_titles = _load_yesterday_titles()
+
+    general_articles = _filter_new_articles(raw_news.get("general", []), yesterday_titles)
+    tech_articles = _filter_new_articles(raw_news.get("tech", []), yesterday_titles)
 
     general_sections = _sectioned_newspaper(
         general_articles,
