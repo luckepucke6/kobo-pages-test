@@ -26,6 +26,22 @@ USER_AGENT = (
 )
 MAX_TEXT_LENGTH = 30000
 MIN_ARTICLE_WORDS = 150
+MIN_CLEAN_ARTICLE_WORDS = 250
+MIN_PARAGRAPH_LENGTH = 40
+
+BOILERPLATE_PATTERNS = [
+    r"\bsubscribe\b",
+    r"\blogin to continue\b",
+    r"\bpaywall\b",
+    r"\badvertisement\b",
+    r"\bcookie consent\b",
+]
+
+NAVIGATION_PATTERNS = [
+    r"\bshare\b",
+    r"\bfollow\b",
+    r"\bread more\b",
+]
 
 
 def _clean(value: str) -> str:
@@ -47,7 +63,8 @@ def _extract_with_bs4(html: str) -> str:
         text = re.sub(r"<script[\\s\\S]*?</script>", " ", html, flags=re.IGNORECASE)
         text = re.sub(r"<style[\\s\\S]*?</style>", " ", text, flags=re.IGNORECASE)
         text = re.sub(r"<[^>]+>", " ", text)
-        return _clean(text)[:MAX_TEXT_LENGTH]
+        text = _clean(text)[:MAX_TEXT_LENGTH]
+        return text
 
     soup = BeautifulSoup(html, "html.parser")
     for tag in soup(["script", "style", "noscript"]):
@@ -60,7 +77,7 @@ def _extract_with_bs4(html: str) -> str:
     paragraphs = [paragraph for paragraph in paragraphs if paragraph]
 
     if paragraphs:
-        return _clean(" ".join(paragraphs))[:MAX_TEXT_LENGTH]
+        return "\n\n".join(paragraphs)[:MAX_TEXT_LENGTH]
 
     body_text = _clean(soup.get_text(" ", strip=True))
     return body_text[:MAX_TEXT_LENGTH]
@@ -99,6 +116,53 @@ def _fetch_text(url: str) -> str:
     return _extract_with_bs4(html)
 
 
+def _contains_pattern(text: str, patterns: list[str]) -> bool:
+    lowered = text.lower()
+    return any(re.search(pattern, lowered) for pattern in patterns)
+
+
+def _split_paragraphs(text: str) -> list[str]:
+    normalized = (text or "").replace("\r\n", "\n").replace("\r", "\n")
+    paragraphs = [part.strip() for part in re.split(r"\n\s*\n", normalized) if part.strip()]
+    if paragraphs:
+        return paragraphs
+    return [part.strip() for part in re.split(r"(?<=[.!?])\s+", normalized) if part.strip()]
+
+
+def clean_article(article: dict[str, str]) -> dict[str, str] | None:
+    raw_text = str(article.get("text", ""))
+    paragraphs = _split_paragraphs(raw_text)
+
+    seen: set[str] = set()
+    cleaned_paragraphs: list[str] = []
+
+    for paragraph in paragraphs:
+        cleaned = _clean(paragraph)
+        if not cleaned:
+            continue
+        if len(cleaned) < MIN_PARAGRAPH_LENGTH:
+            continue
+        if _contains_pattern(cleaned, BOILERPLATE_PATTERNS):
+            continue
+        if _contains_pattern(cleaned, NAVIGATION_PATTERNS):
+            continue
+
+        dedupe_key = cleaned.lower()
+        if dedupe_key in seen:
+            continue
+        seen.add(dedupe_key)
+        cleaned_paragraphs.append(cleaned)
+
+    cleaned_text = "\n\n".join(cleaned_paragraphs)
+    cleaned_text = cleaned_text[:MAX_TEXT_LENGTH]
+    word_count = len(_clean(cleaned_text).split())
+    if word_count < MIN_CLEAN_ARTICLE_WORDS:
+        return None
+
+    article["text"] = cleaned_text
+    return article
+
+
 def _is_valid_article_text(text: str, min_words: int = MIN_ARTICLE_WORDS) -> bool:
     words = _clean(text).split()
     return len(words) >= min_words
@@ -132,19 +196,23 @@ def run() -> Path:
         if not _is_valid_article_text(text):
             continue
 
-        output.append(
-            {
-                "title": title,
-                "url": url,
-                "source_url": url,
-                "source": source,
-                "source_domain": _source_domain(url),
-                "summary": summary,
-                "published": published,
-                "image_url": image_url,
-                "text": text,
-            }
-        )
+        article = {
+            "title": title,
+            "url": url,
+            "source_url": url,
+            "source": source,
+            "source_domain": _source_domain(url),
+            "summary": summary,
+            "published": published,
+            "image_url": image_url,
+            "text": text,
+        }
+
+        cleaned_article = clean_article(article)
+        if cleaned_article is None:
+            continue
+
+        output.append(cleaned_article)
 
     return write_json(EXTRACTED_OUTPUT, output)
 

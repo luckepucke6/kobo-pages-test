@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from statistics import mean
 from typing import Any
+import re
 
 from app.models import (
     CLUSTERED_OUTPUT,
@@ -35,6 +36,7 @@ AI_TECH_KEYWORDS = {
     "tech",
 }
 FINAL_ARTICLE_LIMIT = 12
+PAYWALL_KEYWORDS = ["subscribe", "paywall", "log in", "continue reading"]
 
 
 def _print_header(title: str) -> None:
@@ -46,6 +48,27 @@ def _summary_sentence_count(summary: Any) -> int:
         return len([clean_text(item) for item in summary if clean_text(item)])
     cleaned = clean_text(summary)
     return 1 if cleaned else 0
+
+
+def _split_sentences(text: str) -> list[str]:
+    cleaned = clean_text(text)
+    if not cleaned:
+        return []
+    return [part.strip() for part in re.split(r"(?<=[.!?])\s+", cleaned) if part.strip()]
+
+
+def _count_duplicate_sentences(sentences: list[str]) -> int:
+    seen: set[str] = set()
+    duplicates = 0
+    for sentence in sentences:
+        normalized = clean_text(sentence).lower()
+        if not normalized:
+            continue
+        if normalized in seen:
+            duplicates += 1
+            continue
+        seen.add(normalized)
+    return duplicates
 
 
 def _to_float(value: Any) -> float:
@@ -257,6 +280,71 @@ def main() -> None:
         print(f"cluster_size: {_to_int(article.get('cluster_size', 1), 1)}")
         print(f"source_domain: {clean_text(article.get('source_domain', ''))}")
         print("-")
+
+    _print_header("DUPLICATE TITLE DETECTION")
+    deduped_payload = read_json(DEDUPED_OUTPUT, default=[])
+    deduped_titles = [
+        clean_text(item.get("title", "")).lower()
+        for item in deduped_payload
+        if isinstance(item, dict) and clean_text(item.get("title", ""))
+    ]
+    duplicate_titles_count = sum(count - 1 for count in Counter(deduped_titles).values() if count > 1)
+    print(f"duplicate_titles_count: {duplicate_titles_count}")
+
+    _print_header("DUPLICATE SUMMARY SENTENCE DETECTION")
+    quotes_payload = read_json(QUOTES_OUTPUT, default=[])
+    duplicate_summary_sentences = 0
+    for item in quotes_payload:
+        if not isinstance(item, dict):
+            continue
+        summary_value = item.get("summary", [])
+        if isinstance(summary_value, list):
+            summary_text = " ".join(clean_text(part) for part in summary_value if clean_text(part))
+        else:
+            summary_text = clean_text(summary_value)
+        duplicate_summary_sentences += _count_duplicate_sentences(_split_sentences(summary_text))
+    print(f"duplicate_summary_sentences: {duplicate_summary_sentences}")
+
+    _print_header("PAYWALL DETECTION")
+    paywall_detected = False
+    for item in extracted_items:
+        if not isinstance(item, dict):
+            continue
+        article_text = clean_text(item.get("text", "")).lower()
+        if any(keyword in article_text for keyword in PAYWALL_KEYWORDS):
+            paywall_detected = True
+            break
+
+    if paywall_detected:
+        print("PAYWALL_CONTENT_DETECTED")
+    else:
+        print("No paywall content detected.")
+
+    _print_header("SOURCE DISTRIBUTION")
+    source_counter: Counter[str] = Counter(
+        clean_text(item.get("source_domain", "")).lower()
+        for item in summarized_items
+        if isinstance(item, dict) and clean_text(item.get("source_domain", ""))
+    )
+    for domain, count in source_counter.most_common():
+        print(f"{domain}: {count}")
+
+    _print_header("SUMMARY SENTENCE STATISTICS")
+    summary_min = min(summary_lengths) if summary_lengths else 0
+    summary_max = max(summary_lengths) if summary_lengths else 0
+    summary_avg = mean(summary_lengths) if summary_lengths else 0.0
+    print(f"minimum sentence count: {summary_min}")
+    print(f"maximum sentence count: {summary_max}")
+    print(f"average sentence count: {summary_avg:.2f}")
+
+    _print_header("PIPELINE HEALTH REPORT")
+    print(f"Articles extracted: {extracted_count}")
+    print(f"Articles after dedupe: {after_dedupe}")
+    print(f"Clusters: {cluster_count}")
+    print(f"Clusters with multiple sources: {multi_source_clusters}")
+    print("")
+    print(f"Duplicate titles: {duplicate_titles_count}")
+    print(f"Duplicate summary sentences: {duplicate_summary_sentences}")
 
 
 if __name__ == "__main__":

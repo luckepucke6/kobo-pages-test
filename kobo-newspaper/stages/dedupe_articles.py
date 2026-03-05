@@ -84,6 +84,24 @@ TOPIC_KEYWORDS = {
     ],
 }
 
+SOURCE_AUTHORITY_WEIGHTS: dict[str, float] = {
+    "svt.se": 3.0,
+    "dn.se": 3.0,
+    "svd.se": 3.0,
+    "di.se": 2.0,
+    "bbc.com": 2.0,
+    "theguardian.com": 2.0,
+}
+
+IMPORTANCE_KEYWORDS = [
+    "geopolitics",
+    "economy",
+    "ai",
+    "technology",
+    "war",
+    "election",
+]
+
 AI_TECH_KEYWORDS = [
     "ai",
     "artificial intelligence",
@@ -328,12 +346,37 @@ def _recency_score(article: dict[str, Any], now: datetime) -> float:
     return max(0.0, 1.0 - (age_hours / 48.0))
 
 
-def _importance_score(article: dict[str, Any], source_count: int, now: datetime) -> float:
-    topic = float(_topic_score(article))
+def compute_importance_score(article: dict[str, Any]) -> float:
+    now = datetime.now(timezone.utc)
     recency = _recency_score(article, now)
-    swedish_boost = 1.0 if _is_preferred(article) else 0.0
-    coverage = math.log(max(source_count, 1))
-    return (3.0 * topic) + (4.0 * recency) + (2.0 * swedish_boost) + (1.5 * coverage)
+    recency_score = 1.0 + (2.0 * recency)
+
+    source_domain = _clean(article.get("source_domain", article.get("source", ""))).lower()
+    source_weight = SOURCE_AUTHORITY_WEIGHTS.get(source_domain, 1.0)
+
+    combined_text = " ".join(
+        [
+            _clean(article.get("title", "")).lower(),
+            _clean(article.get("summary", "")).lower(),
+            _clean(article.get("text", "")).lower(),
+        ]
+    )
+    combined_text = re.sub(r"[^\w\s]", " ", combined_text)
+    combined_text = " ".join(combined_text.split())
+
+    keyword_matches = 0
+    for keyword in IMPORTANCE_KEYWORDS:
+        pattern = r"\b" + re.escape(keyword.lower()) + r"\b"
+        if re.search(pattern, combined_text):
+            keyword_matches += 1
+
+    keyword_score = 1.0 + (0.35 * keyword_matches)
+
+    source_coverage_count = int(article.get("source_coverage_count", 1) or 1)
+    cluster_size_bonus = 1.0 + (0.25 * math.log(max(source_coverage_count, 1) + 1.0))
+
+    importance_score = recency_score * source_weight * keyword_score * cluster_size_bonus
+    return max(importance_score, 0.0)
 
 
 def _classify_category(article: dict[str, Any]) -> str:
@@ -474,11 +517,11 @@ def run() -> Path:
 
     deduped = list(deduped_by_title.values())
 
-    now = datetime.now(timezone.utc)
     for article in deduped:
         event = _event_key(article.get("title", ""))
         source_count = len(source_coverage_by_event.get(event, set()))
-        score = _importance_score(article, source_count=source_count, now=now)
+        article["source_coverage_count"] = source_count
+        score = compute_importance_score(article)
         article["importance_score"] = round(score, 4)
         article["category"] = _classify_category(article)
 

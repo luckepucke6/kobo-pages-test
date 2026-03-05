@@ -26,13 +26,40 @@ STAGES: list[tuple[str, Callable[[], Path]]] = [
 ]
 
 FINAL_ARTICLE_LIMIT = 12
+MAX_ARTICLES_PER_DOMAIN = 3
 
 
 def _limit_final_articles(path: Path, max_articles: int = FINAL_ARTICLE_LIMIT) -> None:
     payload = read_json(path, default=[])
     if not isinstance(payload, list):
         return
-    write_json(path, payload[:max_articles])
+
+    ranked_articles = [item for item in payload if isinstance(item, dict)]
+    selected_articles: list[dict] = []
+    domain_counts: dict[str, int] = {}
+    selected_ids: set[int] = set()
+
+    for article in ranked_articles:
+        domain = str(article.get("source_domain", "")).strip().lower() or "unknown"
+        if domain_counts.get(domain, 0) >= MAX_ARTICLES_PER_DOMAIN:
+            continue
+
+        selected_articles.append(article)
+        selected_ids.add(id(article))
+        domain_counts[domain] = domain_counts.get(domain, 0) + 1
+
+        if len(selected_articles) == max_articles:
+            break
+
+    if len(selected_articles) < max_articles:
+        for article in ranked_articles:
+            if id(article) in selected_ids:
+                continue
+            selected_articles.append(article)
+            if len(selected_articles) == max_articles:
+                break
+
+    write_json(path, selected_articles[:max_articles])
 
 
 def run_pipeline() -> list[tuple[str, Path]]:
