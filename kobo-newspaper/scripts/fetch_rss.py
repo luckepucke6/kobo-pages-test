@@ -8,6 +8,7 @@ import time
 from typing import Any
 
 import feedparser
+import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_OUTPUT_PATH = PROJECT_ROOT / "pages" / "raw_articles.json"
@@ -15,10 +16,9 @@ RAW_OUTPUT_PATH = PROJECT_ROOT / "pages" / "raw_articles.json"
 PREFERRED_SWEDISH_SOURCES = {
     "SVT Nyheter",
     "Sveriges Radio",
-    "DN",
     "SvD",
+    "DN",
     "DI",
-    "Omni",
 }
 
 SECONDARY_INTERNATIONAL_SOURCES = {
@@ -34,18 +34,33 @@ ALLOWED_SOURCES = PREFERRED_SWEDISH_SOURCES | SECONDARY_INTERNATIONAL_SOURCES
 
 SOURCE_PRIORITY = {
     "SVT Nyheter": 1,
-    "Sveriges Radio": 1,
-    "DN": 1,
-    "SvD": 1,
-    "DI": 1,
-    "Omni": 1,
-    "Reuters": 2,
-    "BBC": 2,
-    "Guardian": 2,
-    "AP": 2,
-    "MIT Technology Review": 2,
-    "Ars Technica": 2,
+    "Sveriges Radio": 2,
+    "SvD": 3,
+    "DN": 4,
+    "DI": 5,
+    "Reuters": 6,
+    "BBC": 7,
+    "Guardian": 8,
+    "AP": 9,
+    "MIT Technology Review": 10,
+    "Ars Technica": 11,
 }
+
+SOURCE_FETCH_ORDER = [
+    "SVT Nyheter",
+    "Sveriges Radio",
+    "SvD",
+    "DN",
+    "DI",
+    "Reuters",
+    "BBC",
+    "Guardian",
+    "AP",
+    "MIT Technology Review",
+    "Ars Technica",
+]
+
+MAX_ARTICLES_PER_SOURCE = 3
 
 SOURCE_ALIASES = {
     "reuters": "Reuters",
@@ -65,7 +80,6 @@ SOURCE_ALIASES = {
     "svd": "SvD",
     "dagens industri": "DI",
     "di": "DI",
-    "omni": "Omni",
     "mit technology review": "MIT Technology Review",
     "technology review": "MIT Technology Review",
     "ars technica": "Ars Technica",
@@ -74,10 +88,9 @@ SOURCE_ALIASES = {
 GENERAL_FEEDS: list[tuple[str, str]] = [
     ("https://www.svt.se/nyheter/rss.xml", "SVT Nyheter"),
     ("https://feeds.sr.se/senasteekot", "Sveriges Radio"),
-    ("https://www.dn.se/rss/", "DN"),
     ("https://www.svd.se/?service=rss", "SvD"),
+    ("https://www.dn.se/rss/", "DN"),
     ("https://www.di.se/rss/", "DI"),
-    ("https://omni.se/rss", "Omni"),
     ("https://www.reuters.com/world/rss", "Reuters"),
     ("https://feeds.bbci.co.uk/news/world/rss.xml", "BBC"),
     ("https://www.theguardian.com/world/rss", "Guardian"),
@@ -91,6 +104,12 @@ TECH_FEEDS: list[tuple[str, str]] = [
 
 GENERAL_LIMIT = 20
 TECH_LIMIT = 15
+REQUEST_TIMEOUT = 10
+FETCH_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/122.0.0.0 Safari/537.36"
+)
 
 
 def _to_utc_datetime(time_struct: time.struct_time | None) -> datetime | None:
@@ -138,25 +157,30 @@ def _extract_image_url(entry: dict[str, Any]) -> str | None:
     return None
 
 
-def _extract_quotes(text: str) -> list[str]:
-    clean_text = (text or "").strip()
-    if not clean_text:
-        return []
+def _extract_article_text(article_url: str) -> str:
+    if not article_url:
+        return ""
 
-    quote_patterns = [
-        r'"([^"]{20,280})"',
-        r"“([^”]{20,280})”",
-    ]
+    headers = {"User-Agent": FETCH_USER_AGENT}
+    try:
+        response = requests.get(article_url, timeout=REQUEST_TIMEOUT, headers=headers)
+        response.raise_for_status()
+    except requests.RequestException:
+        return ""
 
-    quotes: list[str] = []
-    for pattern in quote_patterns:
-        matches = re.findall(pattern, clean_text)
-        for match in matches:
-            quote = " ".join(str(match).split())
-            if quote and quote not in quotes:
-                quotes.append(quote)
+    html = response.text or ""
+    html = re.sub(r"<script[\s\S]*?</script>", " ", html, flags=re.IGNORECASE)
+    html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.IGNORECASE)
 
-    return quotes[:3]
+    paragraph_matches = re.findall(r"<p[^>]*>([\s\S]*?)</p>", html, flags=re.IGNORECASE)
+    if paragraph_matches:
+        text_blocks = [re.sub(r"<[^>]+>", " ", block) for block in paragraph_matches]
+        article_text = " ".join(" ".join(block.split()) for block in text_blocks if block.strip())
+    else:
+        plain = re.sub(r"<[^>]+>", " ", html)
+        article_text = " ".join(plain.split())
+
+    return article_text[:8000]
 
 
 def _normalize_topic_key(title: str, summary: str) -> str:
@@ -271,7 +295,7 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
         summary = (entry.get("summary") or entry.get("description") or "").strip()
         published_dt = _extract_published_datetime(entry)
         image_url = _extract_image_url(entry)
-        quotes = _extract_quotes(summary)
+        article_text = _extract_article_text(link)
 
         entry_source_data = entry.get("source") or {}
         entry_source_title = ""
@@ -296,10 +320,10 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
                 "link": link,
                 "published": published_dt.isoformat(),
                 "summary": summary,
+                "article_text": article_text,
                 "source": source_name,
                 "source_name": source_name,
                 "image_url": image_url,
-                "quotes": quotes,
                 "topic_key": topic_key,
             }
         )
@@ -311,19 +335,45 @@ def _sort_by_published_desc(articles: list[dict[str, Any]]) -> list[dict[str, An
     return sorted(articles, key=lambda item: item["published"], reverse=True)
 
 
+def _sort_feeds_by_priority(feeds: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    order_index = {source: index for index, source in enumerate(SOURCE_FETCH_ORDER)}
+    return sorted(feeds, key=lambda feed: order_index.get(feed[1], 999))
+
+
+def _limit_articles_per_source(
+    articles: list[dict[str, Any]], max_per_source: int = MAX_ARTICLES_PER_SOURCE
+) -> list[dict[str, Any]]:
+    source_counts: dict[str, int] = {}
+    limited: list[dict[str, Any]] = []
+
+    for article in articles:
+        source_name = str(article.get("source_name") or "")
+        current_count = source_counts.get(source_name, 0)
+        if current_count >= max_per_source:
+            continue
+
+        limited.append(article)
+        source_counts[source_name] = current_count + 1
+
+    return limited
+
+
 def fetch_all_news() -> dict[str, list[dict[str, str]]]:
     since = datetime.now(timezone.utc) - timedelta(hours=24)
     general_news: list[dict[str, str]] = []
     tech_news: list[dict[str, str]] = []
 
-    for url, source in GENERAL_FEEDS:
+    for url, source in _sort_feeds_by_priority(GENERAL_FEEDS):
         general_news.extend(_extract_entries(url, since, source))
 
-    for url, source in TECH_FEEDS:
+    for url, source in _sort_feeds_by_priority(TECH_FEEDS):
         tech_news.extend(_extract_entries(url, since, source))
 
     general_news = _sort_by_published_desc(general_news)
     tech_news = _sort_by_published_desc(tech_news)
+
+    general_news = _limit_articles_per_source(general_news)
+    tech_news = _limit_articles_per_source(tech_news)
 
     general_news = _deduplicate_source_topic(general_news)
     tech_news = _deduplicate_source_topic(tech_news)

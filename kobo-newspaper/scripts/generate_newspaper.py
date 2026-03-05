@@ -619,15 +619,29 @@ def summarize_article(
 
 def _build_story(article: dict[str, str], section_name: str) -> dict[str, Any]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
-    source_summary = _clean_text(article.get("summary", ""))
+    source_text = _clean_text(article.get("article_text", "")) or _clean_text(article.get("summary", ""))
     is_ai_section = section_name in {"AI", "AI FÖR ML-INGENJÖRER", "AI & MACHINE LEARNING"}
     summarized = summarize_article(
         title=title,
-        content=source_summary,
+        content=source_text,
         require_eli5=is_ai_section,
         include_ml_implication=is_ai_section,
     )
     image_url = article.get("image_url")
+
+    quote_text_candidates = " ".join(
+        [
+            _clean_text(summarized.get("ingress", "")),
+            _clean_text(" ".join(summarized.get("summary_paragraphs", []))),
+            _clean_text(summarized.get("why_important", "")),
+        ]
+    )
+    quote_matches = re.findall(r'"([^"]{20,280})"|“([^”]{20,280})”', quote_text_candidates)
+    extracted_quotes: list[str] = []
+    for quoted_a, quoted_b in quote_matches:
+        quote = _clean_text(quoted_a or quoted_b)
+        if quote and quote not in extracted_quotes:
+            extracted_quotes.append(quote)
 
     story: dict[str, Any] = {
         "title": f"UPDATE: {summarized['title']}" if article.get("update_tag") == "UPDATE" else summarized["title"],
@@ -649,6 +663,9 @@ def _build_story(article: dict[str, str], section_name: str) -> dict[str, Any]:
 
     if article.get("update_tag") == "UPDATE":
         story["update_tag"] = "UPDATE"
+
+    if extracted_quotes:
+        story["quotes"] = extracted_quotes[:3]
 
     return story
 
