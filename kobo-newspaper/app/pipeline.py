@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from app.models import DEDUPED_OUTPUT, read_json, write_json
+from app.models import CLUSTERED_OUTPUT, read_json, write_json
 
 from stages import build_html
 from stages import cluster_articles
@@ -39,8 +39,8 @@ def run_pipeline() -> list[tuple[str, Path]]:
     results: list[tuple[str, Path]] = []
     for stage_name, stage_run in STAGES:
         output_path = stage_run()
-        if stage_name == "dedupe_articles":
-            _limit_final_articles(DEDUPED_OUTPUT, FINAL_ARTICLE_LIMIT)
+        if stage_name == "cluster_articles":
+            _limit_final_articles(CLUSTERED_OUTPUT, FINAL_ARTICLE_LIMIT)
         results.append((stage_name, output_path))
         print(f"[{stage_name}] wrote {output_path}")
     return results

@@ -9,7 +9,7 @@ from typing import Any
 from app.models import DEDUPED_OUTPUT, EXTRACTED_OUTPUT, read_json, write_json
 
 PREFERRED_SWEDISH_DOMAINS = {"svt.se", "sr.se", "sverigesradio.se", "svd.se", "dn.se", "di.se"}
-FINAL_ARTICLE_COUNT = 12
+MAX_PRECLUSTER_ARTICLES = 60
 
 BANNED_KEYWORDS = [
     "sport",
@@ -84,6 +84,122 @@ TOPIC_KEYWORDS = {
     ],
 }
 
+AI_TECH_KEYWORDS = [
+    "ai",
+    "artificial intelligence",
+    "machine learning",
+    "large language model",
+    "llm",
+    "openai",
+    "anthropic",
+    "deepmind",
+    "nvidia",
+    "gpu",
+    "semiconductor",
+]
+
+ECONOMY_KEYWORDS = [
+    "inflation",
+    "interest rate",
+    "central bank",
+    "market",
+    "stock",
+    "economy",
+    "oil",
+    "bank",
+]
+
+SWEDEN_KEYWORDS = [
+    "sweden",
+    "sverige",
+    "kristersson",
+    "riksdag",
+    "regering",
+    "stockholm",
+]
+
+SCIENCE_KEYWORDS = [
+    "science",
+    "forskning",
+    "climate",
+    "klimat",
+    "miljö",
+    "environment",
+    "utsläpp",
+    "energi",
+]
+
+MAX_AI_TECH_ARTICLES = 4
+MIN_SWEDEN_ARTICLES = 3
+MIN_WORLD_ARTICLES = 3
+
+PRODUCT_REVIEW_KEYWORDS = [
+    "review",
+    "best",
+    "guide",
+    "tested",
+    "top 10",
+    "comparison",
+    "vs",
+]
+
+OPINION_KEYWORDS = [
+    "opinion",
+    "analysis",
+    "editorial",
+    "column",
+    "insändare",
+    "debatt",
+]
+
+LIFESTYLE_KEYWORDS = [
+    "headphones",
+    "earbuds",
+    "fitness",
+    "diet",
+    "recipe",
+    "travel",
+    "hotel",
+    "fashion",
+]
+
+TITLE_STOPWORDS = {
+    "the",
+    "a",
+    "an",
+    "and",
+    "or",
+    "for",
+    "to",
+    "of",
+    "in",
+    "on",
+    "at",
+    "with",
+    "from",
+    "by",
+    "is",
+    "are",
+    "det",
+    "den",
+    "en",
+    "ett",
+    "och",
+    "eller",
+    "för",
+    "med",
+    "som",
+    "att",
+    "från",
+    "om",
+    "på",
+    "i",
+    "av",
+    "till",
+    "nu",
+    "idag",
+}
+
 
 def _clean(value: Any) -> str:
     return " ".join(str(value or "").replace("\n", " ").split())
@@ -93,6 +209,14 @@ def _normalize_title(title: str) -> str:
     text = _clean(title).lower()
     text = re.sub(r"[^\w\s]", " ", text)
     return " ".join(text.split())
+
+
+def _normalized_headline_key(title: str) -> str:
+    normalized = _normalize_title(title)
+    if not normalized:
+        return ""
+    tokens = [token for token in normalized.split() if token not in TITLE_STOPWORDS]
+    return " ".join(tokens)[:150]
 
 
 def _event_key(title: str) -> str:
@@ -153,7 +277,19 @@ def _is_low_relevance(article: dict[str, Any]) -> bool:
         return True
 
     banned = BANNED_KEYWORDS + LOCAL_CITY_KEYWORDS
-    return any(keyword in title for keyword in banned)
+    if any(keyword in title for keyword in banned):
+        return True
+
+    if any(keyword in title for keyword in PRODUCT_REVIEW_KEYWORDS):
+        return True
+
+    if any(keyword in title for keyword in OPINION_KEYWORDS):
+        return True
+
+    if any(keyword in title for keyword in LIFESTYLE_KEYWORDS):
+        return True
+
+    return False
 
 
 def _parse_datetime(value: str) -> datetime | None:
@@ -198,6 +334,98 @@ def _importance_score(article: dict[str, Any], source_count: int, now: datetime)
     swedish_boost = 1.0 if _is_preferred(article) else 0.0
     coverage = math.log(max(source_count, 1))
     return (3.0 * topic) + (4.0 * recency) + (2.0 * swedish_boost) + (1.5 * coverage)
+
+
+def _classify_category(article: dict[str, Any]) -> str:
+    def contains_keyword(text: str, keyword: str) -> bool:
+        pattern = r"\b" + re.escape(keyword.lower()) + r"\b"
+        return re.search(pattern, text) is not None
+
+    def contains_any_keyword(text: str, keywords: list[str]) -> bool:
+        return any(contains_keyword(text, keyword) for keyword in keywords)
+
+    text = " ".join(
+        [
+            _clean(article.get("title", "")).lower(),
+            _clean(article.get("text", "")).lower(),
+        ]
+    )
+    text = re.sub(r"[^\w\s]", " ", text)
+    text = " ".join(text.split())
+
+    if contains_any_keyword(text, SWEDEN_KEYWORDS):
+        return "Sweden"
+    if contains_any_keyword(text, ECONOMY_KEYWORDS):
+        return "Economy"
+    for keyword in AI_TECH_KEYWORDS:
+        if contains_keyword(text, keyword):
+            return "AI_Tech"
+    if contains_any_keyword(text, SCIENCE_KEYWORDS):
+        return "Science"
+    return "World"
+
+
+def _pick_top_from_category(articles: list[dict[str, Any]], category: str, limit: int) -> list[dict[str, Any]]:
+    matches = [article for article in articles if article.get("category") == category]
+    matches.sort(key=lambda item: float(item.get("importance_score", 0.0)), reverse=True)
+    return matches[:limit]
+
+
+def _balanced_selection(sorted_articles: list[dict[str, Any]], final_limit: int) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = []
+    selected_ids: set[int] = set()
+
+    def _add_article(article: dict[str, Any]) -> None:
+        article_id = id(article)
+        if article_id in selected_ids:
+            return
+        selected.append(article)
+        selected_ids.add(article_id)
+
+    for article in _pick_top_from_category(sorted_articles, "Sweden", MIN_SWEDEN_ARTICLES):
+        if len(selected) >= final_limit:
+            break
+        _add_article(article)
+
+    for article in _pick_top_from_category(sorted_articles, "World", MIN_WORLD_ARTICLES):
+        if len(selected) >= final_limit:
+            break
+        _add_article(article)
+
+    while len(selected) < final_limit:
+        remaining = [article for article in sorted_articles if id(article) not in selected_ids]
+        if not remaining:
+            break
+
+        ai_count = sum(1 for article in selected if article.get("category") == "AI_Tech")
+
+        best_candidate: dict[str, Any] | None = None
+        best_adjusted_score = float("-inf")
+        for candidate in remaining:
+            adjusted_score = float(candidate.get("importance_score", 0.0))
+            if candidate.get("category") == "AI_Tech" and ai_count >= MAX_AI_TECH_ARTICLES:
+                adjusted_score *= 0.75
+
+            if adjusted_score > best_adjusted_score:
+                best_adjusted_score = adjusted_score
+                best_candidate = candidate
+
+        if best_candidate is None:
+            break
+
+        if best_candidate.get("category") == "AI_Tech" and ai_count >= MAX_AI_TECH_ARTICLES:
+            best_candidate["importance_score"] = round(float(best_candidate.get("importance_score", 0.0)) * 0.75, 4)
+
+        _add_article(best_candidate)
+
+    selected.sort(
+        key=lambda item: (
+            float(item.get("importance_score", 0.0)),
+            str(item.get("published_at", item.get("published", ""))),
+        ),
+        reverse=True,
+    )
+    return selected[:final_limit]
 
 
 def _choose_best(current: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
@@ -252,6 +480,7 @@ def run() -> Path:
         source_count = len(source_coverage_by_event.get(event, set()))
         score = _importance_score(article, source_count=source_count, now=now)
         article["importance_score"] = round(score, 4)
+        article["category"] = _classify_category(article)
 
     deduped.sort(
         key=lambda item: (
@@ -260,7 +489,31 @@ def run() -> Path:
         ),
         reverse=True,
     )
-    deduped = deduped[:FINAL_ARTICLE_COUNT]
+
+    deduped_by_headline_key: dict[str, dict[str, Any]] = {}
+    for article in deduped:
+        key = _normalized_headline_key(article.get("title", ""))
+        if not key:
+            continue
+
+        existing = deduped_by_headline_key.get(key)
+        if existing is None:
+            deduped_by_headline_key[key] = article
+            continue
+
+        if float(article.get("importance_score", 0.0)) > float(existing.get("importance_score", 0.0)):
+            deduped_by_headline_key[key] = article
+
+    deduped = list(deduped_by_headline_key.values())
+    deduped.sort(
+        key=lambda item: (
+            float(item.get("importance_score", 0.0)),
+            str(item.get("published_at", item.get("published", ""))),
+        ),
+        reverse=True,
+    )
+    limit = min(MAX_PRECLUSTER_ARTICLES, len(deduped))
+    deduped = _balanced_selection(deduped, limit)
 
     return write_json(DEDUPED_OUTPUT, deduped)
 
