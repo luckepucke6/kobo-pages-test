@@ -17,19 +17,20 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_JSON = PROJECT_ROOT / "pages" / "newspaper.json"
 
 GENERAL_SECTIONS = ["SVERIGE", "VÄRLDEN", "EKONOMI", "VETENSKAP & MILJÖ"]
-TECH_SECTIONS = ["AI för utvecklare", "TECH INDUSTRY", "VERKTYG & OPEN SOURCE", "FORSKNING"]
+TECH_SECTIONS = ["AI FÖR ML-INGENJÖRER", "TECH INDUSTRY", "VERKTYG & OPEN SOURCE", "FORSKNING"]
+ALL_SECTIONS = GENERAL_SECTIONS + TECH_SECTIONS
 SECTION_LIMITS = {
     "SVERIGE": 5,
     "VÄRLDEN": 6,
     "EKONOMI": 4,
     "VETENSKAP & MILJÖ": 3,
-    "AI för utvecklare": 6,
+    "AI FÖR ML-INGENJÖRER": 6,
     "TECH INDUSTRY": 4,
 }
 SECTION_PRIORITY = {
     "VÄRLDEN": 1,
     "EKONOMI": 2,
-    "AI för utvecklare": 3,
+    "AI FÖR ML-INGENJÖRER": 3,
     "TECH INDUSTRY": 3,
     "VERKTYG & OPEN SOURCE": 3,
     "FORSKNING": 4,
@@ -73,7 +74,7 @@ def _normalize_title(title: str) -> str:
     return " ".join(no_punctuation.split())
 
 
-def _load_yesterday_titles() -> set[str]:
+def _load_yesterday_stories() -> list[dict[str, str]]:
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
     candidate_paths = [
         PROJECT_ROOT / "pages" / f"{yesterday}.json",
@@ -92,7 +93,7 @@ def _load_yesterday_titles() -> set[str]:
         if payload.get("date") != yesterday:
             continue
 
-        titles: set[str] = set()
+        yesterday_stories: list[dict[str, str]] = []
         for section in payload.get("sections", []):
             stories = section.get("stories", []) if isinstance(section, dict) else []
             if not isinstance(stories, list):
@@ -100,56 +101,286 @@ def _load_yesterday_titles() -> set[str]:
             for story in stories:
                 if not isinstance(story, dict):
                     continue
-                normalized = _normalize_title(str(story.get("title", "")))
+                old_title = _clean_text(str(story.get("title", "")))
+                old_text = " ".join(
+                    [
+                        _clean_text(str(story.get("ingress", ""))),
+                        _clean_text(" ".join(story.get("summary_paragraphs", []))) if isinstance(story.get("summary_paragraphs"), list) else "",
+                        _clean_text(str(story.get("why_important", ""))),
+                    ]
+                ).strip()
+                normalized = _normalize_title(old_title)
                 if normalized:
-                    titles.add(normalized)
-        return titles
+                    yesterday_stories.append(
+                        {
+                            "normalized_title": normalized,
+                            "title": old_title,
+                            "text": old_text,
+                        }
+                    )
+        return yesterday_stories
 
-    return set()
-
-
-def _is_duplicate_title(normalized_title: str, yesterday_titles: set[str]) -> bool:
-    if not normalized_title or not yesterday_titles:
-        return False
-
-    if normalized_title in yesterday_titles:
-        return True
-
-    def _token_set(value: str) -> set[str]:
-        return {token for token in value.split() if token}
-
-    def _token_overlap(a: str, b: str) -> float:
-        a_tokens = _token_set(a)
-        b_tokens = _token_set(b)
-        if not a_tokens or not b_tokens:
-            return 0.0
-        intersection = len(a_tokens & b_tokens)
-        union = len(a_tokens | b_tokens)
-        return intersection / union if union else 0.0
-
-    for previous_title in yesterday_titles:
-        sequence_similarity = SequenceMatcher(None, normalized_title, previous_title).ratio()
-        overlap_similarity = _token_overlap(normalized_title, previous_title)
-
-        # If headline is very close, treat as duplicate and skip.
-        if sequence_similarity >= 0.88 or overlap_similarity >= 0.72:
-            return True
-
-    return False
+    return []
 
 
-def _filter_new_articles(articles: list[dict[str, str]], yesterday_titles: set[str]) -> list[dict[str, str]]:
-    if not yesterday_titles:
+def _extract_numbers(text: str) -> set[str]:
+    return set(re.findall(r"\b\d+[\d.,]*\b", text or ""))
+
+
+def _has_new_development(current_text: str, previous_text: str) -> bool:
+    development_terms = {
+        "ny",
+        "nya",
+        "nu",
+        "idag",
+        "senaste",
+        "uppdater",
+        "beslut",
+        "överenskommelse",
+        "avtal",
+        "sanktion",
+        "lanser",
+        "announc",
+        "approved",
+        "agreement",
+    }
+
+    current_lower = (current_text or "").lower()
+    previous_lower = (previous_text or "").lower()
+    return any(term in current_lower and term not in previous_lower for term in development_terms)
+
+
+def _is_significant_update(
+    current_title_norm: str,
+    current_text: str,
+    previous_story: dict[str, str],
+) -> bool:
+    previous_title_norm = previous_story.get("normalized_title", "")
+    previous_text = previous_story.get("text", "")
+
+    headline_similarity = SequenceMatcher(None, current_title_norm, previous_title_norm).ratio()
+    headline_changed_significantly = headline_similarity <= 0.80
+
+    current_numbers = _extract_numbers(current_text)
+    previous_numbers = _extract_numbers(previous_text)
+    has_new_numbers = len(current_numbers - previous_numbers) > 0
+
+    has_new_development = _has_new_development(current_text, previous_text)
+
+    return headline_changed_significantly or has_new_numbers or has_new_development
+
+
+def _find_best_previous_match(current_title_norm: str, yesterday_stories: list[dict[str, str]]) -> tuple[dict[str, str] | None, float]:
+    best_story: dict[str, str] | None = None
+    best_score = 0.0
+
+    for story in yesterday_stories:
+        score = SequenceMatcher(None, current_title_norm, story.get("normalized_title", "")).ratio()
+        if score > best_score:
+            best_score = score
+            best_story = story
+
+    return best_story, best_score
+
+
+def _filter_new_articles(articles: list[dict[str, Any]], yesterday_stories: list[dict[str, str]]) -> list[dict[str, Any]]:
+    if not yesterday_stories:
         return articles
+
+    filtered: list[dict[str, Any]] = []
+    for article in articles:
+        title = _clean_text(str(article.get("title", "")))
+        summary = _clean_text(str(article.get("summary", "")))
+        normalized = _normalize_title(title)
+        current_text = f"{title} {summary}".strip()
+
+        if not normalized:
+            filtered.append(article)
+            continue
+
+        previous_story, similarity = _find_best_previous_match(normalized, yesterday_stories)
+
+        if previous_story is None or similarity < 0.75:
+            filtered.append(article)
+            continue
+
+        if _is_significant_update(normalized, current_text, previous_story):
+            updated_article = dict(article)
+            updated_article["update_tag"] = "UPDATE"
+            filtered.append(updated_article)
+            continue
+
+        # Same story as yesterday without meaningful update -> skip.
+        continue
+
+    return filtered
+
+
+def _filter_relevant_articles(articles: list[dict[str, str]]) -> list[dict[str, str]]:
+    clickbait_terms = {
+        "du kommer inte tro",
+        "chock",
+        "otroliga",
+        "måste se",
+        "viral",
+        "så här",
+        "här är varför",
+        "click here",
+        "you won't believe",
+    }
+    local_only_terms = {
+        "kommunfullmäktige",
+        "lokaltrafik",
+        "stadsdel",
+        "byalag",
+        "grannskap",
+        "i lilla",
+    }
+    low_impact_crime_terms = {
+        "enskild person",
+        "mindre stöld",
+        "ringa",
+        "inbrott i villa",
+        "snatteri",
+    }
+    lifestyle_terms = {
+        "kändis",
+        "mode",
+        "skönhet",
+        "recept",
+        "tv-serie",
+        "filmrecension",
+        "inredning",
+        "hälsotips",
+        "relationer",
+    }
+    opinion_terms = {
+        "opinion",
+        "ledare",
+        "debatt",
+        "krönika",
+        "insändare",
+        "tyck till",
+    }
+
+    preferred_terms = {
+        "swedish politics": ["sverige", "riksdag", "regering", "partiledare", "utskott", "statsminister"],
+        "geopolitics": ["geopolit", "krig", "konflikt", "nato", "försvar", "ukraina", "ryssland"],
+        "economy": ["ekonomi", "inflation", "ränta", "budget", "gdp", "arbetsmarknad", "finans"],
+        "ai": ["ai", "llm", "machine learning", "modell", "inference", "openai", "neural"],
+        "technology": ["teknik", "tech", "chip", "semiconductor", "mjukvara", "plattform"],
+        "national_crime": ["nationell", "rikstäckande", "organiserad brottslighet", "gäng", "säpo", "polisinsats"],
+    }
 
     filtered: list[dict[str, str]] = []
     for article in articles:
-        normalized = _normalize_title(article.get("title", ""))
-        if _is_duplicate_title(normalized, yesterday_titles):
+        title = _clean_text(article.get("title", "")).lower()
+        summary = _clean_text(article.get("summary", "")).lower()
+        text = f"{title} {summary}".strip()
+
+        if not title:
             continue
+
+        if any(term in text for term in clickbait_terms):
+            continue
+        if any(term in text for term in lifestyle_terms):
+            continue
+        if any(term in text for term in opinion_terms):
+            continue
+        if any(term in text for term in local_only_terms):
+            continue
+        if any(term in text for term in low_impact_crime_terms):
+            continue
+
+        relevance_score = 0
+        for keywords in preferred_terms.values():
+            relevance_score += sum(1 for keyword in keywords if keyword in text)
+
+        if relevance_score <= 0:
+            continue
+
         filtered.append(article)
 
     return filtered
+
+
+def _published_key(article: dict[str, str]) -> str:
+    return str(article.get("published", ""))
+
+
+def _geo_bucket(article: dict[str, str]) -> str:
+    title = _clean_text(article.get("title", "")).lower()
+    summary = _clean_text(article.get("summary", "")).lower()
+    text = f"{title} {summary}".strip()
+
+    sweden_terms = [
+        "sverige",
+        "svensk",
+        "sweden",
+        "riksdag",
+        "regering",
+        "stockholm",
+        "göteborg",
+        "malmö",
+        "svt",
+        "sveriges radio",
+    ]
+    global_terms = [
+        "world",
+        "världen",
+        "global",
+        "usa",
+        "eu",
+        "nato",
+        "ukraina",
+        "krig",
+        "konflikt",
+        "geopolit",
+        "international",
+    ]
+
+    sweden_score = sum(1 for term in sweden_terms if term in text)
+    global_score = sum(1 for term in global_terms if term in text)
+
+    if sweden_score > global_score and sweden_score > 0:
+        return "SWEDEN"
+
+    return "GLOBAL"
+
+
+def _select_balanced_articles(
+    articles: list[dict[str, str]],
+    sweden_target: int = 6,
+    global_target: int = 7,
+) -> list[dict[str, str]]:
+    if not articles:
+        return []
+
+    target_total = sweden_target + global_target
+    ranked_articles = sorted(articles, key=_published_key, reverse=True)
+
+    sweden_articles = [article for article in ranked_articles if _geo_bucket(article) == "SWEDEN"]
+    global_articles = [article for article in ranked_articles if _geo_bucket(article) == "GLOBAL"]
+
+    selected: list[dict[str, str]] = []
+    selected.extend(sweden_articles[:sweden_target])
+    selected.extend(global_articles[:global_target])
+
+    if len(selected) < min(target_total, len(ranked_articles)):
+        remaining_global = [article for article in global_articles if article not in selected]
+        for article in remaining_global:
+            selected.append(article)
+            if len(selected) >= min(target_total, len(ranked_articles)):
+                break
+
+    if len(selected) < min(target_total, len(ranked_articles)):
+        remaining_sweden = [article for article in sweden_articles if article not in selected]
+        for article in remaining_sweden:
+            selected.append(article)
+            if len(selected) >= min(target_total, len(ranked_articles)):
+                break
+
+    return sorted(selected, key=_published_key, reverse=True)
 
 
 def _keyword_map() -> dict[str, list[str]]:
@@ -158,21 +389,31 @@ def _keyword_map() -> dict[str, list[str]]:
         "VÄRLDEN": ["world", "världen", "ukraina", "usa", "eu", "global", "krig", "konflikt"],
         "EKONOMI": ["ekonomi", "börs", "inflation", "ränta", "bank", "budget", "marknad", "gdp"],
         "VETENSKAP & MILJÖ": ["klimat", "miljö", "forskning", "science", "hälsa", "väder", "utsläpp"],
-        "AI för utvecklare": [
+        "AI FÖR ML-INGENJÖRER": [
+            "new model",
+            "new models",
             "machine learning",
+            "ml research",
+            "research",
+            "paper",
             "mlops",
             "python",
             "pytorch",
             "tensorflow",
             "scikit",
             "ai infrastructure",
+            "data infrastructure",
+            "feature store",
+            "data pipeline",
             "inference",
+            "inference tool",
             "serving",
             "model serving",
             "vector database",
             "cuda",
             "kubernetes",
             "open source",
+            "framework",
             "llm",
             "model",
             "hugging face",
@@ -201,7 +442,7 @@ def _pick_section(article: dict[str, str], section_names: list[str]) -> str:
     ]
 
     canonical_to_project = {
-        "AI": "AI för utvecklare",
+        "AI": "AI FÖR ML-INGENJÖRER",
         "VETENSKAP": "VETENSKAP & MILJÖ",
     }
 
@@ -280,13 +521,22 @@ def summarize_article(
     content: str,
     *,
     require_eli5: bool = False,
-    include_dev_implication: bool = False,
+    include_ml_implication: bool = False,
 ) -> dict:
     content = _clean_text(content)
     combined = f"{title} {content}".lower()
     is_complex = any(topic in combined for topic in COMPLEX_TOPICS)
-    json_dev_field = ',\n  "implication_for_developers": "1–2 meningar"' if include_dev_implication else ""
-    rules_dev_line = "\n- Lägg till implication_for_developers med 1–2 korta meningar för utvecklare." if include_dev_implication else ""
+    json_ml_fields = (
+        ',\n  "what_happened": "1–2 meningar",\n  "why_it_matters_for_ml_engineers": "1–2 meningar"'
+        if include_ml_implication
+        else ""
+    )
+    rules_ml_lines = (
+        "\n- Lägg till what_happened med 1–2 korta meningar."
+        "\n- Lägg till why_it_matters_for_ml_engineers med 1–2 korta meningar."
+        if include_ml_implication
+        else ""
+    )
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -309,7 +559,7 @@ def summarize_article(
                     '  "summary_paragraphs": ["Brödtext, totalt 4–6 meningar i korta stycken"],\n'
                     '  "why_important": "1–2 meningar",\n'
                     '  "eli5": "valfritt, bara vid komplexa ämnen"'
-                    f"{json_dev_field}\n"
+                    f"{json_ml_fields}\n"
                     "}\n\n"
                     "Regler:\n"
                     "- Skriv på svenska.\n"
@@ -318,7 +568,7 @@ def summarize_article(
                     "- Brödtext ska vara 4–6 meningar totalt och lätt att läsa på e-läsare.\n"
                     "- Varför det är viktigt ska vara 1–2 meningar.\n"
                     f"- ELI5 ska {'inkluderas' if (is_complex or require_eli5) else 'utelämnas'} för den här artikeln."
-                    f"{rules_dev_line}"
+                    f"{rules_ml_lines}"
                 ),
             },
         ],
@@ -344,13 +594,17 @@ def summarize_article(
         summary_paragraphs = summary_paragraphs + [summary_paragraphs[-1]] * (4 - len(summary_paragraphs))
 
     eli5 = _clean_text(payload.get("eli5", ""))
-    implication_for_developers = _clean_text(payload.get("implication_for_developers", ""))
+    what_happened = _clean_text(payload.get("what_happened", ""))
+    why_it_matters_ml = _clean_text(payload.get("why_it_matters_for_ml_engineers", ""))
 
     if require_eli5 and not eli5:
         eli5 = "I korthet: nyheten handlar om hur AI-modeller och verktyg utvecklas och används i praktiken."
 
-    if include_dev_implication and not implication_for_developers:
-        implication_for_developers = "Detta påverkar val av modell, verktyg och driftmiljö för utvecklare."
+    if include_ml_implication and not what_happened:
+        what_happened = _clean_text(payload.get("ingress", "")) or "Ny utveckling inom modeller, verktyg eller ML-infrastruktur."
+
+    if include_ml_implication and not why_it_matters_ml:
+        why_it_matters_ml = "Det påverkar val av modell, pipeline och drift för ML-team."
 
     return {
         "title": _clean_text(payload.get("title", title)) or title,
@@ -358,24 +612,25 @@ def summarize_article(
         "summary_paragraphs": summary_paragraphs,
         "why_important": _clean_text(payload.get("why_important", "Det här är viktigt för att förstå dagens nyhetsläge.")),
         "eli5": eli5 if (is_complex or require_eli5) and eli5 else None,
-        "implication_for_developers": implication_for_developers if include_dev_implication else None,
+        "what_happened": what_happened if include_ml_implication else None,
+        "why_it_matters_for_ml_engineers": why_it_matters_ml if include_ml_implication else None,
     }
 
 
 def _build_story(article: dict[str, str], section_name: str) -> dict[str, Any]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
     source_summary = _clean_text(article.get("summary", ""))
-    is_ai_section = section_name in {"AI", "AI för utvecklare", "AI & MACHINE LEARNING"}
+    is_ai_section = section_name in {"AI", "AI FÖR ML-INGENJÖRER", "AI & MACHINE LEARNING"}
     summarized = summarize_article(
         title=title,
         content=source_summary,
         require_eli5=is_ai_section,
-        include_dev_implication=is_ai_section,
+        include_ml_implication=is_ai_section,
     )
     image_url = article.get("image_url")
 
     story: dict[str, Any] = {
-        "title": summarized["title"],
+        "title": f"UPDATE: {summarized['title']}" if article.get("update_tag") == "UPDATE" else summarized["title"],
         "ingress": summarized["ingress"],
         "summary_paragraphs": summarized["summary_paragraphs"],
         "why_important": summarized["why_important"],
@@ -386,8 +641,14 @@ def _build_story(article: dict[str, str], section_name: str) -> dict[str, Any]:
     if summarized.get("eli5"):
         story["eli5"] = summarized["eli5"]
 
-    if summarized.get("implication_for_developers"):
-        story["implication_for_developers"] = summarized["implication_for_developers"]
+    if summarized.get("what_happened"):
+        story["what_happened"] = summarized["what_happened"]
+
+    if summarized.get("why_it_matters_for_ml_engineers"):
+        story["why_it_matters_for_ml_engineers"] = summarized["why_it_matters_for_ml_engineers"]
+
+    if article.get("update_tag") == "UPDATE":
+        story["update_tag"] = "UPDATE"
 
     return story
 
@@ -480,16 +741,21 @@ def _generate_overview_bullets(sections: list[dict[str, Any]]) -> list[str]:
         "kändis",
     }
 
-    def _short_explanation(text: str, max_words: int = 10) -> str:
+    def _short_explanation(text: str, min_words: int = 5, max_words: int = 8) -> str:
         cleaned = _clean_text(text)
         if not cleaned:
-            return "Viktig utveckling idag."
+            return "Påverkar säkerhet ekonomi och teknik globalt."
 
         words = cleaned.split()
-        limited_words = words[:max_words]
-        compact = " ".join(limited_words).rstrip(" ,;:-")
+        compact_words = words[:max_words]
+        if len(compact_words) < min_words:
+            fallback_words = ["påverkar", "ekonomi", "säkerhet", "och", "internationellt", "samarbete"]
+            needed = min_words - len(compact_words)
+            compact_words.extend(fallback_words[:needed])
+
+        compact = " ".join(compact_words).rstrip(" ,;:-")
         if not compact:
-            return "Viktig utveckling idag."
+            return "Påverkar säkerhet ekonomi och teknik globalt."
         if not compact.endswith((".", "!", "?")):
             compact += "."
         return compact
@@ -505,8 +771,24 @@ def _generate_overview_bullets(sections: list[dict[str, Any]]) -> list[str]:
             score += sum(2 for term in priority_terms if term in text)
             score -= sum(2 for term in deprioritized_terms if term in text)
 
-            if section_name in {"VÄRLDEN", "EKONOMI", "AI för utvecklare", "TECH INDUSTRY", "VETENSKAP & MILJÖ"}:
-                score += 2
+            global_importance_terms = {
+                "nato",
+                "ukraina",
+                "ryssland",
+                "kina",
+                "usa",
+                "eu",
+                "global",
+                "världen",
+                "inflation",
+                "ränta",
+                "energ",
+                "handel",
+            }
+            score += sum(3 for term in global_importance_terms if term in text)
+
+            if section_name in {"VÄRLDEN", "EKONOMI", "AI FÖR ML-INGENJÖRER", "TECH INDUSTRY", "VETENSKAP & MILJÖ"}:
+                score += 4
 
             story_candidates.append(
                 {
@@ -531,32 +813,54 @@ def _generate_overview_bullets(sections: list[dict[str, Any]]) -> list[str]:
         if not headline:
             continue
 
-        explanation = _short_explanation(explanation_source, max_words=10)
+        explanation = _short_explanation(explanation_source, min_words=5, max_words=8)
         bullets.append(f"{headline} – {explanation}")
+
+    if len(bullets) < 5:
+        for candidate in ranked_candidates[5:]:
+            headline = _clean_text(str(candidate.get("title", "")))
+            explanation_source = _clean_text(str(candidate.get("why", "")))
+            if not headline:
+                continue
+            explanation = _short_explanation(explanation_source, min_words=5, max_words=8)
+            bullets.append(f"{headline} – {explanation}")
+            if len(bullets) >= 5:
+                break
 
     return bullets[:5]
 
 
 def _build_payload(raw_news: dict[str, list[dict[str, str]]]) -> dict[str, Any]:
-    yesterday_titles = _load_yesterday_titles()
+    yesterday_stories = _load_yesterday_stories()
 
-    general_articles = _filter_new_articles(raw_news.get("general", []), yesterday_titles)
-    tech_articles = _filter_new_articles(raw_news.get("tech", []), yesterday_titles)
+    general_articles = _filter_relevant_articles(_filter_new_articles(raw_news.get("general", []), yesterday_stories))
+    tech_articles = _filter_relevant_articles(_filter_new_articles(raw_news.get("tech", []), yesterday_stories))
+
+    balanced_articles = _select_balanced_articles(general_articles + tech_articles, sweden_target=6, global_target=7)
+
+    selected_general_articles: list[dict[str, str]] = []
+    selected_tech_articles: list[dict[str, str]] = []
+    for article in balanced_articles:
+        section_name = _pick_section(article, ALL_SECTIONS)
+        if section_name in GENERAL_SECTIONS:
+            selected_general_articles.append(article)
+        else:
+            selected_tech_articles.append(article)
 
     general_sections = _sectioned_newspaper(
-        general_articles,
+        selected_general_articles,
         section_names=GENERAL_SECTIONS,
-        min_count=len(general_articles),
-        max_count=len(general_articles),
-        preferred_count=len(general_articles),
+        min_count=len(selected_general_articles),
+        max_count=len(selected_general_articles),
+        preferred_count=len(selected_general_articles),
         mapper=_build_general_article,
     )
     tech_sections = _sectioned_newspaper(
-        tech_articles,
+        selected_tech_articles,
         section_names=TECH_SECTIONS,
-        min_count=len(tech_articles),
-        max_count=len(tech_articles),
-        preferred_count=len(tech_articles),
+        min_count=len(selected_tech_articles),
+        max_count=len(selected_tech_articles),
+        preferred_count=len(selected_tech_articles),
         mapper=_build_tech_article,
     )
 

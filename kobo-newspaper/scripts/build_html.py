@@ -28,7 +28,8 @@ HTML_TEMPLATE = """<!doctype html>
     }
 
     img {
-      width: 90%;
+            width: 100%;
+            max-width: 680px;
       height: auto;
       margin: 10px auto;
       display: block;
@@ -85,6 +86,17 @@ HTML_TEMPLATE = """<!doctype html>
   <p>Ingen sammanfattning tillgänglig ännu.</p>
   {% endif %}
 
+  <h2>Dagens siffror</h2>
+  {% if daily_numbers %}
+  <ul>
+    {% for item in daily_numbers %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Inga tydliga nyckeltal tillgängliga ännu.</p>
+  {% endif %}
+
   <h2>Världen i korthet</h2>
   {% if world_in_brief %}
   <ul>
@@ -110,7 +122,7 @@ HTML_TEMPLATE = """<!doctype html>
   <article>
     <h3>{{ story.title }}</h3>
 
-    {% if story.image_url %}
+        {% if story.render_image and story.image_url %}
     <img src="{{ story.image_url }}" alt="">
     {% endif %}
 
@@ -124,8 +136,12 @@ HTML_TEMPLATE = """<!doctype html>
 
     <p>Varför det är viktigt: {{ story.why_important }}</p>
 
-    {% if story.implication_for_developers %}
-    <p>Implikation för utvecklare: {{ story.implication_for_developers }}</p>
+    {% if story.what_happened %}
+    <p>What happened: {{ story.what_happened }}</p>
+    {% endif %}
+
+    {% if story.why_it_matters_for_ml_engineers %}
+    <p>Why it matters for ML engineers: {{ story.why_it_matters_for_ml_engineers }}</p>
     {% endif %}
 
     {% if story.eli5 %}
@@ -211,6 +227,60 @@ def build_html(data: dict[str, Any]) -> str:
 
         return {"text": best_quote, "story_title": best_story_title}
 
+    def _extract_daily_numbers() -> list[str]:
+        pattern = re.compile(r"\b\d+[\d\s.,]*\s*(?:%|procent|kr|SEK|USD|EUR|dollar|punkter|miljoner|miljarder)?\b", re.IGNORECASE)
+
+        labeled_numbers: dict[str, str] = {}
+        fallback_numbers: list[str] = []
+
+        for section in sections:
+            for story in section.get("stories", []):
+                text_blocks: list[str] = []
+                text_blocks.append(str(story.get("title", "")))
+                text_blocks.append(str(story.get("ingress", "")))
+                text_blocks.append(str(story.get("why_important", "")))
+                paragraphs = story.get("summary_paragraphs", [])
+                if isinstance(paragraphs, list):
+                    text_blocks.extend(str(paragraph) for paragraph in paragraphs)
+
+                combined = " ".join(text_blocks)
+                lower = combined.lower()
+                matches = [m.group(0).strip() for m in pattern.finditer(combined)]
+                matches = [value for value in matches if any(char.isdigit() for char in value)]
+                if not matches:
+                    continue
+
+                def _set_label(key: str, label: str) -> None:
+                    if key not in labeled_numbers:
+                        labeled_numbers[key] = label
+
+                if "inflation" in lower:
+                    _set_label("inflation", f"Svensk inflation: {matches[0]}")
+                if "ränta" in lower or "styrränta" in lower or "riksbank" in lower:
+                    _set_label("rate", f"Svensk ränta: {matches[0]}")
+                if "olja" in lower or "oil" in lower or "brent" in lower:
+                    _set_label("oil", f"Oljepris: {matches[0]}")
+                if "index" in lower or "börs" in lower or "stock" in lower:
+                    _set_label("index", f"Börsindex: {matches[0]}")
+                if any(term in lower for term in ["gdp", "arbetslöshet", "tillväxt", "pmi", "bnp"]):
+                    _set_label("indicator", f"Ekonomisk indikator: {matches[0]}")
+
+                for match in matches:
+                    if len(fallback_numbers) >= 8:
+                        break
+                    fallback_numbers.append(f"Nyckeltal: {match}")
+
+        ordered_keys = ["inflation", "rate", "oil", "index", "indicator"]
+        selected: list[str] = [labeled_numbers[key] for key in ordered_keys if key in labeled_numbers]
+
+        for fallback in fallback_numbers:
+            if len(selected) >= 6:
+                break
+            if fallback not in selected:
+                selected.append(fallback)
+
+        return selected[:6]
+
     world_in_brief: list[str] = []
     for section in sections:
         if len(world_in_brief) >= 6:
@@ -230,15 +300,40 @@ def build_html(data: dict[str, Any]) -> str:
         if headline_sentence:
             world_in_brief.append(f"{section_name}: {headline_sentence}")
 
+    sections_for_render: list[dict[str, Any]] = []
+    for section in sections:
+        stories = section.get("stories", [])
+        image_count = 0
+        rendered_stories: list[dict[str, Any]] = []
+
+        for story in stories:
+            story_copy = dict(story)
+            image_url = story_copy.get("image_url")
+            has_image = isinstance(image_url, str) and image_url.strip() != ""
+
+            render_image = False
+            if has_image and image_count < 3:
+                render_image = True
+                image_count += 1
+
+            story_copy["render_image"] = render_image
+            rendered_stories.append(story_copy)
+
+        section_copy = dict(section)
+        section_copy["stories"] = rendered_stories
+        sections_for_render.append(section_copy)
+
     daily_quote = _extract_daily_quote()
+    daily_numbers = _extract_daily_numbers()
 
     return template.render(
         title="Morgontidningen",
         date_string=date_string,
         overview_bullets=data.get("overview_bullets", []),
+        daily_numbers=daily_numbers,
         world_in_brief=world_in_brief,
         daily_quote=daily_quote,
-        sections=sections,
+        sections=sections_for_render,
     )
 
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import time
@@ -11,52 +12,81 @@ import feedparser
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_OUTPUT_PATH = PROJECT_ROOT / "pages" / "raw_articles.json"
 
-ALLOWED_SOURCES = {
+PREFERRED_SWEDISH_SOURCES = {
+    "SVT Nyheter",
+    "Sveriges Radio",
+    "DN",
+    "SvD",
+    "DI",
+    "Omni",
+}
+
+SECONDARY_INTERNATIONAL_SOURCES = {
     "Reuters",
     "BBC",
-    "The Guardian",
-    "Associated Press",
-    "SVT",
-    "Sveriges Radio",
+    "Guardian",
+    "AP",
     "MIT Technology Review",
     "Ars Technica",
-    "TechCrunch",
-    "The Verge",
+}
+
+ALLOWED_SOURCES = PREFERRED_SWEDISH_SOURCES | SECONDARY_INTERNATIONAL_SOURCES
+
+SOURCE_PRIORITY = {
+    "SVT Nyheter": 1,
+    "Sveriges Radio": 1,
+    "DN": 1,
+    "SvD": 1,
+    "DI": 1,
+    "Omni": 1,
+    "Reuters": 2,
+    "BBC": 2,
+    "Guardian": 2,
+    "AP": 2,
+    "MIT Technology Review": 2,
+    "Ars Technica": 2,
 }
 
 SOURCE_ALIASES = {
     "reuters": "Reuters",
     "bbc": "BBC",
-    "the guardian": "The Guardian",
-    "guardian": "The Guardian",
-    "associated press": "Associated Press",
-    "ap news": "Associated Press",
-    "ap": "Associated Press",
-    "svt": "SVT",
+    "the guardian": "Guardian",
+    "guardian": "Guardian",
+    "associated press": "AP",
+    "ap news": "AP",
+    "ap": "AP",
+    "svt": "SVT Nyheter",
+    "svt nyheter": "SVT Nyheter",
     "sveriges radio": "Sveriges Radio",
     "sr": "Sveriges Radio",
+    "dagens nyheter": "DN",
+    "dn": "DN",
+    "svenska dagbladet": "SvD",
+    "svd": "SvD",
+    "dagens industri": "DI",
+    "di": "DI",
+    "omni": "Omni",
     "mit technology review": "MIT Technology Review",
     "technology review": "MIT Technology Review",
     "ars technica": "Ars Technica",
-    "techcrunch": "TechCrunch",
-    "the verge": "The Verge",
-    "verge": "The Verge",
 }
 
 GENERAL_FEEDS: list[tuple[str, str]] = [
+    ("https://www.svt.se/nyheter/rss.xml", "SVT Nyheter"),
+    ("https://feeds.sr.se/senasteekot", "Sveriges Radio"),
+    ("https://www.dn.se/rss/", "DN"),
+    ("https://www.svd.se/?service=rss", "SvD"),
+    ("https://www.di.se/rss/", "DI"),
+    ("https://omni.se/rss", "Omni"),
     ("https://www.reuters.com/world/rss", "Reuters"),
     ("https://feeds.bbci.co.uk/news/world/rss.xml", "BBC"),
-    ("https://www.theguardian.com/world/rss", "The Guardian"),
-    ("https://apnews.com/hub/apf-topnews?output=rss", "Associated Press"),
-    ("https://www.svt.se/nyheter/rss.xml", "SVT"),
-    ("https://feeds.sr.se/senasteekot", "Sveriges Radio"),
+    ("https://www.theguardian.com/world/rss", "Guardian"),
+    ("https://apnews.com/hub/apf-topnews?output=rss", "AP"),
 ]
 
 TECH_FEEDS: list[tuple[str, str]] = [
     ("https://www.technologyreview.com/feed/", "MIT Technology Review"),
     ("https://feeds.arstechnica.com/arstechnica/index", "Ars Technica"),
-    ("https://techcrunch.com/feed/", "TechCrunch"),
-    ("https://www.theverge.com/rss/index.xml", "The Verge"),
 ]
 
 GENERAL_LIMIT = 20
@@ -108,6 +138,112 @@ def _extract_image_url(entry: dict[str, Any]) -> str | None:
     return None
 
 
+def _extract_quotes(text: str) -> list[str]:
+    clean_text = (text or "").strip()
+    if not clean_text:
+        return []
+
+    quote_patterns = [
+        r'"([^"]{20,280})"',
+        r"“([^”]{20,280})”",
+    ]
+
+    quotes: list[str] = []
+    for pattern in quote_patterns:
+        matches = re.findall(pattern, clean_text)
+        for match in matches:
+            quote = " ".join(str(match).split())
+            if quote and quote not in quotes:
+                quotes.append(quote)
+
+    return quotes[:3]
+
+
+def _normalize_topic_key(title: str, summary: str) -> str:
+    base_text = f"{title} {summary}".lower()
+    clean_text = re.sub(r"[^\w\s]", " ", base_text)
+    tokens = [token for token in clean_text.split() if len(token) > 3]
+
+    stopwords = {
+        "och",
+        "med",
+        "från",
+        "det",
+        "this",
+        "that",
+        "from",
+        "about",
+        "says",
+        "också",
+        "after",
+        "their",
+        "into",
+    }
+    filtered = [token for token in tokens if token not in stopwords]
+    if not filtered:
+        return ""
+
+    return " ".join(filtered[:8])
+
+
+def _source_priority(source_name: str) -> int:
+    return SOURCE_PRIORITY.get(source_name, 99)
+
+
+def _published_sort_key(article: dict[str, Any]) -> str:
+    return str(article.get("published") or "")
+
+
+def _prefer_article(candidate: dict[str, Any], current: dict[str, Any]) -> bool:
+    candidate_priority = _source_priority(str(candidate.get("source_name", "")))
+    current_priority = _source_priority(str(current.get("source_name", "")))
+
+    if candidate_priority != current_priority:
+        return candidate_priority < current_priority
+
+    return _published_sort_key(candidate) > _published_sort_key(current)
+
+
+def _deduplicate_by_topic(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selected_by_topic: dict[str, dict[str, Any]] = {}
+
+    for article in articles:
+        topic_key = str(article.get("topic_key") or "")
+        if not topic_key:
+            topic_key = str(article.get("title") or "").lower()
+
+        existing = selected_by_topic.get(topic_key)
+        if existing is None or _prefer_article(article, existing):
+            selected_by_topic[topic_key] = article
+
+    deduplicated = list(selected_by_topic.values())
+    deduplicated.sort(key=lambda item: str(item.get("published", "")), reverse=True)
+    return deduplicated
+
+
+def _deduplicate_source_topic(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selected_by_source_topic: dict[tuple[str, str], dict[str, Any]] = {}
+
+    for article in articles:
+        source_name = str(article.get("source_name") or "")
+        topic_key = str(article.get("topic_key") or "")
+        if not source_name or not topic_key:
+            continue
+
+        key = (source_name, topic_key)
+        existing = selected_by_source_topic.get(key)
+        if existing is None:
+            selected_by_source_topic[key] = article
+            continue
+
+        if str(article.get("published", "")) > str(existing.get("published", "")):
+            selected_by_source_topic[key] = article
+
+    deduplicated = list(selected_by_source_topic.values())
+    deduplicated.sort(key=lambda item: str(item.get("published", "")), reverse=True)
+    return deduplicated
+
+
 def _normalize_source(source_text: str) -> str | None:
     normalized = (source_text or "").strip().lower()
     if not normalized:
@@ -123,9 +259,9 @@ def _normalize_source(source_text: str) -> str | None:
     return None
 
 
-def _extract_entries(feed_url: str, since: datetime, default_source: str) -> list[dict[str, str]]:
+def _extract_entries(feed_url: str, since: datetime, default_source: str) -> list[dict[str, Any]]:
     parsed = feedparser.parse(feed_url)
-    articles: list[dict[str, str]] = []
+    articles: list[dict[str, Any]] = []
     feed_title = str(parsed.feed.get("title") or "")
     feed_source = _normalize_source(feed_title) or default_source
 
@@ -135,6 +271,7 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
         summary = (entry.get("summary") or entry.get("description") or "").strip()
         published_dt = _extract_published_datetime(entry)
         image_url = _extract_image_url(entry)
+        quotes = _extract_quotes(summary)
 
         entry_source_data = entry.get("source") or {}
         entry_source_title = ""
@@ -151,6 +288,8 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
         if published_dt < since:
             continue
 
+        topic_key = _normalize_topic_key(title, summary)
+
         articles.append(
             {
                 "title": title,
@@ -158,14 +297,17 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
                 "published": published_dt.isoformat(),
                 "summary": summary,
                 "source": source_name,
+                "source_name": source_name,
                 "image_url": image_url,
+                "quotes": quotes,
+                "topic_key": topic_key,
             }
         )
 
     return articles
 
 
-def _sort_by_published_desc(articles: list[dict[str, str]]) -> list[dict[str, str]]:
+def _sort_by_published_desc(articles: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(articles, key=lambda item: item["published"], reverse=True)
 
 
@@ -180,8 +322,17 @@ def fetch_all_news() -> dict[str, list[dict[str, str]]]:
     for url, source in TECH_FEEDS:
         tech_news.extend(_extract_entries(url, since, source))
 
-    general_news = _sort_by_published_desc(general_news)[:GENERAL_LIMIT]
-    tech_news = _sort_by_published_desc(tech_news)[:TECH_LIMIT]
+    general_news = _sort_by_published_desc(general_news)
+    tech_news = _sort_by_published_desc(tech_news)
+
+    general_news = _deduplicate_source_topic(general_news)
+    tech_news = _deduplicate_source_topic(tech_news)
+
+    general_news = _deduplicate_by_topic(general_news)[:GENERAL_LIMIT]
+    tech_news = _deduplicate_by_topic(tech_news)[:TECH_LIMIT]
+
+    for item in general_news + tech_news:
+        item.pop("topic_key", None)
 
     return {
         "general": general_news,
