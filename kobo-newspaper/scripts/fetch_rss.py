@@ -11,18 +11,52 @@ import feedparser
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_OUTPUT_PATH = PROJECT_ROOT / "pages" / "raw_articles.json"
 
-GENERAL_FEEDS = [
-    "https://www.svt.se/nyheter/rss.xml",
-    "https://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://www.theguardian.com/world/rss",
-    "https://www.reuters.com/world/rss",
+ALLOWED_SOURCES = {
+    "Reuters",
+    "BBC",
+    "The Guardian",
+    "Associated Press",
+    "SVT",
+    "Sveriges Radio",
+    "MIT Technology Review",
+    "Ars Technica",
+    "TechCrunch",
+    "The Verge",
+}
+
+SOURCE_ALIASES = {
+    "reuters": "Reuters",
+    "bbc": "BBC",
+    "the guardian": "The Guardian",
+    "guardian": "The Guardian",
+    "associated press": "Associated Press",
+    "ap news": "Associated Press",
+    "ap": "Associated Press",
+    "svt": "SVT",
+    "sveriges radio": "Sveriges Radio",
+    "sr": "Sveriges Radio",
+    "mit technology review": "MIT Technology Review",
+    "technology review": "MIT Technology Review",
+    "ars technica": "Ars Technica",
+    "techcrunch": "TechCrunch",
+    "the verge": "The Verge",
+    "verge": "The Verge",
+}
+
+GENERAL_FEEDS: list[tuple[str, str]] = [
+    ("https://www.reuters.com/world/rss", "Reuters"),
+    ("https://feeds.bbci.co.uk/news/world/rss.xml", "BBC"),
+    ("https://www.theguardian.com/world/rss", "The Guardian"),
+    ("https://apnews.com/hub/apf-topnews?output=rss", "Associated Press"),
+    ("https://www.svt.se/nyheter/rss.xml", "SVT"),
+    ("https://feeds.sr.se/senasteekot", "Sveriges Radio"),
 ]
 
-TECH_FEEDS = [
-    "https://techcrunch.com/feed/",
-    "https://www.theverge.com/rss/index.xml",
-    "https://www.wired.com/feed/rss",
-    "https://huggingface.co/blog/feed.xml",
+TECH_FEEDS: list[tuple[str, str]] = [
+    ("https://www.technologyreview.com/feed/", "MIT Technology Review"),
+    ("https://feeds.arstechnica.com/arstechnica/index", "Ars Technica"),
+    ("https://techcrunch.com/feed/", "TechCrunch"),
+    ("https://www.theverge.com/rss/index.xml", "The Verge"),
 ]
 
 GENERAL_LIMIT = 20
@@ -42,15 +76,41 @@ def _extract_published_datetime(entry: dict[str, Any]) -> datetime | None:
     return _to_utc_datetime(entry.get("updated_parsed"))
 
 
-def _extract_entries(feed_url: str, since: datetime) -> list[dict[str, str]]:
+def _normalize_source(source_text: str) -> str | None:
+    normalized = (source_text or "").strip().lower()
+    if not normalized:
+        return None
+
+    if normalized in SOURCE_ALIASES:
+        return SOURCE_ALIASES[normalized]
+
+    for alias, canonical in SOURCE_ALIASES.items():
+        if alias in normalized:
+            return canonical
+
+    return None
+
+
+def _extract_entries(feed_url: str, since: datetime, default_source: str) -> list[dict[str, str]]:
     parsed = feedparser.parse(feed_url)
     articles: list[dict[str, str]] = []
+    feed_title = str(parsed.feed.get("title") or "")
+    feed_source = _normalize_source(feed_title) or default_source
 
     for entry in parsed.entries:
         title = (entry.get("title") or "").strip()
         link = (entry.get("link") or "").strip()
         summary = (entry.get("summary") or entry.get("description") or "").strip()
         published_dt = _extract_published_datetime(entry)
+
+        entry_source_data = entry.get("source") or {}
+        entry_source_title = ""
+        if isinstance(entry_source_data, dict):
+            entry_source_title = str(entry_source_data.get("title") or "")
+        source_name = _normalize_source(entry_source_title) or feed_source
+
+        if source_name not in ALLOWED_SOURCES:
+            continue
 
         if not title or not link or not published_dt:
             continue
@@ -64,6 +124,7 @@ def _extract_entries(feed_url: str, since: datetime) -> list[dict[str, str]]:
                 "link": link,
                 "published": published_dt.isoformat(),
                 "summary": summary,
+                "source": source_name,
             }
         )
 
@@ -79,11 +140,11 @@ def fetch_all_news() -> dict[str, list[dict[str, str]]]:
     general_news: list[dict[str, str]] = []
     tech_news: list[dict[str, str]] = []
 
-    for url in GENERAL_FEEDS:
-        general_news.extend(_extract_entries(url, since))
+    for url, source in GENERAL_FEEDS:
+        general_news.extend(_extract_entries(url, since, source))
 
-    for url in TECH_FEEDS:
-        tech_news.extend(_extract_entries(url, since))
+    for url, source in TECH_FEEDS:
+        tech_news.extend(_extract_entries(url, since, source))
 
     general_news = _sort_by_published_desc(general_news)[:GENERAL_LIMIT]
     tech_news = _sort_by_published_desc(tech_news)[:TECH_LIMIT]

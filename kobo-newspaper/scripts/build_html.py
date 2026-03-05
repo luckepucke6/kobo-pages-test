@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -22,19 +23,20 @@ HTML_TEMPLATE = """<!doctype html>
     }
 
     body {
-      margin: 0;
-      padding: 0;
+      max-width: 720px;
+      margin: auto;
+      padding: 24px;
       background: #ffffff;
       color: #111111;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      line-height: 1.7;
+      font-family: Georgia, serif;
+      line-height: 1.65;
       font-size: 18px;
     }
 
     .page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2.2rem 1.5rem 3.5rem;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     h1, h2, h3 {
@@ -42,6 +44,19 @@ HTML_TEMPLATE = """<!doctype html>
       line-height: 1.25;
       font-weight: 700;
       color: #111111;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-top: 40px;
+    }
+
+    h3 {
+      font-size: 20px;
     }
 
     p {
@@ -92,15 +107,33 @@ HTML_TEMPLATE = """<!doctype html>
       margin: 0 0 0.45rem;
     }
 
-    .facts-list {
+    .brief-list {
       margin: 0;
       padding-left: 1.2rem;
-      color: #222222;
-      font-size: 0.98rem;
     }
 
-    .facts-list li {
-      margin: 0 0 0.35rem;
+    .brief-list li {
+      margin: 0 0 0.4rem;
+    }
+
+    .quote-text {
+      margin: 0;
+      padding-left: 12px;
+      border-left: 3px solid #cfcfcf;
+      font-style: italic;
+      color: #1f1f1f;
+    }
+
+    .quote-source {
+      margin-top: 0.55rem;
+      font-size: 0.96rem;
+      color: #333;
+    }
+
+    .section-divider {
+      margin: 40px 0;
+      border: none;
+      border-top: 1px solid #ccc;
     }
 
     .news-section {
@@ -116,14 +149,13 @@ HTML_TEMPLATE = """<!doctype html>
       letter-spacing: 0.02em;
     }
 
-    .story {
-      margin-bottom: 2.2rem;
+    .article {
+      margin-bottom: 36px;
       padding-bottom: 1.3rem;
       border-bottom: 1px solid #e8e8e8;
     }
 
     .story-title {
-      font-size: 1.35rem;
       margin-bottom: 0.55rem;
     }
 
@@ -142,10 +174,10 @@ HTML_TEMPLATE = """<!doctype html>
       margin-bottom: 0.8rem;
     }
 
-    .eli5-box {
-      border: 1px solid #cfcfcf;
-      padding: 0.7rem 0.8rem;
-      background: #f7f7f7;
+    .eli5 {
+      border-left: 4px solid #ccc;
+      padding-left: 12px;
+      margin-top: 8px;
       margin-bottom: 0.8rem;
     }
 
@@ -176,21 +208,37 @@ HTML_TEMPLATE = """<!doctype html>
     </section>
 
     <section class="intro-block">
-      <h2 class="intro-title">Dagens fakta</h2>
-      <ul class="facts-list">
-        <li>Totalt antal sektioner: {{ total_sections }}</li>
-        <li>Totalt antal artiklar: {{ total_stories }}</li>
-        <li>Senast uppdaterad: {{ date_string }}</li>
-        <li>Format: Optimerat för e-bläckläsning</li>
+      <h2 class="intro-title">Världen i korthet</h2>
+      {% if world_in_brief %}
+      <ul class="brief-list">
+        {% for line in world_in_brief %}
+        <li>{{ line }}</li>
+        {% endfor %}
       </ul>
+      {% else %}
+      <p>Ingen kortöversikt tillgänglig ännu.</p>
+      {% endif %}
+    </section>
+
+    <section class="intro-block">
+      <h2 class="intro-title">Dagens citat</h2>
+      {% if daily_quote %}
+      <p class="quote-text">“{{ daily_quote.text }}”</p>
+      <p class="quote-source">Från: {{ daily_quote.story_title }}</p>
+      {% else %}
+      <p>Inget citat tillgängligt ännu.</p>
+      {% endif %}
     </section>
 
     {% for section in sections %}
+    {% if not loop.first %}
+    <hr class="section-divider">
+    {% endif %}
     <section class="news-section">
       <h2 class="section-title">{{ section.name }}</h2>
 
       {% for story in section.stories %}
-      <article class="story">
+      <article class="article">
         <h3 class="story-title">{{ story.title }}</h3>
 
         {% if story.ingress %}
@@ -204,7 +252,7 @@ HTML_TEMPLATE = """<!doctype html>
         <p class="importance"><strong>Varför det är viktigt:</strong> {{ story.why_important }}</p>
 
         {% if story.eli5 %}
-        <div class="eli5-box">
+        <div class="eli5">
           <strong>ELI5:</strong> {{ story.eli5 }}
         </div>
         {% endif %}
@@ -225,15 +273,92 @@ def build_html(data: dict[str, Any]) -> str:
     date_string = data.get("date") or datetime.now().strftime("%Y-%m-%d")
     sections = data.get("sections", [])
 
-    total_stories = sum(len(section.get("stories", [])) for section in sections)
+    def _to_one_short_sentence(text: str, max_len: int = 120) -> str:
+        clean = re.sub(r"\s+", " ", text or "").strip()
+        if not clean:
+            return ""
+
+        parts = re.split(r"(?<=[.!?])\s+", clean)
+        sentence = parts[0].strip() if parts else clean
+        if not sentence.endswith((".", "!", "?")):
+            sentence = f"{sentence}."
+
+        if len(sentence) <= max_len:
+            return sentence
+
+        truncated = sentence[: max_len - 1].rstrip(" ,;:-")
+        return f"{truncated}."
+
+    def _extract_daily_quote() -> dict[str, str] | None:
+        def _candidate_sentences(text: str) -> list[str]:
+            clean = re.sub(r"\s+", " ", text or "").strip()
+            if not clean:
+                return []
+            parts = re.split(r"(?<=[.!?])\s+", clean)
+            return [part.strip() for part in parts if part.strip()]
+
+        best_quote = ""
+        best_story_title = ""
+
+        for section in sections:
+            stories = section.get("stories", [])
+            for story in stories:
+                story_title = str(story.get("title", "")).strip()
+                paragraph_candidates = story.get("summary_paragraphs", [])
+
+                text_blocks: list[str] = []
+                if isinstance(paragraph_candidates, list):
+                    text_blocks.extend(str(p) for p in paragraph_candidates if p)
+
+                ingress = str(story.get("ingress", "")).strip()
+                if ingress:
+                    text_blocks.append(ingress)
+
+                for block in text_blocks:
+                    for sentence in _candidate_sentences(block):
+                        sentence_clean = sentence.strip('"“” ')
+                        if len(sentence_clean) < 45 or len(sentence_clean) > 220:
+                            continue
+                        if len(sentence_clean) > len(best_quote):
+                            best_quote = sentence_clean
+                            best_story_title = story_title or "Okänd artikel"
+
+        if not best_quote:
+            return None
+
+        if not best_quote.endswith((".", "!", "?")):
+            best_quote = f"{best_quote}."
+
+        return {"text": best_quote, "story_title": best_story_title}
+
+    world_in_brief: list[str] = []
+    for section in sections:
+        if len(world_in_brief) >= 6:
+            break
+
+        section_name = str(section.get("name", "")).strip()
+        stories = section.get("stories", [])
+        if not section_name or not stories:
+            continue
+
+        top_story = stories[0]
+        title = str(top_story.get("title", "")).strip()
+        if not title:
+            continue
+
+        headline_sentence = _to_one_short_sentence(title)
+        if headline_sentence:
+            world_in_brief.append(f"{section_name}: {headline_sentence}")
+
+    daily_quote = _extract_daily_quote()
 
     return template.render(
         title="Morgontidningen",
         date_string=date_string,
         overview_bullets=data.get("overview_bullets", []),
+        world_in_brief=world_in_brief,
+        daily_quote=daily_quote,
         sections=sections,
-        total_sections=len(sections),
-        total_stories=total_stories,
     )
 
 
