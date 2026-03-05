@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import json
 import re
-from difflib import SequenceMatcher
 from html import unescape
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 
@@ -25,76 +25,17 @@ USER_AGENT = (
     "Chrome/122.0.0.0 Safari/537.36"
 )
 MAX_TEXT_LENGTH = 30000
-SIMILARITY_THRESHOLD = 0.8
-PREFERRED_SWEDISH_SOURCES = {
-    "svt",
-    "sveriges radio",
-    "svd",
-    "dn",
-    "di",
-}
 
 
 def _clean_whitespace(value: str) -> str:
     return " ".join(value.split())
 
 
-def _normalize_title(title: str) -> str:
-    lowered = _clean_whitespace(title).lower()
-    no_punctuation = re.sub(r"[^\w\s]", " ", lowered)
-    return " ".join(no_punctuation.split())
-
-
-def _is_preferred_swedish_source(source: str) -> bool:
-    source_lower = _clean_whitespace(source).lower()
-    return any(preferred in source_lower for preferred in PREFERRED_SWEDISH_SOURCES)
-
-
-def _titles_are_similar(a: str, b: str) -> bool:
-    if not a or not b:
-        return False
-    return SequenceMatcher(None, a, b).ratio() > SIMILARITY_THRESHOLD
-
-
-def _choose_better_article(current: dict[str, str], candidate: dict[str, str]) -> dict[str, str]:
-    current_preferred = _is_preferred_swedish_source(current.get("source", ""))
-    candidate_preferred = _is_preferred_swedish_source(candidate.get("source", ""))
-
-    if current_preferred != candidate_preferred:
-        return current if current_preferred else candidate
-
-    current_len = len(_clean_whitespace(current.get("text", "")))
-    candidate_len = len(_clean_whitespace(candidate.get("text", "")))
-    return current if current_len >= candidate_len else candidate
-
-
-def _deduplicate_articles(articles: list[dict[str, str]]) -> list[dict[str, str]]:
-    deduplicated: list[dict[str, str]] = []
-    normalized_titles: list[str] = []
-
-    for article in articles:
-        candidate_title = _normalize_title(article.get("title", ""))
-        if not candidate_title:
-            deduplicated.append(article)
-            normalized_titles.append("")
-            continue
-
-        duplicate_index = -1
-        for index, existing_title in enumerate(normalized_titles):
-            if _titles_are_similar(candidate_title, existing_title):
-                duplicate_index = index
-                break
-
-        if duplicate_index == -1:
-            deduplicated.append(article)
-            normalized_titles.append(candidate_title)
-            continue
-
-        best = _choose_better_article(deduplicated[duplicate_index], article)
-        deduplicated[duplicate_index] = best
-        normalized_titles[duplicate_index] = _normalize_title(best.get("title", ""))
-
-    return deduplicated
+def _extract_source_domain(url: str) -> str:
+    domain = urlparse(_clean_whitespace(url)).netloc.lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    return domain
 
 
 def _strip_tags(html: str) -> str:
@@ -166,13 +107,15 @@ def extract_articles() -> Path:
     input_articles = _iter_input_articles(payload)
 
     seen_urls: set[str] = set()
-    result: list[dict[str, str]] = []
+    extracted_articles: list[dict[str, str]] = []
 
     for article in input_articles:
         title = _clean_whitespace(str(article.get("title", "")))
         url = _clean_whitespace(str(article.get("link", article.get("url", ""))))
         source = _clean_whitespace(str(article.get("source_name", article.get("source", ""))))
         published = _clean_whitespace(str(article.get("published", "")))
+        summary = _clean_whitespace(str(article.get("summary", "")))
+        image_url = _clean_whitespace(str(article.get("image_url", "")))
 
         if not title or not url or url in seen_urls:
             continue
@@ -180,20 +123,22 @@ def extract_articles() -> Path:
         seen_urls.add(url)
         text = _fetch_article_text(url)
 
-        result.append(
+        extracted_articles.append(
             {
                 "title": title,
                 "url": url,
+                "source_url": url,
+                "source_domain": _extract_source_domain(url),
                 "source": source,
                 "text": text,
+                "summary": summary,
+                "image_url": image_url,
                 "published": published,
             }
         )
 
-    deduplicated = _deduplicate_articles(result)
-
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(deduplicated, ensure_ascii=False, indent=2), encoding="utf-8")
+    OUTPUT_PATH.write_text(json.dumps(extracted_articles, ensure_ascii=False, indent=2), encoding="utf-8")
     return OUTPUT_PATH
 
 

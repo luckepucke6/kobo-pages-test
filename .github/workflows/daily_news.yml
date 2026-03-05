@@ -49,18 +49,27 @@ jobs:
       - name: 4. Fetch RSS
         run: python scripts/fetch_rss.py
 
-      - name: Generate newspaper
+      - name: 5. Extract full article text
+        run: python scripts/extract_articles.py
+
+      - name: 6. Deduplicate articles
+        run: python scripts/dedupe_articles.py
+
+      - name: 7. Cluster similar articles
+        run: python scripts/cluster_articles.py
+
+      - name: 8. Summarize clustered articles
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/generate_newspaper.py
+        run: python scripts/summarize_articles.py
 
-      - name: 6. Build HTML
-        run: python scripts/build_html.py
+      - name: 9. Extract quotes
+        run: python scripts/extract_quotes.py
 
-      - name: Download images
-        run: python scripts/download_images.py
+      - name: 10. Build newspaper HTML
+        run: python scripts/build_newspaper.py
 
-      - name: 7. Create dated edition and update latest index
+      - name: 11. Create dated edition and update latest index
         run: |
           set -euo pipefail
 
@@ -82,7 +91,7 @@ jobs:
           </html>
           EOF
 
-      - name: 8. Set daily Instapaper URL
+      - name: 12. Set daily Instapaper URL
         run: |
           set -euo pipefail
 
@@ -101,12 +110,12 @@ jobs:
           echo "ARTICLE_URL=${DAILY_URL}" >> "$GITHUB_ENV"
           echo "Daily ARTICLE_URL set to: ${DAILY_URL}"
 
-      - name: 9. Commit updated pages
+      - name: 13. Commit updated pages
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pages/index.html "pages/${DAILY_DATE}.html" pages/newspaper.json pages/raw_articles.json pages/assets/images
+          git add pages/index.html "pages/${DAILY_DATE}.html"
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
@@ -118,5 +127,5 @@ jobs:
       - name: Wait for GitHub Pages to update
         run: sleep 30
 
-      - name: 10. Send to Instapaper
+      - name: 14. Send to Instapaper
         run: python scripts/send_to_instapaper.py

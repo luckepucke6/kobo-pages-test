@@ -12,7 +12,7 @@ except Exception:
     OpenAI = None  # type: ignore
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-INPUT_PATH = PROJECT_ROOT / "pages" / "articles_with_text.json"
+INPUT_PATH = PROJECT_ROOT / "pages" / "clustered_articles.json"
 OUTPUT_PATH = PROJECT_ROOT / "pages" / "summarized_articles.json"
 
 SYSTEM_PROMPT = (
@@ -34,8 +34,26 @@ def _split_sentences(text: str) -> list[str]:
     return [p.strip() for p in parts if p.strip()]
 
 
-def _fallback_summary(text: str, min_sentences: int = 4, max_sentences: int = 6) -> list[str]:
+def remove_duplicate_sentences(text: str) -> str:
     sentences = _split_sentences(text)
+    if not sentences:
+        return _clean_text(text)
+
+    seen: set[str] = set()
+    unique_sentences: list[str] = []
+
+    for sentence in sentences:
+        normalized = sentence.lower().strip()
+        if normalized in seen:
+            continue
+        seen.add(normalized)
+        unique_sentences.append(sentence)
+
+    return " ".join(unique_sentences)
+
+
+def _fallback_summary(text: str, min_sentences: int = 5, max_sentences: int = 8) -> list[str]:
+    sentences = _split_sentences(remove_duplicate_sentences(text))
     if not sentences:
         return ["Ingen text tillgänglig för sammanfattning."] * min_sentences
 
@@ -56,7 +74,7 @@ def _summarize_with_openai(client: Any, title: str, text: str) -> dict[str, Any]
                 "content": (
                     "Sammanfatta artikeln på svenska. Returnera ENDAST JSON med format:\n"
                     "{\n"
-                    '  "summary": ["4–6 meningar"],\n'
+                    '  "summary": ["5–8 meningar"],\n'
                     '  "why_it_matters": "1–2 meningar",\n'
                     '  "eli5": "1–2 meningar"\n'
                     "}\n\n"
@@ -71,18 +89,22 @@ def _summarize_with_openai(client: Any, title: str, text: str) -> dict[str, Any]
     summary_raw = payload.get("summary", [])
 
     if isinstance(summary_raw, str):
-        summary = [s.strip() for s in _split_sentences(summary_raw) if s.strip()]
+        summary = [s.strip() for s in _split_sentences(remove_duplicate_sentences(summary_raw)) if s.strip()]
     elif isinstance(summary_raw, list):
-        summary = [_clean_text(str(s)) for s in summary_raw if _clean_text(str(s))]
+        summary = []
+        for item in summary_raw:
+            cleaned_item = remove_duplicate_sentences(_clean_text(str(item)))
+            if cleaned_item:
+                summary.append(cleaned_item)
     else:
         summary = []
 
     if not summary:
         summary = _fallback_summary(text)
 
-    summary = summary[:6]
-    if len(summary) < 4:
-        summary.extend([summary[-1]] * (4 - len(summary)))
+    summary = summary[:8]
+    if len(summary) < 5:
+        summary.extend([summary[-1]] * (5 - len(summary)))
 
     why_it_matters = _clean_text(payload.get("why_it_matters", ""))
     eli5 = _clean_text(payload.get("eli5", ""))
@@ -136,7 +158,7 @@ def summarize_articles() -> Path:
             continue
 
         title = _clean_text(str(article.get("title", "")))
-        text = _clean_text(str(article.get("text", "")))
+        text = remove_duplicate_sentences(_clean_text(str(article.get("text", ""))))
         url = _clean_text(str(article.get("url", "")))
         source = _clean_text(str(article.get("source", "")))
 
@@ -152,7 +174,11 @@ def summarize_articles() -> Path:
                 "why_it_matters": summarized["why_it_matters"],
                 "eli5": summarized["eli5"],
                 "url": url,
+                "source_url": _clean_text(str(article.get("source_url", url))),
                 "source": source,
+                "source_domain": _clean_text(str(article.get("source_domain", ""))),
+                "image_url": _clean_text(str(article.get("image_url", ""))),
+                "published": _clean_text(str(article.get("published", ""))),
                 "text": text,
             }
         )

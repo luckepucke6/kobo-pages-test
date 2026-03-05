@@ -201,6 +201,10 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Generated Kobo newspaper artifacts
+kobo-newspaper/pages/*.json
+kobo-newspaper/data/*.json
+
 # Marimo
 marimo/_static/
 marimo/_lsp/

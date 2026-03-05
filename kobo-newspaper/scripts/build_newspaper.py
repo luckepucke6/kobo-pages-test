@@ -5,6 +5,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from jinja2 import Template
 
@@ -18,6 +19,16 @@ SECTION_ORDER = [
     "AI FÖR ML-INGENJÖRER",
     "SVERIGE",
 ]
+
+SWEDISH_SOURCE_SCORE_BONUS = 2
+HEADLINE_MAX_LENGTH = 90
+PRIORITY_SOURCE_DOMAINS = {
+    "svt.se",
+    "sr.se",
+    "svd.se",
+    "dn.se",
+    "di.se",
+}
 
 HTML_TEMPLATE = """<!doctype html>
 <html lang="sv">
@@ -61,6 +72,19 @@ HTML_TEMPLATE = """<!doctype html>
   <p>Inga tydliga siffror tillgängliga ännu.</p>
   {% endif %}
 
+    {% if top_timeline %}
+    <h2>{{ top_timeline.title }}</h2>
+    {% if top_timeline.events %}
+    <ul>
+        {% for event in top_timeline.events %}
+        <li>{{ event }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Ingen tydlig tidslinje tillgänglig ännu.</p>
+    {% endif %}
+    {% endif %}
+
   {% for section in sections %}
   <h2>{{ section.name }}</h2>
   {% for story in section.stories %}
@@ -70,7 +94,8 @@ HTML_TEMPLATE = """<!doctype html>
     <p><strong>Quote:</strong> {{ story.quote }}</p>
     <p><strong>Why it matters:</strong> {{ story.why_it_matters }}</p>
     <p><strong>ELI5:</strong> {{ story.eli5 }}</p>
-    <p><strong>Reflection question:</strong> {{ story.reflection_question }}</p>
+        <p><strong>Reflektionsfråga:</strong></p>
+        <p>{{ story.reflection_question }}</p>
     <p><a href="{{ story.source_url }}">Source link</a></p>
   </article>
   {% endfor %}
@@ -89,6 +114,59 @@ def _summary_to_text(summary: Any) -> str:
         parts = [_clean_text(item) for item in summary if _clean_text(item)]
         return " ".join(parts)
     return _clean_text(summary)
+
+
+def _extract_domain(url: str) -> str:
+    parsed = urlparse(_clean_text(url).lower())
+    domain = parsed.netloc or ""
+    if domain.startswith("www."):
+        domain = domain[4:]
+    return domain
+
+
+def _is_priority_swedish_source(story: dict[str, Any]) -> bool:
+    domain = _extract_domain(str(story.get("source_url", "")))
+    if domain and any(domain == priority or domain.endswith(f".{priority}") for priority in PRIORITY_SOURCE_DOMAINS):
+        return True
+
+    source_text = _clean_text(story.get("source", "")).lower()
+    fallback_markers = {"svt", "sveriges radio", "svd", "dn", "di"}
+    return any(marker in source_text for marker in fallback_markers)
+
+
+def _article_score(story: dict[str, Any]) -> int:
+    base_score = int(story.get("score", 0))
+    if _is_priority_swedish_source(story):
+        base_score += SWEDISH_SOURCE_SCORE_BONUS
+    return base_score
+
+
+def _shorten_headline(headline: str, max_length: int = HEADLINE_MAX_LENGTH) -> str:
+    cleaned = _clean_text(headline)
+    if len(cleaned) <= max_length:
+        return cleaned
+
+    shortened = cleaned[:max_length].rstrip()
+    if " " in shortened:
+        shortened = shortened.rsplit(" ", 1)[0]
+    if not shortened:
+        shortened = cleaned[:max_length].rstrip()
+    return f"{shortened}…"
+
+
+def _format_headline(source_headline: Any) -> str:
+    original = _clean_text(source_headline)
+    if not original:
+        return "Utan rubrik"
+    return _shorten_headline(original)
+
+
+def _split_sentences(text: str) -> list[str]:
+    cleaned = _clean_text(text)
+    if not cleaned:
+        return []
+    parts = re.split(r"(?<=[.!?])\s+", cleaned)
+    return [part.strip() for part in parts if part.strip()]
 
 
 def _quote_to_text(quote: Any, fallback_text: str) -> str:
@@ -112,8 +190,19 @@ def _quote_to_text(quote: Any, fallback_text: str) -> str:
 def _reflection_question(title: str) -> str:
     t = _clean_text(title)
     if not t:
-        return "Vilka konsekvenser får detta framåt?"
-    return f"Hur kan {t.lower()} påverka utvecklingen framåt?"
+        return "Vad är viktigast att följa nu?"
+
+    normalized = t.lower()
+    if any(term in normalized for term in ["ränta", "inflation", "ekonomi", "börs", "budget"]):
+        return "Vad kan detta betyda för ekonomin framåt?"
+    if any(term in normalized for term in ["ai", "ml", "modell", "inference", "pytorch", "tensorflow"]):
+        return "Vilken praktisk effekt kan detta få i vardagen?"
+    if any(term in normalized for term in ["krig", "konflikt", "nato", "ukraina", "säkerhet"]):
+        return "Hur kan detta påverka läget de kommande veckorna?"
+    if any(term in normalized for term in ["sverige", "regering", "riksdag", "lag", "domstol"]):
+        return "Vilken följd kan detta få för Sverige?"
+
+    return "Vilken konsekvens tycker du är viktigast här?"
 
 
 def _assign_section(article: dict[str, Any]) -> str:
@@ -194,34 +283,193 @@ def _build_top_bullets(stories: list[dict[str, Any]]) -> list[str]:
 def _build_daily_numbers(stories: list[dict[str, Any]]) -> list[str]:
     number_pattern = re.compile(r"\b\d+[\d\s.,]*\s*(?:%|procent|kr|SEK|USD|EUR|dollar|punkter|miljoner|miljarder)?\b", re.IGNORECASE)
     collected: list[str] = []
+    seen_keys: set[str] = set()
+
+    def _shorten_explanation(text: str, max_words: int = 16) -> str:
+        words = _clean_text(text).split()
+        if len(words) <= max_words:
+            return " ".join(words)
+        return " ".join(words[:max_words]).rstrip(" ,;:-") + "…"
 
     for story in stories:
-        text = " ".join(
+        title = _clean_text(story.get("title", ""))
+        combined_text = " ".join(
             [
-                _clean_text(story.get("title", "")),
+                title,
                 _summary_to_text(story.get("summary", "")),
                 _clean_text(story.get("why_it_matters", "")),
             ]
         )
-        matches = [m.group(0).strip() for m in number_pattern.finditer(text)]
-        for value in matches:
-            if any(ch.isdigit() for ch in value):
-                item = f"Nyckeltal: {value}"
-                if item not in collected:
-                    collected.append(item)
-            if len(collected) >= 6:
-                return collected
+
+        for sentence in _split_sentences(combined_text):
+            cleaned_sentence = _clean_text(sentence)
+            if not cleaned_sentence:
+                continue
+
+            for match in number_pattern.finditer(cleaned_sentence):
+                number_value = _clean_text(match.group(0))
+                if not number_value or not any(ch.isdigit() for ch in number_value):
+                    continue
+
+                explanation_base = cleaned_sentence.replace(match.group(0), "", 1).strip(" ,;:-")
+                if not explanation_base:
+                    explanation_base = "Nyckeltalet beskriver utvecklingen i artikeln"
+
+                short_explanation = _shorten_explanation(explanation_base)
+                context_text = _shorten_explanation(title, max_words=8) or "artikeln"
+                explanation = f"{short_explanation} (kontekst: {context_text})"
+
+                key = f"{number_value.lower()}::{explanation.lower()}"
+                if key in seen_keys:
+                    continue
+                seen_keys.add(key)
+
+                item = f"{number_value} – {explanation}"
+                collected.append(item)
+
+                if len(collected) >= 6:
+                    return collected
 
     return collected[:6]
 
 
+def _to_swedish_date_label(date_obj: datetime) -> str:
+    months = [
+        "jan",
+        "feb",
+        "mars",
+        "apr",
+        "maj",
+        "juni",
+        "juli",
+        "aug",
+        "sep",
+        "okt",
+        "nov",
+        "dec",
+    ]
+    return f"{date_obj.day} {months[date_obj.month - 1]}"
+
+
+def _parse_date_label_from_sentence(sentence: str) -> str | None:
+    text = _clean_text(sentence).lower()
+    if not text:
+        return None
+
+    month_map = {
+        "jan": 1,
+        "januari": 1,
+        "feb": 2,
+        "februari": 2,
+        "mar": 3,
+        "mars": 3,
+        "apr": 4,
+        "april": 4,
+        "maj": 5,
+        "jun": 6,
+        "juni": 6,
+        "jul": 7,
+        "juli": 7,
+        "aug": 8,
+        "sep": 9,
+        "sept": 9,
+        "september": 9,
+        "okt": 10,
+        "oktober": 10,
+        "nov": 11,
+        "november": 11,
+        "dec": 12,
+        "december": 12,
+    }
+
+    day_month_match = re.search(
+        r"\b(\d{1,2})\s*(jan|januari|feb|februari|mar|mars|apr|april|maj|jun|juni|jul|juli|aug|sep|sept|september|okt|oktober|nov|november|dec|december)\b",
+        text,
+    )
+    if day_month_match:
+        day = int(day_month_match.group(1))
+        month = month_map.get(day_month_match.group(2), 0)
+        if 1 <= day <= 31 and 1 <= month <= 12:
+            return f"{day} {_to_swedish_date_label(datetime(2026, month, 1)).split(' ', 1)[1]}"
+
+    iso_match = re.search(r"\b(20\d{2})-(\d{2})-(\d{2})\b", text)
+    if iso_match:
+        try:
+            date_obj = datetime.strptime(iso_match.group(0), "%Y-%m-%d")
+            return _to_swedish_date_label(date_obj)
+        except ValueError:
+            return None
+
+    return None
+
+
+def _shorten_event_text(text: str, max_words: int = 12) -> str:
+    words = _clean_text(text).split()
+    if len(words) <= max_words:
+        return " ".join(words)
+    return " ".join(words[:max_words]).rstrip(" ,;:-") + "…"
+
+
+def _build_top_timeline(stories: list[dict[str, Any]]) -> dict[str, Any] | None:
+    if not stories:
+        return None
+
+    top_story = stories[0]
+    top_title = _clean_text(top_story.get("title", "Dagens största nyhet")) or "Dagens största nyhet"
+    timeline_title = f"Tidslinje – {top_title}"
+
+    sentence_pool: list[str] = []
+    for field in ["summary", "why_it_matters", "quote", "eli5"]:
+        sentence_pool.extend(_split_sentences(_clean_text(top_story.get(field, ""))))
+
+    events: list[str] = []
+    seen_event_texts: set[str] = set()
+    published_raw = _clean_text(top_story.get("published", ""))
+    fallback_date_label = ""
+    if published_raw:
+        try:
+            fallback_date_label = _to_swedish_date_label(datetime.fromisoformat(published_raw.replace("Z", "+00:00")))
+        except ValueError:
+            fallback_date_label = _to_swedish_date_label(datetime.now())
+    else:
+        fallback_date_label = _to_swedish_date_label(datetime.now())
+
+    for sentence in sentence_pool:
+        cleaned_sentence = _clean_text(sentence)
+        if len(cleaned_sentence) < 20:
+            continue
+
+        date_label = _parse_date_label_from_sentence(cleaned_sentence) or fallback_date_label
+
+        event_text = _shorten_event_text(cleaned_sentence)
+        normalized_text = event_text.lower()
+        if normalized_text in seen_event_texts:
+            continue
+
+        seen_event_texts.add(normalized_text)
+        events.append(f"{date_label} – {event_text}")
+
+        if len(events) >= 4:
+            break
+
+    if not events:
+        events = [f"{fallback_date_label} – {_shorten_event_text(top_story.get('summary', '') or top_story.get('why_it_matters', '') or top_title)}"]
+
+    return {
+        "title": timeline_title,
+        "events": events,
+    }
+
+
 def _normalize_article(article: dict[str, Any]) -> dict[str, Any]:
-    title = _clean_text(article.get("title", "Utan rubrik")) or "Utan rubrik"
+    title = _format_headline(article.get("title", ""))
     summary = _summary_to_text(article.get("summary", article.get("summary_paragraphs", "")))
     why_it_matters = _clean_text(article.get("why_it_matters", article.get("why_important", "")))
     eli5 = _clean_text(article.get("eli5", "")) or "Ingen ELI5 tillgänglig."
     source_url = _clean_text(article.get("url", article.get("source_url", "#"))) or "#"
     source = _clean_text(article.get("source", ""))
+    image_url = _clean_text(article.get("image_url", article.get("image", "")))
+    published = _clean_text(article.get("published", ""))
 
     quote = _quote_to_text(article.get("quote", article.get("quotes", "")), summary)
 
@@ -239,6 +487,9 @@ def _normalize_article(article: dict[str, Any]) -> dict[str, Any]:
         "reflection_question": _reflection_question(title),
         "source_url": source_url,
         "source": source,
+        "image_url": image_url,
+        "published": published,
+        "score": 0,
     }
 
 
@@ -251,6 +502,7 @@ def build_newspaper() -> Path:
         raise ValueError("Input must be a JSON list of articles")
 
     stories = [_normalize_article(article) for article in payload if isinstance(article, dict)]
+    stories = sorted(stories, key=_article_score, reverse=True)
 
     sections_map: dict[str, list[dict[str, Any]]] = {name: [] for name in SECTION_ORDER}
     for story in stories:
@@ -264,11 +516,13 @@ def build_newspaper() -> Path:
 
     top_bullets = _build_top_bullets(stories)
     daily_numbers = _build_daily_numbers(stories)
+    top_timeline = _build_top_timeline(stories)
 
     html = Template(HTML_TEMPLATE).render(
         date_string=datetime.now().strftime("%Y-%m-%d"),
         top_bullets=top_bullets,
         daily_numbers=daily_numbers,
+        top_timeline=top_timeline,
         sections=sections,
     )
 
