@@ -49,6 +49,30 @@ def _fallback_summary(text: str, min_sentences: int = 5, max_sentences: int = 8)
     return result
 
 
+def _normalize_summary_sentences(summary_sentences: list[str], min_sentences: int = 5, max_sentences: int = 8) -> list[str]:
+    unique: list[str] = []
+    seen: set[str] = set()
+
+    for sentence in summary_sentences:
+        cleaned = clean_text(sentence)
+        if not cleaned:
+            continue
+        for split_sentence in _split_sentences(cleaned):
+            normalized = split_sentence.lower().strip()
+            if normalized in seen:
+                continue
+            seen.add(normalized)
+            unique.append(split_sentence)
+
+    if not unique:
+        return []
+
+    result = unique[:max_sentences]
+    if len(result) < min_sentences:
+        result.extend([result[-1]] * (min_sentences - len(result)))
+    return result
+
+
 def _summarize_with_openai(client: Any, title: str, text: str) -> dict[str, Any]:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -75,18 +99,18 @@ def _summarize_with_openai(client: Any, title: str, text: str) -> dict[str, Any]
     summary_raw = payload.get("summary", [])
 
     if isinstance(summary_raw, str):
-        summary = _split_sentences(_remove_duplicate_sentences(summary_raw))
+        summary = _normalize_summary_sentences(_split_sentences(_remove_duplicate_sentences(summary_raw)))
     elif isinstance(summary_raw, list):
-        summary = [clean_text(item) for item in summary_raw if clean_text(item)]
+        summary = _normalize_summary_sentences([str(item) for item in summary_raw])
     else:
         summary = []
 
     if not summary:
         summary = _fallback_summary(text)
 
-    summary = summary[:8]
-    if len(summary) < 5:
-        summary.extend([summary[-1]] * (5 - len(summary)))
+    summary = _normalize_summary_sentences(summary)
+    if not summary:
+        summary = _fallback_summary(text)
 
     why = clean_text(payload.get("why_it_matters", "")) or "Det här påverkar nyhetsläget och vardagen på kort sikt."
     eli5 = clean_text(payload.get("eli5", "")) or "Kort sagt: detta är en viktig förändring och därför bör man följa utvecklingen."

@@ -1,13 +1,11 @@
 from __future__ import annotations
 
 import re
-from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
 from app.models import DEDUPED_OUTPUT, EXTRACTED_OUTPUT, read_json, write_json
 
-SIMILARITY_THRESHOLD = 0.8
 PREFERRED_SWEDISH_DOMAINS = {"svt.se", "sr.se", "svd.se", "dn.se", "di.se"}
 
 
@@ -55,6 +53,11 @@ def _remove_duplicate_paragraphs(text: str) -> str:
     return "\n\n".join(unique)
 
 
+def _clean_article_text(text: str) -> str:
+    without_duplicate_paragraphs = _remove_duplicate_paragraphs(text)
+    return _remove_duplicate_sentences(without_duplicate_paragraphs)
+
+
 def _is_preferred(article: dict[str, Any]) -> bool:
     domain = _clean(article.get("source_domain", "")).lower()
     return any(domain == item or domain.endswith(f".{item}") for item in PREFERRED_SWEDISH_DOMAINS)
@@ -74,8 +77,7 @@ def run() -> Path:
     if not isinstance(payload, list):
         raise ValueError("Expected list input from extract_articles")
 
-    deduped: list[dict[str, Any]] = []
-    titles: list[str] = []
+    deduped_by_title: dict[str, dict[str, Any]] = {}
 
     for raw in payload:
         if not isinstance(raw, dict):
@@ -83,27 +85,21 @@ def run() -> Path:
 
         article = dict(raw)
         article["title"] = _clean(article.get("title", ""))
-        article["text"] = _remove_duplicate_sentences(_remove_duplicate_paragraphs(article.get("text", "")))
-        article["summary"] = _remove_duplicate_sentences(_clean(article.get("summary", "")))
+        article["text"] = _clean_article_text(str(article.get("text", "")))
+        article["summary"] = _clean_article_text(str(article.get("summary", "")))
 
         normalized = _normalize_title(article.get("title", ""))
         if not normalized:
             continue
 
-        duplicate_index = -1
-        for index, existing in enumerate(titles):
-            if SequenceMatcher(None, normalized, existing).ratio() > SIMILARITY_THRESHOLD:
-                duplicate_index = index
-                break
-
-        if duplicate_index == -1:
-            deduped.append(article)
-            titles.append(normalized)
+        existing = deduped_by_title.get(normalized)
+        if existing is None:
+            deduped_by_title[normalized] = article
             continue
 
-        best = _choose_best(deduped[duplicate_index], article)
-        deduped[duplicate_index] = best
-        titles[duplicate_index] = _normalize_title(best.get("title", ""))
+        deduped_by_title[normalized] = _choose_best(existing, article)
+
+    deduped = list(deduped_by_title.values())
 
     return write_json(DEDUPED_OUTPUT, deduped)
 
