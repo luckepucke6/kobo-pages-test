@@ -57,6 +57,9 @@ jobs:
       - name: 6. Build HTML
         run: python scripts/build_html.py
 
+      - name: Download images
+        run: python scripts/download_images.py
+
       - name: 7. Create dated edition and update latest index
         run: |
           set -euo pipefail
@@ -103,7 +106,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pages/index.html "pages/${DAILY_DATE}.html" pages/newspaper.json pages/raw_articles.json
+          git add pages/index.html "pages/${DAILY_DATE}.html" pages/newspaper.json pages/raw_articles.json pages/assets/images
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else

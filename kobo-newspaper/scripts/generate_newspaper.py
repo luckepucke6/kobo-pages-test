@@ -241,6 +241,7 @@ def _build_story(article: dict[str, str]) -> dict[str, Any]:
     title = _clean_text(article.get("title", "")) or "Utan rubrik"
     source_summary = _clean_text(article.get("summary", ""))
     summarized = summarize_article(title=title, content=source_summary)
+    image_url = article.get("image_url")
 
     story: dict[str, Any] = {
         "title": summarized["title"],
@@ -248,6 +249,7 @@ def _build_story(article: dict[str, str]) -> dict[str, Any]:
         "summary_paragraphs": summarized["summary_paragraphs"],
         "why_important": summarized["why_important"],
         "source_url": article.get("link", "#"),
+        "image_url": image_url if isinstance(image_url, str) and image_url.strip() else None,
     }
 
     if summarized.get("eli5"):

@@ -159,6 +159,14 @@ HTML_TEMPLATE = """<!doctype html>
       margin-bottom: 0.55rem;
     }
 
+    .article-image {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      display: block;
+      margin: 10px 0 14px 0;
+    }
+
     .ingress {
       font-style: italic;
       color: #202020;
@@ -240,6 +248,10 @@ HTML_TEMPLATE = """<!doctype html>
       {% for story in section.stories %}
       <article class="article">
         <h3 class="story-title">{{ story.title }}</h3>
+
+        {% if story.image_url %}
+        <img src="{{ story.image_url }}" alt="" class="article-image">
+        {% endif %}
 
         {% if story.ingress %}
         <p class="ingress">{{ story.ingress }}</p>

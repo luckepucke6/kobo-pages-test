@@ -76,6 +76,38 @@ def _extract_published_datetime(entry: dict[str, Any]) -> datetime | None:
     return _to_utc_datetime(entry.get("updated_parsed"))
 
 
+def _extract_image_url(entry: dict[str, Any]) -> str | None:
+    media_content = entry.get("media_content") or []
+    if isinstance(media_content, list):
+        for item in media_content:
+            if isinstance(item, dict):
+                url = str(item.get("url") or "").strip()
+                if url:
+                    return url
+
+    media_thumbnail = entry.get("media_thumbnail") or []
+    if isinstance(media_thumbnail, list):
+        for item in media_thumbnail:
+            if isinstance(item, dict):
+                url = str(item.get("url") or "").strip()
+                if url:
+                    return url
+
+    enclosures = entry.get("enclosures") or []
+    if isinstance(enclosures, list):
+        for enclosure in enclosures:
+            if not isinstance(enclosure, dict):
+                continue
+            enclosure_type = str(enclosure.get("type") or "").strip().lower()
+            if not enclosure_type.startswith("image/"):
+                continue
+            url = str(enclosure.get("url") or enclosure.get("href") or "").strip()
+            if url:
+                return url
+
+    return None
+
+
 def _normalize_source(source_text: str) -> str | None:
     normalized = (source_text or "").strip().lower()
     if not normalized:
@@ -102,6 +134,7 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
         link = (entry.get("link") or "").strip()
         summary = (entry.get("summary") or entry.get("description") or "").strip()
         published_dt = _extract_published_datetime(entry)
+        image_url = _extract_image_url(entry)
 
         entry_source_data = entry.get("source") or {}
         entry_source_title = ""
@@ -125,6 +158,7 @@ def _extract_entries(feed_url: str, since: datetime, default_source: str) -> lis
                 "published": published_dt.isoformat(),
                 "summary": summary,
                 "source": source_name,
+                "image_url": image_url,
             }
         )
 
