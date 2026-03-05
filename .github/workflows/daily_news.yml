@@ -71,7 +71,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
-          python app/pipeline.py
+          PYTHONPATH=$PWD python app/pipeline.py
 
       - name: Verify generated pages artifacts
         run: |

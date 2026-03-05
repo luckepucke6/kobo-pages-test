@@ -3,16 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from stages import (
-    build_html,
-    cluster_articles,
-    dedupe_articles,
-    extract_articles,
-    extract_quotes,
-    publish_pages,
-    rss_ingest,
-    summarize_articles,
-)
+from stages import build_html
+from stages import cluster_articles
+from stages import dedupe_articles
+from stages import extract_articles
+from stages import extract_quotes
+from stages import publish_pages
+from stages import rss_ingest
+from stages import summarize_articles
 
 STAGES: list[tuple[str, Callable[[], Path]]] = [
     ("rss_ingest", rss_ingest.run),
