@@ -27,16 +27,20 @@ def _split_sentences(text: str) -> list[str]:
     return [part.strip() for part in re.split(r"(?<=[.!?])\s+", cleaned) if part.strip()]
 
 
-def _remove_duplicate_sentences(text: str) -> str:
+def remove_duplicate_sentences(text: str) -> str:
     seen: set[str] = set()
     unique: list[str] = []
     for sentence in _split_sentences(text):
-        key = sentence.lower().strip()
-        if key in seen:
+        normalized = sentence.strip()
+        if not normalized or normalized in seen:
             continue
-        seen.add(key)
-        unique.append(sentence)
+        seen.add(normalized)
+        unique.append(normalized)
     return " ".join(unique)
+
+
+def _remove_duplicate_sentences(text: str) -> str:
+    return remove_duplicate_sentences(text)
 
 
 def _fallback_summary(text: str, min_sentences: int = 5, max_sentences: int = 8) -> list[str]:
@@ -158,7 +162,8 @@ def run() -> Path:
                     "eli5": "Kort sagt: detta är en viktig förändring och därför bör man följa utvecklingen.",
                 }
 
-        article["summary"] = summarized["summary"]
+        summary_text = " ".join(clean_text(item) for item in summarized.get("summary", []) if clean_text(item))
+        article["summary"] = _split_sentences(remove_duplicate_sentences(summary_text))
         article["why_it_matters"] = summarized["why_it_matters"]
         article["eli5"] = summarized["eli5"]
         article["text"] = text
