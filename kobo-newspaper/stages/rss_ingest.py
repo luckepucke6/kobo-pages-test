@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import feedparser
 
@@ -11,16 +12,23 @@ from app.models import RSS_OUTPUT, clean_text, write_json
 SOURCE_FEEDS: list[tuple[str, str]] = [
     ("https://www.svt.se/nyheter/rss.xml", "SVT"),
     ("https://feeds.sr.se/senasteekot", "Sveriges Radio"),
-    ("https://www.svd.se/?service=rss", "SvD"),
     ("https://www.dn.se/rss/", "DN"),
+    ("https://www.svd.se/?service=rss", "SvD"),
     ("https://www.di.se/rss/", "DI"),
-    ("https://www.reuters.com/world/rss", "Reuters"),
-    ("https://feeds.bbci.co.uk/news/world/rss.xml", "BBC"),
-    ("https://www.theguardian.com/world/rss", "Guardian"),
-    ("https://apnews.com/hub/apf-topnews?output=rss", "AP"),
+    ("https://techcrunch.com/feed/", "TechCrunch"),
+    ("https://www.wired.com/feed/rss", "Wired"),
     ("https://www.technologyreview.com/feed/", "MIT Technology Review"),
-    ("https://feeds.arstechnica.com/arstechnica/index", "Ars Technica"),
+    ("https://www.theverge.com/rss/index.xml", "The Verge"),
 ]
+
+SWEDISH_PRIORITY_DOMAINS = [
+    "svt.se",
+    "sverigesradio.se",
+    "dn.se",
+    "svd.se",
+    "di.se",
+]
+
 MAX_PER_SOURCE = 3
 
 
@@ -29,6 +37,18 @@ def _extract_published(entry: dict[str, Any]) -> str:
     if not parsed:
         return ""
     return datetime(*parsed[:6], tzinfo=timezone.utc).isoformat()
+
+
+def _extract_domain(url: str) -> str:
+    domain = urlparse(clean_text(url)).netloc.lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    return domain
+
+
+def _swedish_priority_boost(source_domain: str) -> int:
+    normalized = clean_text(source_domain).lower()
+    return 1 if any(normalized == domain or normalized.endswith(f".{domain}") for domain in SWEDISH_PRIORITY_DOMAINS) else 0
 
 
 def run() -> Path:
@@ -56,21 +76,34 @@ def run() -> Path:
             if published_dt < since:
                 continue
 
+            source_domain = _extract_domain(link)
+            swedish_boost = _swedish_priority_boost(source_domain)
+
             source_articles.append(
                 {
                     "title": title,
                     "url": link,
+                    "source_domain": source_domain,
+                    "published_at": published,
+                    "feed_url": feed_url,
                     "source": source,
                     "summary": summary,
                     "published": published,
+                    "swedish_source_boost": swedish_boost,
                     "image_url": "",
                 }
             )
 
-        source_articles.sort(key=lambda item: item.get("published", ""), reverse=True)
+        source_articles.sort(
+            key=lambda item: (int(item.get("swedish_source_boost", 0)), item.get("published_at", "")),
+            reverse=True,
+        )
         all_articles.extend(source_articles[:MAX_PER_SOURCE])
 
-    all_articles.sort(key=lambda item: item.get("published", ""), reverse=True)
+    all_articles.sort(
+        key=lambda item: (int(item.get("swedish_source_boost", 0)), item.get("published_at", "")),
+        reverse=True,
+    )
     return write_json(RSS_OUTPUT, all_articles)
 
 
