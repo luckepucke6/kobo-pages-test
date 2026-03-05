@@ -10,19 +10,20 @@
     }
 
     body {
-      margin: 0;
-      padding: 0;
+      max-width: 720px;
+      margin: auto;
+      padding: 24px;
       background: #ffffff;
       color: #111111;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      line-height: 1.7;
+      font-family: Georgia, serif;
+      line-height: 1.65;
       font-size: 18px;
     }
 
     .page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2.2rem 1.5rem 3.5rem;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     h1, h2, h3 {
@@ -30,6 +31,19 @@
       line-height: 1.25;
       font-weight: 700;
       color: #111111;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-top: 40px;
+    }
+
+    h3 {
+      font-size: 20px;
     }
 
     p {
@@ -80,15 +94,33 @@
       margin: 0 0 0.45rem;
     }
 
-    .facts-list {
+    .brief-list {
       margin: 0;
       padding-left: 1.2rem;
-      color: #222222;
-      font-size: 0.98rem;
     }
 
-    .facts-list li {
-      margin: 0 0 0.35rem;
+    .brief-list li {
+      margin: 0 0 0.4rem;
+    }
+
+    .quote-text {
+      margin: 0;
+      padding-left: 12px;
+      border-left: 3px solid #cfcfcf;
+      font-style: italic;
+      color: #1f1f1f;
+    }
+
+    .quote-source {
+      margin-top: 0.55rem;
+      font-size: 0.96rem;
+      color: #333;
+    }
+
+    .section-divider {
+      margin: 40px 0;
+      border: none;
+      border-top: 1px solid #ccc;
     }
 
     .news-section {
@@ -104,15 +136,22 @@
       letter-spacing: 0.02em;
     }
 
-    .story {
-      margin-bottom: 2.2rem;
+    .article {
+      margin-bottom: 36px;
       padding-bottom: 1.3rem;
       border-bottom: 1px solid #e8e8e8;
     }
 
     .story-title {
-      font-size: 1.35rem;
       margin-bottom: 0.55rem;
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      display: block;
+      margin: 10px 0 14px 0;
     }
 
     .ingress {
@@ -130,10 +169,10 @@
       margin-bottom: 0.8rem;
     }
 
-    .eli5-box {
-      border: 1px solid #cfcfcf;
-      padding: 0.7rem 0.8rem;
-      background: #f7f7f7;
+    .eli5 {
+      border-left: 4px solid #ccc;
+      padding-left: 12px;
+      margin-top: 8px;
       margin-bottom: 0.8rem;
     }
 
@@ -155,627 +194,639 @@
       
       <ul class="overview-list">
         
-        <li>Australiens regering möter kritik för sin hantering av medborgarsäkerhet och den växande konflikten i Mellanöstern.</li>
+        <li>Nvidia minskar sina investeringar i OpenAI och Anthropic, vilket kan påverka AI-branschen.</li>
         
-        <li>Kunder på Woolworths uttrycker oro över nya säkerhetsgrindar som kan påverka butikens besök.</li>
+        <li>Kina har satt ett rekordlågt mål för BNP-tillväxt som svar på ekonomiska utmaningar.</li>
         
-        <li>Jenny Bytander blir toppkandidat för Moderaterna i Vadstena, vilket kan förändra den politiska dynamiken i regionen.</li>
+        <li>TerraPower får tillstånd att bygga sin första kärnkraftanläggning, vilket kan påverka energipolitiken globalt.</li>
         
-        <li>En man åtalas för grovt djurplågeri i Västervik, vilket belyser betydelsen av djurskydd.</li>
+        <li>Google sänker avgifter för apputvecklare, vilket kan öka konkurrensen på mobilmarknaden.</li>
         
-        <li>Lytens batterifabrik i Skellefteå söker personal, vilket kan stabilisera den lokala arbetsmarknaden.</li>
-        
-        <li>Debatten om Jim Carrey får kritik för sin ytlighet och efterlyser djupare analys av filmkonst.</li>
+        <li>Iran genomför attacker mot kurdiska grupper i Irak, vilket kan destabilisera regionen.</li>
         
       </ul>
       
     </section>
 
     <section class="intro-block">
-      <h2 class="intro-title">Dagens fakta</h2>
-      <ul class="facts-list">
-        <li>Totalt antal sektioner: 8</li>
-        <li>Totalt antal artiklar: 35</li>
-        <li>Senast uppdaterad: 2026-03-05</li>
-        <li>Format: Optimerat för e-bläckläsning</li>
+      <h2 class="intro-title">Världen i korthet</h2>
+      
+      <ul class="brief-list">
+        
+        <li>VÄRLDEN: Iran genomför attacker mot kurdiska grupper i Irak.</li>
+        
+        <li>EKONOMI: Minns klandrar pro-Palestina protestorganisatörer.</li>
+        
+        <li>AI för utvecklare: Dario Amodei kallar OpenAI:s påståenden om militäravtal för 'rena lögner'.</li>
+        
+        <li>TECH INDUSTRY: Google och Epic når förlikning i mål om appbutikens konkurrensvillkor.</li>
+        
+        <li>VETENSKAP & MILJÖ: LTU-forskare varnar för AI:s påverkan på elförbrukning.</li>
+        
+        <li>SVERIGE: ADF-flygplan skickas för att hämta australiska medborgare i Mellanöstern.</li>
+        
       </ul>
+      
+    </section>
+
+    <section class="intro-block">
+      <h2 class="intro-title">Dagens citat</h2>
+      
+      <p class="quote-text">“New South Wales premiärminister Chris Minns anklagar pro-Palestina protestorganisatörer för att vara 'en grupp kommunister' som instigar till konfrontationer med polisen.”</p>
+      <p class="quote-source">Från: Minns klandrar pro-Palestina protestorganisatörer</p>
+      
     </section>
 
     
-    <section class="news-section">
-      <h2 class="section-title">SVERIGE</h2>
-
-      
-      <article class="story">
-        <h3 class="story-title">Australiens politik i fokus: Tre koalitionsledamöter bortvisade under frågestund</h3>
-
-        
-        <p class="ingress">Under en intensiv frågestund har tre medlemmar av den australiska koalitionen blivit bortvisade. Samtidigt riktar oppositionen kritik mot regeringen gällande ekonomiska frågor.</p>
-        
-
-        
-        <p class="summary-paragraph">James Paterson, skuggförsvarsminister, framhåller att om kommersiella flygalternativ inte finns tillgängliga, bör militära resurser övervägas för att återförena medborgare.</p>
-        
-        <p class="summary-paragraph">Paterson betonar att tidigare har man använt militärplan för att evakuera australiensare från krigsdrabbade områden.</p>
-        
-        <p class="summary-paragraph">Han uttrycker oro över den aktuella konflikten i Mellanöstern och kritiserar bristen på en bred konsultationsprocess innan åtgärder vidtogs av USA och Israel.</p>
-        
-        <p class="summary-paragraph">Paterson menar att den nuvarande situationen visar på misslyckanden i det internationella systemet, trots många försök med sanktioner och diplomatiska insatser.</p>
-        
-        <p class="summary-paragraph">Han påpekar att internationell rätt måste respekteras av alla parter inblandade i konflikten.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Den politiska stämningen i Australien präglas av oro för medborgarnas säkerhet och en växande konflikt i Mellanöstern. Regeringens svar på dessa utmaningar är kritiskt för landets internationella relationer.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Om det blir oroligt i ett annat land och australiensare behöver hjälp att komma hem, kan militärflygplan användas för att hämta dem. Det handlar om att skydda medborgarna och säkerställa att alla följer reglerna för hur länder bör agera mot varandra.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Kunder på Woolworths oroar sig för nya säkerhetsgrindar</h3>
-
-        
-        <p class="ingress">Woolworths testar nya säkerhetsgrindar i Sydney, men kunder uttrycker oro för att de kan skada barn. Flera har rapporterat om incidenter där grindarna träffat barn i armar och ben.</p>
-        
-
-        
-        <p class="summary-paragraph">En kund i en butik som testar grindarna uppgav att det skulle vara svårt att gå in utan att träffa ett barn.</p>
-        
-        <p class="summary-paragraph">Maria, som handlade med sina två barn i Bass Hill, noterade omedelbart den nya ingången.</p>
-        
-        <p class="summary-paragraph">Hon berättade att hon såg hur grindarna orsakade problem för barn som befann sig i närheten.</p>
-        
-        <p class="summary-paragraph">Det har rapporterats om att barn har träffats av grindarna i olika delar av kroppen.</p>
-        
-        <p class="summary-paragraph">Kunderna efterfrågar nu åtgärder för att förbättra säkerheten vid användning av grindarna.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Säkerheten för kunder och deras barn är avgörande, särskilt i offentliga miljöer. Oro kring dessa grindar kan påverka kundernas vilja att besöka butiken.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Nya grindar vid ingången till Woolworths kan ibland träffa små barn när folk går in. Kunder har blivit oroliga för att detta kan göra det farligt att handla där.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/business/2026/mar/05/woolworths-new-security-gates-customer-concerns">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Jenny Bytander blir toppkandidat för Moderaterna i Vadstena efter avhopp från (S)</h3>
-
-        
-        <p class="ingress">Jenny Bytander, tidigare medlem av Socialdemokraterna i Vadstena, har anslutit sig till Moderaterna. Hennes avhopp från det socialdemokratiska partiet skedde under uppmärksammade former hösten 2024.</p>
-        
-
-        
-        <p class="summary-paragraph">Bytander lämnar (S) där hon var en aktiv medlem.</p>
-        
-        <p class="summary-paragraph">Hennes avhopp blev ett diskussionsämne i lokalpolitiken.</p>
-        
-        <p class="summary-paragraph">Nu ställer hon upp som förstanamn för Moderaterna inför kommande val.</p>
-        
-        <p class="summary-paragraph">Bytanders byte av parti kan påverka väljarnas stöd i Vadstena.</p>
-        
-        <p class="summary-paragraph">Det blir intressant att följa hur hennes nya roll som kandidat utvecklas.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Bytanders skifte kan signalera en förändring inom den politiska dynamiken i Vadstena. Hennes stöd kan bli avgörande för Moderaternas konkurrenskraft i kommande val.</p>
-
-        
-
-        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/ost/lamnade-s-med-buller-och-bang-nu-blir-jenny-bytander-forstanamn-for-m-i-vadstena">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Man åtalas för grovt djurplågeri i Västervik</h3>
-
-        
-        <p class="ingress">En man i Västerviks kommun har åtalats för grovt djurplågeri efter att ha vanvårdat sin hund under en längre tid. Hunden vägde nästan 74 kilo och var av schäferliknande ras.</p>
-        
-
-        
-        <p class="summary-paragraph">Mannen har enligt åtalet utsatt hunden för allvarlig vanvård.</p>
-        
-        <p class="summary-paragraph">Det handlar om bristande foder och omvårdnad.</p>
-        
-        <p class="summary-paragraph">Hunden har varit i ett mycket dåligt fysiskt skick.</p>
-        
-        <p class="summary-paragraph">Åtalet har väckt stor uppmärksamhet i lokalsamhället.</p>
-        
-        <p class="summary-paragraph">Mannen riskerar rättsliga påföljder om han fälls.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Fallet belyser problematiken med djurplågeri och vikten av djurskydd. Allmänheten uppmanas att rapportera misstänkt vanvård av djur.</p>
-
-        
-
-        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/smaland/hunden-vagde-74-kilo-man-atalas-for-grovt-djurplageri">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Lytens batterifabrik i Skellefteå söker arbetskraft</h3>
-
-        
-        <p class="ingress">Rekryteringen till Lytens batterifabrik i Skellefteå inleds efter Northvolts konkurs. 600 tidigare anställda från Northvolt är fortfarande inskrivna hos Arbetsförmedlingen.</p>
-        
-
-        
-        <p class="summary-paragraph">Northvolt, som tidigare drev en batterifabrik i Skellefteå, gick i konkurs nyligen.</p>
-        
-        <p class="summary-paragraph">Som resultat av konkursen registrerade 1 800 fabriksanställda sig hos Arbetsförmedlingen.</p>
-        
-        <p class="summary-paragraph">Av dessa är 600 fortfarande inskrivna och söker arbete.</p>
-        
-        <p class="summary-paragraph">Lytens, den nya ägaren av fabriken, inleder nu rekryteringsprocessen.</p>
-        
-        <p class="summary-paragraph">Patrik Bergström, sektionschef vid Arbetsförmedlingen, uttrycker hopp om att de förra anställda kan återvända till sina jobb.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna rekrytering är en möjlighet för många som har förlorat sina jobb. Det kan bidra till att stabilisera arbetsmarknaden i Skellefteå.</p>
-
-        
-
-        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/vasterbotten/nu-borjar-jakten-pa-folk-till-lytens-batterifabrik-i-skelleftea">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Jim Carrey-debatten får kritik för att vara ytlig</h3>
-
-        
-        <p class="ingress">Kulturnyheternas filmredaktör granskar diskussionerna kring Jim Carreys mångfacetterade karriär.</p>
-        
-
-        
-        <p class="summary-paragraph">Jim Carrey är känd för sina varierande roller, från komedi till drama.</p>
-        
-        <p class="summary-paragraph">Trots sin framgång har hans arbete ofta blivit föremål för ytlig debatt.</p>
-        
-        <p class="summary-paragraph">Kritiken handlar bland annat om att fokuset ligger på hans personlighet snarare än hans skådespelartalanger.</p>
-        
-        <p class="summary-paragraph">Filmens påverkan på kulturen och Carreys bidrag borde diskussionerna rikta sig mot.</p>
-        
-        <p class="summary-paragraph">Filmredaktören menar att debatten missar djupet i Carreys prestationer.</p>
-        
-        <p class="summary-paragraph">Det är viktigt att diskutera skådespelares verk med respekt för deras konstnärliga uttryck.</p>
-        
-        <p class="summary-paragraph">Ytligheten i debatten riskerar att påverka publikens förståelse av biografisk konst.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> En djupare analys av skådespelares arbete kan öka förståelsen för film som konstform. Att lyfta fram Carreys prestationer kan inspirera till en mer medveten filmkultur.</p>
-
-        
-
-        <p class="source"><a href="https://www.svt.se/kultur/jim-carrey-debatten-ar-bara-for-dum">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Wellnessguru åtalad för vållande till annans död under ceremoni med ayahuasca och grodtoxin</h3>
-
-        
-        <p class="ingress">Soulore Solaris har åtalats för vållande till annans död efter att en man dog under en intensiv spirituell ceremoni. Offret avled av en perforerad matstrupe efter att ha konsumerat psykedeliska substanser.</p>
-        
-
-        
-        <p class="summary-paragraph">Soulore Solaris, 52, blev arresterad och åtalad i tisdags för kopplingen till dödsfallet 2021.</p>
-        
-        <p class="summary-paragraph">Den avlidne, Jarrad Antonovich, deltog i en ceremoni vid Arcoora-retreaten som Solaris drev i Collins Creek.</p>
-        
-        <p class="summary-paragraph">Retreaten ligger cirka 60 kilometer från Byron Bay i New South Wales.</p>
-        
-        <p class="summary-paragraph">Dödsfallet inträffade efter att Antonovich använt både ayahuasca och ett toxin från en groda.</p>
-        
-        <p class="summary-paragraph">Det har nu gått över fyra år sedan händelsen, vilket väckt frågor om säkerheten vid sådana ceremonier.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Ärendet belyser de potentiella riskerna med spirituella ceremonier som involverar psykedeliska substanser. Det kan leda till en ökad granskning av sådana verksamheter.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Soulore Solaris är en person som leder ceremonier där man tar psykedeliska ämnen. Någon dog under en sådan ceremoni, och nu har han blivit åtalad för att ha orsakat dödsfallet. Det är viktigt för att hjälpa till att förstå riskerna med den här typen av behandlingar.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/australia-news/2026/mar/05/soulore-solaris-shaman-frog-toxin-ayahuasca-death-ntwnfb">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Kina sätter lägsta ekonomiska tillväxtmål sedan 1991</h3>
-
-        
-        <p class="ingress">Kina har satt sitt lägsta ekonomiska tillväxtmål på över tre decennier. Det är även första gången sedan 2023 som målet sänks.</p>
-        
-
-        
-        <p class="summary-paragraph">Det nya tillväxtmålet är en indikation på landets ekonomiska utmaningar.</p>
-        
-        <p class="summary-paragraph">Målet har sänkts till 'kring 5%', vilket är lägre än tidigare nivåer.</p>
-        
-        <p class="summary-paragraph">Ekonomin i Kina har påverkats av flera faktorer, inklusive den globala ekonomiska osäkerheten.</p>
-        
-        <p class="summary-paragraph">Den senaste sänkningen kan påverka både inhemsk och internationell handel.</p>
-        
-        <p class="summary-paragraph">Analytiker förutspår att det nya målet kan få konsekvenser för globala marknader.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Den ekonomiska tillväxten i Kina påverkar spillover-effekter på den globala ekonomin. En sänkning av tillväxtmålet kan signalera betydande förändringar i ekonomiska och handelsrelationer.</p>
-
-        
-
-        <p class="source"><a href="https://www.bbc.com/news/articles/cqxddwl93qjo?at_medium=RSS&at_campaign=rss">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Polisen avvisade Kelly Wilkinson dagar före hennes mord av make</h3>
-
-        
-        <p class="ingress">Kelly Wilkinson avvisades av polisen vid Southport-poliskontoret fyra dagar före att hennes estrangerade make, Brian Earl Johnston, mördade henne. Detta framkom under en rättsprocess.</p>
-        
-
-        
-        <p class="summary-paragraph">Enligt vittnesmål från rättegången blev Wilkinson tillsagd att 'lugna ner sig' och ge sin make 'en paus'.</p>
-        
-        <p class="summary-paragraph">Hennes familjs advokat framställde anklagelsen under en överraskande sista minut-föredragning i rättegången.</p>
-        
-        <p class="summary-paragraph">Familjen begärde att koronerundersökningen skulle skjutas upp för att ta emot ytterligare bevis i ärendet.</p>
-        
-        <p class="summary-paragraph">Händelsen har väckt frågor om hur polisen hanterar fall av våld i nära relationer.</p>
-        
-        <p class="summary-paragraph">Wilkinsons död inträffade 2021 och uppmärksammar de brister som kan finnas i skyddet av utsatta individer.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna situation undersöker hur rättssystemet och polisens bemötande kan påverka liv. Det belyser behovet av bättre skydd för personer i våldsamma relationer.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Kelly försökte få hjälp från polisen eftersom hennes make var våldsam, men polisen tänkte inte att det var så allvarligt. Några dagar senare mördade maken henne. Detta är viktigt för att vi måste se till att människor får hjälp när de är i fara.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/australia-news/2026/mar/05/queensland-police-kelly-wilkinson-turned-away-murder-inquest-ntwnfb">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Vita huset bemöter frågor om amerikansk inblandning i angreppet på skola i Iran</h3>
-
-        
-        <p class="ingress">Det amerikanska försvaret planerar att utöka sina operationer i Iran, vilket väcker frågor om USA:s roll i en dödlig attack på en flickskola. Gen Caine har kommenterat att USA kommer att intensifiera sina insatser.</p>
-        
-
-        
-        <p class="summary-paragraph">Generalen Caine meddelade att USA nu kommer att "expandera inland" i Iran.</p>
-        
-        <p class="summary-paragraph">Han sa att trupperna har etablerat luftöverlägsenhet, vilket möjliggör djupare attacker.</p>
-        
-        <p class="summary-paragraph">Caine beskrev strategin som att "gasa på" snarare än att trappa ner.</p>
-        
-        <p class="summary-paragraph">Detta uttalande kommer i samband med krav från FN på svar angående angreppet på skolan.</p>
-        
-        <p class="summary-paragraph">Den amerikanska administrationen konfronterar ökande frågor om eventuell involvering i angreppet.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Amerikansk militär strategi i regionen kan få stora konsekvenser för stabiliteten i Mellanöstern. Det väcker också internationella frågor kring humanitära rättigheter.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> USA planerar att göra fler attacker i Iran för att bekämpa terrorister. De säger att det nu är säkert för dem att flyga fler flygningar där. Detta kan leda till fler konfliktfrågor internationellt.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/us-news/live/2026/mar/04/donald-trump-pete-hegseth-iran-james-talarico-primaries-midterms-immigration-minnesota-latest-news-updates">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Tidigare borgmästare i Louisiana fälld för våldtäkt av 16-årig pojke</h3>
-
-        
-        <p class="ingress">Misty Roberts, 43, har dömts för våldtäkt av en 16-åring under en fest hemma hos henne. Brottet ägde rum under hennes tid som borgmästare.</p>
-        
-
-        
-        <p class="summary-paragraph">En jury i DeRidder, Louisiana, fällde Roberts för två brott: sexuell samlevnad med en mindreårig och oanständigt beteende mot en mindreårig.</p>
-        
-        <p class="summary-paragraph">Hon står inför två fängelsestraff som kan uppgå till 10 och 7 år.</p>
-        
-        <p class="summary-paragraph">Brottet inträffade under juli 2024 vid en poolfest hemma hos borgmästaren.</p>
-        
-        <p class="summary-paragraph">Rättegången och domen har väckt stor uppmärksamhet i lokalsamhället.</p>
-        
-        <p class="summary-paragraph">Roberts var fortfarande i ämbetet när brottet begicks.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Fallet lyfter fram viktiga frågor om maktmissbruk och skydd av minderåriga. Det har också konsekvenser för förtroendet för offentliga tjänstemän.</p>
-
-        
-
-        <p class="source"><a href="https://www.theguardian.com/us-news/2026/mar/04/louisiana-mayor-convicted-rape-16-year-old">Läs original</a></p>
-      </article>
-      
-    </section>
     
     <section class="news-section">
       <h2 class="section-title">VÄRLDEN</h2>
 
       
-      <article class="story">
-        <h3 class="story-title">Kanada överväger engagemang i Iran-konflikten; Israel intensifierar luftanfall</h3>
+      <article class="article">
+        <h3 class="story-title">Iran genomför attacker mot kurdiska grupper i Irak</h3>
 
         
-        <p class="ingress">Kanadas premiärminister uttrycker stöd för allierade medan Israel utför nya luftanfall mot Iran. Här är de senaste uppdateringarna kring konflikten.</p>
+        <img src="https://i.guim.co.uk/img/media/c9ac912d53c623ac79c41cf1182e9b18ea2fdbaf/1000_0_5000_4000/master/5000.jpg?width=140&quality=85&auto=format&fit=max&s=6bff228f7c71c243ffc146294c1f2521" alt="" class="article-image">
         
 
         
-        <p class="summary-paragraph">Kanadas premiärminister har sagt att de amerikansk-israeliska luftangreppen på Iran är 'oförenliga med internationell rätt', men att Kanada kommer att stå bakom sina allierade.</p>
-        
-        <p class="summary-paragraph">En brittisk krigsfartyg, HMS Dragon, kommer att skickas till Cypern, men avseglingen är försenad till nästa vecka enligt uppgifter.</p>
-        
-        <p class="summary-paragraph">Keir Starmer har meddelat att Type 45-destroyern kommer att bidra till Britanniens 'defensiva insatser' i regionen.</p>
-        
-        <p class="summary-paragraph">Dessutom planeras två Wildcat-helikoptrar med kapacitet att motverka drönare att skickas tillsammans med krigsfartyget.</p>
-        
-        <p class="summary-paragraph">Under tiden varnar amerikanska tjänstemän för att USA kan sakna kapacitet att hantera en full våg av iranska drönare.</p>
+        <p class="ingress">Iran har meddelat att de riktat attacker mot kurdiska grupper i Irak. Samtidigt har USA planer på att beväpna dessa miliser för att infiltrera Iran.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Konflikten mellan USA, Israel och Iran påverkar stabiliteten i hela regionen. Kanadas potentiella engagemang kan förändra den globala dynamiken.</p>
+        
+        <p class="summary-paragraph">Teheran uppger att de har träffat grupper som de anser motverkar landets revolution. Detta sker i kölvattnet av ökade spänningar i regionen.</p>
+        
+        <p class="summary-paragraph">USA överväger att armera kurdiska miliser, vilket kan leda till ytterligare komplikationer i konflikten.</p>
+        
+        <p class="summary-paragraph">Iran varnar för att de inte kommer att tolerera några separatistiska aktiviteter i regionen.</p>
+        
+        <p class="summary-paragraph">Attackerna markerar en upptrappning i konflikterna mellan Iran och kurdiska grupper, som kan påverka stabiliteten i Irak.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna konflikt har potential att destabilisera hela regionen och påverka internationella relationer betydligt. Säkerhetsläget är ansträngt och kan leda till ytterligare militär intervention.</p>
 
         
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Det handlar om ett krig mellan länder och grupper som kämpar om makt och påverkan. Länderna styrs av ledare som bestämmer hur deras militära styrkor ska använda sina vapen. Kanada och Storbritannien överväger att skicka hjälp för att stödja sina allierade.
+        <div class="eli5">
+          <strong>ELI5:</strong> Iran attackerar kurdiska grupper i Irak för att stoppa dem från att göra motstånd. USA kanske hjälper dessa grupper, vilket gör situationen mer komplicerad. Det handlar om maktkamp och hur länder försöker påverka varandra.
         </div>
         
 
         <p class="source"><a href="https://www.theguardian.com/world/live/2026/mar/05/iran-war-latest-updates-canada-carney-trump-israel-tehran-strikes">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Israelsk attack i Libanon: Fyra döda och sex skadade</h3>
+      <article class="article">
+        <h3 class="story-title">Israels attack i Libanon dödar fyra personer</h3>
 
         
-        <p class="ingress">En israelsk attack i Baalbek, östra Libanon, har resulterat i fyra dödsfall och sex skador. Räddningsinsatser pågår för att hjälpa drabbade familjer.</p>
+        <img src="https://i.guim.co.uk/img/media/98970ab94f72af85010d60be6e63ddca97e1e7e6/365_155_1418_1135/master/1418.jpg?width=140&quality=85&auto=format&fit=max&s=c23b72e94e2b468e9b07c472be58770f" alt="" class="article-image">
         
 
         
-        <p class="summary-paragraph">Den libanesiska statliga nyhetsbyrån rapporterade om attacken som inträffade på onsdagen.</p>
-        
-        <p class="summary-paragraph">Enligt deras uppgifter har initiala räkningsresultat visat fyra döda och sex skadade.</p>
-        
-        <p class="summary-paragraph">Räddningsarbetare är involverade i att leta efter överlevande under rasmassorna.</p>
-        
-        <p class="summary-paragraph">Attacken väcker oro för den fortsatta spänningen i regionen.</p>
-        
-        <p class="summary-paragraph">Det framgår inte av källan vilken typ av måltavla som attackerades.</p>
+        <p class="ingress">Ett israeliskt flyganfall mot en byggnad i Baalbek, östra Libanon, har resulterat i flera dödsfall och skador. Enligt libanesiska myndigheter pågår räddningsarbete för att hjälpa drabbade familjer.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse är en del av en större konflikt i regionen, där spänningarna mellan Israel och närliggande länder är påtagliga. Attacken kan få konsekvenser för den regionala säkerheten.</p>
+        
+        <p class="summary-paragraph">Enligt Libanons statliga nyhetsbyrå har fyra personer bekräftats döda och sex andra har skadats i angreppet.</p>
+        
+        <p class="summary-paragraph">Attacken ägde rum på onsdag och har utlöst räddningsinsatser för att få ut familjer som kan vara fastklämda under rasmassorna.</p>
+        
+        <p class="summary-paragraph">Det är ännu oklart vad som låg bakom den israeliska attacken, som inträffade i en region med spänningar mellan olika aktörer.</p>
+        
+        <p class="summary-paragraph">Räddningsarbetet fortsätter samtidigt som den politiska situationen i området förblir instabil.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Händelsen understryker de pågående spänningarna i regionen och har potential att påverka den redan instabila säkerhetssituationen i Libanon.</p>
 
         
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk på det som en slags våldsam uppgörelse mellan länder som ligger nära varandra. En attack har skett, vilket har resulterat i att flera människor har dött och skadats. Detta kan göra att fler sådana händelser inträffar i framtiden.
+        <div class="eli5">
+          <strong>ELI5:</strong> Israel utförde ett flyganfall som dödade och skadade flera människor i Libanon. Det här kan leda till mer oro i området, där många olika grupper är inblandade.
         </div>
         
 
         <p class="source"><a href="https://www.theguardian.com/world/live/2026/mar/04/iran-war-live-updates-us-israel-latest-news-strait-of-hormuz-middle-east-crisis">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Underfinansiering påverkar elever i australiska offentliga skolor</h3>
+      <article class="article">
+        <h3 class="story-title">Punch, babymakaken, överger sin Ikea-plushie</h3>
 
         
-        <p class="ingress">Antalet elever i offentliga skolor i Australien sjunker till en historisk låg nivå. Detta sker samtidigt som allt fler familjer väljer privata skolor.</p>
+        <img src="https://i.guim.co.uk/img/media/c3c885942f5a935ab30f6402f2d91a1fce2bb3ec/862_695_2970_2377/master/2970.jpg?width=140&quality=85&auto=format&fit=max&s=b0178aa8f07709f767f807d150743d61" alt="" class="article-image">
         
 
         
-        <p class="summary-paragraph">Det framgår inte av källan hur många elever som har slutat i offentliga skolor.</p>
-        
-        <p class="summary-paragraph">Flera aktörer hoppas att nya statliga finansieringsavtal kan locka tillbaka familjer till den offentliga sektorn.</p>
-        
-        <p class="summary-paragraph">Enligt Sharryn Brownlee börjar många föräldrar fundera på skolval i de slutliga åren av grundskolan.</p>
-        
-        <p class="summary-paragraph">Hon påpekar att den vanliga frågan bland föräldrar är om de ska skicka sina barn till en offentlig eller privat skola.</p>
-        
-        <p class="summary-paragraph">Det finns oro för att bristen på resurser i offentliga skolor kan påverka kvaliteten på utbildningen.</p>
+        <p class="ingress">Punch, en babymakak som vunnit många hjärtan, växer ifrån sin tröstande Ikea-djungelskog-leksak. Han börjar nu umgås mer med sina jämnåriga i en japansk djurpark.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna utveckling kan få långsiktiga konsekvenser för det offentliga utbildningssystemet. Finansiering och skolval är centrala frågor för många familjer.</p>
+        
+        <p class="summary-paragraph">Punch blev känd för att ha dragit runt på sin stora leksak efter att ha blivit avvisad av sin mamma och andra apor.</p>
+        
+        <p class="summary-paragraph">Den sju månader gamla makaken har synts på djurparken i Ichikawa, nära Tokyo, där han sökte tröst i sin orangutang-plushie.</p>
+        
+        <p class="summary-paragraph">Flera bilder har visat hur Punch kramar sin leksak när han blir bortskjuten av andra apor.</p>
+        
+        <p class="summary-paragraph">Nu verkar han dock börja integrera sig mer i gruppen av andra apor.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Situationen belyser hur djur kan reagera på socialt utanförskap och de känslomässiga band de skapar till objekt för tröst.</p>
 
         
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Många föräldrar väljer privata skolor för sina barn istället för offentliga, vilket kan bero på att de offentliga skolorna har för lite pengar. Det är som att man väljer en bättre bil om man har råd, även om den billigare bilen också kan fungera.
+
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/05/punch-the-monkey-outgrowing-ikea-plushie-djungelskog">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">USA delade inte detaljer med Storbritannien innan attacken mot Iran</h3>
+
+        
+        <img src="https://i.guim.co.uk/img/media/b93df1d253a73bcbce21feb09a363367c616e1a6/969_0_2300_1840/master/2300.jpg?width=140&quality=85&auto=format&fit=max&s=713668888ca38aabafb933b39827d373" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">Enligt källor till Guardian informerade inte USA Storbritannien om exakta operationer innan de gemensamma luftangreppen mot Iran. Detta inträffade samtidigt som Keir Starmer nekade tillstånd för USA att använda brittiska militärbaser.</p>
+        
+
+        
+        <p class="summary-paragraph">Källor uppger att USA valde att inte inkludera Storbritannien i den officiella informationskedjan kring attackerna. Detta skedde i samband med att den brittiska oppositionsledaren Keir Starmer tog beslutet att inte ge USA tillstånd att använda brittiska baser.</p>
+        
+        <p class="summary-paragraph">Den avsaknad av kommunikationen kan påverka det brittisk-amerikanska samarbetet. Kritiken från Donald Trump mot Starmer kan ses som ett uttryck för den spända relationen.</p>
+        
+        <p class="summary-paragraph">Frågan om militär basanvändning är känslig och utgör en del av den bredare diskussionen om NATO-alliansens enighet.</p>
+        
+        <p class="summary-paragraph">Frågan om militär basanvändning är känslig och utgör en del av den bredare diskussionen om NATO-alliansens enighet.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse belyser bristerna i det transatlantiska samarbetet. Det kan få konsekvenser för framtida gemensamma operationer mellan USA och Storbritannien.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> När USA planerar militära attacker är det vanligt att de informerar sina allierade. Men i det här fallet berättade USA inte för Storbritannien om planen, vilket har skapat spänningar mellan länderna.
         </div>
         
 
-        <p class="source"><a href="https://www.theguardian.com/australia-news/2026/mar/05/australian-public-school-enrolments-low-funding">Läs original</a></p>
+        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/05/us-did-not-share-details-with-the-uk-before-attacking-iran-sources-say">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Kina sätter lägsta tillväxtmål för BNP på decennier inför ekonomisk nedgång</h3>
+      <article class="article">
+        <h3 class="story-title">Kina sätter rekordlågt mål för BNP-tillväxt som svar på ekonomisk nedgång</h3>
 
         
-        <p class="ingress">Kina har satt sitt BNP-tillväxtmål till 4,5–5 %, den lägsta nivån sedan 1991. Detta speglar en förändring mot en mer motståndskraftig ekonomisk modell.</p>
+        <img src="https://i.guim.co.uk/img/media/fb92f4c629972c65d08dca1dd40d39746112f414/607_0_5800_4640/master/5800.jpg?width=140&quality=85&auto=format&fit=max&s=d4af350079c25719228c38eb07a42ddd" alt="" class="article-image">
         
 
         
-        <p class="summary-paragraph">Under årets Nationella folkkongress presenterade premiärminister Li Qiang det nya tillväxtmålet.</p>
-        
-        <p class="summary-paragraph">Det är första gången på över 30 år som målet har sjunkit under 5 %.</p>
-        
-        <p class="summary-paragraph">Denna strategi syftar till att minska beroendet av exportledd tillväxt.</p>
-        
-        <p class="summary-paragraph">Kina står inför komplexa utmaningar både inom landet och internationellt.</p>
-        
-        <p class="summary-paragraph">Ledare hoppas att den nya modellen kommer att vara mer motståndskraftig mot externa chocker.</p>
+        <p class="ingress">Kina har fastställt ett BNP-tillväxtmål på 4,5-5 % för 2026, vilket är det lägsta sedan 1991. Premiärminister Li Qiang presenterade detta under den årliga folkkongressen.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Detta förändrar hur Kina planerar sin ekonomiska framtid och kan påverka den globala ekonomin.</p>
+        
+        <p class="summary-paragraph">Det nya tillväxtmålet speglar en strategi som skiftar fokus från exportledd tillväxt till en mer resilient ekonomisk modell.</p>
+        
+        <p class="summary-paragraph">Li Qiang beskrev situationen som komplex både nationellt och internationellt, vilket påverkar landets ekonomiska framtid.</p>
+        
+        <p class="summary-paragraph">Målet har satts för att anpassa sig till utmaningar och motvindar i den globala ekonomin.</p>
+        
+        <p class="summary-paragraph">Det är första gången på över tre decennier som tillväxtmålet understiger 5 %.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta mål markerar en betydande förändring i Kinas ekonomiska strategi och kan påverka globala marknader. Det visar också på landets vilja att hantera inhemska och externa utmaningar.</p>
 
         
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Kina har haft som mål att växa snabbt genom export, men nu vill de växa på ett sätt som klarar av problem från andra länder. Det innebär att de fokuserar mer på att stärka sin egen ekonomi.
+        <div class="eli5">
+          <strong>ELI5:</strong> Kina försöker nu bygga en starkare ekonomi som inte bara är beroende av att sälja varor till andra länder. De siktar på att göra sin ekonomi mer motståndskraftig mot problem i världen.
         </div>
         
 
         <p class="source"><a href="https://www.theguardian.com/world/2026/mar/05/china-gdp-growth-target-economic-slowdown">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Pentagon namnger de sista två soldaterna som dödades i Kuwait</h3>
-
-        
-        <p class="ingress">Pentagon har offentliggjort namnen på de sista två soldaterna av sex som dödades i en drönarattack i Kuwait. De föll offer för attacken efter angrepp från USA och Israel mot Iran.</p>
-        
-
-        
-        <p class="summary-paragraph">Självständighetsbefälhavare Robert Marzan, 54, och major Jeffrey O’Brien, 45, var från Kalifornien respektive Iowa.</p>
-        
-        <p class="summary-paragraph">De dödades under en drönarattack som inträffade på söndagen.</p>
-        
-        <p class="summary-paragraph">Angreppen skedde dagen efter att USA och Israel inledde sina egna militära operationer mot Iran.</p>
-        
-        <p class="summary-paragraph">Pentagon offentliggjorde deras namn på onsdagen genom US Department of Defense.</p>
-        
-        <p class="summary-paragraph">Maran kom från Sacramento, Kalifornien, medan O’Brien var bosatt i Indianola, Iowa.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse markerar spänningar i regionen och de direkta konsekvenserna av pågående konflikter. Det ger insikt i riskerna som amerikanska soldater tar i internationella uppdrag.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> En drönarattack inträffade i Kuwait där sex amerikanska soldater dödades. Pentagon har nu offentliggjort namnen på de sista två soldaterna som omkom, vilket visar hur dessa konflikter påverkar både soldater och deras familjer.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/04/soldiers-killed-kuwait">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Ryska påståenden om droneangrepp på LNG-tanker i Medelhavet</h3>
-
-        
-        <p class="ingress">Ryska myndigheter hävdar att den liquefied natural gas (LNG) tanker Arctic Metagaz, lastad med 61 000 ton LNG, blev träffad av ukrainska drönare och exploderade utanför Libyens kust. Ukraina har ännu inte kommenterat händelsen.</p>
-        
-
-        
-        <p class="summary-paragraph">Explosionen inträffade cirka 150 miles (240 km) utanför Libyens kust under tisdagskvällen.</p>
-        
-        <p class="summary-paragraph">Ukrainska drönare ska också ha skadat civila mål i den ryska regionen Saratov, vilket ledde till att flera flygplatser stängdes och tre personer skadades.</p>
-        
-        <p class="summary-paragraph">Kriget i Mellanöstern kan ge Ryssland ekonomiska fördelar genom ökad efterfrågan på dess energi.</p>
-        
-        <p class="summary-paragraph">Ukrainas president Volodymyr Zelenskyy har meddelat att trilaterala samtal med USA och Ryssland kommer att återupptas när situationen tillåter.</p>
-        
-        <p class="summary-paragraph">Ukraina planerar att bojkotta invigningen av Paralympics på grund av ryska atleters deltagande, där flera länder ansluter sig till bojkottåtgärden.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Konflikten påverkar både den globala energimarknaden och de diplomatiska relationerna i regionen. Påståenden om angrepp från Ukraina kan leda till ytterligare eskalation av spänningarna.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Ryssland säger att Ukraina har anfallit en gaslastare i Medelhavet, vilket är en stor sak eftersom gasen är viktig för många länder. Samtidigt skadas civila platser i Ryssland av drönare, och det kan påverka hela regionen.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/05/ukraine-war-briefing-putin-blames-ukraine-for-sinking-of-tanker-off-coast-of-libya">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Nepal håller val med konflikt mellan etablerade makthavare och ung rörelse</h3>
-
-        
-        <p class="ingress">Nepal har hållit sitt första allmänna val sedan gen-Z-protesterna ledde till att landets dåvarande statsminister avgick. Valet ställer den äldre politiska eliten mot en kraftfull ungdomsrörelse.</p>
-        
-
-        
-        <p class="summary-paragraph">Valet markerar en viktig händelse efter sex månader av massiva ungdomsprotester i Nepal.</p>
-        
-        <p class="summary-paragraph">Protesterna ledde till att den dåvarande statsministern avsattes.</p>
-        
-        <p class="summary-paragraph">Bland kandidaterna finns den marxistiska före detta statsministern som önskar återvända till makten.</p>
-        
-        <p class="summary-paragraph">En rapper som blivit borgmästare kämpar nu för att vinna över de unga väljarna.</p>
-        
-        <p class="summary-paragraph">Även den nyvalda ledaren för Nepali Congress-partiet deltar i valet.</p>
-        
-        <p class="summary-paragraph">Resultatet kan få betydande konsekvenser för Nepals politiska framtid.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Detta val kan påverka den politiska maktbalansen i Nepal och visa hur ungdomar kan påverka framtida beslut. Det utmanar också den traditionella politiska eliten.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Nepal har nyligen haft stora protester där unga människor krävde förändring. Nu får väljare chansen att rösta på nya ledare som vill lyssna på dem istället för de gamla makthavarna.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theguardian.com/world/2026/mar/05/nepal-election-2026-voting-balen-shah-sharma-oli">Läs original</a></p>
-      </article>
-      
     </section>
+    
+    
+    <hr class="section-divider">
     
     <section class="news-section">
       <h2 class="section-title">EKONOMI</h2>
 
       
+      <article class="article">
+        <h3 class="story-title">Minns klandrar pro-Palestina protestorganisatörer</h3>
+
+        
+        <img src="https://i.guim.co.uk/img/media/d1fe4fad92181bed8f1c0b29c2f820940af35c4a/1387_0_7857_6286/master/7857.jpg?width=140&quality=85&auto=format&fit=max&s=5ad2f8012c2eb4e741dc285a1caf78b0" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">New South Wales premiärminister Chris Minns anklagar pro-Palestina protestorganisatörer för att vara 'en grupp kommunister' som instigar till konfrontationer med polisen. Utspelet kommer efter våldsamheter vid en demonstration i Sydney.</p>
+        
+
+        
+        <p class="summary-paragraph">Minns framförde sina anklagelser under en budgetdiskussion i delstatsparlamentet. Han uttryckte oro över de senaste konfrontationerna mellan demonstranter och polis.</p>
+        
+        <p class="summary-paragraph">Fyra av hans partikamrater deltog i en pro-Palestina rally mot den israeliske presidenten Isaac Herzogs besök den 9 februari. Det har skapat intern kritik inom det Labor-parti han leder.</p>
+        
+        <p class="summary-paragraph">Minns positionerar sig mot de organiserade protesterna samtidigt som hans regering står inför press från medlemmar angående hanteringen av situationen. Frågan har lett till debatter om yttrandefrihet och rätten att demonstrera.</p>
+        
+        <p class="summary-paragraph">Minns positionerar sig mot de organiserade protesterna samtidigt som hans regering står inför press från medlemmar angående hanteringen av situationen. Frågan har lett till debatter om yttrandefrihet och rätten att demonstrera.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Minns kommentarer speglar en pågående spänning mellan delstatsregeringen och de som stödjer den palestinska frågan. Diskursen kring demonstrationen belyser hur politiskt laddade situationer kan leda till splittring inom partier.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> När människor demonstrerar för att visa sin åsikt kan det ibland bli bråk, särskilt om de tycker att myndigheterna inte lyssnar på dem. Minns menar att vissa av dessa demonstranter vill skapa problem, medan andra i hans eget parti menar att det är okej att protestera.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/australia-news/2026/mar/05/pro-palestine-protest-organisers-communists-nsw-premier-chris-minns-ntwnfb">Läs original</a></p>
+      </article>
+      
     </section>
+    
+    
+    <hr class="section-divider">
+    
+    <section class="news-section">
+      <h2 class="section-title">AI för utvecklare</h2>
+
+      
+      <article class="article">
+        <h3 class="story-title">Dario Amodei kallar OpenAI:s påståenden om militäravtal för 'rena lögner'</h3>
+
+        
+
+        
+        <p class="ingress">Dario Amodei, VD för Anthropic, kritiserar OpenAI:s kommuniké angående företagets engagemang med Pentagon. Anthropic valde att avbryta sitt kontrakt på grund av oenigheter kring AI-säkerhet.</p>
+        
+
+        
+        <p class="summary-paragraph">Enligt rapporter har Anthropic avböjt ett kontrakt med den amerikanska militären på grund av skillnader i synen på AI-säkerhet.</p>
+        
+        <p class="summary-paragraph">OpenAI har enligt Amodei tagit över detta avtal och ger en annan bild av händelserna.</p>
+        
+        <p class="summary-paragraph">Problematiken rör inte bara affärsrelationer, utan även etiska frågor kring AI:s roll i militära sammanhang.</p>
+        
+        <p class="summary-paragraph">Den pågående debatten kring AI och dess användning i försvarssektorn väcker viktiga frågor för både företag och samhälle.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Kritiken kan påverka både public perception och framtida samarbeten inom AI-industrin. Frågor om etik och ansvar i teknologins utveckling är mer aktuella än någonsin.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Dario Amodei, chef för ett AI-företag som heter Anthropic, säger att OpenAI ljuger om ett militäravtal. Anthropic ville inte jobba med militären på grund av säkerhetsfrågor, och då tog OpenAI över deras avtal.
+        </div>
+        
+
+        <p class="source"><a href="https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">NotebookLM kan nu sammanfatta forskning i 'filmiska' videoöversikter</h3>
+
+        
+
+        
+        <p class="ingress">Google lanserar en ny funktion i NotebookLM som omvandlar forskning och anteckningar till animerade videoöversikter. Den uppdaterade funktionen bygger vidare på tidigare videopresentationer.</p>
+        
+
+        
+        <p class="summary-paragraph">Tidigare kunde användarna endast skapa berättande bildspel. Den nya funktionen skapar istället mer dynamiska och visuellt tilltalande videor.</p>
+        
+        <p class="summary-paragraph">Uppdateringen använder en kombination av Googles AI-modeller, inklusive Gemini 3 och Nano Banana Pro.</p>
+        
+        <p class="summary-paragraph">Det öppnar upp för nya sätt att presentera information, vilket kan förbättra inlärning och förståelse.</p>
+        
+        <p class="summary-paragraph">Användarna kan nu engagera sig mer med sitt material genom animerade presentationer.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna funktion kan revolutionera hur forskning och information presenteras. Det kan leda till en mer interaktiv och engagerande inlärningsupplevelse.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Tänk på det som att din text blir till en cool tecknad film istället för ett tråkigt bildspel. Det gör att det blir lättare att förstå och minnas information.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">Storskalig genommodell: Öppen källkod AI tränad på triljoner baser</h3>
+
+        
+        <img src="https://cdn.arstechnica.net/wp-content/uploads/2026/03/GettyImages-1400276299-1152x648.jpg" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">En ny AI-modell har utvecklats för att analysera stora mängder genetisk information. Denna teknik kan identifiera gener, regulatoriska sekvenser och splice sites.</p>
+        
+
+        
+        <p class="summary-paragraph">Modellen bygger på en öppen källkod och kan hantera enorma datamängder. Genom att tränas på triljoner DNA-baser möjliggör den detaljerad analys av genetiska strukturer.</p>
+        
+        <p class="summary-paragraph">Den kan bland annat skilja mellan funktionella och icke-funktionella sekvenser, vilket är avgörande för förståelsen av genreglering.</p>
+        
+        <p class="summary-paragraph">Forskargrupper över hela världen kan nu utnyttja denna teknologi för att fördjupa sin forskning inom genetik och biologi.</p>
+        
+        <p class="summary-paragraph">Detta kan i sin tur leda till nya upptäckter inom medicin och bioteknik, vilket påverkar utvecklingen av behandlingar och diagnostik.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Den nya AI-modellen ökar tillgången till avancerade analysverktyg för forskare. Detta kan påskynda framsteg inom genetisk forskning och medicinsk innovation.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Tänk på AI-modellen som en superdator som lär sig genom att läsa massor av böcker om DNA. Den lär sig att hitta viktiga delar som styr hur gener fungerar, vilket kan hjälpa forskare att förstå hur vi fungerar och hur vi kan bli friska.
+        </div>
+        
+
+        <p class="source"><a href="https://arstechnica.com/science/2026/03/large-genome-model-open-source-ai-trained-on-trillions-of-bases/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">TerraPower får grönt ljus för att påbörja bygget av sin första kärnkraftanläggning</h3>
+
+        
+        <img src="https://cdn.arstechnica.net/wp-content/uploads/2026/03/GettyImages-1245008497-1024x648.jpg" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">TerraPower har fått tillstånd att inleda konstruktionen av sin första kärnkraftanläggning. Den planerade tidsramen för slutförande är tidigast 2030.</p>
+        
+
+        
+        <p class="summary-paragraph">Bygget av anläggningen är en del av företagets strategi att utveckla avancerad kärnenergi.</p>
+        
+        <p class="summary-paragraph">Det går fortfarande att söka om ett driftstillstånd, vilket kommer att påverka tidslinjen.</p>
+        
+        <p class="summary-paragraph">TerraPower fokuserar på innovativa teknologier för att säkerställa en hållbar energiframtid.</p>
+        
+        <p class="summary-paragraph">Trots godkännandet återstår flera steg innan anläggningen kan börja producera el.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna anläggning kan bli en viktig del i omställningen till mer hållbara energikällor. Resultatet kan påverka framtida energipolitik och investeringar inom kärnkraft.</p>
+
+        
+
+        <p class="source"><a href="https://arstechnica.com/science/2026/03/terrapower-gets-ok-to-start-construction-of-its-first-nuclear-plant/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">UAP-frågan i rymden avfärdas av Space Command-chefen</h3>
+
+        
+        <img src="https://cdn.arstechnica.net/wp-content/uploads/2026/03/mauissc-1152x648.jpg" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">Space Command-chefen har uttalat sig om oidentifierade luftfenomen (UAP) i rymden. Enligt honom finns det inga bevis för utomjordiskt liv.</p>
+        
+
+        
+        <p class="summary-paragraph">Chefen för Space Command menar att det inte finns något som tyder på att UAP skulle ha utomjordiskt ursprung. Han specificerade att han endast känner till kometer och liknande fenomen.</p>
+        
+        <p class="summary-paragraph">Uttalandet kommer i kölvattnet av en ökad debatt kring fenomen som observerats på himlen.</p>
+        
+        <p class="summary-paragraph">Trots många teorier kvarstår frågan om UAP:s natur utan någon konkret förklaring.</p>
+        
+        <p class="summary-paragraph">Det är viktigt att skilja mellan vetenskapligt undersökta fenomen och spekulationer om utomjordingar.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta uttalande kan påverka den pågående debatten om rymdutforskning och huruvida vi kontaktar liv utanför jorden. Rätt information är avgörande för att undvika desinformation.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Tänk dig att Space Command är som en stor rymdpolis som håller koll på allt som händer på himlen. De säger att de inte sett något som kommer från utomjorden, bara saker som vi redan känner till, som kometer.
+        </div>
+        
+
+        <p class="source"><a href="https://arstechnica.com/space/2026/03/space-command-chief-throws-cold-water-on-the-question-of-uaps-in-space/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">Vita huset släpper video med militäraktioner i Iran i Call of Duty-stil</h3>
+
+        
+
+        
+        <p class="ingress">En ny video från Vita huset blandar verkliga militärslags med inslag från datorspelet Call of Duty. Videon syftar till att visa attacker mot mål i Iran.</p>
+        
+
+        
+        <p class="summary-paragraph">Onsdagen den 18 oktober publicerade Vita huset en video som kombinerar verkliga militärangrepp i Iran med klipp från datorspelet Call of Duty.</p>
+        
+        <p class="summary-paragraph">Videon inleds med en sekvens från spelet och växlar sedan till faktiska bilder av missiler som träffar mål.</p>
+        
+        <p class="summary-paragraph">Detta grepp har liknande stil som tidigare videor från den tidigare Trump-administrationen.</p>
+        
+        <p class="summary-paragraph">Regeringen försöker med detta medieformat skapa en starkare visuell påverkan och förtydliga sin militära strategi.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna video kan påverka allmänhetens uppfattning om militärhandlingar och relationer till Iran. Dessutom reser den frågor om hur militära aktioner kommuniceras genom populärkultur.</p>
+
+        
+
+        <p class="source"><a href="https://www.theverge.com/games/889701/trump-white-house-call-of-duty-footage-iran">Läs original</a></p>
+      </article>
+      
+    </section>
+    
+    
+    <hr class="section-divider">
+    
+    <section class="news-section">
+      <h2 class="section-title">TECH INDUSTRY</h2>
+
+      
+      <article class="article">
+        <h3 class="story-title">Google och Epic når förlikning i mål om appbutikens konkurrensvillkor</h3>
+
+        
+        <img src="https://cdn.arstechnica.net/wp-content/uploads/2024/05/google-play-store-1152x648.jpg" alt="" class="article-image">
+        
+
+        
+        <p class="ingress">Google och Epic Games har kommit överens om en förlikning som avslutar den pågående antitrustprocessen kring appbutiken.</p>
+        
+
+        
+        <p class="summary-paragraph">Den omtvistade 30-procentiga avgiften för appbutiker har nu avskaffats som resultat av uppgörelsen.</p>
+        
+        <p class="summary-paragraph">Detta innebär att utvecklare kan behålla en större del av sina intäkter.</p>
+        
+        <p class="summary-paragraph">Förlikningen är ett svar på kritiken mot Googles dominans inom mobilapplikationsmarknaden.</p>
+        
+        <p class="summary-paragraph">Både Google och Epic Games planerar nu att fokusera på ett samarbete för att förbättra användarupplevelsen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna förändring kan påverka hur utvecklare distribuerar sina appar på mobilmarknaden. Det kan även göra det lättare för mindre aktörer att konkurrera.</p>
+
+        
+
+        <p class="source"><a href="https://arstechnica.com/gadgets/2026/03/google-and-epic-look-to-bury-the-hatchet-with-new-app-store-settlement/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">Google sänker avgifter för apputvecklare</h3>
+
+        
+
+        
+        <p class="ingress">Google har förändrat sin avgiftsstruktur för appbutiken. Från och med juli sänks avgiften för in-app köp och prenumerationer.</p>
+        
+
+        
+        <p class="summary-paragraph">Den tidigare avgiften på 30 procent har nu reducerats till 20 procent för in-app köp och 10 procent för prenumerationer, beroende på region.</p>
+        
+        <p class="summary-paragraph">Beslutet kommer efter att Google beskrevs som en illegal monopoltillverkare i USA.</p>
+        
+        <p class="summary-paragraph">Ändringarna innebär att Google Play nu är mindre kopplat till Google Play Billing.</p>
+        
+        <p class="summary-paragraph">Den nya avgiftsstrukturen kan påverka många utvecklare och potentiellt leda till lägre priser för konsumenter.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna förändring kan innebära ökad konkurrens inom appmarknaden. Det kan också leda till större innovation och bättre erbjudanden för användare.</p>
+
+        
+
+        <p class="source"><a href="https://www.theverge.com/tech/889538/google-apps-experience-games-level-up-program">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">Jensen Huang: Nvidia drar ner på investeringar i OpenAI och Anthropic</h3>
+
+        
+
+        
+        <p class="ingress">Nvidia:s vd Jensen Huang meddelade att bolagets investeringar i OpenAI och Anthropic troligen är dess sista. Förklaringen väcker dock fler frågor än den besvarar.</p>
+        
+
+        
+        <p class="summary-paragraph">Under en presentation på onsdagen förklarade Huang att Nvidia kommer att minska sitt engagemang i båda företagen. Tidigare har Nvidia varit en stor aktör inom AI-sektorn och haft betydande investeringar.</p>
+        
+        <p class="summary-paragraph">Hans uttalande kan tyda på en strategiförändring inom Nvidia. Det har spekulerats om att detta kommer att påverka framtidens AI-utveckling.</p>
+        
+        <p class="summary-paragraph">Huang nämnde inte specifika skäl till neddragningen, vilket lämnar investerare och analytiker med fler frågor. Osäkerheten kring vad detta innebär för partnerskap och projekt kvarstår.</p>
+        
+        <p class="summary-paragraph">Det är oklart om beslutet beror på interna strategiska omprioriteringar eller externa faktorer i marknaden.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Nvidias roll inom AI-utveckling kan komma att förändras, vilket påverkar hela branschen. Beslutet att dra ner på investeringarna kan signalera framtida svårigheter för startup-företag inom AI.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> När Nvidia, ett stort teknikföretag, säger att de kommer att ge mindre pengar till AI-företagen OpenAI och Anthropic, kan det betyda att de tror att det inte är lönsamt längre eller att de vill fokusera på andra saker.
+        </div>
+        
+
+        <p class="source"><a href="https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/">Läs original</a></p>
+      </article>
+      
+      <article class="article">
+        <h3 class="story-title">Teknikjättar skriver under avtal för att hålla elpriserna nere</h3>
+
+        
+
+        
+        <p class="ingress">Sju ledande techföretag har skrivit under ett avtal med Donald Trump för att skydda elkunder från prisökningar. Avtalet omfattar åtgärder för att hantera elförbrukningen kopplad till nya AI-datakraftverk.</p>
+        
+
+        
+        <p class="summary-paragraph">Företagen Google, Meta, Microsoft, Oracle, OpenAI, Amazon och xAI deltog i mötet med Trump för att diskutera energikostnader. Avtalet syftar till att motverka oro över stigande elpriser i takt med ökad efterfrågan på datacenter.</p>
+        
+        <p class="summary-paragraph">Presidentens administration har uppmanat techföretag att agera proaktivt i denna fråga. Detta kommer i samband med att AI-teknologier växer snabbt.</p>
+        
+        <p class="summary-paragraph">Genom att samarbeta hoppas företagen kunna säkerställa stabila elkostnader för både sig själva och sina användare.</p>
+        
+        <p class="summary-paragraph">Initiativet kan också bidra till en mer hållbar energianvändning inom den växande tekniksektorn.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Initiativet adresserar en växande oro över elkostnader och tekniksektorns påverkan på energiförbrukningen. Det visar på ett samarbete mellan politik och näringsliv för att hantera aktuella utmaningar.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Företag som Google och Microsoft vill se till att elpriserna inte går upp för mycket när de bygger nya datacenter som använder mycket el för att driva AI-teknologi. Genom att skriva under ett avtal med Trump försöker de lösa problemet tillsammans.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theverge.com/news/889578/data-center-power-pledge-white-house-google-meta-microsoft">Läs original</a></p>
+      </article>
+      
+    </section>
+    
+    
+    <hr class="section-divider">
+    
+    <section class="news-section">
+      <h2 class="section-title">VERKTYG & OPEN SOURCE</h2>
+
+      
+    </section>
+    
+    
+    <hr class="section-divider">
+    
+    <section class="news-section">
+      <h2 class="section-title">FORSKNING</h2>
+
+      
+    </section>
+    
+    
+    <hr class="section-divider">
     
     <section class="news-section">
       <h2 class="section-title">VETENSKAP & MILJÖ</h2>
 
       
-      <article class="story">
-        <h3 class="story-title">Forskare varnar för AI:s påverkan på elförbrukning</h3>
+      <article class="article">
+        <h3 class="story-title">LTU-forskare varnar för AI:s påverkan på elförbrukning</h3>
 
         
-        <p class="ingress">Johan Hansson vid LTU påpekar att användning av AI kan leda till en kraftig ökning av elförbrukningen. Han uppmanar till försiktighet och ansvar vid användning av teknologin.</p>
+
+        
+        <p class="ingress">Johan Hansson vid Luleå tekniska universitet påpekar att användning av artificiell intelligens kan leda till en dramatisk ökning av elförbrukningen. Han jämför AI med att leka med elden.</p>
         
 
         
-        <p class="summary-paragraph">Johan Hansson jämför att använda AI med att leka med elden. Han betonar att teknologin har en betydande miljöpåverkan.</p>
+        <p class="summary-paragraph">Hansson understryker att AI kan kräva upp till 300 procent mer el jämfört med traditionella lösningar. Många betraktar AI som en kostnadsfri resurs, men verkligheten är annorlunda.</p>
         
-        <p class="summary-paragraph">Enligt Hansson kan elförbrukningen öka med så mycket som 300 procent när AI används.</p>
+        <p class="summary-paragraph">Han menar att denna ökade elförbrukning får betydande miljökonsekvenser som inte får ignoreras. Det är viktigt att använda AI med eftertanke.</p>
         
-        <p class="summary-paragraph">Många ser AI som en lättillgänglig resurs, men det kräver faktiskt stora mängder energi.</p>
+        <p class="summary-paragraph">Forskaren rekommenderar att företag och individer överväger om deras användning av AI är nödvändig.</p>
         
-        <p class="summary-paragraph">Hansson uppmanar användare att tänka på resursanvändningen innan de implementerar AI-lösningar.</p>
-        
-        <p class="summary-paragraph">Det är viktigt att betrakta AI med ett kritiskt öga och vara medveten om dess konsekvenser.</p>
+        <p class="summary-paragraph">Forskaren rekommenderar att företag och individer överväger om deras användning av AI är nödvändig.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Artikeln belyser den ekologiska påverkan av AI-användning, vilket är relevant i en tid av klimatkris. Att vara medveten om energikostnader kan hjälpa till att styra teknikens utveckling.</p>
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna varning är särskilt aktuell i en tid med ökad fokus på hållbarhet och energieffektivitet. En ökad elförbrukning kan leda till större miljöpåverkan och högre kostnader.</p>
 
         
-        <div class="eli5-box">
-          <strong>ELI5:</strong> AI är som att använda superkraft för att lösa problem, men dessa superkrafter kan sluka mycket elektricitet, precis som när man använder många lampor på en gång.
+        <div class="eli5">
+          <strong>ELI5:</strong> Forskaren säger att använda AI är som att spela med elden. Det kan se bra ut, men det kan också vara farligt för miljön eftersom det kräver mycket mer elektricitet än vi kanske tror.
         </div>
         
 
         <p class="source"><a href="https://www.svt.se/nyheter/lokalt/norrbotten/ltu-forskaren-om-ais-elpaverkan-hojs-med-300-procent">Läs original</a></p>
       </article>
       
-      <article class="story">
+      <article class="article">
         <h3 class="story-title">Elitskidåkare kräver stopp för fossila sponsorer</h3>
 
         
-        <p class="ingress">Björn Sandström och 150 andra atleter uppmanar IOK att bryta samarbeten med fossila bolag för vintersportens framtid.</p>
+
+        
+        <p class="ingress">Björn Sandström och 150 atleter vädjar till IOK att avbryta samarbeten med fossila företag. De menar att detta är avgörande för vintersportens framtid.</p>
         
 
         
-        <p class="summary-paragraph">Elitskidåkaren Björn Sandström betonar vikten av att skydda vintersport mot klimatförändringar.</p>
+        <p class="summary-paragraph">Elitskidåkaren Björn Sandström från Östersund är en av de drivande i initiativet. Tillsammans med 150 andra idrottare vill de att Internationella olympiska kommittén, IOK, slutar samarbeta med fossila bolag. Sandström betonar att hotet mot vintersporten kommer från förbränningen av fossila bränslen.</p>
         
-        <p class="summary-paragraph">Han och andra atleter ser förbränningen av fossila bränslen som ett hot mot sporten.</p>
+        <p class="summary-paragraph">Initiativet syftar till att skydda miljön och säkerställa en hållbar framtid för vintersporter. Atleter ser sig själva som ett stort skyltfönster för klimatarbete inom sporten.</p>
         
-        <p class="summary-paragraph">De anser att Internationella olympiska kommittén (IOK) bör sluta samarbeta med fossila företag.</p>
+        <p class="summary-paragraph">Initiativet syftar till att skydda miljön och säkerställa en hållbar framtid för vintersporter. Atleter ser sig själva som ett stort skyltfönster för klimatarbete inom sporten.</p>
         
-        <p class="summary-paragraph">Denna satsning syftar till att skapa en mer hållbar framtid för vintersport.</p>
-        
-        <p class="summary-paragraph">Initiativet har fått stöd från flera framstående idrottare inom sporten.</p>
+        <p class="summary-paragraph">Initiativet syftar till att skydda miljön och säkerställa en hållbar framtid för vintersporter. Atleter ser sig själva som ett stort skyltfönster för klimatarbete inom sporten.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Skiftet mot hållbarhet inom sport kan ha en stor påverkan på miljön och klimatfrågor. Att bryta samarbeten med fossila bolag kan bidra till en mer hållbar framtid.</p>
+        <p class="importance"><strong>Varför det är viktigt:</strong> Detta initiativ belyser vikten av att minska klimatpåverkan inom idrottsvärlden. En förändring kan bidra till att säkra framtida vintersporter.</p>
 
         
 
@@ -784,469 +835,148 @@
       
     </section>
     
-    <section class="news-section">
-      <h2 class="section-title">AI & MACHINE LEARNING</h2>
-
-      
-      <article class="story">
-        <h3 class="story-title">Vit Huset publicerar video som kombinerar Call of Duty och riktiga militärattacker i Iran</h3>
-
-        
-        <p class="ingress">Den amerikanska regeringen har släppt en video som visar verkliga militära attacker i Iran med stilistiska inslag från datorspelet Call of Duty.</p>
-        
-
-        
-        <p class="summary-paragraph">Videon publicerades av Vita Huset på onsdagen och inleds med ett klipp från Call of Duty.</p>
-        
-        <p class="summary-paragraph">Sedan visar den verkliga bilder av missiler och annan ammunition som träffar mål i Iran.</p>
-        
-        <p class="summary-paragraph">Det är inte första gången liknande bilder används av den tidigare Trump-administrationen.</p>
-        
-        <p class="summary-paragraph">Genom att blanda spelinnehåll med riktiga militära operationer har videon väckt debatt.</p>
-        
-        <p class="summary-paragraph">Det framgår inte av källan vilken reaktion videon har fått bland allmänheten eller experter.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna video kan påverka hur offentligheten uppfattar militära insatser och relationer till Iran. Den visar också hur moderna medier kan blandas med verklighet på nya sätt.</p>
-
-        
-
-        <p class="source"><a href="https://www.theverge.com/games/889701/trump-white-house-call-of-duty-footage-iran">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Nvidia minskar sina investeringar i OpenAI och Anthropic</h3>
-
-        
-        <p class="ingress">Nvidias VD Jensen Huang meddelade att företagets investeringar i OpenAI och Anthropic troligen blir de sista. Hans förklaring lämnar dock många frågor obesvarade.</p>
-        
-
-        
-        <p class="summary-paragraph">Huang gjorde uttalandet under en presskonferens på onsdagen.</p>
-        
-        <p class="summary-paragraph">Han framhöll att Nvidia kommer att dra tillbaka sitt stöd för dessa AI-företag.</p>
-        
-        <p class="summary-paragraph">Trots detta förblev detaljerna kring beslutet oklara.</p>
-        
-        <p class="summary-paragraph">Många analytiker spekulerar nu om orsakerna bakom detta plötsliga skifte.</p>
-        
-        <p class="summary-paragraph">En del antyder att det kan bero på förändrade marknadsförhållanden eller intern strategi.</p>
-        
-        <p class="summary-paragraph">Huang har inte gett specifika exempel på vad innebär denna nedtrappning.</p>
-        
-        <p class="summary-paragraph">Det är oklart hur detta kommer att påverka Nvidias framtida relationer med AI-sektorn.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Beslutet kan få betydande konsekvenser för AI-branschen och Nvidias position inom området. Det väcker även frågor om framtida investeringar i tekniksektorn.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Nvidia är ett stort företag som gör kraftfulla datorer för AI. Deras VD säger nu att de inte kommer att ge mer pengar till vissa AI-företag, vilket kan påverka hur AI-forskning utvecklas framöver.
-        </div>
-        
-
-        <p class="source"><a href="https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Sju teknikjättar skrev på Trumps löfte om elpriser</h3>
-
-        
-        <p class="ingress">Ledare från Google, Meta, Microsoft, Oracle, OpenAI, Amazon och xAI har träffat president Donald Trump för att skriva under ett 'löfte om skydd av elabonnenter'. Detta är ett svar på oro över stigande elpriser i samband med byggandet av nya AI-datacenter.</p>
-        
-
-        
-        <p class="summary-paragraph">Mötet ägde rum idag och fokus var på att skydda elpriser i samband med den växande efterfrågan på datacenter.</p>
-        
-        <p class="summary-paragraph">Oro finns både bland politiker och allmänheten för hur elektricitetskostnader kan påverka hushåll och företag.</p>
-        
-        <p class="summary-paragraph">Flera av dessa teknikföretag investerar kraftigt i AI-teknologi, vilket kan kräva stora mängder energi.</p>
-        
-        <p class="summary-paragraph">Genom att skriva under löftet lovar dessa företag att samarbeta för att hålla kostnaderna nere.</p>
-        
-        <p class="summary-paragraph">Det är en del av en bredare diskussion om energipolitik och teknologins framtid i USA.</p>
-        
-        <p class="summary-paragraph">Företagen har också betonar vikten av hållbarhet i sina energikällor.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Detta löfte kan ha betydande effekter på framtida elpriser och energipolitik i USA. Det speglar den ökande sammankopplingen mellan teknikindustri och energifrågor.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Flera stora teknikföretag har lovat president Trump att de ska hjälpa till att hålla elpriserna låga. De gör detta för att undvika att elen blir för dyr när de bygger nya enheter för att hantera AI-teknik.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theverge.com/news/889578/data-center-power-pledge-white-house-google-meta-microsoft">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Tim Sweeney avstod från kritik mot Google fram till 2032</h3>
-
-        
-        <p class="ingress">Epic Games VD Tim Sweeney har limiterat sin möjlighet att kritisera Google fram till år 2032. Detta beslut kommer efter en lång konflikt med techjätten.</p>
-        
-
-        
-        <p class="summary-paragraph">Tim Sweeney har länge varit en kritiker av både Google och Apple. Han har offentligt märkts som en stark röst mot deras affärsmetoder.</p>
-        
-        <p class="summary-paragraph">Trots att han har kämpat mot dessa företag, har han nu skrivit under ett avtal som begränsar hans rätt att yttra sig.</p>
-        
-        <p class="summary-paragraph">I sina tidigare uttalanden har Sweeney kallat Google för 'bedrägligt' och Android för en 'falsk öppen plattform'.</p>
-        
-        <p class="summary-paragraph">Denna begränsning gäller fram till 2032, vilket väcker frågor om hans framtida åsikter.</p>
-        
-        <p class="summary-paragraph">Det framgår inte av källan vilka konsekvenser detta avtal kan ha för hans företag.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Detta avtal kan påverka Sweeneys framtida ställning och kritik mot stora teknikföretag. Hans röst har tidigare haft stor betydelse i debatten om teknikbranschens makt.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk på Tim Sweeney som en person som alltid klagat på en stor butik för att de har för höga priser. Men nu har han lovat att inte klaga på dem igen förrän om nio år.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theverge.com/news/889595/tim-sweeney-signed-away-his-right-to-criticize-google-until-2032">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Grammarly erbjuder AI-recensioner baserade på kända författares verk</h3>
-
-        
-        <p class="ingress">Grammarly, som nyligen har blivit omprofilierat som Superhuman, lanserar en ny funktion. Den ger feedback på skrivande baserat på kända författare, både döda och levande.</p>
-        
-
-        
-        <p class="summary-paragraph">Verktyget analyserar texter och ger rekommendationer utifrån stilar och teman från berömda författare.</p>
-        
-        <p class="summary-paragraph">Detta sker utan att författarnas tillstånd har inhämtats.</p>
-        
-        <p class="summary-paragraph">Många kritiker har uttryckt farhågor kring etik och upphovsrätt.</p>
-        
-        <p class="summary-paragraph">Funktionen syftar till att förbättra skrivförmåga för användare på olika nivåer.</p>
-        
-        <p class="summary-paragraph">Användarna kan välja att få feedback inspirerad av sina favoritförfattare.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna utveckling väcker frågor om upphovsrätt och respekt för författares arv. Det är en del av en större diskussion om AI:s roll inom kreativa områden.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk på det som en skrivcoach som försöker efterlikna kända författare. Men problem uppstår eftersom coachen använder deras stil utan att fråga om lov.
-        </div>
-        
-
-        <p class="source"><a href="https://www.wired.com/story/grammarly-is-offering-expert-ai-reviews-from-your-favorite-authors-dead-or-alive/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Anthropic-VD kritiserar OpenAI:s påståenden om militäravtal</h3>
-
-        
-        <p class="ingress">Dario Amodei, vd för Anthropic, har kallat OpenAI:s kommunikation kring ett militäravtal för 'direkta lögner'. Anthropic avbröt sin kontrakt med Pentagon efter oenigheter om AI-säkerhet.</p>
-        
-
-        
-        <p class="summary-paragraph">Anthropic valde att avsluta sitt avtal med Försvarsdepartementet på grund av meningsskiljaktigheter om säkerheten kring artificiell intelligens.</p>
-        
-        <p class="summary-paragraph">OpenAI har därefter tagit över kontraktet med Pentagon.</p>
-        
-        <p class="summary-paragraph">Amodei kritiserar OpenAI:s framställning av situationen som vilseledande.</p>
-        
-        <p class="summary-paragraph">Det har uppstått en ökad debatt om säkerheten kring AI och dess användning inom militärsektorn.</p>
-        
-        <p class="summary-paragraph">Frågan om hur AI ska hanteras i försvarsfrågor blir alltmer central.</p>
-        
-        <p class="summary-paragraph">Denna konflikten belyser komplexiteten i samarbeten mellan teknikföretag och militära institutioner.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Kritiken från Amodei kan påverka förtroendet för AI-företag i militärt samarbete. Dessutom lyfter den fram viktiga frågor om etik och säkerhet inom AI.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Anthropic bröt sitt avtal med militären för att de inte var överens om säkerheten kring AI. OpenAI tog över det avtalet, vilket ledde till att Anthropic-chefen anklagar dem för att ljuga om situationen.
-        </div>
-        
-
-        <p class="source"><a href="https://techcrunch.com/2026/03/04/anthropic-ceo-dario-amodei-calls-openais-messaging-around-military-deal-straight-up-lies-report-says/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Big Tech gör åtagande om datacenter inför Vita huset</h3>
-
-        
-        <p class="ingress">Flera stora teknikföretag har undertecknat ett åtagande gällande datacenter. President Donald Trump lyfter fram behovet av bättre PR för denna sektor.</p>
-        
-
-        
-        <p class="summary-paragraph">Under ett event med president Trump diskuterades datacenter och deras viktiga roll i den digitala infrastrukturen.</p>
-        
-        <p class="summary-paragraph">Trump noterade att sektorn kan ha nytta av mer public relations-arbete.</p>
-        
-        <p class="summary-paragraph">Det är oklart hur mycket substans som finns i de åtaganden som görs av företagen.</p>
-        
-        <p class="summary-paragraph">Flera teknikledare närvarade vid evenemanget och verkade eniga om vikten av datacenter.</p>
-        
-        <p class="summary-paragraph">Datahantering och lagring av information är centrala frågor för både företag och myndigheter.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Detta åtagande kan påverka hur datacenter uppfattas i samhället. Eftersom datacenter är grundläggande för digital aktivitet är PR en viktig faktor.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk på datacenter som stora lager för all information vi använder digitalt, nästan som bibliotek fast för data. Företagen vill att folk ska förstå hur viktiga dessa lager är och att de behöver bra rykte.
-        </div>
-        
-
-        <p class="source"><a href="https://www.wired.com/story/big-tech-signs-white-house-data-center-pledge-with-good-optics-not-much-substance/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">AI-modeller för krig: En inblick i användningen av artificiell intelligens på slagfältet</h3>
-
-        
-        <p class="ingress">Företag som Anthropic diskuterar begränsningar för militär användning av AI, medan Smack Technologies utvecklar modeller för att planera stridsoperationer.</p>
-        
-
-        
-        <p class="summary-paragraph">Debatten om AI:s användning i militära sammanhang pågår för fullt bland tech-företag.</p>
-        
-        <p class="summary-paragraph">Anthropic är en av aktörerna som diskuterar etiska riktlinjer och begränsningar.</p>
-        
-        <p class="summary-paragraph">Samtidigt arbetar Smack Technologies med att träna AI-modeller specifikt för att optimera stridsplanering.</p>
-        
-        <p class="summary-paragraph">Det handlar om att effektivisera operationer och minska riskerna för förluster.</p>
-        
-        <p class="summary-paragraph">Denna teknologiska utveckling kan förändra hur militära strategier utformas och genomförs.</p>
-        
-        <p class="summary-paragraph">Men användningen av AI i krig väcker också etiska och moraliska frågor.</p>
-        
-        <p class="summary-paragraph">Hur långt bör tekniken få gå när det handlar om mänskligt liv?</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Utvecklingen av AI för militära ändamål kan påverka framtida krig och konflikter. Det väcker dessutom viktiga diskussioner kring etik och ansvar.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> AI-modellerna fungerar som smarta datorer som hjälper arméer att planera hur de ska slåss. Men det finns en oro för att dessa datorer kan ta beslut som påverkar människors liv.
-        </div>
-        
-
-        <p class="source"><a href="https://www.wired.com/story/ai-model-military-use-smack-technologies/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Apple Music inför transparensmärken för att särskilja AI-musik</h3>
-
-        
-        <p class="ingress">Apple Music planerar att införa transparensmärken för musik skapad av artificiell intelligens. Detta för att tydliggöra skillnader mellan AI-musik och traditionellt skapad musik.</p>
-        
-
-        
-        <p class="summary-paragraph">Det framgår inte av källan hur många låtar som berörs av denna förändring.</p>
-        
-        <p class="summary-paragraph">Märkesprocessen kräver att skivbolag eller distributörer aktivt väljer att märka sin musik som AI-genererad.</p>
-        
-        <p class="summary-paragraph">Detta kan påverka hur effektivt åtgärden blir.</p>
-        
-        <p class="summary-paragraph">Kritiker har uttryckt oro över att konsumenterna fortfarande kan ha svårt att förstå skillnaderna.</p>
-        
-        <p class="summary-paragraph">Trots införandet av dessa märken kan det förbli oklart hur många som faktiskt kommer att använda dem.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Införandet av transparensmärken kan hjälpa lyssnare att göra medvetna val om vilken musik de konsumerar. Det sätter också fokus på ursprunget av musik i en tid av ökad AI-användning inom industrin.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk dig att musik skapas av robotar istället för människor. Apple Music vill sätta en lapp på musiken för att visa vilken musik som är gjord av robotar och vilken som är gjord av riktiga människor. Men bara de som gör musiken kan sätta den lappen på sina låtar.
-        </div>
-        
-
-        <p class="source"><a href="https://techcrunch.com/2026/03/04/apple-music-to-add-transparency-tags-to-distinguish-ai-music-says-report/">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">NotebookLM kan nu sammanfatta forskning i 'cinematiska' videor</h3>
-
-        
-        <p class="ingress">Google har uppgraderat sin funktion för videoinblickar i NotebookLM. Användare kan nu få sina forskningsanteckningar omvandlade till animerade videor.</p>
-        
-
-        
-        <p class="summary-paragraph">Den nya funktionen går längre än tidigare videoinblickar som bara kunde skapa berättande bildspel.</p>
-        
-        <p class="summary-paragraph">Genom en kombination av olika AI-modeller, såsom Gemini 3, kan videorna nu bli helt animerade.</p>
-        
-        <p class="summary-paragraph">Detta ger en mer engagerande och visuell presentation av användarnas anteckningar och forskning.</p>
-        
-        <p class="summary-paragraph">Funktionen är särskilt användbar för studenter och forskare som vill sammanfatta sitt arbete för en bredare publik.</p>
-        
-        <p class="summary-paragraph">Den förbättrade funktionen kan även hjälpa till att öka förståelsen för komplexa ämnen.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Uppgraderingen av NotebookLM kan revolutionera hur forskning presenteras. Det gör information mer tillgänglig och engagerande.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> Tänk på det som att din forskningsanteckning nu kan förvandlas till en tecknad film istället för bara en vanlig bild med ljud. Det gör det lättare och roligare att förstå.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theverge.com/ai-artificial-intelligence/889475/notebooklm-can-now-summarize-research-in-cinematic-video-overviews">Läs original</a></p>
-      </article>
-      
-      <article class="story">
-        <h3 class="story-title">Nya MacBook Air med M5-chip lanseras – få en $50 presentkort</h3>
-
-        
-        <p class="ingress">Apple presenterar sin senaste MacBook Air med M5-chip, som erbjuder förbättrad prestanda och dubbelt så mycket lagringsutrymme. Priset har dock ökat med $100 jämfört med föregående modell.</p>
-        
-
-        
-        <p class="summary-paragraph">Den nya 13-tums MacBook Air med M5-chip kostar 1 099 dollar hos Best Buy.</p>
-        
-        <p class="summary-paragraph">Denna modell har nu 512 GB lagringsutrymme som standard.</p>
-        
-        <p class="summary-paragraph">Trots prishöjningen ger Apple fortfarande möjligheter att spara pengar.</p>
-        
-        <p class="summary-paragraph">Best Buy erbjuder också ett presentkort på $50 vid köp av den nya enheten.</p>
-        
-        <p class="summary-paragraph">Det här gör den aktuella modellen mer attraktiv för konsumenter.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Den nya MacBook Air med M5-chip markerar en uppgradering av Apples populära bärbara dator. Ökningen i lagringsutrymme och prestanda kan påverka konsumenternas val.</p>
-
-        
-        <div class="eli5-box">
-          <strong>ELI5:</strong> MacBook Air är en bärbar dator från Apple. Den nya modellen är snabbare och har mer plats för filer än tidigare versioner.
-        </div>
-        
-
-        <p class="source"><a href="https://www.theverge.com/gadgets/889391/apple-macbook-air-m5-m4-deal-sale">Läs original</a></p>
-      </article>
-      
-    </section>
+    
+    <hr class="section-divider">
     
     <section class="news-section">
-      <h2 class="section-title">TECH INDUSTRY</h2>
+      <h2 class="section-title">SVERIGE</h2>
 
       
-      <article class="story">
-        <h3 class="story-title">Live Nation och Billie Eilish: Bestraffning av arena?</h3>
+      <article class="article">
+        <h3 class="story-title">ADF-flygplan skickas för att hämta australiska medborgare i Mellanöstern</h3>
 
         
-        <p class="ingress">Frågan om Live Nation straffat en arena genom att ta bort Billie Eilish har aktualiserats. Det handlar om möjliga avtal och relationer inom biljettbranschen.</p>
+        <img src="https://i.guim.co.uk/img/media/b9f09e479541c11eed99958e4b41899449157b89/0_0_4526_3621/master/4526.jpg?width=140&quality=85&auto=format&fit=max&s=d97a82fbafa45274b8cdc74c6bc91624" alt="" class="article-image">
         
 
         
-        <p class="summary-paragraph">John Abbamondi var VD för BSE Global, företaget bakom Barclays Center i Brooklyn, fram till april 2021.</p>
-        
-        <p class="summary-paragraph">I samband med att deras avtal med Ticketmaster var på väg att löpa ut, granskade Abbamondi och hans team erbjudanden från andra biljettförsäljare.</p>
-        
-        <p class="summary-paragraph">Dessa inkluderade SeatGeek och AXS, men detaljer om de exakta förhandlingarna är oklara.</p>
-        
-        <p class="summary-paragraph">Det finns spekulationer om att Live Nation kanske har straffat Barclays Center genom att minska antalet framträdanden av stora artister.</p>
-        
-        <p class="summary-paragraph">Billie Eilishs avhopp har väckt frågor om hur biljettleverantörer påverkar arenor och artistbokningar.</p>
+        <p class="ingress">Australien skickar två ADF-flygplan för att assistera med repatrieringen av medborgare strandsatta i en konfliktfylld region. Den politiska debatten intensifieras kring användning av militärresurser för detta ändamål.</p>
         
 
-        <p class="importance"><strong>Varför det är viktigt:</strong> Denna situation belyser hur makten i biljettbranschen kan påverka både arena och artister. Det kan få konsekvenser för framtida bokningar och avtal.</p>
-
+        
+        <p class="summary-paragraph">Den politiska diskussionen har centrerats kring behovet av att använda militära resurser för att frakta hem australiska medborgare från Mellanöstern. James Paterson, skuggsäkerhetsminister, har uttryckt oro över flygsäkerheten i området.</p>
+        
+        <p class="summary-paragraph">Iran har anfallit flygplatser i regionen, vilket gör kommersiella flygningar riskfyllda. Paterson menar att om civila alternativ inte är tillgängliga, måste alla andra möjligheter övervägas.</p>
+        
+        <p class="summary-paragraph">Det har tidigare skett evakueringar från konfliktzoner med hjälp av militärflyg och regeringen skulle få stöd för att göra det igen om situationen kräver det.</p>
+        
+        <p class="summary-paragraph">Samtidigt kritiserar Paterson den internationella situationen, där han pekar på bristen på samarbete mellan makter som USA och Israel utan att konsultera andra länder.</p>
         
 
-        <p class="source"><a href="https://www.theverge.com/policy/889720/live-nation-ticketmaster-trial-doj-barclays-center-threats">Läs original</a></p>
+        <p class="importance"><strong>Varför det är viktigt:</strong> Den aktuella konflikten i Mellanöstern påverkar inte bara australiska medborgare utan har också konsekvenser för den globala säkerhetsordningen.</p>
+
+        
+        <div class="eli5">
+          <strong>ELI5:</strong> Tänk dig att det finns en stor konflikt i ett land och att många människor inte kan ta sig hem med vanliga flyg. Australien skickar sina egna flygplan för att hämta hem sina medborgare, vilket görs av säkerhetsskäl. Politiken kring hur detta görs är komplicerad, eftersom flera länder är involverade.
+        </div>
+        
+
+        <p class="source"><a href="https://www.theguardian.com/australia-news/live/2026/mar/05/australia-politics-live-anthony-albanese-angus-taylor-parliament-question-time-labor-coalition-one-nation-middle-east-mark-carney-canada-iran-ntwnfb">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Konkurrens till MacBook Neo: Prisvärda Windows-laptops</h3>
-
-        
-        <p class="ingress">Trots att dessa Windows-laptops inte når upp till MacBook Neos standard, visar de att Apple har stark konkurrens.</p>
-        
-
-        
-        <p class="summary-paragraph">Det finns flera Windows-laptops som erbjuder bra prestanda till ett lägre pris än MacBook Neo.</p>
-        
-        <p class="summary-paragraph">Dessa alternativ kan vara intressanta för konsumenter som söker hög kvalitet utan att spräcka budgeten.</p>
-        
-        <p class="summary-paragraph">Laptops i denna prisklass har förbättrat sina specifikationer och funktioner.</p>
-        
-        <p class="summary-paragraph">De erbjuder ofta bra batteritid och användarvänliga funktioner.</p>
-        
-        <p class="summary-paragraph">Konkurrensen på marknaden kan påverka både prissättning och innovation inom laptopsegmentet.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Konkurrensen bidrar till att driva utvecklingen av bättre teknologier och kan ge konsumenter fler valmöjligheter.</p>
+      <article class="article">
+        <h3 class="story-title">Inflationen i Sverige sjunker till 1,7 procent</h3>
 
         
 
-        <p class="source"><a href="https://www.wired.com/story/asus-vivobook-14-deal-macbook-neo/">Läs original</a></p>
+        
+        <p class="ingress">Den svenska inflationen har minskat mer än förväntat. Enligt preliminära siffror från SCB nådde inflationen 1,7 procent i februari.</p>
+        
+
+        
+        <p class="summary-paragraph">Nedgången i inflationen överraskade ekonomer och analytiker. Det var en tydlig sänkning jämfört med tidigare months.</p>
+        
+        <p class="summary-paragraph">Inflationens sjunkande trend kan påverka räntebeslut från Riksbanken framöver. Låga inflationstal kan leda till att räntan hålls på en låg nivå.</p>
+        
+        <p class="summary-paragraph">Det är viktigt att följa utvecklingen noga, särskilt i samband med den globala ekonomiska osäkerheten.</p>
+        
+        <p class="summary-paragraph">Det är viktigt att följa utvecklingen noga, särskilt i samband med den globala ekonomiska osäkerheten.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Inflationen har stor inverkan på hushållens ekonomi och köpkraft. En långvarig nedgång kan signalera svag efterfrågan i ekonomin.</p>
+
+        
+
+        <p class="source"><a href="https://www.svt.se/nyheter/inrikes/inflationen-faller-mer-an-vantat-ov8vu2">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Google sänker avgifter för apputvecklare</h3>
-
-        
-        <p class="ingress">Google har meddelat att de sänker avgifterna för apputvecklare i samband med sin App Experience och Games Level Up-program.</p>
-        
-
-        
-        <p class="summary-paragraph">Från och med juli kommer Google att ta ut 20 procent i avgift på köp i appar, beroende på vart utvecklarna befinner sig.</p>
-        
-        <p class="summary-paragraph">För prenumerationer gäller en avgift på 10 procent.</p>
-        
-        <p class="summary-paragraph">Beslutet kommer i kölvattnet av en dom i USA som deklarerade Google Play som en illegal monopolställning.</p>
-        
-        <p class="summary-paragraph">Dessa förändringar syftar till att åtgärda kritik mot företagets avgiftsstruktur.</p>
-        
-        <p class="summary-paragraph">Sänkningarna markerar en förändring i hur Google hanterar intäkterna från appbutiken.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Ändringarna kan påverka kostnaderna för både utvecklare och användare och kan leda till ökad konkurrens i appmarknaden.</p>
+      <article class="article">
+        <h3 class="story-title">Rekrytering inleds till Lytens batterifabrik i Skellefteå</h3>
 
         
 
-        <p class="source"><a href="https://www.theverge.com/tech/889538/google-apps-experience-games-level-up-program">Läs original</a></p>
+        
+        <p class="ingress">Efter Northvolts konkurs ställdes 1 800 anställda utan jobb. Nu inleder Lytens rekrytering för att fylla de kommande tjänsterna.</p>
+        
+
+        
+        <p class="summary-paragraph">Northvolt, en batteritillverkare, gick nyligen i konkurs, vilket ledde till att 1 800 anställda i Skellefteå registrerade sig hos Arbetsförmedlingen.</p>
+        
+        <p class="summary-paragraph">Av dessa är fortfarande 600 personer inskrivna som arbetssökande.</p>
+        
+        <p class="summary-paragraph">Lytens, som har köpt fabriken, har nu påbörjat sin rekryteringsprocess.</p>
+        
+        <p class="summary-paragraph">Patrik Bergström, sektionschef vid Arbetsförmedlingen, uttrycker hopp om att tidigare anställda ska få möjlighet att återgå till sina jobb.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Rekryteringen är avgörande för att återfå arbetsplatser i regionen och stödja den lokala ekonomin. Samtidigt kan det erbjuda en snabb väg tillbaka till sysselsättning för de som drabbats av Northvolts konkurs.</p>
+
+        
+
+        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/vasterbotten/nu-borjar-jakten-pa-folk-till-lytens-batterifabrik-i-skelleftea">Läs original</a></p>
       </article>
       
-      <article class="story">
-        <h3 class="story-title">Epic Games och Google samarbetar för nya metaverse-appar</h3>
-
-        
-        <p class="ingress">Epic Games och Google har ingått en överenskommelse om en ny typ av appar som betecknas som 'metaverse browsers'. Detta samarbete markerar en förändring i deras tidigare motsättningar.</p>
-        
-
-        
-        <p class="summary-paragraph">Enligt nyligen offentliggjorda dokument har företagen nått en överenskommelse om utveckling av metaverse-appar.</p>
-        
-        <p class="summary-paragraph">Dessa appar kommer att möjliggöra nya sätt att interagera inom digitala miljöer.</p>
-        
-        <p class="summary-paragraph">Det framgår inte av källan hur dessa metaverse browsers exakt kommer att fungera.</p>
-        
-        <p class="summary-paragraph">Samarbetet tyder på en strävan efter att förbättra användarupplevelsen i appbutiker.</p>
-        
-        <p class="summary-paragraph">Detta kan även innebära förändringar i hur tredjepartsutvecklare får tillgång till plattformar.</p>
-        
-
-        <p class="importance"><strong>Varför det är viktigt:</strong> Samarbetet mellan Epic Games och Google kan få stor betydelse för framtiden för både spel- och apputveckling. Det kan också påverka konkurrensen på marknaden för digitala plattformar.</p>
+      <article class="article">
+        <h3 class="story-title">Jenny Bytander blir toppkandidat för Moderaterna i Vadstena</h3>
 
         
 
-        <p class="source"><a href="https://www.theverge.com/tech/889526/epic-games-google-deal-metaverse-apps">Läs original</a></p>
+        
+        <p class="ingress">Tidigare socialdemokraten Jenny Bytander har lämnat sitt gamla parti och ställt upp som förstanamn för Moderaterna i Vadstena. Hennes övergång har väckt uppmärksamhet.</p>
+        
+
+        
+        <p class="summary-paragraph">Bytander lämnade Socialdemokraterna i hösten 2024 under dramatiska former. Hennes avhopp signalerade en ökad politisk dynamik i Vadstena.</p>
+        
+        <p class="summary-paragraph">Som toppkandidat för Moderaterna kommer hon att fokusera på frågor som berör lokalsamhället.</p>
+        
+        <p class="summary-paragraph">Bytander har lång erfarenhet av politiskt arbete och hoppas på att vinna väljarstöd inför kommande val.</p>
+        
+        <p class="summary-paragraph">Hennes nyckelfrågor inkluderar ekonomisk tillväxt och trygghet i kommunen.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Bytanders skifte från S till M kan påverka den politiska balansen i Vadstena. Hennes kandidatur kan attrahera väljare som söker ett alternativ till Socialdemokraterna.</p>
+
+        
+
+        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/ost/lamnade-s-med-buller-och-bang-nu-blir-jenny-bytander-forstanamn-for-m-i-vadstena">Läs original</a></p>
       </article>
       
-    </section>
-    
-    <section class="news-section">
-      <h2 class="section-title">VERKTYG & OPEN SOURCE</h2>
+      <article class="article">
+        <h3 class="story-title">Man åtalas för grovt djurplågeri efter hundvanvård</h3>
 
-      
-    </section>
-    
-    <section class="news-section">
-      <h2 class="section-title">FORSKNING</h2>
+        
 
+        
+        <p class="ingress">En man från Västervik åtalas för grovt djurplågeri. Hunden har varit utsatt för allvarlig vanvård under en längre tid.</p>
+        
+
+        
+        <p class="summary-paragraph">Hunden, som var av schäferliknande ras, vägde nästan 74 kilo. Uppgifter tyder på att djuret har fått otillräcklig vård och näring.</p>
+        
+        <p class="summary-paragraph">Enligt åklagaren har hundens tillstånd förvärrats över tid, vilket resulterat i ett livshotande tillstånd.</p>
+        
+        <p class="summary-paragraph">Rättegången äger rum vid Kalmar tingsrätt och vart och ett av dessa fall tas på stort allvar.</p>
+        
+        <p class="summary-paragraph">Djurplågeri ses som en allvarlig brottslig handling och kan leda till stränga straff.</p>
+        
+
+        <p class="importance"><strong>Varför det är viktigt:</strong> Denna händelse belyser vikten av djurens välfärd och lagar som skyddar dem mot vanvård.</p>
+
+        
+
+        <p class="source"><a href="https://www.svt.se/nyheter/lokalt/smaland/hunden-vagde-74-kilo-man-atalas-for-grovt-djurplageri">Läs original</a></p>
+      </article>
       
     </section>
     
